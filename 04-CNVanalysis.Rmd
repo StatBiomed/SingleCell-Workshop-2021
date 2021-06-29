@@ -1,4 +1,4 @@
-# Applications
+# Copy number variation estimation from scRNA-seq
 
 Some _significant_ applications are demonstrated in this chapter.
 

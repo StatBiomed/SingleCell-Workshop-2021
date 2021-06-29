@@ -8,3 +8,7 @@ applications
 example-one
 example-two
 final-words
+pseudo-time-and-trajectory-analysis
+rna-velocity
+copy-number-variation-estimation-from-scrna-seq
+nuclear-snv-analysis-in-single-cell-omics
