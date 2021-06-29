@@ -1,7 +1,140 @@
 # Copy number variation estimation from scRNA-seq
 
-Some _significant_ applications are demonstrated in this chapter.
+Rongting Huang
 
-## Example one
+2021-06-29
 
-## Example two
+
+## Method: inferCNV
+
+[InferCNV: Inferring copy number alterations from tumor single cell RNA-Seq data](https://github.com/broadinstitute/inferCNV/wiki)
+
+### install inferCNV
+**Software Requirements**
+
+- [JAGS](https://mcmc-jags.sourceforge.io/)
+- R (>3.6)
+
+In order to run infercnv, JAGS (Just Another Gibbs Sampler) must be installed.
+
+Download JAGS from <https://sourceforge.net/projects/mcmc-jags/files/JAGS/4.x/> and install JAGS in your environment (windows/MAC).
+
+If you use inferCNV on server, install JAGS via `conda install` in your conda environment is recommended.
+
+```
+conda install -c conda-forge jags
+```
+
+More details refer to [inferCNV wiki page](https://github.com/broadinstitute/inferCNV/wiki)
+
+**Five options for installing inferCNV**
+
+Option A: Install infercnv from BioConductor (preferred)
+```
+if (!requireNamespace("BiocManager", quietly = TRUE))
+     install.packages("BiocManager")
+BiocManager::install("infercnv")
+```
+
+For more other options, refer to [Five options for installing inferCNV](https://github.com/broadinstitute/inferCNV/wiki/Installing-infercnv)
+
+**Data requirements**
+
+- a raw counts matrix of single-cell RNA-Seq expression
+- an annotations file which indicates which cells are tumor vs. normal.
+- a gene/chromosome positions file
+
+[File-Definitions](https://github.com/broadinstitute/inferCNV/wiki/File-Definitions)
+
+
+### getting started
+
+If you have installed infercnv from BioConductor, you can run the example data with:
+
+```
+library(infercnv)
+
+infercnv_obj = CreateInfercnvObject(raw_counts_matrix=system.file("extdata", "oligodendroglioma_expression_downsampled.counts.matrix.gz", package = "infercnv"),
+                                    annotations_file=system.file("extdata", "oligodendroglioma_annotations_downsampled.txt", package = "infercnv"),
+                                    delim="\t",
+                                    gene_order_file=system.file("extdata", "gencode_downsampled.EXAMPLE_ONLY_DONT_REUSE.txt", package = "infercnv"),
+                                    ref_group_names=c("Microglia/Macrophage","Oligodendrocytes (non-malignant)")) 
+
+infercnv_obj = infercnv::run(infercnv_obj,
+                             cutoff=1, # cutoff=1 works well for Smart-seq2, and cutoff=0.1 works well for 10x Genomics
+                             out_dir=tempfile(), 
+                             cluster_by_groups=TRUE, 
+                             denoise=TRUE,
+                             HMM=TRUE)
+```
+
+If you can run the getting started part with demo data provided by inferCNV, then it is installed successfully.
+
+
+**Demo Example Figure**
+
+![Demo Example Figure](CNV_analysis_file/figs/demo-infercnv.png)
+
+## Application on TNBC1
+
+### data description
+
+
+### run inferCNV
+
+```
+#################
+##HUANG Rongting
+##2021-0629
+#################
+
+## load the package
+library(Seurat)
+library(infercnv)
+
+## prepare the data
+
+### load count matrix
+matrix_path <- "/groups/cgsd/yuanhua/CPOS_Data_20210317/10X5RNA_SS-181003-01a/cellranger/GX001_1m30/count_GX001_1m30/outs/filtered_gene_bc_matrices/GRCh38/"
+anno_file <- '/groups/cgsd/rthuang/processed_data/inferCNV/GX001/gx001_celltype'
+gene_file <- '/groups/cgsd/rthuang/processed_data/inferCNV/hg38/gene_note_noheader_unique.txt'
+
+### read count matrix
+gex_mtx <- Seurat::Read10X(data.dir = matrix_path)
+
+### run inferCNV with loop
+# cells = c('Chief', 'M', 'unclassified')#gx109
+celltype = c('Enterocyte', 'PMC', 'Stem', 'Tuft', 'unclassified')
+
+for (i in celltype){
+  infercnv_obj1 = CreateInfercnvObject(raw_counts_matrix=gex_mtx,
+                                       annotations_file=anno_file,
+                                       delim='\t',
+                                       gene_order_file=gene_file,
+                                       ref_group_names=c(i))
+  
+  output <- paste0('/groups/cgsd/rthuang/processed_data/inferCNV/GX001/','gx001_', i)
+  
+  infercnv_obj1 = infercnv::run(infercnv_obj1,
+                                cutoff=0.1,  
+                                out_dir= output , 
+                                cluster_by_groups=T,   
+                                denoise=T,
+                                HMM=T)
+}
+```
+
+
+### inferCNV result
+
+
+### BAF visualization
+
+
+
+
+## ref
+https://www.r-bloggers.com/2012/04/getting-started-with-jags-rjags-and-bayesian-modelling/
+
+
+

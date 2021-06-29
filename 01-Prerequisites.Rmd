@@ -1,6 +1,12 @@
 # Prerequisites {#env-pre}
 
-You can label chapter and section titles using `{#label}` after them, e.g., we can reference Chapter \@ref(env-pre). If you do not manually label them, there will be automatic labels anyway, e.g., Chapter \@ref(methods).
+
+## install Anaconda
+
+## other prepare
+
+
+You can label chapter and section titles using `{#label}` after them, e.g., we can reference Chapter \@ref(env-pre). If you do not manually label them, there will be automatic labels anyway, e.g., Chapter \@ref(RNA velocity).
 
 Figures and tables with captions will be placed in `figure` and `table` environments, respectively.
 

@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 5 Copy number variation estimation from scRNA-seq | SingleCell Workshop</title>
+  <meta name="description" content="Cell differentiation trajectory; Cellular genetics." />
+  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 5 Copy number variation estimation from scRNA-seq | SingleCell Workshop" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="Cell differentiation trajectory; Cellular genetics." />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 5 Copy number variation estimation from scRNA-seq | SingleCell Workshop" />
+  
+  <meta name="twitter:description" content="Cell differentiation trajectory; Cellular genetics." />
+  
+
+<meta name="author" content="Yuanhua lab" />
+
+
+<meta name="date" content="2021-06-29" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="rna-velocity.html"/>
+<link rel="next" href="nuclear-snv-analysis-in-single-cell-omics.html"/>
+<script src="libs/header-attrs-2.8/header-attrs.js"></script>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+
+
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">A Minimal Book Example</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a></li>
+<li class="chapter" data-level="2" data-path="env-pre.html"><a href="env-pre.html"><i class="fa fa-check"></i><b>2</b> Prerequisites</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="env-pre.html"><a href="env-pre.html#install-anaconda"><i class="fa fa-check"></i><b>2.1</b> install Anaconda</a></li>
+<li class="chapter" data-level="2.2" data-path="env-pre.html"><a href="env-pre.html#other-prepare"><i class="fa fa-check"></i><b>2.2</b> other prepare</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="pseudo-time-and-trajectory-analysis.html"><a href="pseudo-time-and-trajectory-analysis.html"><i class="fa fa-check"></i><b>3</b> Pseudo-time and trajectory analysis</a></li>
+<li class="chapter" data-level="4" data-path="rna-velocity.html"><a href="rna-velocity.html"><i class="fa fa-check"></i><b>4</b> RNA velocity</a></li>
+<li class="chapter" data-level="5" data-path="copy-number-variation-estimation-from-scrna-seq.html"><a href="copy-number-variation-estimation-from-scrna-seq.html"><i class="fa fa-check"></i><b>5</b> Copy number variation estimation from scRNA-seq</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="copy-number-variation-estimation-from-scrna-seq.html"><a href="copy-number-variation-estimation-from-scrna-seq.html#method-infercnv"><i class="fa fa-check"></i><b>5.1</b> Method: inferCNV</a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="copy-number-variation-estimation-from-scrna-seq.html"><a href="copy-number-variation-estimation-from-scrna-seq.html#install-infercnv"><i class="fa fa-check"></i><b>5.1.1</b> install inferCNV</a></li>
+<li class="chapter" data-level="5.1.2" data-path="copy-number-variation-estimation-from-scrna-seq.html"><a href="copy-number-variation-estimation-from-scrna-seq.html#getting-started"><i class="fa fa-check"></i><b>5.1.2</b> getting started</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="copy-number-variation-estimation-from-scrna-seq.html"><a href="copy-number-variation-estimation-from-scrna-seq.html#application-on-tnbc1"><i class="fa fa-check"></i><b>5.2</b> Application on TNBC1</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="copy-number-variation-estimation-from-scrna-seq.html"><a href="copy-number-variation-estimation-from-scrna-seq.html#data-description"><i class="fa fa-check"></i><b>5.2.1</b> data description</a></li>
+<li class="chapter" data-level="5.2.2" data-path="copy-number-variation-estimation-from-scrna-seq.html"><a href="copy-number-variation-estimation-from-scrna-seq.html#run-infercnv"><i class="fa fa-check"></i><b>5.2.2</b> run inferCNV</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="copy-number-variation-estimation-from-scrna-seq.html"><a href="copy-number-variation-estimation-from-scrna-seq.html#ref"><i class="fa fa-check"></i><b>5.3</b> ref</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="nuclear-snv-analysis-in-single-cell-omics.html"><a href="nuclear-snv-analysis-in-single-cell-omics.html"><i class="fa fa-check"></i><b>6</b> Nuclear SNV analysis in single-cell omics</a></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">SingleCell Workshop</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="copy-number-variation-estimation-from-scrna-seq" class="section level1" number="5">
+<h1><span class="header-section-number">Chapter 5</span> Copy number variation estimation from scRNA-seq</h1>
+<p>Rongting Huang</p>
+<p>2021-06-29</p>
+<div id="method-infercnv" class="section level2" number="5.1">
+<h2><span class="header-section-number">5.1</span> Method: inferCNV</h2>
+<p><a href="https://github.com/broadinstitute/inferCNV/wiki">InferCNV: Inferring copy number alterations from tumor single cell RNA-Seq data</a></p>
+<div id="install-infercnv" class="section level3" number="5.1.1">
+<h3><span class="header-section-number">5.1.1</span> install inferCNV</h3>
+<p><strong>Software Requirements</strong></p>
+<ul>
+<li><a href="https://mcmc-jags.sourceforge.io/">JAGS</a></li>
+<li>R (&gt;3.6)</li>
+</ul>
+<p>In order to run infercnv, JAGS (Just Another Gibbs Sampler) must be installed.</p>
+<p>Download JAGS from <a href="https://sourceforge.net/projects/mcmc-jags/files/JAGS/4.x/" class="uri">https://sourceforge.net/projects/mcmc-jags/files/JAGS/4.x/</a> and install JAGS in your environment (windows/MAC).</p>
+<p>If you use inferCNV on server, install JAGS via <code>conda install</code> in your conda environment is recommended.</p>
+<pre><code>conda install -c conda-forge jags</code></pre>
+<p>More details refer to <a href="https://github.com/broadinstitute/inferCNV/wiki">inferCNV wiki page</a></p>
+<p><strong>Five options for installing inferCNV</strong></p>
+<p>Option A: Install infercnv from BioConductor (preferred)</p>
+<pre><code>if (!requireNamespace(&quot;BiocManager&quot;, quietly = TRUE))
+     install.packages(&quot;BiocManager&quot;)
+BiocManager::install(&quot;infercnv&quot;)</code></pre>
+<p>For more other options, refer to <a href="https://github.com/broadinstitute/inferCNV/wiki/Installing-infercnv">Five options for installing inferCNV</a></p>
+<p><strong>Data requirements</strong></p>
+<ul>
+<li>a raw counts matrix of single-cell RNA-Seq expression</li>
+<li>an annotations file which indicates which cells are tumor vs. normal.</li>
+<li>a gene/chromosome positions file</li>
+</ul>
+<p><a href="https://github.com/broadinstitute/inferCNV/wiki/File-Definitions">File-Definitions</a></p>
+</div>
+<div id="getting-started" class="section level3" number="5.1.2">
+<h3><span class="header-section-number">5.1.2</span> getting started</h3>
+<p>If you have installed infercnv from BioConductor, you can run the example data with:</p>
+<pre><code>library(infercnv)
+
+infercnv_obj = CreateInfercnvObject(raw_counts_matrix=system.file(&quot;extdata&quot;, &quot;oligodendroglioma_expression_downsampled.counts.matrix.gz&quot;, package = &quot;infercnv&quot;),
+                                    annotations_file=system.file(&quot;extdata&quot;, &quot;oligodendroglioma_annotations_downsampled.txt&quot;, package = &quot;infercnv&quot;),
+                                    delim=&quot;\t&quot;,
+                                    gene_order_file=system.file(&quot;extdata&quot;, &quot;gencode_downsampled.EXAMPLE_ONLY_DONT_REUSE.txt&quot;, package = &quot;infercnv&quot;),
+                                    ref_group_names=c(&quot;Microglia/Macrophage&quot;,&quot;Oligodendrocytes (non-malignant)&quot;)) 
+
+infercnv_obj = infercnv::run(infercnv_obj,
+                             cutoff=1, # cutoff=1 works well for Smart-seq2, and cutoff=0.1 works well for 10x Genomics
+                             out_dir=tempfile(), 
+                             cluster_by_groups=TRUE, 
+                             denoise=TRUE,
+                             HMM=TRUE)</code></pre>
+<p>If you can run the getting started part with demo data provided by inferCNV, then it is installed successfully.</p>
+<div class="figure">
+<img src="CNV_analysis_file/figs/infercnv.png" alt="" />
+<p class="caption">demo</p>
+</div>
+</div>
+</div>
+<div id="application-on-tnbc1" class="section level2" number="5.2">
+<h2><span class="header-section-number">5.2</span> Application on TNBC1</h2>
+<div id="data-description" class="section level3" number="5.2.1">
+<h3><span class="header-section-number">5.2.1</span> data description</h3>
+</div>
+<div id="run-infercnv" class="section level3" number="5.2.2">
+<h3><span class="header-section-number">5.2.2</span> run inferCNV</h3>
+<pre><code>#################
+##HUANG Rongting
+##2021-0629
+#################
+
+## load the package
+library(Seurat)
+library(infercnv)
+
+## prepare the data
+
+### load count matrix
+matrix_path &lt;- &quot;/groups/cgsd/yuanhua/CPOS_Data_20210317/10X5RNA_SS-181003-01a/cellranger/GX001_1m30/count_GX001_1m30/outs/filtered_gene_bc_matrices/GRCh38/&quot;
+anno_file &lt;- &#39;/groups/cgsd/rthuang/processed_data/inferCNV/GX001/gx001_celltype&#39;
+gene_file &lt;- &#39;/groups/cgsd/rthuang/processed_data/inferCNV/hg38/gene_note_noheader_unique.txt&#39;
+
+### read count matrix
+gex_mtx &lt;- Seurat::Read10X(data.dir = matrix_path)
+
+### run inferCNV with loop
+# cells = c(&#39;Chief&#39;, &#39;M&#39;, &#39;unclassified&#39;)#gx109
+celltype = c(&#39;Enterocyte&#39;, &#39;PMC&#39;, &#39;Stem&#39;, &#39;Tuft&#39;, &#39;unclassified&#39;)
+
+for (i in celltype){
+  infercnv_obj1 = CreateInfercnvObject(raw_counts_matrix=gex_mtx,
+                                       annotations_file=anno_file,
+                                       delim=&#39;\t&#39;,
+                                       gene_order_file=gene_file,
+                                       ref_group_names=c(i))
+  
+  output &lt;- paste0(&#39;/groups/cgsd/rthuang/processed_data/inferCNV/GX001/&#39;,&#39;gx001_&#39;, i)
+  
+  infercnv_obj1 = infercnv::run(infercnv_obj1,
+                                cutoff=0.1,  
+                                out_dir= output , 
+                                cluster_by_groups=T,   
+                                denoise=T,
+                                HMM=T)
+}</code></pre>
+</div>
+</div>
+<div id="ref" class="section level2" number="5.3">
+<h2><span class="header-section-number">5.3</span> ref</h2>
+<p><a href="https://www.r-bloggers.com/2012/04/getting-started-with-jags-rjags-and-bayesian-modelling/" class="uri">https://www.r-bloggers.com/2012/04/getting-started-with-jags-rjags-and-bayesian-modelling/</a></p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="rna-velocity.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="nuclear-snv-analysis-in-single-cell-omics.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["SingleCell Workshop.pdf", "SingleCell Workshop.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>
