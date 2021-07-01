@@ -79,6 +79,16 @@ If you can run the getting started part with demo data provided by inferCNV, the
 
 ### data description
 
+TNBC1 is a triple negative breast cancer tumor sample of high tumor purity (72.6%) with 796 single tumor cells and 301 normal cells. The dataset is available on NCBI GEO under the accession number GSM4476486.
+
+
+TNBC1                              Number of clones       Number of tumor clones   Tumor clone-specific copy gain
+-------                            ------                 ----------               -------
+Triple negative breast cancer      3                      2                        C1: 4p, 7q, 9, 17q
+                                                                                   C2: 3p, 6q, 7p, 11q, X
+
+Table:  Details of TNBC1 dataset (from published articles, copyKAT).
+
 
 ### run inferCNV
 
@@ -125,7 +135,43 @@ for (i in celltype){
 ```
 
 
+```{r}
+# library(infercnv)
+# library(utils)
+# library (BiocGenerics)
+# 
+# tnbc <- read.delim("C://Users/Rongting/Documents/GitHub_repos/combinedTNBC1.txt")
+# anno <- tnbc[2,]
+# anno <- t(anno)
+# anno <- as.data.frame(anno)
+# 
+# gex <- tnbc[-1,]
+# gex <- gex[-1,]
+# gex <- type.convert(gex)
+# 
+# gene_file <- "C://Users/Rongting/Documents/GitHub_repos/gene_note_noheader_unique.txt"
+# 
+# infercnv_obj = CreateInfercnvObject(raw_counts_matrix=gex,
+#                                     annotations_file=anno,
+#                                     delim='\t',
+#                                     gene_order_file=gene_file,
+#                                     ref_group_names= "N")
+
+# output = "C://Users/Rongting/Documents/GitHub_repos/tnbc1_demo"
+
+# infercnv_obj = infercnv::run(infercnv_obj,
+#                              cutoff=0.1,  
+#                              out_dir= output , 
+#                              cluster_by_groups=T,   
+#                              denoise=T,
+#                              HMM=T)
+
+
+```
+[lof_file]()
+
 ### inferCNV result
+
 
 
 ### BAF visualization
@@ -135,6 +181,10 @@ for (i in celltype){
 
 ## ref
 https://www.r-bloggers.com/2012/04/getting-started-with-jags-rjags-and-bayesian-modelling/
+
+```
+bookdown::render_book("index.Rmd", "bookdown::gitbook")
+```
 
 
 
