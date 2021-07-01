@@ -1,9 +1,9 @@
+
 # Copy number variation estimation from scRNA-seq
 
 Rongting Huang
 
 2021-06-29
-
 
 ## Method: inferCNV
 
@@ -81,75 +81,64 @@ If you can run the getting started part with demo data provided by inferCNV, the
 
 TNBC1 is a triple negative breast cancer tumor sample of high tumor purity (72.6%) with 796 single tumor cells and 301 normal cells. The dataset is available on NCBI GEO under the accession number GSM4476486.
 
+: Details of TNBC1 dataset (from published articles, copyKAT).
 
-TNBC1                              Number of clones       Number of tumor clones   Tumor clone-specific copy gain
--------                            ------                 ----------               -------
-Triple negative breast cancer      3                      2                        C1: 4p, 7q, 9, 17q
-                                                                                   C2: 3p, 6q, 7p, 11q, X
++-------------------------------+--------------------+-----------------------+------------------------------------+
+| TNBC1                         | Number of clones   | Number of tumor clones|  Tumor clone-specific copy gain    |
++===============================+====================+=======================+====================================+
+| Triple negative breast cancer |         3          |             2         | - C1: 4p, 7q, 9, 17q               |
+|                               |                    |                       | - C2: 3p, 6q, 7p, 11q, X           |
++-------------------------------+--------------------+-----------------------+------------------------------------+
 
-Table:  Details of TNBC1 dataset (from published articles, copyKAT).
+
+- Expression
+
+Clone A       Clone B       Normal
+------        ------        ------
+488           307           302
+
+Table:  Subclusters of TNBC1 dataset (from gene expression analysis-Seurat).
+
+
+![umap](CNV_analysis_file/figs/tnbc1-exp/tnbc1-umap-3clusters.jpeg)
+
+
+- B Allele Frenquency (BAF)
+
+![baf1](./CNV_analysis_file/figs/tnbc1-baf/0sub_chr.pdf){width=120%}
+
+![baf2](./CNV_analysis_file/figs/tnbc1-baf/1sub_chr.pdf){width=120%}
+
+![baf3](./CNV_analysis_file/figs/tnbc1-baf/2sub_chr.pdf){width=120%}
+
+
+
 
 
 ### run inferCNV
 
-```
-#################
-##HUANG Rongting
-##2021-0629
-#################
 
-## load the package
-library(Seurat)
-library(infercnv)
+[demo1_log_file](https://github.com/Rongtingting/SingleCell-Workshop-2021/blob/master/CNV_analysis_file/demo1_inferCNV_TNBC1.log)
 
-## prepare the data
-
-### load count matrix
-matrix_path <- "/groups/cgsd/yuanhua/CPOS_Data_20210317/10X5RNA_SS-181003-01a/cellranger/GX001_1m30/count_GX001_1m30/outs/filtered_gene_bc_matrices/GRCh38/"
-anno_file <- '/groups/cgsd/rthuang/processed_data/inferCNV/GX001/gx001_celltype'
-gene_file <- '/groups/cgsd/rthuang/processed_data/inferCNV/hg38/gene_note_noheader_unique.txt'
-
-### read count matrix
-gex_mtx <- Seurat::Read10X(data.dir = matrix_path)
-
-### run inferCNV with loop
-# cells = c('Chief', 'M', 'unclassified')#gx109
-celltype = c('Enterocyte', 'PMC', 'Stem', 'Tuft', 'unclassified')
-
-for (i in celltype){
-  infercnv_obj1 = CreateInfercnvObject(raw_counts_matrix=gex_mtx,
-                                       annotations_file=anno_file,
-                                       delim='\t',
-                                       gene_order_file=gene_file,
-                                       ref_group_names=c(i))
-  
-  output <- paste0('/groups/cgsd/rthuang/processed_data/inferCNV/GX001/','gx001_', i)
-  
-  infercnv_obj1 = infercnv::run(infercnv_obj1,
-                                cutoff=0.1,  
-                                out_dir= output , 
-                                cluster_by_groups=T,   
-                                denoise=T,
-                                HMM=T)
-}
-```
-
+[demo2_log_file](https://github.com/Rongtingting/SingleCell-Workshop-2021/blob/master/CNV_analysis_file/demo2_inferCNV_TNBC1.log)
 
 ```{r}
 # library(infercnv)
 # library(utils)
 # library (BiocGenerics)
+
+## DEMO1
 # 
 # tnbc <- read.delim("C://Users/Rongting/Documents/GitHub_repos/combinedTNBC1.txt")
 # anno <- tnbc[2,]
 # anno <- t(anno)
 # anno <- as.data.frame(anno)
 # 
-# gex <- tnbc[-1,]
-# gex <- gex[-1,]
+# gex <- tnbc[-c(1:2),]
 # gex <- type.convert(gex)
 # 
 # gene_file <- "C://Users/Rongting/Documents/GitHub_repos/gene_note_noheader_unique.txt"
+
 # 
 # infercnv_obj = CreateInfercnvObject(raw_counts_matrix=gex,
 #                                     annotations_file=anno,
@@ -166,20 +155,91 @@ for (i in celltype){
 #                              denoise=T,
 #                              HMM=T)
 
+## DEMO2
+
+# gene_file <- "C://Users/Rongting/Documents/GitHub_repos/gene_note_noheader_unique.txt"
+# 
+# anno_file <- 'C://Users/Rongting/Documents/GitHub_repos/tnbc-3cluster-id.txt'
+# 
+# infercnv_obj2 = CreateInfercnvObject(raw_counts_matrix=gex,
+#                                     annotations_file=anno_file,
+#                                     delim='\t',
+#                                     gene_order_file=gene_file,
+#                                     ref_group_names= "Normal")
+# 
+# output = "C://Users/Rongting/Documents/GitHub_repos/tnbc1_demo2"
+# 
+# infercnv_obj2 = infercnv::run(infercnv_obj2,
+#                              cutoff=0.1,
+#                              out_dir= output,
+#                              cluster_by_groups=T,
+#                              denoise=T,
+#                              HMM=T)
+
 
 ```
-[lof_file]()
+
+
+```
+#################
+##Notes
+#################
+
+## load the package
+library(Seurat)
+library(infercnv)
+
+## prepare the data (cellranger output)
+
+### load count matrix (example)
+matrix_path <- "../cellranger/xxxx/count_xxxxx/outs/filtered_gene_bc_matrices/GRCh38/"
+
+
+### read count matrix
+gex_mtx <- Seurat::Read10X(data.dir = matrix_path)
+
+### run inferCNV with loop
+celltype = c('CloneA', 'CloneB', 'Normal')
+
+for (i in celltype){
+  infercnv_obj1 = CreateInfercnvObject(raw_counts_matrix=gex_mtx,
+                                       annotations_file=anno_file,
+                                       delim='\t',
+                                       gene_order_file=gene_file,
+                                       ref_group_names=c(i))
+  
+  output <- paste0('/groups/cgsd/rthuang/processed_data/inferCNV/xxxx/','xxxx_', i)
+  
+  infercnv_obj1 = infercnv::run(infercnv_obj1,
+                                cutoff=0.1,  
+                                out_dir= output , 
+                                cluster_by_groups=T,   
+                                denoise=T,
+                                HMM=T)
+}
+
+```
+
 
 ### inferCNV result
 
+- demo1
+
+![infercnv1](./CNV_analysis_file/figs/tnbc1_demo1/infercnv.png)
+
+![infercnv2](./CNV_analysis_file/figs/tnbc1_demo1/infercnv.18_HMM_pred.Bayes_Net.Pnorm_0.5.png)
 
 
-### BAF visualization
+- demo2
 
+![infercnv3](./CNV_analysis_file/figs/tnbc1_demo2/infercnv.png)
 
+![infercnv4](./CNV_analysis_file/figs/tnbc1_demo2/infercnv.18_HMM_pred.Bayes_Net.Pnorm_0.5.png)
 
 
 ## ref
+
+
 https://www.r-bloggers.com/2012/04/getting-started-with-jags-rjags-and-bayesian-modelling/
 
 ```

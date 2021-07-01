@@ -14,6 +14,5 @@ application-on-tnbc1
 data-description
 run-infercnv
 infercnv-result
-baf-visualization
 ref
 nuclear-snv-analysis-in-single-cell-omics

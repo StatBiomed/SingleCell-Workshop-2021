@@ -1,0 +1,354 @@
+INFO [2021-07-01 17:22:42] Parsing gene order file: C://Users/Rongting/Documents/GitHub_repos/gene_note_noheader_unique.txt
+INFO [2021-07-01 17:22:42] Parsing cell annotations file: C://Users/Rongting/Documents/GitHub_repos/tnbc-3cluster-id.txt
+INFO [2021-07-01 17:22:42] ::order_reduce:Start.
+INFO [2021-07-01 17:22:43] .order_reduce(): expr and order match.
+INFO [2021-07-01 17:22:44] ::process_data:order_reduce:Reduction from positional data, new dimensions (r,c) = 33694,1097 Total=25090243 Min=0 Max=13207.
+INFO [2021-07-01 17:22:45] num genes removed taking into account provided gene ordering list: 12507 = 37.119368433549% removed.
+INFO [2021-07-01 17:22:45] -filtering out cells < 100 or > Inf, removing 0 % of cells
+INFO [2021-07-01 17:22:50] validating infercnv_obj
+INFO [2021-07-01 17:22:50] ::process_data:Start
+INFO [2021-07-01 17:22:50] Creating output path C://Users/Rongting/Documents/GitHub_repos/tnbc1_demo2
+INFO [2021-07-01 17:22:50] Checking for saved results.
+INFO [2021-07-01 17:22:50] 
+
+	STEP 1: incoming data
+
+INFO [2021-07-01 17:22:55] 
+
+	STEP 02: Removing lowly expressed genes
+
+INFO [2021-07-01 17:22:55] ::above_min_mean_expr_cutoff:Start
+INFO [2021-07-01 17:22:55] Removing 11209 genes from matrix as below mean expr threshold: 0.1
+INFO [2021-07-01 17:22:55] validating infercnv_obj
+INFO [2021-07-01 17:22:55] There are 9978 genes and 1097 cells remaining in the expr matrix.
+INFO [2021-07-01 17:23:02] Removed 1 genes having fewer than 3 min cells per gene = 0.010022 % genes removed here
+INFO [2021-07-01 17:23:02] validating infercnv_obj
+INFO [2021-07-01 17:23:07] 
+
+	STEP 03: normalization by sequencing depth
+
+INFO [2021-07-01 17:23:07] normalizing counts matrix by depth
+INFO [2021-07-01 17:23:08] Computed total sum normalization factor as median libsize: 16746.000000
+INFO [2021-07-01 17:23:08] Adding h-spike
+INFO [2021-07-01 17:23:08] -hspike modeling of Normal
+INFO [2021-07-01 17:25:28] validating infercnv_obj
+INFO [2021-07-01 17:25:28] normalizing counts matrix by depth
+INFO [2021-07-01 17:25:28] Using specified normalization factor: 16746.000000
+INFO [2021-07-01 17:25:34] 
+
+	STEP 04: log transformation of data
+
+INFO [2021-07-01 17:25:34] transforming log2xplus1()
+INFO [2021-07-01 17:25:35] -mirroring for hspike
+INFO [2021-07-01 17:25:35] transforming log2xplus1()
+INFO [2021-07-01 17:25:42] 
+
+	STEP 08: removing average of reference data (before smoothing)
+
+INFO [2021-07-01 17:25:42] ::subtract_ref_expr_from_obs:Start inv_log=FALSE, use_bounds=TRUE
+INFO [2021-07-01 17:25:42] subtracting mean(normal) per gene per cell across all data
+INFO [2021-07-01 17:25:50] -subtracting expr per gene, use_bounds=TRUE
+INFO [2021-07-01 17:25:52] -mirroring for hspike
+INFO [2021-07-01 17:25:52] ::subtract_ref_expr_from_obs:Start inv_log=FALSE, use_bounds=TRUE
+INFO [2021-07-01 17:25:52] subtracting mean(normal) per gene per cell across all data
+INFO [2021-07-01 17:25:59] -subtracting expr per gene, use_bounds=TRUE
+INFO [2021-07-01 17:26:08] 
+
+	STEP 09: apply max centered expression threshold: 3
+
+INFO [2021-07-01 17:26:08] ::process_data:setting max centered expr, threshold set to: +/-:  3
+INFO [2021-07-01 17:26:08] -mirroring for hspike
+INFO [2021-07-01 17:26:08] ::process_data:setting max centered expr, threshold set to: +/-:  3
+INFO [2021-07-01 17:26:15] 
+
+	STEP 10: Smoothing data per cell by chromosome
+
+INFO [2021-07-01 17:26:15] smooth_by_chromosome: chr: chr1
+INFO [2021-07-01 17:26:17] smooth_by_chromosome: chr: chr2
+INFO [2021-07-01 17:26:18] smooth_by_chromosome: chr: chr3
+INFO [2021-07-01 17:26:20] smooth_by_chromosome: chr: chr4
+INFO [2021-07-01 17:26:21] smooth_by_chromosome: chr: chr5
+INFO [2021-07-01 17:26:22] smooth_by_chromosome: chr: chr6
+INFO [2021-07-01 17:26:24] smooth_by_chromosome: chr: chr7
+INFO [2021-07-01 17:26:25] smooth_by_chromosome: chr: chr8
+INFO [2021-07-01 17:26:27] smooth_by_chromosome: chr: chr9
+INFO [2021-07-01 17:26:28] smooth_by_chromosome: chr: chr11
+INFO [2021-07-01 17:26:30] smooth_by_chromosome: chr: chr10
+INFO [2021-07-01 17:26:31] smooth_by_chromosome: chr: chr12
+INFO [2021-07-01 17:26:36] smooth_by_chromosome: chr: chr13
+INFO [2021-07-01 17:26:37] smooth_by_chromosome: chr: chr14
+INFO [2021-07-01 17:26:37] smooth_by_chromosome: chr: chr15
+INFO [2021-07-01 17:26:38] smooth_by_chromosome: chr: chr16
+INFO [2021-07-01 17:26:40] smooth_by_chromosome: chr: chr17
+INFO [2021-07-01 17:26:41] smooth_by_chromosome: chr: chr18
+INFO [2021-07-01 17:26:42] smooth_by_chromosome: chr: chr20
+INFO [2021-07-01 17:26:43] smooth_by_chromosome: chr: chr19
+INFO [2021-07-01 17:26:44] smooth_by_chromosome: chr: chr22
+INFO [2021-07-01 17:26:46] smooth_by_chromosome: chr: chr21
+INFO [2021-07-01 17:26:47] smooth_by_chromosome: chr: chrMT
+INFO [2021-07-01 17:26:47] smooth_by_chromosome: chr: chrKI270734.1
+INFO [2021-07-01 17:26:47] smooth_by_chromosome: chr: chrKI270721.1
+INFO [2021-07-01 17:26:47] smooth_by_chromosome: chr: chrKI270711.1
+INFO [2021-07-01 17:26:47] -mirroring for hspike
+INFO [2021-07-01 17:26:47] smooth_by_chromosome: chr: chrA
+INFO [2021-07-01 17:26:47] smooth_by_chromosome: chr: chr_0
+INFO [2021-07-01 17:26:48] smooth_by_chromosome: chr: chr_B
+INFO [2021-07-01 17:26:48] smooth_by_chromosome: chr: chr_0pt5
+INFO [2021-07-01 17:26:48] smooth_by_chromosome: chr: chr_C
+INFO [2021-07-01 17:26:49] smooth_by_chromosome: chr: chr_1pt5
+INFO [2021-07-01 17:26:49] smooth_by_chromosome: chr: chr_D
+INFO [2021-07-01 17:26:49] smooth_by_chromosome: chr: chr_2pt0
+INFO [2021-07-01 17:26:49] smooth_by_chromosome: chr: chr_E
+INFO [2021-07-01 17:26:50] smooth_by_chromosome: chr: chr_3pt0
+INFO [2021-07-01 17:26:50] smooth_by_chromosome: chr: chr_F
+INFO [2021-07-01 17:26:58] 
+
+	STEP 11: re-centering data across chromosome after smoothing
+
+INFO [2021-07-01 17:26:58] ::center_smooth across chromosomes per cell
+INFO [2021-07-01 17:26:59] -mirroring for hspike
+INFO [2021-07-01 17:26:59] ::center_smooth across chromosomes per cell
+INFO [2021-07-01 17:27:07] 
+
+	STEP 12: removing average of reference data (after smoothing)
+
+INFO [2021-07-01 17:27:07] ::subtract_ref_expr_from_obs:Start inv_log=FALSE, use_bounds=TRUE
+INFO [2021-07-01 17:27:07] subtracting mean(normal) per gene per cell across all data
+INFO [2021-07-01 17:27:11] -subtracting expr per gene, use_bounds=TRUE
+INFO [2021-07-01 17:27:11] -mirroring for hspike
+INFO [2021-07-01 17:27:11] ::subtract_ref_expr_from_obs:Start inv_log=FALSE, use_bounds=TRUE
+INFO [2021-07-01 17:27:11] subtracting mean(normal) per gene per cell across all data
+INFO [2021-07-01 17:27:15] -subtracting expr per gene, use_bounds=TRUE
+INFO [2021-07-01 17:27:22] 
+
+	STEP 14: invert log2(FC) to FC
+
+INFO [2021-07-01 17:27:22] invert_log2(), computing 2^x
+INFO [2021-07-01 17:27:23] -mirroring for hspike
+INFO [2021-07-01 17:27:23] invert_log2(), computing 2^x
+INFO [2021-07-01 17:27:32] 
+
+	STEP 15: Clustering samples (not defining tumor subclusters)
+
+INFO [2021-07-01 17:27:32] define_signif_tumor_subclusters(p_val=0.1
+INFO [2021-07-01 17:27:32] define_signif_tumor_subclusters(), tumor: Clone A
+INFO [2021-07-01 17:27:49] cut tree into: 1 groups
+INFO [2021-07-01 17:27:49] -processing Clone A,Clone A_s1
+INFO [2021-07-01 17:27:49] define_signif_tumor_subclusters(), tumor: Clone B
+INFO [2021-07-01 17:27:55] cut tree into: 1 groups
+INFO [2021-07-01 17:27:55] -processing Clone B,Clone B_s1
+INFO [2021-07-01 17:27:55] define_signif_tumor_subclusters(), tumor: Normal
+INFO [2021-07-01 17:28:01] cut tree into: 1 groups
+INFO [2021-07-01 17:28:01] -processing Normal,Normal_s1
+INFO [2021-07-01 17:28:01] -mirroring for hspike
+INFO [2021-07-01 17:28:01] define_signif_tumor_subclusters(p_val=0.1
+INFO [2021-07-01 17:28:01] define_signif_tumor_subclusters(), tumor: spike_tumor_cell_Normal
+INFO [2021-07-01 17:28:02] cut tree into: 1 groups
+INFO [2021-07-01 17:28:02] -processing spike_tumor_cell_Normal,spike_tumor_cell_Normal_s1
+INFO [2021-07-01 17:28:02] define_signif_tumor_subclusters(), tumor: simnorm_cell_Normal
+INFO [2021-07-01 17:28:03] cut tree into: 1 groups
+INFO [2021-07-01 17:28:03] -processing simnorm_cell_Normal,simnorm_cell_Normal_s1
+INFO [2021-07-01 17:28:20] ::plot_cnv:Start
+INFO [2021-07-01 17:28:20] ::plot_cnv:Current data dimensions (r,c)=9977,1097 Total=11174403.6696045 Min=0.163918491675346 Max=6.80309084639877.
+INFO [2021-07-01 17:28:20] ::plot_cnv:Depending on the size of the matrix this may take a moment.
+INFO [2021-07-01 17:28:49] plot_cnv(): auto thresholding at: (0.521537 , 1.520425)
+INFO [2021-07-01 17:28:49] plot_cnv_observation:Start
+INFO [2021-07-01 17:28:49] Observation data size: Cells= 795 Genes= 9977
+INFO [2021-07-01 17:28:49] plot_cnv_observation:Writing observation groupings/color.
+INFO [2021-07-01 17:28:49] plot_cnv_observation:Done writing observation groupings/color.
+INFO [2021-07-01 17:28:49] plot_cnv_observation:Writing observation heatmap thresholds.
+INFO [2021-07-01 17:28:49] plot_cnv_observation:Done writing observation heatmap thresholds.
+INFO [2021-07-01 17:28:51] Colors for breaks:  #00008B,#24249B,#4848AB,#6D6DBC,#9191CC,#B6B6DD,#DADAEE,#FFFFFF,#EEDADA,#DDB6B6,#CC9191,#BC6D6D,#AB4848,#9B2424,#8B0000
+INFO [2021-07-01 17:28:51] Quantiles of plotted data range: 0.52153700935267,0.928037988078187,0.998738775065707,1.09466185135498,1.52042544222661
+INFO [2021-07-01 17:28:52] plot_cnv_observations:Writing observation data to C://Users/Rongting/Documents/GitHub_repos/tnbc1_demo2/infercnv.preliminary.observations.txt
+INFO [2021-07-01 17:29:19] plot_cnv_references:Start
+INFO [2021-07-01 17:29:19] Reference data size: Cells= 302 Genes= 9977
+INFO [2021-07-01 17:29:28] plot_cnv_references:Number reference groups= 1
+INFO [2021-07-01 17:29:28] plot_cnv_references:Plotting heatmap.
+INFO [2021-07-01 17:29:29] Colors for breaks:  #00008B,#24249B,#4848AB,#6D6DBC,#9191CC,#B6B6DD,#DADAEE,#FFFFFF,#EEDADA,#DDB6B6,#CC9191,#BC6D6D,#AB4848,#9B2424,#8B0000
+INFO [2021-07-01 17:29:29] Quantiles of plotted data range: 0.52153700935267,0.961668103279338,0.998607246712939,1.03819486979858,1.52042544222661
+INFO [2021-07-01 17:29:30] plot_cnv_references:Writing reference data to C://Users/Rongting/Documents/GitHub_repos/tnbc1_demo2/infercnv.preliminary.references.txt
+INFO [2021-07-01 17:29:42] 
+
+	STEP 17: HMM-based CNV prediction
+
+INFO [2021-07-01 17:29:42] predict_CNV_via_HMM_on_whole_tumor_samples
+INFO [2021-07-01 17:29:46] -done predicting CNV based on initial tumor subclusters
+INFO [2021-07-01 17:29:52] get_predicted_CNV_regions(subcluster)
+INFO [2021-07-01 17:29:52] -processing cell_group_name: Clone A.Clone A_s1, size: 488
+INFO [2021-07-01 17:30:07] -processing cell_group_name: Clone B.Clone B_s1, size: 307
+INFO [2021-07-01 17:30:21] -processing cell_group_name: Normal.Normal_s1, size: 302
+INFO [2021-07-01 17:30:40] -writing cell clusters file: C://Users/Rongting/Documents/GitHub_repos/tnbc1_demo2/17_HMM_predHMMi6.hmm_mode-samples.cell_groupings
+INFO [2021-07-01 17:30:40] -writing cnv regions file: C://Users/Rongting/Documents/GitHub_repos/tnbc1_demo2/17_HMM_predHMMi6.hmm_mode-samples.pred_cnv_regions.dat
+INFO [2021-07-01 17:30:40] -writing per-gene cnv report: C://Users/Rongting/Documents/GitHub_repos/tnbc1_demo2/17_HMM_predHMMi6.hmm_mode-samples.pred_cnv_genes.dat
+INFO [2021-07-01 17:30:40] -writing gene ordering info: C://Users/Rongting/Documents/GitHub_repos/tnbc1_demo2/17_HMM_predHMMi6.hmm_mode-samples.genes_used.dat
+INFO [2021-07-01 17:30:42] ::plot_cnv:Start
+INFO [2021-07-01 17:30:42] ::plot_cnv:Current data dimensions (r,c)=9977,1097 Total=34539219 Min=2 Max=6.
+INFO [2021-07-01 17:30:42] ::plot_cnv:Depending on the size of the matrix this may take a moment.
+INFO [2021-07-01 17:31:07] plot_cnv_observation:Start
+INFO [2021-07-01 17:31:07] Observation data size: Cells= 795 Genes= 9977
+INFO [2021-07-01 17:31:08] plot_cnv_observation:Writing observation groupings/color.
+INFO [2021-07-01 17:31:08] plot_cnv_observation:Done writing observation groupings/color.
+INFO [2021-07-01 17:31:08] plot_cnv_observation:Writing observation heatmap thresholds.
+INFO [2021-07-01 17:31:08] plot_cnv_observation:Done writing observation heatmap thresholds.
+INFO [2021-07-01 17:31:11] Colors for breaks:  #00008B,#24249B,#4848AB,#6D6DBC,#9191CC,#B6B6DD,#DADAEE,#FFFFFF,#EEDADA,#DDB6B6,#CC9191,#BC6D6D,#AB4848,#9B2424,#8B0000
+INFO [2021-07-01 17:31:11] Quantiles of plotted data range: 2,3,3,4,6
+INFO [2021-07-01 17:31:12] plot_cnv_observations:Writing observation data to C://Users/Rongting/Documents/GitHub_repos/tnbc1_demo2/infercnv.17_HMM_predHMMi6.hmm_mode-samples.observations.txt
+INFO [2021-07-01 17:31:25] plot_cnv_references:Start
+INFO [2021-07-01 17:31:25] Reference data size: Cells= 302 Genes= 9977
+INFO [2021-07-01 17:31:33] plot_cnv_references:Number reference groups= 1
+INFO [2021-07-01 17:31:33] plot_cnv_references:Plotting heatmap.
+INFO [2021-07-01 17:31:34] Colors for breaks:  #00008B,#24249B,#4848AB,#6D6DBC,#9191CC,#B6B6DD,#DADAEE,#FFFFFF,#EEDADA,#DDB6B6,#CC9191,#BC6D6D,#AB4848,#9B2424,#8B0000
+INFO [2021-07-01 17:31:34] Quantiles of plotted data range: 3,3,3,3,4
+INFO [2021-07-01 17:31:34] plot_cnv_references:Writing reference data to C://Users/Rongting/Documents/GitHub_repos/tnbc1_demo2/infercnv.17_HMM_predHMMi6.hmm_mode-samples.references.txt
+INFO [2021-07-01 17:31:44] 
+
+	STEP 18: Run Bayesian Network Model on HMM predicted CNV's
+
+INFO [2021-07-01 17:31:44] Creating the following Directory:  C://Users/Rongting/Documents/GitHub_repos/tnbc1_demo2/BayesNetOutput.HMMi6.hmm_mode-samples
+INFO [2021-07-01 17:31:44] Initializing new MCM InferCNV Object.
+INFO [2021-07-01 17:31:44] validating infercnv_obj
+INFO [2021-07-01 17:31:44] Total CNV's:  115
+INFO [2021-07-01 17:31:44] Loading BUGS Model.
+INFO [2021-07-01 17:31:44] Running Sampling Using Parallel with  4 Cores
+INFO [2021-07-01 20:41:53] Obtaining probabilities post-sampling
+INFO [2021-07-01 20:46:12] Gibbs sampling time:  194.469393666585  Minutes
+INFO [2021-07-01 20:46:31] ::plot_cnv:Start
+INFO [2021-07-01 20:46:31] ::plot_cnv:Current data dimensions (r,c)=9977,1097 Total=3499742.2619087 Min=0 Max=0.996888883022869.
+INFO [2021-07-01 20:46:31] ::plot_cnv:Depending on the size of the matrix this may take a moment.
+INFO [2021-07-01 20:46:32] plot_cnv_observation:Start
+INFO [2021-07-01 20:46:32] Observation data size: Cells= 795 Genes= 9977
+INFO [2021-07-01 20:46:32] plot_cnv_observation:Writing observation groupings/color.
+INFO [2021-07-01 20:46:32] plot_cnv_observation:Done writing observation groupings/color.
+INFO [2021-07-01 20:46:32] plot_cnv_observation:Writing observation heatmap thresholds.
+INFO [2021-07-01 20:46:32] plot_cnv_observation:Done writing observation heatmap thresholds.
+INFO [2021-07-01 20:46:34] Colors for breaks:  #00008B,#24249B,#4848AB,#6D6DBC,#9191CC,#B6B6DD,#DADAEE,#FFFFFF,#EEDADA,#DDB6B6,#CC9191,#BC6D6D,#AB4848,#9B2424,#8B0000
+INFO [2021-07-01 20:46:34] Quantiles of plotted data range: 0,0,0.616195985830632,0.910763124175543,0.996888883022869
+INFO [2021-07-01 20:46:35] plot_cnv_observations:Writing observation data to C://Users/Rongting/Documents/GitHub_repos/tnbc1_demo2/BayesNetOutput.HMMi6.hmm_mode-samples/infercnv.NormalProbabilities.PreFiltering.observations.txt
+INFO [2021-07-01 20:46:51] plot_cnv_references:Start
+INFO [2021-07-01 20:46:51] Reference data size: Cells= 302 Genes= 9977
+INFO [2021-07-01 20:47:01] plot_cnv_references:Number reference groups= 1
+INFO [2021-07-01 20:47:01] plot_cnv_references:Plotting heatmap.
+INFO [2021-07-01 20:47:03] Colors for breaks:  #00008B,#24249B,#4848AB,#6D6DBC,#9191CC,#B6B6DD,#DADAEE,#FFFFFF,#EEDADA,#DDB6B6,#CC9191,#BC6D6D,#AB4848,#9B2424,#8B0000
+INFO [2021-07-01 20:47:03] Quantiles of plotted data range: 0,0,0,0,0.912592119466401
+INFO [2021-07-01 20:47:03] plot_cnv_references:Writing reference data to C://Users/Rongting/Documents/GitHub_repos/tnbc1_demo2/BayesNetOutput.HMMi6.hmm_mode-samples/infercnv.NormalProbabilities.PreFiltering.references.txt
+INFO [2021-07-01 20:47:19] Attempting to removing CNV(s) with a probability of being normal above  0.5
+INFO [2021-07-01 20:47:19] Removing  0  CNV(s) identified by the HMM.
+INFO [2021-07-01 20:47:19] Reassigning CNVs based on state probabilities.
+INFO [2021-07-01 20:47:19] Changing the following CNV's states assigned by the HMM to the following based on the CNV's state probabilities.
+ chr3-region_119 : 5  (P= 0.181228507514468 ) ->  6 (P= 0.343061806809232 )
+chr3-region_120 : 4  (P= 0.304668045456629 ) ->  3 (P= 0.377597329424187 )
+chrMT-region_195 : 5  (P= 0.0727371970773519 ) ->  6 (P= 0.391620133508323 )
+chrMT-region_218 : 4  (P= 0.094700080580834 ) ->  1 (P= 0.322620784641757 )
+INFO [2021-07-01 20:47:19] Creating Plots for CNV and cell Probabilities.
+INFO [2021-07-01 20:48:46] ::plot_cnv:Start
+INFO [2021-07-01 20:48:46] ::plot_cnv:Current data dimensions (r,c)=9977,1097 Total=3499742.2619087 Min=0 Max=0.996888883022869.
+INFO [2021-07-01 20:48:47] ::plot_cnv:Depending on the size of the matrix this may take a moment.
+INFO [2021-07-01 20:48:47] plot_cnv_observation:Start
+INFO [2021-07-01 20:48:47] Observation data size: Cells= 795 Genes= 9977
+INFO [2021-07-01 20:48:48] plot_cnv_observation:Writing observation groupings/color.
+INFO [2021-07-01 20:48:48] plot_cnv_observation:Done writing observation groupings/color.
+INFO [2021-07-01 20:48:48] plot_cnv_observation:Writing observation heatmap thresholds.
+INFO [2021-07-01 20:48:48] plot_cnv_observation:Done writing observation heatmap thresholds.
+INFO [2021-07-01 20:48:50] Colors for breaks:  #00008B,#24249B,#4848AB,#6D6DBC,#9191CC,#B6B6DD,#DADAEE,#FFFFFF,#EEDADA,#DDB6B6,#CC9191,#BC6D6D,#AB4848,#9B2424,#8B0000
+INFO [2021-07-01 20:48:50] Quantiles of plotted data range: 0,0,0.616195985830632,0.910763124175543,0.996888883022869
+INFO [2021-07-01 20:48:51] plot_cnv_observations:Writing observation data to C://Users/Rongting/Documents/GitHub_repos/tnbc1_demo2/BayesNetOutput.HMMi6.hmm_mode-samples/infercnv.NormalProbabilities.PostFiltering.observations.txt
+INFO [2021-07-01 20:49:06] plot_cnv_references:Start
+INFO [2021-07-01 20:49:06] Reference data size: Cells= 302 Genes= 9977
+INFO [2021-07-01 20:49:12] plot_cnv_references:Number reference groups= 1
+INFO [2021-07-01 20:49:12] plot_cnv_references:Plotting heatmap.
+INFO [2021-07-01 20:49:14] Colors for breaks:  #00008B,#24249B,#4848AB,#6D6DBC,#9191CC,#B6B6DD,#DADAEE,#FFFFFF,#EEDADA,#DDB6B6,#CC9191,#BC6D6D,#AB4848,#9B2424,#8B0000
+INFO [2021-07-01 20:49:14] Quantiles of plotted data range: 0,0,0,0,0.912592119466401
+INFO [2021-07-01 20:49:14] plot_cnv_references:Writing reference data to C://Users/Rongting/Documents/GitHub_repos/tnbc1_demo2/BayesNetOutput.HMMi6.hmm_mode-samples/infercnv.NormalProbabilities.PostFiltering.references.txt
+INFO [2021-07-01 20:49:31] ::plot_cnv:Start
+INFO [2021-07-01 20:49:31] ::plot_cnv:Current data dimensions (r,c)=9977,1097 Total=34536651 Min=1 Max=6.
+INFO [2021-07-01 20:49:31] ::plot_cnv:Depending on the size of the matrix this may take a moment.
+INFO [2021-07-01 20:49:48] plot_cnv_observation:Start
+INFO [2021-07-01 20:49:48] Observation data size: Cells= 795 Genes= 9977
+INFO [2021-07-01 20:49:48] plot_cnv_observation:Writing observation groupings/color.
+INFO [2021-07-01 20:49:48] plot_cnv_observation:Done writing observation groupings/color.
+INFO [2021-07-01 20:49:48] plot_cnv_observation:Writing observation heatmap thresholds.
+INFO [2021-07-01 20:49:48] plot_cnv_observation:Done writing observation heatmap thresholds.
+INFO [2021-07-01 20:49:52] Colors for breaks:  #00008B,#24249B,#4848AB,#6D6DBC,#9191CC,#B6B6DD,#DADAEE,#FFFFFF,#EEDADA,#DDB6B6,#CC9191,#BC6D6D,#AB4848,#9B2424,#8B0000
+INFO [2021-07-01 20:49:52] Quantiles of plotted data range: 2,3,3,4,6
+INFO [2021-07-01 20:50:02] plot_cnv_observations:Writing observation data to C://Users/Rongting/Documents/GitHub_repos/tnbc1_demo2/infercnv.18_HMM_pred.Bayes_Net.Pnorm_0.5.observations.txt
+INFO [2021-07-01 20:50:15] plot_cnv_references:Start
+INFO [2021-07-01 20:50:15] Reference data size: Cells= 302 Genes= 9977
+INFO [2021-07-01 20:50:21] plot_cnv_references:Number reference groups= 1
+INFO [2021-07-01 20:50:21] plot_cnv_references:Plotting heatmap.
+INFO [2021-07-01 20:50:23] Colors for breaks:  #00008B,#24249B,#4848AB,#6D6DBC,#9191CC,#B6B6DD,#DADAEE,#FFFFFF,#EEDADA,#DDB6B6,#CC9191,#BC6D6D,#AB4848,#9B2424,#8B0000
+INFO [2021-07-01 20:50:23] Quantiles of plotted data range: 1,3,3,3,3
+INFO [2021-07-01 20:50:23] plot_cnv_references:Writing reference data to C://Users/Rongting/Documents/GitHub_repos/tnbc1_demo2/infercnv.18_HMM_pred.Bayes_Net.Pnorm_0.5.references.txt
+INFO [2021-07-01 20:50:31] 
+
+	STEP 19: Converting HMM-based CNV states to repr expr vals
+
+INFO [2021-07-01 20:50:42] ::plot_cnv:Start
+INFO [2021-07-01 20:50:42] ::plot_cnv:Current data dimensions (r,c)=9977,1097 Total=11934383.5 Min=0 Max=3.
+INFO [2021-07-01 20:50:42] ::plot_cnv:Depending on the size of the matrix this may take a moment.
+INFO [2021-07-01 20:51:02] plot_cnv_observation:Start
+INFO [2021-07-01 20:51:02] Observation data size: Cells= 795 Genes= 9977
+INFO [2021-07-01 20:51:02] plot_cnv_observation:Writing observation groupings/color.
+INFO [2021-07-01 20:51:02] plot_cnv_observation:Done writing observation groupings/color.
+INFO [2021-07-01 20:51:02] plot_cnv_observation:Writing observation heatmap thresholds.
+INFO [2021-07-01 20:51:02] plot_cnv_observation:Done writing observation heatmap thresholds.
+INFO [2021-07-01 20:51:05] Colors for breaks:  #00008B,#24249B,#4848AB,#6D6DBC,#9191CC,#B6B6DD,#DADAEE,#FFFFFF,#EEDADA,#DDB6B6,#CC9191,#BC6D6D,#AB4848,#9B2424,#8B0000
+INFO [2021-07-01 20:51:05] Quantiles of plotted data range: 0.5,1,1,1.5,3
+INFO [2021-07-01 20:51:07] plot_cnv_observations:Writing observation data to C://Users/Rongting/Documents/GitHub_repos/tnbc1_demo2/infercnv.19_HMM_predHMMi6.hmm_mode-samples.Pnorm_0.5.repr_intensities.observations.txt
+INFO [2021-07-01 20:51:26] plot_cnv_references:Start
+INFO [2021-07-01 20:51:26] Reference data size: Cells= 302 Genes= 9977
+INFO [2021-07-01 20:51:33] plot_cnv_references:Number reference groups= 1
+INFO [2021-07-01 20:51:33] plot_cnv_references:Plotting heatmap.
+INFO [2021-07-01 20:51:35] Colors for breaks:  #00008B,#24249B,#4848AB,#6D6DBC,#9191CC,#B6B6DD,#DADAEE,#FFFFFF,#EEDADA,#DDB6B6,#CC9191,#BC6D6D,#AB4848,#9B2424,#8B0000
+INFO [2021-07-01 20:51:35] Quantiles of plotted data range: 0,1,1,1,1
+INFO [2021-07-01 20:51:35] plot_cnv_references:Writing reference data to C://Users/Rongting/Documents/GitHub_repos/tnbc1_demo2/infercnv.19_HMM_predHMMi6.hmm_mode-samples.Pnorm_0.5.repr_intensities.references.txt
+INFO [2021-07-01 20:51:44] 
+
+	STEP 21: Denoising
+
+INFO [2021-07-01 20:51:44] ::process_data:Remove noise, noise threshold defined via ref mean sd_amplifier:  1.5
+INFO [2021-07-01 20:51:45] denoising using mean(normal) +- sd_amplifier * sd(normal) per gene per cell across all data
+INFO [2021-07-01 20:51:45] :: **** clear_noise_via_ref_quantiles **** : removing noise between bounds:  0.904575541164268 - 1.09954646312564
+INFO [2021-07-01 20:52:00] ::plot_cnv:Start
+INFO [2021-07-01 20:52:00] ::plot_cnv:Current data dimensions (r,c)=9977,1097 Total=11225194.6975267 Min=0.163918491675346 Max=6.80309084639877.
+INFO [2021-07-01 20:52:00] ::plot_cnv:Depending on the size of the matrix this may take a moment.
+INFO [2021-07-01 20:52:35] plot_cnv(): auto thresholding at: (0.530818 , 1.520425)
+INFO [2021-07-01 20:52:35] plot_cnv_observation:Start
+INFO [2021-07-01 20:52:35] Observation data size: Cells= 795 Genes= 9977
+INFO [2021-07-01 20:52:36] plot_cnv_observation:Writing observation groupings/color.
+INFO [2021-07-01 20:52:36] plot_cnv_observation:Done writing observation groupings/color.
+INFO [2021-07-01 20:52:36] plot_cnv_observation:Writing observation heatmap thresholds.
+INFO [2021-07-01 20:52:36] plot_cnv_observation:Done writing observation heatmap thresholds.
+INFO [2021-07-01 20:52:40] Colors for breaks:  #00008B,#24249B,#4848AB,#6D6DBC,#9191CC,#B6B6DD,#DADAEE,#FFFFFF,#EEDADA,#DDB6B6,#CC9191,#BC6D6D,#AB4848,#9B2424,#8B0000
+INFO [2021-07-01 20:52:40] Quantiles of plotted data range: 0.530818343280004,1.00206100214495,1.00206100214495,1.00206100214495,1.52042544222661
+INFO [2021-07-01 20:52:41] plot_cnv_observations:Writing observation data to C://Users/Rongting/Documents/GitHub_repos/tnbc1_demo2/infercnv.21_denoised.observations.txt
+INFO [2021-07-01 20:53:03] plot_cnv_references:Start
+INFO [2021-07-01 20:53:03] Reference data size: Cells= 302 Genes= 9977
+INFO [2021-07-01 20:53:12] plot_cnv_references:Number reference groups= 1
+INFO [2021-07-01 20:53:12] plot_cnv_references:Plotting heatmap.
+INFO [2021-07-01 20:53:14] Colors for breaks:  #00008B,#24249B,#4848AB,#6D6DBC,#9191CC,#B6B6DD,#DADAEE,#FFFFFF,#EEDADA,#DDB6B6,#CC9191,#BC6D6D,#AB4848,#9B2424,#8B0000
+INFO [2021-07-01 20:53:14] Quantiles of plotted data range: 0.530818343280004,1.00206100214495,1.00206100214495,1.00206100214495,1.52042544222661
+INFO [2021-07-01 20:53:14] plot_cnv_references:Writing reference data to C://Users/Rongting/Documents/GitHub_repos/tnbc1_demo2/infercnv.21_denoised.references.txt
+INFO [2021-07-01 20:53:29] 
+
+## Making the final infercnv heatmap ##
+INFO [2021-07-01 20:53:33] ::plot_cnv:Start
+INFO [2021-07-01 20:53:33] ::plot_cnv:Current data dimensions (r,c)=9977,1097 Total=11225194.6975267 Min=0.163918491675346 Max=6.80309084639877.
+INFO [2021-07-01 20:53:34] ::plot_cnv:Depending on the size of the matrix this may take a moment.
+INFO [2021-07-01 20:54:05] plot_cnv(): auto thresholding at: (0.479575 , 1.520425)
+INFO [2021-07-01 20:54:05] plot_cnv_observation:Start
+INFO [2021-07-01 20:54:05] Observation data size: Cells= 795 Genes= 9977
+INFO [2021-07-01 20:54:05] plot_cnv_observation:Writing observation groupings/color.
+INFO [2021-07-01 20:54:05] plot_cnv_observation:Done writing observation groupings/color.
+INFO [2021-07-01 20:54:05] plot_cnv_observation:Writing observation heatmap thresholds.
+INFO [2021-07-01 20:54:05] plot_cnv_observation:Done writing observation heatmap thresholds.
+INFO [2021-07-01 20:54:10] Colors for breaks:  #00008B,#24249B,#4848AB,#6D6DBC,#9191CC,#B6B6DD,#DADAEE,#FFFFFF,#EEDADA,#DDB6B6,#CC9191,#BC6D6D,#AB4848,#9B2424,#8B0000
+INFO [2021-07-01 20:54:10] Quantiles of plotted data range: 0.47957455777339,1.00206100214495,1.00206100214495,1.00206100214495,1.52042544222661
+INFO [2021-07-01 20:54:12] plot_cnv_observations:Writing observation data to C://Users/Rongting/Documents/GitHub_repos/tnbc1_demo2/infercnv.observations.txt
+INFO [2021-07-01 20:54:32] plot_cnv_references:Start
+INFO [2021-07-01 20:54:32] Reference data size: Cells= 302 Genes= 9977
+INFO [2021-07-01 20:54:39] plot_cnv_references:Number reference groups= 1
+INFO [2021-07-01 20:54:39] plot_cnv_references:Plotting heatmap.
+INFO [2021-07-01 20:54:41] Colors for breaks:  #00008B,#24249B,#4848AB,#6D6DBC,#9191CC,#B6B6DD,#DADAEE,#FFFFFF,#EEDADA,#DDB6B6,#CC9191,#BC6D6D,#AB4848,#9B2424,#8B0000
+INFO [2021-07-01 20:54:41] Quantiles of plotted data range: 0.47957455777339,1.00206100214495,1.00206100214495,1.00206100214495,1.52042544222661
+INFO [2021-07-01 20:54:41] plot_cnv_references:Writing reference data to C://Users/Rongting/Documents/GitHub_repos/tnbc1_demo2/infercnv.references.txt
