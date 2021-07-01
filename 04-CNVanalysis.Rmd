@@ -114,6 +114,10 @@ Table:  Subclusters of TNBC1 dataset (from gene expression analysis-Seurat).
 
 
 
+- BAF V.S. Expression
+
+![confusion heatmap](CNV_analysis_file/figs/BAFvsExpression_rt.png)
+
 
 ### run inferCNV
 
