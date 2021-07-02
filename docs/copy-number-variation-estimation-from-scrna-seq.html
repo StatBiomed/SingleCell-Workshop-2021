@@ -32,7 +32,7 @@
   
   
 <link rel="prev" href="rna-velocity.html"/>
-<link rel="next" href="nuclear-snv-analysis-in-single-cell-omics.html"/>
+<link rel="next" href="mtdna-variants-for-lineage-inference-from-single-cell-omics.html"/>
 <script src="libs/header-attrs-2.8/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -139,8 +139,23 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a></li>
 <li class="chapter" data-level="2" data-path="env-pre.html"><a href="env-pre.html"><i class="fa fa-check"></i><b>2</b> Prerequisites</a>
 <ul>
-<li class="chapter" data-level="2.1" data-path="env-pre.html"><a href="env-pre.html#install-anaconda"><i class="fa fa-check"></i><b>2.1</b> install Anaconda</a></li>
-<li class="chapter" data-level="2.2" data-path="env-pre.html"><a href="env-pre.html#other-prepare"><i class="fa fa-check"></i><b>2.2</b> other prepare</a></li>
+<li class="chapter" data-level="2.1" data-path="env-pre.html"><a href="env-pre.html#wsl_install"><i class="fa fa-check"></i><b>2.1</b> (Optional) Install Windows Subsystem for Linux</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="env-pre.html"><a href="env-pre.html#what-is-the-windows-subsystem-for-linux-wsl"><i class="fa fa-check"></i><b>2.1.1</b> What is the Windows Subsystem for Linux (WSL)?</a></li>
+<li class="chapter" data-level="2.1.2" data-path="env-pre.html"><a href="env-pre.html#manual-installation-steps"><i class="fa fa-check"></i><b>2.1.2</b> Manual Installation Steps</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="env-pre.html"><a href="env-pre.html#conda_install"><i class="fa fa-check"></i><b>2.2</b> Install Conda Environment</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="env-pre.html"><a href="env-pre.html#what-is-conda"><i class="fa fa-check"></i><b>2.2.1</b> What is conda?</a></li>
+<li class="chapter" data-level="2.2.2" data-path="env-pre.html"><a href="env-pre.html#conda_install_windows"><i class="fa fa-check"></i><b>2.2.2</b> Installation on Windows</a></li>
+<li class="chapter" data-level="2.2.3" data-path="env-pre.html"><a href="env-pre.html#conda_install_linux"><i class="fa fa-check"></i><b>2.2.3</b> Installation on Linux</a></li>
+<li class="chapter" data-level="2.2.4" data-path="env-pre.html"><a href="env-pre.html#conda_install_mac"><i class="fa fa-check"></i><b>2.2.4</b> Installation on macOS</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="env-pre.html"><a href="env-pre.html#other-prepare"><i class="fa fa-check"></i><b>2.3</b> other prepare</a>
+<ul>
+<li class="chapter" data-level="2.3.1" data-path="env-pre.html"><a href="env-pre.html#conda-configuration"><i class="fa fa-check"></i><b>2.3.1</b> Conda Configuration</a></li>
+<li class="chapter" data-level="2.3.2" data-path="env-pre.html"><a href="env-pre.html#example-of-r-markdown"><i class="fa fa-check"></i><b>2.3.2</b> Example of R Markdown</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="pseudo-time-and-trajectory-analysis.html"><a href="pseudo-time-and-trajectory-analysis.html"><i class="fa fa-check"></i><b>3</b> Pseudo-time and trajectory analysis</a></li>
 <li class="chapter" data-level="4" data-path="rna-velocity.html"><a href="rna-velocity.html"><i class="fa fa-check"></i><b>4</b> RNA velocity</a></li>
@@ -159,7 +174,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="5.3" data-path="copy-number-variation-estimation-from-scrna-seq.html"><a href="copy-number-variation-estimation-from-scrna-seq.html#ref"><i class="fa fa-check"></i><b>5.3</b> ref</a></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="nuclear-snv-analysis-in-single-cell-omics.html"><a href="nuclear-snv-analysis-in-single-cell-omics.html"><i class="fa fa-check"></i><b>6</b> Nuclear SNV analysis in single-cell omics</a></li>
+<li class="chapter" data-level="6" data-path="mtdna-variants-for-lineage-inference-from-single-cell-omics.html"><a href="mtdna-variants-for-lineage-inference-from-single-cell-omics.html"><i class="fa fa-check"></i><b>6</b> mtDNA variants for lineage inference from single-cell omics</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="mtdna-variants-for-lineage-inference-from-single-cell-omics.html"><a href="mtdna-variants-for-lineage-inference-from-single-cell-omics.html#pileup-with-cellsnp-lite"><i class="fa fa-check"></i><b>6.1</b> Pileup with cellsnp-lite</a></li>
+<li class="chapter" data-level="6.2" data-path="mtdna-variants-for-lineage-inference-from-single-cell-omics.html"><a href="mtdna-variants-for-lineage-inference-from-single-cell-omics.html#clonal-analysis-with-mquad"><i class="fa fa-check"></i><b>6.2</b> Clonal analysis with MQuad</a></li>
+</ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -326,58 +345,58 @@ infercnv_obj = infercnv::run(infercnv_obj,
 <p><a href="https://github.com/Rongtingting/SingleCell-Workshop-2021/blob/master/CNV_analysis_file/demo1_inferCNV_TNBC1.log">demo1_log_file</a></p>
 <p><a href="https://github.com/Rongtingting/SingleCell-Workshop-2021/blob/master/CNV_analysis_file/demo2_inferCNV_TNBC1.log">demo2_log_file</a></p>
 <p><a href="https://github.com/Rongtingting/SingleCell-Workshop-2021/blob/master/CNV_analysis_file/demo2_outputfiles.lst">output_files</a></p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="copy-number-variation-estimation-from-scrna-seq.html#cb9-1" aria-hidden="true"></a><span class="co"># library(infercnv)</span></span>
-<span id="cb9-2"><a href="copy-number-variation-estimation-from-scrna-seq.html#cb9-2" aria-hidden="true"></a><span class="co"># library(utils)</span></span>
-<span id="cb9-3"><a href="copy-number-variation-estimation-from-scrna-seq.html#cb9-3" aria-hidden="true"></a><span class="co"># library (BiocGenerics)</span></span>
-<span id="cb9-4"><a href="copy-number-variation-estimation-from-scrna-seq.html#cb9-4" aria-hidden="true"></a></span>
-<span id="cb9-5"><a href="copy-number-variation-estimation-from-scrna-seq.html#cb9-5" aria-hidden="true"></a><span class="co">## DEMO1</span></span>
-<span id="cb9-6"><a href="copy-number-variation-estimation-from-scrna-seq.html#cb9-6" aria-hidden="true"></a><span class="co"># </span></span>
-<span id="cb9-7"><a href="copy-number-variation-estimation-from-scrna-seq.html#cb9-7" aria-hidden="true"></a><span class="co"># tnbc &lt;- read.delim(&quot;C://Users/Rongting/Documents/GitHub_repos/combinedTNBC1.txt&quot;)</span></span>
-<span id="cb9-8"><a href="copy-number-variation-estimation-from-scrna-seq.html#cb9-8" aria-hidden="true"></a><span class="co"># anno &lt;- tnbc[2,]</span></span>
-<span id="cb9-9"><a href="copy-number-variation-estimation-from-scrna-seq.html#cb9-9" aria-hidden="true"></a><span class="co"># anno &lt;- t(anno)</span></span>
-<span id="cb9-10"><a href="copy-number-variation-estimation-from-scrna-seq.html#cb9-10" aria-hidden="true"></a><span class="co"># anno &lt;- as.data.frame(anno)</span></span>
-<span id="cb9-11"><a href="copy-number-variation-estimation-from-scrna-seq.html#cb9-11" aria-hidden="true"></a><span class="co"># </span></span>
-<span id="cb9-12"><a href="copy-number-variation-estimation-from-scrna-seq.html#cb9-12" aria-hidden="true"></a><span class="co"># gex &lt;- tnbc[-c(1:2),]</span></span>
-<span id="cb9-13"><a href="copy-number-variation-estimation-from-scrna-seq.html#cb9-13" aria-hidden="true"></a><span class="co"># gex &lt;- type.convert(gex)</span></span>
-<span id="cb9-14"><a href="copy-number-variation-estimation-from-scrna-seq.html#cb9-14" aria-hidden="true"></a><span class="co"># </span></span>
-<span id="cb9-15"><a href="copy-number-variation-estimation-from-scrna-seq.html#cb9-15" aria-hidden="true"></a><span class="co"># gene_file &lt;- &quot;C://Users/Rongting/Documents/GitHub_repos/gene_note_noheader_unique.txt&quot;</span></span>
-<span id="cb9-16"><a href="copy-number-variation-estimation-from-scrna-seq.html#cb9-16" aria-hidden="true"></a></span>
-<span id="cb9-17"><a href="copy-number-variation-estimation-from-scrna-seq.html#cb9-17" aria-hidden="true"></a><span class="co"># </span></span>
-<span id="cb9-18"><a href="copy-number-variation-estimation-from-scrna-seq.html#cb9-18" aria-hidden="true"></a><span class="co"># infercnv_obj = CreateInfercnvObject(raw_counts_matrix=gex,</span></span>
-<span id="cb9-19"><a href="copy-number-variation-estimation-from-scrna-seq.html#cb9-19" aria-hidden="true"></a><span class="co">#                                     annotations_file=anno,</span></span>
-<span id="cb9-20"><a href="copy-number-variation-estimation-from-scrna-seq.html#cb9-20" aria-hidden="true"></a><span class="co">#                                     delim=&#39;\t&#39;,</span></span>
-<span id="cb9-21"><a href="copy-number-variation-estimation-from-scrna-seq.html#cb9-21" aria-hidden="true"></a><span class="co">#                                     gene_order_file=gene_file,</span></span>
-<span id="cb9-22"><a href="copy-number-variation-estimation-from-scrna-seq.html#cb9-22" aria-hidden="true"></a><span class="co">#                                     ref_group_names= &quot;N&quot;)</span></span>
-<span id="cb9-23"><a href="copy-number-variation-estimation-from-scrna-seq.html#cb9-23" aria-hidden="true"></a></span>
-<span id="cb9-24"><a href="copy-number-variation-estimation-from-scrna-seq.html#cb9-24" aria-hidden="true"></a><span class="co"># output = &quot;C://Users/Rongting/Documents/GitHub_repos/tnbc1_demo&quot;</span></span>
-<span id="cb9-25"><a href="copy-number-variation-estimation-from-scrna-seq.html#cb9-25" aria-hidden="true"></a></span>
-<span id="cb9-26"><a href="copy-number-variation-estimation-from-scrna-seq.html#cb9-26" aria-hidden="true"></a><span class="co"># infercnv_obj = infercnv::run(infercnv_obj,</span></span>
-<span id="cb9-27"><a href="copy-number-variation-estimation-from-scrna-seq.html#cb9-27" aria-hidden="true"></a><span class="co">#                              cutoff=0.1,  </span></span>
-<span id="cb9-28"><a href="copy-number-variation-estimation-from-scrna-seq.html#cb9-28" aria-hidden="true"></a><span class="co">#                              out_dir= output , </span></span>
-<span id="cb9-29"><a href="copy-number-variation-estimation-from-scrna-seq.html#cb9-29" aria-hidden="true"></a><span class="co">#                              cluster_by_groups=T,   </span></span>
-<span id="cb9-30"><a href="copy-number-variation-estimation-from-scrna-seq.html#cb9-30" aria-hidden="true"></a><span class="co">#                              denoise=T,</span></span>
-<span id="cb9-31"><a href="copy-number-variation-estimation-from-scrna-seq.html#cb9-31" aria-hidden="true"></a><span class="co">#                              HMM=T)</span></span>
-<span id="cb9-32"><a href="copy-number-variation-estimation-from-scrna-seq.html#cb9-32" aria-hidden="true"></a></span>
-<span id="cb9-33"><a href="copy-number-variation-estimation-from-scrna-seq.html#cb9-33" aria-hidden="true"></a><span class="co">## DEMO2</span></span>
-<span id="cb9-34"><a href="copy-number-variation-estimation-from-scrna-seq.html#cb9-34" aria-hidden="true"></a></span>
-<span id="cb9-35"><a href="copy-number-variation-estimation-from-scrna-seq.html#cb9-35" aria-hidden="true"></a><span class="co"># gene_file &lt;- &quot;C://Users/Rongting/Documents/GitHub_repos/gene_note_noheader_unique.txt&quot;</span></span>
-<span id="cb9-36"><a href="copy-number-variation-estimation-from-scrna-seq.html#cb9-36" aria-hidden="true"></a><span class="co"># </span></span>
-<span id="cb9-37"><a href="copy-number-variation-estimation-from-scrna-seq.html#cb9-37" aria-hidden="true"></a><span class="co"># anno_file &lt;- &#39;C://Users/Rongting/Documents/GitHub_repos/tnbc-3cluster-id.txt&#39;</span></span>
-<span id="cb9-38"><a href="copy-number-variation-estimation-from-scrna-seq.html#cb9-38" aria-hidden="true"></a><span class="co"># </span></span>
-<span id="cb9-39"><a href="copy-number-variation-estimation-from-scrna-seq.html#cb9-39" aria-hidden="true"></a><span class="co"># infercnv_obj2 = CreateInfercnvObject(raw_counts_matrix=gex,</span></span>
-<span id="cb9-40"><a href="copy-number-variation-estimation-from-scrna-seq.html#cb9-40" aria-hidden="true"></a><span class="co">#                                     annotations_file=anno_file,</span></span>
-<span id="cb9-41"><a href="copy-number-variation-estimation-from-scrna-seq.html#cb9-41" aria-hidden="true"></a><span class="co">#                                     delim=&#39;\t&#39;,</span></span>
-<span id="cb9-42"><a href="copy-number-variation-estimation-from-scrna-seq.html#cb9-42" aria-hidden="true"></a><span class="co">#                                     gene_order_file=gene_file,</span></span>
-<span id="cb9-43"><a href="copy-number-variation-estimation-from-scrna-seq.html#cb9-43" aria-hidden="true"></a><span class="co">#                                     ref_group_names= &quot;Normal&quot;)</span></span>
-<span id="cb9-44"><a href="copy-number-variation-estimation-from-scrna-seq.html#cb9-44" aria-hidden="true"></a><span class="co"># </span></span>
-<span id="cb9-45"><a href="copy-number-variation-estimation-from-scrna-seq.html#cb9-45" aria-hidden="true"></a><span class="co"># output = &quot;C://Users/Rongting/Documents/GitHub_repos/tnbc1_demo2&quot;</span></span>
-<span id="cb9-46"><a href="copy-number-variation-estimation-from-scrna-seq.html#cb9-46" aria-hidden="true"></a><span class="co"># </span></span>
-<span id="cb9-47"><a href="copy-number-variation-estimation-from-scrna-seq.html#cb9-47" aria-hidden="true"></a><span class="co"># infercnv_obj2 = infercnv::run(infercnv_obj2,</span></span>
-<span id="cb9-48"><a href="copy-number-variation-estimation-from-scrna-seq.html#cb9-48" aria-hidden="true"></a><span class="co">#                              cutoff=0.1,</span></span>
-<span id="cb9-49"><a href="copy-number-variation-estimation-from-scrna-seq.html#cb9-49" aria-hidden="true"></a><span class="co">#                              out_dir= output,</span></span>
-<span id="cb9-50"><a href="copy-number-variation-estimation-from-scrna-seq.html#cb9-50" aria-hidden="true"></a><span class="co">#                              cluster_by_groups=T,</span></span>
-<span id="cb9-51"><a href="copy-number-variation-estimation-from-scrna-seq.html#cb9-51" aria-hidden="true"></a><span class="co">#                              denoise=T,</span></span>
-<span id="cb9-52"><a href="copy-number-variation-estimation-from-scrna-seq.html#cb9-52" aria-hidden="true"></a><span class="co">#                              HMM=T)</span></span></code></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="copy-number-variation-estimation-from-scrna-seq.html#cb14-1" aria-hidden="true"></a><span class="co"># library(infercnv)</span></span>
+<span id="cb14-2"><a href="copy-number-variation-estimation-from-scrna-seq.html#cb14-2" aria-hidden="true"></a><span class="co"># library(utils)</span></span>
+<span id="cb14-3"><a href="copy-number-variation-estimation-from-scrna-seq.html#cb14-3" aria-hidden="true"></a><span class="co"># library (BiocGenerics)</span></span>
+<span id="cb14-4"><a href="copy-number-variation-estimation-from-scrna-seq.html#cb14-4" aria-hidden="true"></a></span>
+<span id="cb14-5"><a href="copy-number-variation-estimation-from-scrna-seq.html#cb14-5" aria-hidden="true"></a><span class="co">## DEMO1</span></span>
+<span id="cb14-6"><a href="copy-number-variation-estimation-from-scrna-seq.html#cb14-6" aria-hidden="true"></a><span class="co"># </span></span>
+<span id="cb14-7"><a href="copy-number-variation-estimation-from-scrna-seq.html#cb14-7" aria-hidden="true"></a><span class="co"># tnbc &lt;- read.delim(&quot;C://Users/Rongting/Documents/GitHub_repos/combinedTNBC1.txt&quot;)</span></span>
+<span id="cb14-8"><a href="copy-number-variation-estimation-from-scrna-seq.html#cb14-8" aria-hidden="true"></a><span class="co"># anno &lt;- tnbc[2,]</span></span>
+<span id="cb14-9"><a href="copy-number-variation-estimation-from-scrna-seq.html#cb14-9" aria-hidden="true"></a><span class="co"># anno &lt;- t(anno)</span></span>
+<span id="cb14-10"><a href="copy-number-variation-estimation-from-scrna-seq.html#cb14-10" aria-hidden="true"></a><span class="co"># anno &lt;- as.data.frame(anno)</span></span>
+<span id="cb14-11"><a href="copy-number-variation-estimation-from-scrna-seq.html#cb14-11" aria-hidden="true"></a><span class="co"># </span></span>
+<span id="cb14-12"><a href="copy-number-variation-estimation-from-scrna-seq.html#cb14-12" aria-hidden="true"></a><span class="co"># gex &lt;- tnbc[-c(1:2),]</span></span>
+<span id="cb14-13"><a href="copy-number-variation-estimation-from-scrna-seq.html#cb14-13" aria-hidden="true"></a><span class="co"># gex &lt;- type.convert(gex)</span></span>
+<span id="cb14-14"><a href="copy-number-variation-estimation-from-scrna-seq.html#cb14-14" aria-hidden="true"></a><span class="co"># </span></span>
+<span id="cb14-15"><a href="copy-number-variation-estimation-from-scrna-seq.html#cb14-15" aria-hidden="true"></a><span class="co"># gene_file &lt;- &quot;C://Users/Rongting/Documents/GitHub_repos/gene_note_noheader_unique.txt&quot;</span></span>
+<span id="cb14-16"><a href="copy-number-variation-estimation-from-scrna-seq.html#cb14-16" aria-hidden="true"></a></span>
+<span id="cb14-17"><a href="copy-number-variation-estimation-from-scrna-seq.html#cb14-17" aria-hidden="true"></a><span class="co"># </span></span>
+<span id="cb14-18"><a href="copy-number-variation-estimation-from-scrna-seq.html#cb14-18" aria-hidden="true"></a><span class="co"># infercnv_obj = CreateInfercnvObject(raw_counts_matrix=gex,</span></span>
+<span id="cb14-19"><a href="copy-number-variation-estimation-from-scrna-seq.html#cb14-19" aria-hidden="true"></a><span class="co">#                                     annotations_file=anno,</span></span>
+<span id="cb14-20"><a href="copy-number-variation-estimation-from-scrna-seq.html#cb14-20" aria-hidden="true"></a><span class="co">#                                     delim=&#39;\t&#39;,</span></span>
+<span id="cb14-21"><a href="copy-number-variation-estimation-from-scrna-seq.html#cb14-21" aria-hidden="true"></a><span class="co">#                                     gene_order_file=gene_file,</span></span>
+<span id="cb14-22"><a href="copy-number-variation-estimation-from-scrna-seq.html#cb14-22" aria-hidden="true"></a><span class="co">#                                     ref_group_names= &quot;N&quot;)</span></span>
+<span id="cb14-23"><a href="copy-number-variation-estimation-from-scrna-seq.html#cb14-23" aria-hidden="true"></a></span>
+<span id="cb14-24"><a href="copy-number-variation-estimation-from-scrna-seq.html#cb14-24" aria-hidden="true"></a><span class="co"># output = &quot;C://Users/Rongting/Documents/GitHub_repos/tnbc1_demo&quot;</span></span>
+<span id="cb14-25"><a href="copy-number-variation-estimation-from-scrna-seq.html#cb14-25" aria-hidden="true"></a></span>
+<span id="cb14-26"><a href="copy-number-variation-estimation-from-scrna-seq.html#cb14-26" aria-hidden="true"></a><span class="co"># infercnv_obj = infercnv::run(infercnv_obj,</span></span>
+<span id="cb14-27"><a href="copy-number-variation-estimation-from-scrna-seq.html#cb14-27" aria-hidden="true"></a><span class="co">#                              cutoff=0.1,  </span></span>
+<span id="cb14-28"><a href="copy-number-variation-estimation-from-scrna-seq.html#cb14-28" aria-hidden="true"></a><span class="co">#                              out_dir= output , </span></span>
+<span id="cb14-29"><a href="copy-number-variation-estimation-from-scrna-seq.html#cb14-29" aria-hidden="true"></a><span class="co">#                              cluster_by_groups=T,   </span></span>
+<span id="cb14-30"><a href="copy-number-variation-estimation-from-scrna-seq.html#cb14-30" aria-hidden="true"></a><span class="co">#                              denoise=T,</span></span>
+<span id="cb14-31"><a href="copy-number-variation-estimation-from-scrna-seq.html#cb14-31" aria-hidden="true"></a><span class="co">#                              HMM=T)</span></span>
+<span id="cb14-32"><a href="copy-number-variation-estimation-from-scrna-seq.html#cb14-32" aria-hidden="true"></a></span>
+<span id="cb14-33"><a href="copy-number-variation-estimation-from-scrna-seq.html#cb14-33" aria-hidden="true"></a><span class="co">## DEMO2</span></span>
+<span id="cb14-34"><a href="copy-number-variation-estimation-from-scrna-seq.html#cb14-34" aria-hidden="true"></a></span>
+<span id="cb14-35"><a href="copy-number-variation-estimation-from-scrna-seq.html#cb14-35" aria-hidden="true"></a><span class="co"># gene_file &lt;- &quot;C://Users/Rongting/Documents/GitHub_repos/gene_note_noheader_unique.txt&quot;</span></span>
+<span id="cb14-36"><a href="copy-number-variation-estimation-from-scrna-seq.html#cb14-36" aria-hidden="true"></a><span class="co"># </span></span>
+<span id="cb14-37"><a href="copy-number-variation-estimation-from-scrna-seq.html#cb14-37" aria-hidden="true"></a><span class="co"># anno_file &lt;- &#39;C://Users/Rongting/Documents/GitHub_repos/tnbc-3cluster-id.txt&#39;</span></span>
+<span id="cb14-38"><a href="copy-number-variation-estimation-from-scrna-seq.html#cb14-38" aria-hidden="true"></a><span class="co"># </span></span>
+<span id="cb14-39"><a href="copy-number-variation-estimation-from-scrna-seq.html#cb14-39" aria-hidden="true"></a><span class="co"># infercnv_obj2 = CreateInfercnvObject(raw_counts_matrix=gex,</span></span>
+<span id="cb14-40"><a href="copy-number-variation-estimation-from-scrna-seq.html#cb14-40" aria-hidden="true"></a><span class="co">#                                     annotations_file=anno_file,</span></span>
+<span id="cb14-41"><a href="copy-number-variation-estimation-from-scrna-seq.html#cb14-41" aria-hidden="true"></a><span class="co">#                                     delim=&#39;\t&#39;,</span></span>
+<span id="cb14-42"><a href="copy-number-variation-estimation-from-scrna-seq.html#cb14-42" aria-hidden="true"></a><span class="co">#                                     gene_order_file=gene_file,</span></span>
+<span id="cb14-43"><a href="copy-number-variation-estimation-from-scrna-seq.html#cb14-43" aria-hidden="true"></a><span class="co">#                                     ref_group_names= &quot;Normal&quot;)</span></span>
+<span id="cb14-44"><a href="copy-number-variation-estimation-from-scrna-seq.html#cb14-44" aria-hidden="true"></a><span class="co"># </span></span>
+<span id="cb14-45"><a href="copy-number-variation-estimation-from-scrna-seq.html#cb14-45" aria-hidden="true"></a><span class="co"># output = &quot;C://Users/Rongting/Documents/GitHub_repos/tnbc1_demo2&quot;</span></span>
+<span id="cb14-46"><a href="copy-number-variation-estimation-from-scrna-seq.html#cb14-46" aria-hidden="true"></a><span class="co"># </span></span>
+<span id="cb14-47"><a href="copy-number-variation-estimation-from-scrna-seq.html#cb14-47" aria-hidden="true"></a><span class="co"># infercnv_obj2 = infercnv::run(infercnv_obj2,</span></span>
+<span id="cb14-48"><a href="copy-number-variation-estimation-from-scrna-seq.html#cb14-48" aria-hidden="true"></a><span class="co">#                              cutoff=0.1,</span></span>
+<span id="cb14-49"><a href="copy-number-variation-estimation-from-scrna-seq.html#cb14-49" aria-hidden="true"></a><span class="co">#                              out_dir= output,</span></span>
+<span id="cb14-50"><a href="copy-number-variation-estimation-from-scrna-seq.html#cb14-50" aria-hidden="true"></a><span class="co">#                              cluster_by_groups=T,</span></span>
+<span id="cb14-51"><a href="copy-number-variation-estimation-from-scrna-seq.html#cb14-51" aria-hidden="true"></a><span class="co">#                              denoise=T,</span></span>
+<span id="cb14-52"><a href="copy-number-variation-estimation-from-scrna-seq.html#cb14-52" aria-hidden="true"></a><span class="co">#                              HMM=T)</span></span></code></pre></div>
 <pre><code>#################
 ##Notes
 #################
@@ -455,7 +474,7 @@ for (i in celltype){
         </div>
       </div>
 <a href="rna-velocity.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="nuclear-snv-analysis-in-single-cell-omics.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="mtdna-variants-for-lineage-inference-from-single-cell-omics.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

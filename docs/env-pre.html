@@ -139,8 +139,23 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a></li>
 <li class="chapter" data-level="2" data-path="env-pre.html"><a href="env-pre.html"><i class="fa fa-check"></i><b>2</b> Prerequisites</a>
 <ul>
-<li class="chapter" data-level="2.1" data-path="env-pre.html"><a href="env-pre.html#install-anaconda"><i class="fa fa-check"></i><b>2.1</b> install Anaconda</a></li>
-<li class="chapter" data-level="2.2" data-path="env-pre.html"><a href="env-pre.html#other-prepare"><i class="fa fa-check"></i><b>2.2</b> other prepare</a></li>
+<li class="chapter" data-level="2.1" data-path="env-pre.html"><a href="env-pre.html#wsl_install"><i class="fa fa-check"></i><b>2.1</b> (Optional) Install Windows Subsystem for Linux</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="env-pre.html"><a href="env-pre.html#what-is-the-windows-subsystem-for-linux-wsl"><i class="fa fa-check"></i><b>2.1.1</b> What is the Windows Subsystem for Linux (WSL)?</a></li>
+<li class="chapter" data-level="2.1.2" data-path="env-pre.html"><a href="env-pre.html#manual-installation-steps"><i class="fa fa-check"></i><b>2.1.2</b> Manual Installation Steps</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="env-pre.html"><a href="env-pre.html#conda_install"><i class="fa fa-check"></i><b>2.2</b> Install Conda Environment</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="env-pre.html"><a href="env-pre.html#what-is-conda"><i class="fa fa-check"></i><b>2.2.1</b> What is conda?</a></li>
+<li class="chapter" data-level="2.2.2" data-path="env-pre.html"><a href="env-pre.html#conda_install_windows"><i class="fa fa-check"></i><b>2.2.2</b> Installation on Windows</a></li>
+<li class="chapter" data-level="2.2.3" data-path="env-pre.html"><a href="env-pre.html#conda_install_linux"><i class="fa fa-check"></i><b>2.2.3</b> Installation on Linux</a></li>
+<li class="chapter" data-level="2.2.4" data-path="env-pre.html"><a href="env-pre.html#conda_install_mac"><i class="fa fa-check"></i><b>2.2.4</b> Installation on macOS</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="env-pre.html"><a href="env-pre.html#other-prepare"><i class="fa fa-check"></i><b>2.3</b> other prepare</a>
+<ul>
+<li class="chapter" data-level="2.3.1" data-path="env-pre.html"><a href="env-pre.html#conda-configuration"><i class="fa fa-check"></i><b>2.3.1</b> Conda Configuration</a></li>
+<li class="chapter" data-level="2.3.2" data-path="env-pre.html"><a href="env-pre.html#example-of-r-markdown"><i class="fa fa-check"></i><b>2.3.2</b> Example of R Markdown</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="pseudo-time-and-trajectory-analysis.html"><a href="pseudo-time-and-trajectory-analysis.html"><i class="fa fa-check"></i><b>3</b> Pseudo-time and trajectory analysis</a></li>
 <li class="chapter" data-level="4" data-path="rna-velocity.html"><a href="rna-velocity.html"><i class="fa fa-check"></i><b>4</b> RNA velocity</a></li>
@@ -159,7 +174,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="5.3" data-path="copy-number-variation-estimation-from-scrna-seq.html"><a href="copy-number-variation-estimation-from-scrna-seq.html#ref"><i class="fa fa-check"></i><b>5.3</b> ref</a></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="nuclear-snv-analysis-in-single-cell-omics.html"><a href="nuclear-snv-analysis-in-single-cell-omics.html"><i class="fa fa-check"></i><b>6</b> Nuclear SNV analysis in single-cell omics</a></li>
+<li class="chapter" data-level="6" data-path="mtdna-variants-for-lineage-inference-from-single-cell-omics.html"><a href="mtdna-variants-for-lineage-inference-from-single-cell-omics.html"><i class="fa fa-check"></i><b>6</b> mtDNA variants for lineage inference from single-cell omics</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="mtdna-variants-for-lineage-inference-from-single-cell-omics.html"><a href="mtdna-variants-for-lineage-inference-from-single-cell-omics.html#pileup-with-cellsnp-lite"><i class="fa fa-check"></i><b>6.1</b> Pileup with cellsnp-lite</a></li>
+<li class="chapter" data-level="6.2" data-path="mtdna-variants-for-lineage-inference-from-single-cell-omics.html"><a href="mtdna-variants-for-lineage-inference-from-single-cell-omics.html#clonal-analysis-with-mquad"><i class="fa fa-check"></i><b>6.2</b> Clonal analysis with MQuad</a></li>
+</ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -183,15 +202,178 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="env-pre" class="section level1" number="2">
 <h1><span class="header-section-number">Chapter 2</span> Prerequisites</h1>
-<div id="install-anaconda" class="section level2" number="2.1">
-<h2><span class="header-section-number">2.1</span> install Anaconda</h2>
+<div id="wsl_install" class="section level2" number="2.1">
+<h2><span class="header-section-number">2.1</span> (Optional) Install Windows Subsystem for Linux</h2>
+<p><strong>Note, this is for Windows users only.</strong> While some required softwares only support Linux or macOS, you could install WSL to use Linux inside Windows.</p>
+<p>If you already have Linux or macOS, you can skip this section and jump directly to the section of <code>conda installation</code> <a href="env-pre.html#conda_install_linux">for Linux</a> or <a href="env-pre.html#conda_install_mac">for macOS</a>.</p>
+<p>The whole process of installing WSL requires at least 2G disk space. Note that this process was tested on Windows 10 (Version 2004, build 19041.1052).</p>
+<div id="what-is-the-windows-subsystem-for-linux-wsl" class="section level3" number="2.1.1">
+<h3><span class="header-section-number">2.1.1</span> What is the Windows Subsystem for Linux (WSL)?</h3>
+<p>According to the <a href="https://docs.microsoft.com/en-us/windows/wsl/about">Microsoft Docs</a>,</p>
+<blockquote>
+<p><em>“The Windows Subsystem for Linux lets developers run a GNU/Linux environment – including most command-line tools, utilities, and applications – directly on Windows, unmodified, without the overhead of a traditional virtual machine or dualboot setup.”</em></p>
+</blockquote>
 </div>
-<div id="other-prepare" class="section level2" number="2.2">
-<h2><span class="header-section-number">2.2</span> other prepare</h2>
+<div id="manual-installation-steps" class="section level3" number="2.1.2">
+<h3><span class="header-section-number">2.1.2</span> Manual Installation Steps</h3>
+<p><strong>Step 1. Enable required feature in Windows PowerShell</strong></p>
+<p>It is necessary to enable the required feature for WSL before installing it.</p>
+<ul>
+<li>Type <code>powershell</code> in the search box of the Windows taskbar.</li>
+<li>Right click <code>Windows PowerShell</code> and select <code>Run as administrator</code>.</li>
+</ul>
+<p><img src="images/wsl_open_powershell.png" width="45%" style="display: block; margin: auto;" /></p>
+<ul>
+<li>Type the command below in PowerShell.</li>
+</ul>
+<pre class="shell"><code>dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux /all /norestart</code></pre>
+<p><img src="images/wsl_enable_feature.png" width="60%" style="display: block; margin: auto;" /></p>
+<p><strong>Step 2. Download and install WSL</strong></p>
+<p>Microsoft now supports several Linux distributions as WSL, such as Ubuntu, openSUSE, Fedora, etc (<a href="https://docs.microsoft.com/en-us/windows/wsl/install-win10#step-6---install-your-linux-distribution-of-choice">a full list here</a>), among which we choose Ubuntu as an example.</p>
+<p>Ubuntu WSL could be freely downloaded and installed through <a href="https://www.microsoft.com/en-us/p/ubuntu-2004-lts/9n6svws3rx71?rtc=1&amp;activetab=pivot:overviewtab">Microsoft Store</a>.</p>
+<ul>
+<li>Go to the webpage for <a href="https://www.microsoft.com/en-us/p/ubuntu-2004-lts/9n6svws3rx71?rtc=1&amp;activetab=pivot:overviewtab">Ubuntu</a> in Microsoft Store.</li>
+<li>Click on the <code>Get</code> button.</li>
+<li>Wait for completion of downloading and installation.</li>
+<li>Click on the <code>Launch</code> button.</li>
+</ul>
+<p><img src="images/wsl_download_install.png" width="60%" style="display: block; margin: auto;" /></p>
+<p><strong>Step 3. Create a new account for Ubuntu</strong></p>
+<p>After successfully installing Ubuntu, a new user account should be created.</p>
+<ul>
+<li>Type user name and password following the prompts on the screen. Note, it is normal that the password is invisible when you are typing.</li>
+</ul>
+<p><img src="images/wsl_create_account.png" width="40%" style="display: block; margin: auto;" /></p>
+<p><strong>Now Congratulations! You have successfully installed and set up Ubuntu in your Windows System!</strong></p>
+<p>Next time you can re-open Ubuntu through the search box of the Windows taskbar.</p>
+<p><img src="images/wsl_open_ubuntu.png" width="35%" style="display: block; margin: auto;" /></p>
+<p>More information about the usage of WSL can be found at <a href="https://docs.microsoft.com/en-us/windows/wsl">Microsoft Docs</a>.</p>
+</div>
+</div>
+<div id="conda_install" class="section level2" number="2.2">
+<h2><span class="header-section-number">2.2</span> Install Conda Environment</h2>
+<p>The whole process of installing conda environment requires at least 1G disk space.</p>
+<div id="what-is-conda" class="section level3" number="2.2.1">
+<h3><span class="header-section-number">2.2.1</span> What is conda?</h3>
+<p>Conda is part of the Anaconda platform. According to the <a href="https://docs.anaconda.com/#anaconda-individual-edition">Anaconda docs</a>,</p>
+<blockquote>
+<p><em>“Anaconda Individual Edition is a free, easy-to-install package manager, environment manager, and Python distribution with a collection of 1,500+ open source packages with free community support. Anaconda is platform-agnostic, so you can use it whether you are on Windows, macOS, or Linux.”</em></p>
+</blockquote>
+<p>For quick installation and configuration, we choose to install <a href="https://docs.conda.io/en/latest/miniconda.html">Miniconda</a> instead of the whole Anaconda.</p>
+<blockquote>
+<p><em>“Miniconda is a free minimal installer for conda. It is a small, bootstrap version of Anaconda that includes only conda, Python, the packages they depend on, and a small number of other useful packages, including pip, zlib and a few others.”</em></p>
+</blockquote>
+</div>
+<div id="conda_install_windows" class="section level3" number="2.2.2">
+<h3><span class="header-section-number">2.2.2</span> Installation on Windows</h3>
+<p>Although it is easy to install Miniconda itself on Windows, there are several conda softwares (e.g., bcftools, cellsnp-lite) required for this workshop that are well-supported only on Unix-Like systems. Linux or macOS is essential to use those softwares.</p>
+<p>Good news is that Microsoft has provided the Windows Subsystem for Linux (WSL), which enables you to use several Linux distributions on Windows 10. The installation of WSL is easy and details can be found <a href="env-pre.html#wsl_install">here</a>.</p>
+<p>After installing WSL, you could follow Section <a href="env-pre.html#conda_install_linux">Installation on Linux</a> to install Miniconda on WSL.</p>
+</div>
+<div id="conda_install_linux" class="section level3" number="2.2.3">
+<h3><span class="header-section-number">2.2.3</span> Installation on Linux</h3>
+<p>This section is adapted based on Miniconda installation <a href="https://conda.io/projects/conda/en/latest/user-guide/install/linux.html">guides for Linux</a>. In this section, we select the Miniconda with Python 3.9 as an example.</p>
+<p><strong>Step 1. Open Shell</strong></p>
+<ul>
+<li>Open Linux Shell / WSL Shell (see Section <a href="env-pre.html#wsl_install">Install WSL</a> for details of WSL).</li>
+</ul>
+<p><strong>Step 2. Download Miniconda installer</strong></p>
+<p>The Miniconda installer is a <code>.sh</code> file containing metadata of installation. Run <code>wget &lt;installer_link&gt;</code> to download the installer. e.g.,</p>
+<ul>
+<li>Type in Shell <code>wget https://repo.anaconda.com/miniconda/Miniconda3-py39_4.9.2-Linux-x86_64.sh</code>.</li>
+</ul>
+<p><img src="images/conda_download_installer.png" width="65%" style="display: block; margin: auto;" /></p>
+<p>You could choose other Miniconda installers based on your platform. A full list of installers can be found <a href="https://docs.conda.io/en/latest/miniconda.html">here</a>.</p>
+<p><strong>Step 3. Verify your installer hashes (Optional)</strong></p>
+<p>An unmatched hash indicates there were some error during the downloading process. We could simply verify the installer hashes by typing <code>sha256sum &lt;installer_file&gt;</code> in the Shell. e.g.,</p>
+<ul>
+<li>Type <code>sha256sum Miniconda3-py39_4.9.2-Linux-x86_64.sh</code> and check if the output hash is <code>536817d1b14cb1ada88900f5be51ce0a5e042bae178b5550e62f61e223deae7c</code>.</li>
+</ul>
+<p><img src="images/conda_verify_hash.PNG" width="65%" style="display: block; margin: auto;" /></p>
+<p>A full list of hashes can be found <a href="https://docs.conda.io/en/latest/miniconda.html">here</a>.</p>
+<p><strong>Step 4. Initialize Miniconda</strong></p>
+<p>Run <code>bash &lt;installer_file&gt;</code> in Shell. e.g.,</p>
+<ul>
+<li>Type <code>bash Miniconda3-py39_4.9.2-Linux-x86_64.sh</code>.</li>
+</ul>
+<p><img src="images/conda_init_conda.PNG" width="55%" style="display: block; margin: auto;" /></p>
+<ul>
+<li>Follow the prompts on the installer screens.</li>
+</ul>
+<p>When you are asked <code>Do you wish the installer to initialize Miniconda3 by running conda init</code>, we recommend “yes”. When the initialization is done, it looks like,</p>
+<p><img src="images/conda_init_conda2.PNG" width="45%" style="display: block; margin: auto;" /></p>
+<p><strong>Step 5. Close and re-open Shell</strong></p>
+<ul>
+<li>Close and then re-open your Shell, to make the changes take effect.</li>
+</ul>
+<p>The screen should have a new <code>(base)</code> prefix, which looks like,</p>
+<p><img src="images/conda_reopen_shell.PNG" width="40%" style="display: block; margin: auto;" /></p>
+<p>It means the Shell is now in the <code>base</code> environment of conda.</p>
+<p><strong>Step 6. Test your installation</strong></p>
+<ul>
+<li>Type <code>conda list</code> in Shell.</li>
+</ul>
+<p>A list of installed packages appears if it has been installed correctly.</p>
+<p><img src="images/conda_test_conda.PNG" width="50%" style="display: block; margin: auto;" /></p>
+</div>
+<div id="conda_install_mac" class="section level3" number="2.2.4">
+<h3><span class="header-section-number">2.2.4</span> Installation on macOS</h3>
+<p>You could refer to the Section <a href="env-pre.html#conda_install_linux">Installation on Linux</a> as the processes of installing Miniconda on macOS and Linux are quite similar. We briefly list the steps here for your quick reference.</p>
+<p><strong>Step 1. Open macOS Terminal</strong></p>
+<p><strong>Step 2. Download Miniconda installer</strong></p>
+<ul>
+<li>Type in Terminal <code>wget https://repo.anaconda.com/miniconda/Miniconda3-py39_4.9.2-MacOSX-x86_64.sh</code>.</li>
+</ul>
+<p><strong>Step 3. Verify your installer hashes (Optional)</strong></p>
+<ul>
+<li>Type <code>shasum -a 256 Miniconda3-py39_4.9.2-MacOSX-x86_64.sh</code> in Terminal and check if the output hash is <code>b3bf77cbb81ee235ec6858146a2a84d20f8ecdeb614678030c39baacb5acbed1</code>.</li>
+</ul>
+<p><strong>Step 4. Initialize Miniconda</strong></p>
+<ul>
+<li><p>Type in Terminal <code>bash Miniconda3-py39_4.9.2-MacOSX-x86_64.sh</code>.</p></li>
+<li><p>Follow the prompts on the installer screens.</p></li>
+</ul>
+<p>When you are asked <code>Do you wish the installer to initialize Miniconda3 by running conda init</code>, we recommend “yes”.</p>
+<p><strong>Step 5. Close and re-open Terminal</strong></p>
+<p><strong>Step 6. Test your installation</strong></p>
+<ul>
+<li>Type <code>conda list</code> in Terminal.</li>
+</ul>
+<p>A list of installed packages appears if it has been installed correctly.</p>
+</div>
+</div>
+<div id="other-prepare" class="section level2" number="2.3">
+<h2><span class="header-section-number">2.3</span> other prepare</h2>
+<div id="conda-configuration" class="section level3" number="2.3.1">
+<h3><span class="header-section-number">2.3.1</span> Conda Configuration</h3>
+<p>To simplify the configuration of conda environment, we have pre-compiled a conda environment, named <code>sgcell</code>, containing all required softwares for this workshop. The corresponding metafile <code>sgcell.yml</code> of this environment was exported, based on which we can easily re-build the pre-compiled environment.</p>
+<p>Assuming you have installed conda and activated any environment in the Shell / Terminal (if not, please install conda based on Section <a href="env-pre.html#conda_install">Install Conda Environment</a> first). Then,</p>
+<ul>
+<li><p>Open Linux Shell / macOS Terminal / WSL Shell</p></li>
+<li><p>Add conda channels,</p></li>
+</ul>
+<pre class="shell"><code>conda config --add channels bioconda
+conda config --add channels conda-forge</code></pre>
+<ul>
+<li>Re-build the pre-compiled environment,</li>
+</ul>
+<pre class="shell"><code>conda env create -f sgcell.yml</code></pre>
+<ul>
+<li>Activate the new environment <code>sgcell</code>,</li>
+</ul>
+<pre class="shell"><code>conda activate sgcell</code></pre>
+<ul>
+<li>Verify if the new environment was installed correctly,</li>
+</ul>
+<pre class="shell"><code>conda env list</code></pre>
+<p>The <code>sgcell</code> sould appear in the listed environments.</p>
+</div>
+<div id="example-of-r-markdown" class="section level3" number="2.3.2">
+<h3><span class="header-section-number">2.3.2</span> Example of R Markdown</h3>
 <p>You can label chapter and section titles using <code>{#label}</code> after them, e.g., we can reference Chapter <a href="env-pre.html#env-pre">2</a>. If you do not manually label them, there will be automatic labels anyway, e.g., Chapter @ref(RNA velocity).</p>
 <p>Figures and tables with captions will be placed in <code>figure</code> and <code>table</code> environments, respectively.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="env-pre.html#cb1-1" aria-hidden="true"></a><span class="kw">par</span>(<span class="dt">mar =</span> <span class="kw">c</span>(<span class="dv">4</span>, <span class="dv">4</span>, <span class="fl">.1</span>, <span class="fl">.1</span>))</span>
-<span id="cb1-2"><a href="env-pre.html#cb1-2" aria-hidden="true"></a><span class="kw">plot</span>(pressure, <span class="dt">type =</span> <span class="st">&#39;b&#39;</span>, <span class="dt">pch =</span> <span class="dv">19</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="env-pre.html#cb6-1" aria-hidden="true"></a><span class="kw">par</span>(<span class="dt">mar =</span> <span class="kw">c</span>(<span class="dv">4</span>, <span class="dv">4</span>, <span class="fl">.1</span>, <span class="fl">.1</span>))</span>
+<span id="cb6-2"><a href="env-pre.html#cb6-2" aria-hidden="true"></a><span class="kw">plot</span>(pressure, <span class="dt">type =</span> <span class="st">&#39;b&#39;</span>, <span class="dt">pch =</span> <span class="dv">19</span>)</span></code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:nice-fig"></span>
 <img src="SingleCell-Workshop_files/figure-html/nice-fig-1.png" alt="Here is a nice figure!" width="80%" />
 <p class="caption">
@@ -199,10 +381,10 @@ Figure 2.1: Here is a nice figure!
 </p>
 </div>
 <p>Reference a figure by its code chunk label with the <code>fig:</code> prefix, e.g., see Figure <a href="env-pre.html#fig:nice-fig">2.1</a>. Similarly, you can reference tables generated from <code>knitr::kable()</code>, e.g., see Table <a href="env-pre.html#tab:nice-tab">2.1</a>.</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="env-pre.html#cb2-1" aria-hidden="true"></a>knitr<span class="op">::</span><span class="kw">kable</span>(</span>
-<span id="cb2-2"><a href="env-pre.html#cb2-2" aria-hidden="true"></a>  <span class="kw">head</span>(iris, <span class="dv">20</span>), <span class="dt">caption =</span> <span class="st">&#39;Here is a nice table!&#39;</span>,</span>
-<span id="cb2-3"><a href="env-pre.html#cb2-3" aria-hidden="true"></a>  <span class="dt">booktabs =</span> <span class="ot">TRUE</span></span>
-<span id="cb2-4"><a href="env-pre.html#cb2-4" aria-hidden="true"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="env-pre.html#cb7-1" aria-hidden="true"></a>knitr<span class="op">::</span><span class="kw">kable</span>(</span>
+<span id="cb7-2"><a href="env-pre.html#cb7-2" aria-hidden="true"></a>  <span class="kw">head</span>(iris, <span class="dv">20</span>), <span class="dt">caption =</span> <span class="st">&#39;Here is a nice table!&#39;</span>,</span>
+<span id="cb7-3"><a href="env-pre.html#cb7-3" aria-hidden="true"></a>  <span class="dt">booktabs =</span> <span class="ot">TRUE</span></span>
+<span id="cb7-4"><a href="env-pre.html#cb7-4" aria-hidden="true"></a>)</span></code></pre></div>
 <table>
 <caption><span id="tab:nice-tab">Table 2.1: </span>Here is a nice table!</caption>
 <thead>
@@ -360,12 +542,13 @@ Figure 2.1: Here is a nice figure!
 <p>You can write citations, too. For example, we are using the <strong>bookdown</strong> package <span class="citation">(Xie <a href="#ref-R-bookdown" role="doc-biblioref">2021</a>)</span> in this sample book, which was built on top of R Markdown and <strong>knitr</strong> <span class="citation">(Xie <a href="#ref-xie2015" role="doc-biblioref">2015</a>)</span>.</p>
 <p>This is a <em>sample</em> book written in <strong>Markdown</strong>. You can use anything that Pandoc’s Markdown supports, e.g., a math equation <span class="math inline">\(a^2 + b^2 = c^2\)</span>.</p>
 <p>The <strong>bookdown</strong> package can be installed from CRAN or Github:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="env-pre.html#cb3-1" aria-hidden="true"></a><span class="kw">install.packages</span>(<span class="st">&quot;bookdown&quot;</span>)</span>
-<span id="cb3-2"><a href="env-pre.html#cb3-2" aria-hidden="true"></a><span class="co"># or the development version</span></span>
-<span id="cb3-3"><a href="env-pre.html#cb3-3" aria-hidden="true"></a><span class="co"># devtools::install_github(&quot;rstudio/bookdown&quot;)</span></span></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="env-pre.html#cb8-1" aria-hidden="true"></a><span class="kw">install.packages</span>(<span class="st">&quot;bookdown&quot;</span>)</span>
+<span id="cb8-2"><a href="env-pre.html#cb8-2" aria-hidden="true"></a><span class="co"># or the development version</span></span>
+<span id="cb8-3"><a href="env-pre.html#cb8-3" aria-hidden="true"></a><span class="co"># devtools::install_github(&quot;rstudio/bookdown&quot;)</span></span></code></pre></div>
 <p>Remember each Rmd file contains one and only one chapter, and a chapter is defined by the first-level heading <code>#</code>.</p>
 <p>To compile this example to PDF, you need XeLaTeX. You are recommended to install TinyTeX (which includes XeLaTeX): <a href="https://yihui.org/tinytex/" class="uri">https://yihui.org/tinytex/</a>.</p>
 
+</div>
 </div>
 </div>
 <h3>References</h3>
