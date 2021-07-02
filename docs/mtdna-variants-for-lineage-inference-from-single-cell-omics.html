@@ -151,10 +151,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.2.3" data-path="env-pre.html"><a href="env-pre.html#conda_install_linux"><i class="fa fa-check"></i><b>2.2.3</b> Installation on Linux</a></li>
 <li class="chapter" data-level="2.2.4" data-path="env-pre.html"><a href="env-pre.html#conda_install_mac"><i class="fa fa-check"></i><b>2.2.4</b> Installation on macOS</a></li>
 </ul></li>
-<li class="chapter" data-level="2.3" data-path="env-pre.html"><a href="env-pre.html#other-prepare"><i class="fa fa-check"></i><b>2.3</b> other prepare</a>
+<li class="chapter" data-level="2.3" data-path="env-pre.html"><a href="env-pre.html#other-preparation"><i class="fa fa-check"></i><b>2.3</b> Other Preparation</a>
 <ul>
 <li class="chapter" data-level="2.3.1" data-path="env-pre.html"><a href="env-pre.html#conda-configuration"><i class="fa fa-check"></i><b>2.3.1</b> Conda Configuration</a></li>
-<li class="chapter" data-level="2.3.2" data-path="env-pre.html"><a href="env-pre.html#example-of-r-markdown"><i class="fa fa-check"></i><b>2.3.2</b> Example of R Markdown</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="pseudo-time-and-trajectory-analysis.html"><a href="pseudo-time-and-trajectory-analysis.html"><i class="fa fa-check"></i><b>3</b> Pseudo-time and trajectory analysis</a></li>
@@ -176,7 +175,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="6" data-path="mtdna-variants-for-lineage-inference-from-single-cell-omics.html"><a href="mtdna-variants-for-lineage-inference-from-single-cell-omics.html"><i class="fa fa-check"></i><b>6</b> mtDNA variants for lineage inference from single-cell omics</a>
 <ul>
-<li class="chapter" data-level="6.1" data-path="mtdna-variants-for-lineage-inference-from-single-cell-omics.html"><a href="mtdna-variants-for-lineage-inference-from-single-cell-omics.html#pileup-with-cellsnp-lite"><i class="fa fa-check"></i><b>6.1</b> Pileup with cellsnp-lite</a></li>
+<li class="chapter" data-level="6.1" data-path="mtdna-variants-for-lineage-inference-from-single-cell-omics.html"><a href="mtdna-variants-for-lineage-inference-from-single-cell-omics.html#pileup-with-cellsnp-lite"><i class="fa fa-check"></i><b>6.1</b> Pileup with cellsnp-lite</a>
+<ul>
+<li class="chapter" data-level="6.1.1" data-path="mtdna-variants-for-lineage-inference-from-single-cell-omics.html"><a href="mtdna-variants-for-lineage-inference-from-single-cell-omics.html#pileup-without-given-snps"><i class="fa fa-check"></i><b>6.1.1</b> Pileup without given SNPs</a></li>
+<li class="chapter" data-level="6.1.2" data-path="mtdna-variants-for-lineage-inference-from-single-cell-omics.html"><a href="mtdna-variants-for-lineage-inference-from-single-cell-omics.html#pileup-with-given-snps"><i class="fa fa-check"></i><b>6.1.2</b> Pileup with given SNPs</a></li>
+</ul></li>
 <li class="chapter" data-level="6.2" data-path="mtdna-variants-for-lineage-inference-from-single-cell-omics.html"><a href="mtdna-variants-for-lineage-inference-from-single-cell-omics.html#clonal-analysis-with-mquad"><i class="fa fa-check"></i><b>6.2</b> Clonal analysis with MQuad</a></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="preprocessing-of-dataset.html"><a href="preprocessing-of-dataset.html"><i class="fa fa-check"></i><b>7</b> Preprocessing of dataset</a>
@@ -222,24 +225,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="pileup-with-cellsnp-lite" class="section level2" number="6.1">
 <h2><span class="header-section-number">6.1</span> Pileup with cellsnp-lite</h2>
 <p>Cellsnp-lite is designed to perform efficient pileup and genotyping for both bulk and single cell sequencing data. It could be easily installed via <a href="env-pre.html#conda_install">conda</a> with <code>conda install -c bioconda -c conda-forge cellsnp-lite</code>.</p>
-<p>In this example, we use cellsnp-lite to pileup chrM on a SMART-seq2 dataset, whose output could be used as inputs of MQuad model for mitochondrial clone analysis.</p>
-<p><strong>Note that we have uploaded the pileup results of cellsnp-lite to <a href="https://sourceforge.net/projects/sgcellworkshop/files/mtDNA_analysis/">sgcellworkshop</a> repo on sourceforge. You can directly download the <code>joxm.hg19.cellsnp.mode2b.tar.gz</code> file and then run <code>tar zxvf joxm.hg19.cellsnp.mode2b.tar.gz</code> to unpack it.</strong></p>
-<p>If you want to repeat the pileup processing, please follow the steps below.</p>
-<ul>
-<li>Step 1. Download the bam files</li>
-</ul>
-<p>The 77 SMART-seq2 bam files (~3.5G) were packed into one file <code>joxm.bam.all.77.tar.gz</code>. This file, together with another two files <code>joxm.hg19.bam.lst</code> and <code>joxm.sample.lst</code>, should be downloaded from <a href="https://sourceforge.net/projects/sgcellworkshop/files/mtDNA_analysis/">sgcellworkshop</a> repo on sourceforge. Please put the three files in the same directory.</p>
-<ul>
-<li>Step 2. Unpack the bam files</li>
-</ul>
-<p>Unpack the bam files with <code>tar zxvf joxm.bam.all.77.tar.gz</code>. The bam files, together with the <code>.bai</code> files, should be in the <code>sort/</code> directory.</p>
-<ul>
-<li>Step 3. Run cellsnp-lite</li>
-</ul>
+<p>We use a SMART-seq2 dataset as an example, which were packed into <code>joxm.bam.all.77.tar.gz</code> (77 bam files, ~3.5G in total; <a href="https://www.nature.com/articles/s41592-020-0766-3">McCarthy et al, 2020</a>).</p>
+<p>First, please download <code>joxm.bam.all.77.tar.gz</code>, <code>joxm.hg19.bam.lst</code> and <code>joxm.sample.lst</code> from <a href="https://sourceforge.net/projects/sgcellworkshop/files/mtDNA_analysis/">sgcellworkshop</a> repo on sourceforge. Put the three files in the same directory. Then unpack the bam files with command <code>tar zxvf joxm.bam.all.77.tar.gz</code>. The bam files, together with the <code>.bai</code> files, should be in the <code>sort/</code> directory.</p>
+<div id="pileup-without-given-snps" class="section level3" number="6.1.1">
+<h3><span class="header-section-number">6.1.1</span> Pileup without given SNPs</h3>
+<p>In this example, we use cellsnp-lite to pileup chrM on the bam files without a given SNP list (in denovo mode), whose output could be used as inputs of MQuad model for mitochondrial clone analysis.</p>
+<p>Note that the pileup results <code>joxm.hg19.cellsnp.mode2b.tar.gz</code> can be downloaded from <a href="https://sourceforge.net/projects/sgcellworkshop/files/mtDNA_analysis/">sgcellworkshop</a> repo on sourceforge and then unpacked with command <code>tar zxvf joxm.hg19.cellsnp.mode2b.tar.gz</code>.</p>
+<p>The command line to generate the results is,</p>
 <pre class="shell"><code>cellsnp-lite      \
   -S ./joxm.hg19.bam.lst    \
   -i ./joxm.sample.lst      \
-  -O ./cellsnp              \
+  -O ./cellsnp2b            \
   --chrom MT        \
   --cellTAG None    \
   --UMItag None     \
@@ -247,6 +243,25 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   --minMAF 0        \
   --genotype        \
   --gzip</code></pre>
+</div>
+<div id="pileup-with-given-snps" class="section level3" number="6.1.2">
+<h3><span class="header-section-number">6.1.2</span> Pileup with given SNPs</h3>
+<p>This time, we use cellsnp-lite to pileup given SNPs on the bam files. The 112 SNPs, stored in <code>joxm.hg19.somatic.sites.vcf</code>, were somatic SNPs called in (<a href="https://www.nature.com/articles/s41592-020-0766-3">McCarthy et al, 2020</a>) and can be downloaded from <a href="https://sourceforge.net/projects/sgcellworkshop/files/mtDNA_analysis/">sgcellworkshop</a> repo.</p>
+<p>Note that the pileup results <code>joxm.hg19.somatic.cellsnp.mode1b.tar.gz</code> can be downloaded from <a href="https://sourceforge.net/projects/sgcellworkshop/files/mtDNA_analysis/">sgcellworkshop</a> repo on sourceforge and then unpacked with command <code>tar zxvf joxm.hg19.somatic.cellsnp.mode1b.tar.gz</code>.</p>
+<p>The command line to generate the results is,</p>
+<pre class="shell"><code>cellsnp-lite      \
+  -S ./joxm.hg19.bam.lst    \
+  -i ./joxm.sample.lst      \
+  -O ./cellsnp1b            \
+  -R ./joxm.hg19.somatic.sites.vcf \
+  --cellTAG None    \
+  --UMItag None     \
+  --minCOUNT 0     \
+  --minMAF 0        \
+  -p 4              \
+  --genotype        \
+  --gzip</code></pre>
+</div>
 </div>
 <div id="clonal-analysis-with-mquad" class="section level2" number="6.2">
 <h2><span class="header-section-number">6.2</span> Clonal analysis with MQuad</h2>
@@ -311,20 +326,6 @@ gitbook.start({
 });
 </script>
 
-<!-- dynamically load mathjax for compatibility with self-contained -->
-<script>
-  (function () {
-    var script = document.createElement("script");
-    script.type = "text/javascript";
-    var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
-    if (location.protocol !== "file:")
-      if (/^https?:/.test(src))
-        src = src.replace(/^https?:/, '');
-    script.src = src;
-    document.getElementsByTagName("head")[0].appendChild(script);
-  })();
-</script>
 </body>
 
 </html>

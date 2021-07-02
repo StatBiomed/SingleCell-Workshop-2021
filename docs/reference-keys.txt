@@ -1,5 +1,3 @@
-fig:nice-fig
-tab:nice-tab
 introduction
 env-pre
 wsl_install
@@ -10,9 +8,8 @@ what-is-conda
 conda_install_windows
 conda_install_linux
 conda_install_mac
-other-prepare
+other-preparation
 conda-configuration
-example-of-r-markdown
 pseudo-time-and-trajectory-analysis
 rna-velocity
 copy-number-variation-estimation-from-scrna-seq
@@ -26,6 +23,8 @@ infercnv-result
 ref
 mtdna-variants-for-lineage-inference-from-single-cell-omics
 pileup-with-cellsnp-lite
+pileup-without-given-snps
+pileup-with-given-snps
 clonal-analysis-with-mquad
 preprocessing-of-dataset
 list-of-packages-aligned-in-pipeline
