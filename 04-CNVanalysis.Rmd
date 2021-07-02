@@ -99,6 +99,8 @@ Clone A       Clone B       Normal
 
 Table:  Subclusters of TNBC1 dataset (from gene expression analysis-Seurat).
 
+Notes: 488,307, 247, 55
+
 
 ![umap](CNV_analysis_file/figs/tnbc1-exp/tnbc1-umap-3clusters.jpeg)
 
@@ -116,7 +118,7 @@ Table:  Subclusters of TNBC1 dataset (from gene expression analysis-Seurat).
 
 - BAF V.S. Expression
 
-![confusion heatmap](CNV_analysis_file/figs/BAFvsExpression_rt.png)
+![confusion heatmap](CNV_analysis_file/figs/BAFvsExpression.png)
 
 
 ### run inferCNV
