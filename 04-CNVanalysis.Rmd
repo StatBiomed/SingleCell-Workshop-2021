@@ -126,6 +126,9 @@ Table:  Subclusters of TNBC1 dataset (from gene expression analysis-Seurat).
 
 [demo2_log_file](https://github.com/Rongtingting/SingleCell-Workshop-2021/blob/master/CNV_analysis_file/demo2_inferCNV_TNBC1.log)
 
+[output_files](https://github.com/Rongtingting/SingleCell-Workshop-2021/blob/master/CNV_analysis_file/demo2_outputfiles.lst)
+
+
 ```{r}
 # library(infercnv)
 # library(utils)
