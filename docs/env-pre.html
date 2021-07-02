@@ -226,7 +226,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li>Type the command below in PowerShell.</li>
 </ul>
-<pre class="shell"><code>dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux /all /norestart</code></pre>
+<pre class="shell"><code>dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux /all /norestart
+
+Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Windows-Subsystem-Linux</code></pre>
 <p><img src="images/wsl_enable_feature.png" width="60%" style="display: block; margin: auto;" /></p>
 <p><strong>Step 2. Download and install WSL</strong></p>
 <p>Microsoft now supports several Linux distributions as WSL, such as Ubuntu, openSUSE, Fedora, etc (<a href="https://docs.microsoft.com/en-us/windows/wsl/install-win10#step-6---install-your-linux-distribution-of-choice">a full list here</a>), among which we choose Ubuntu as an example.</p>
@@ -346,7 +348,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">2.3</span> other prepare</h2>
 <div id="conda-configuration" class="section level3" number="2.3.1">
 <h3><span class="header-section-number">2.3.1</span> Conda Configuration</h3>
-<p>To simplify the configuration of conda environment, we have pre-compiled a conda environment, named <code>sgcell</code>, containing all required softwares for this workshop. The corresponding metafile <code>sgcell.yml</code> of this environment was exported, based on which we can easily re-build the pre-compiled environment.</p>
+<p>To simplify the configuration of conda environment, we have pre-compiled a conda environment, named <code>sgcell</code>, containing all required softwares for this workshop. The corresponding metafile <code>sgcell.yml</code> of this environment was exported, based on which we can easily re-build the pre-compiled environment. The <code>sgcell.yml</code> can be
+downloaded from <a href="https://sourceforge.net/projects/sgcellworkshop/files/">sgcellworkshop</a> repo on sourceforge.</p>
 <p>Assuming you have installed conda and activated any environment in the Shell / Terminal (if not, please install conda based on Section <a href="env-pre.html#conda_install">Install Conda Environment</a> first). Then,</p>
 <ul>
 <li><p>Open Linux Shell / macOS Terminal / WSL Shell</p></li>
@@ -355,7 +358,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <pre class="shell"><code>conda config --add channels bioconda
 conda config --add channels conda-forge</code></pre>
 <ul>
-<li>Re-build the pre-compiled environment,</li>
+<li>Re-build the pre-compiled environment (<strong>Note that this can fail due to unstable connection to the server, please re-try for several times</strong>).</li>
 </ul>
 <pre class="shell"><code>conda env create -f sgcell.yml</code></pre>
 <ul>
