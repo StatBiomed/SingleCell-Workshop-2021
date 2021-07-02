@@ -123,6 +123,8 @@ Notes: 488,307, 247, 55
 
 ### run inferCNV
 
+[data_download](https://sourceforge.net/projects/sgcellworkshop/files/CNV_analysis/CNV_analysis_data.zip/download)
+
 
 [demo1_log_file](https://github.com/Rongtingting/SingleCell-Workshop-2021/blob/master/CNV_analysis_file/demo1_inferCNV_TNBC1.log)
 
