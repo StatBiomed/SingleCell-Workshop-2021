@@ -27,3 +27,16 @@ ref
 mtdna-variants-for-lineage-inference-from-single-cell-omics
 pileup-with-cellsnp-lite
 clonal-analysis-with-mquad
+preprocessing-of-dataset
+list-of-packages-aligned-in-pipeline
+installation-of-packagessoftwares
+sratool
+cellranger
+velocyto-samtools
+samtools
+velocyto
+dropest
+preprocessing-pipline
+download-and-split-pancreas-e15_5-fastq-data-from-ncbi
+run-cellranger-count-referring-to-the-mouse-refdata
+run-velocytodropest.

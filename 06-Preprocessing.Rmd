@@ -1,0 +1,261 @@
+# Preprocessing of dataset
+
+Author: "Chen Qiao"
+
+Date: "7/2/2021"
+
+
+In this tutorial, we would take the Pancreas dataset used in scVelo paper for example, show how to retrieve the fastq dataset from NCBI, process using cellranger, velocyto or dropest to obtain the spliced and unspliced count matrices for RNA velocity estimation.
+
+## List of packages aligned in pipeline:
+
+1. [SRATool](https://github.com/ncbi/sra-tools/wiki/02.-Installing-SRA-Toolkit): for downlowding datasets from NCBI, Pancreas dataset E15_5 with SRA id SRR9201794
+2. [Cellranger](https://support.10xgenomics.com/single-cell-gene-expression/software/downloads/latest): for counting, analyzing, QA on fastqs, outputs input for velocyto/dropest
+3. Alternative tools for counting spliced and unspliced reads from Cellranger outputs/
+   - [Velocyto](http://velocyto.org/velocyto.py/tutorial/cli.html#introduction)
+       - [samtools](http://www.htslib.org/): Velocyto's dependency pakcage 
+   - [dropest](https://dropest.readthedocs.io/en/latest/dropest.html)
+
+## Installation of packages/softwares
+
+All the codes are executed on Linux commandline, lines starting with "#" are comments.
+My working path root is "/data/users/cqiao/share/",
+you may change to any foler as you like.
+
+### SRATool
+Refer to [This tutorial](https://akiomiyao.github.io/ped/sratoolkit/index.html) for step 3. software configuration
+
+```
+# 1. download software
+wget http://ftp-trace.ncbi.nlm.nih.gov/sra/sdk/current/sratoolkit.current-ubuntu64.tar.gz
+# 2. extract package
+tar -xzf sratoolkit.tar.gz
+# 3. configuration software
+./sratoolkit.2.11.0-ubuntu64/vdb-config --interactive
+# 4. add software to system path so that we can easily call it
+export PATH=$PATH:/data/users/cqiao/share/sratoolkit.2.11.0-ubuntu64/bin/
+# 5. test installation, expected to output some sequencing results
+fastq-dump --stdout -X 2 SRR390728
+```
+
+### Cellranger
+
+```
+# 1. download software
+wget -O cellranger-6.0.2.tar.gz "https://cf.10xgenomics.com/releases/cell-exp/cellranger-6.0.2.tar.gz?Expires=1625079682&Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly9jZi4xMHhnZW5vbWljcy5jb20vcmVsZWFzZXMvY2VsbC1leHAvY2VsbHJhbmdlci02LjAuMi50YXIuZ3oiLCJDb25kaXRpb24iOnsiRGF0ZUxlc3NUaGFuIjp7IkFXUzpFcG9jaFRpbWUiOjE2MjUwNzk2ODJ9fX1dfQ__&Signature=Ez05ie1~xJTrUhsc3Q1nZ3JemF5Jc2k3zOOC2PlJiI80TI8YOxM3vVXli90ib1Kl4WgQFRl5~Wp-ce5m2gVAyywGf9juiMk3kW2WGz7xy3DN9nCG-he0rNLvbknDXgkqkj8HeirWyt-EvGgsaqBRZZx7GppGl~MGQOseLTF7DMpJaIm-qwU-72mkVzDy0vKrYVZ~Uiqnlr0M2Hhx14lPwm6QocBuSaKLkmcuZosN4TIS05Z~GPHYt9hQWkykvY4oyd5Y~tyTaMOM8ozVVdI7KgCfc2PmQvhr1bMuhUaEPa3skigzAFjIezbw-fXW3Z8jplwj4lAQ0LybI03ozZr6jg__&Key-Pair-Id=APKAI7S6A5RYOXBWRPDA"
+# 2. extract files
+tar -xzf cellranger-6.0.2.tar.gz
+# 3. add software to system path so that we can easily call it
+export PATH=$PATH:/data/users/cqiao/share/cellranger-6.0.2
+# 4. download gene refereces (optional saving path: ./cellranger/gtfs/)
+cd cellranger-6.0.2
+mkdir gtfs
+cd gtfs
+# human (optional for your needs)
+wget https://cf.10xgenomics.com/supp/cell-exp/refdata-gex-GRCh38-2020-A.tar.gz
+tar -xzf refdata-gex-GRCh38-2020-A.tar.gz
+# mouse (we shall use this for Pancreas dataset)
+wget https://cf.10xgenomics.com/supp/cell-exp/refdata-gex-mm10-2020-A.tar.gz
+tar -xzf refdata-gex-mm10-2020-A.tar.gz
+
+```
+
+### Velocyto & Samtools
+
+#### [Samtools](http://www.htslib.org/download/)
+
+```
+# 1. download & extract software
+wget https://github.com/samtools/samtools/releases/download/1.12/samtools-1.12.tar.bz2
+tar -jxvf samtools-1.12.tar.bz2
+cd samtools-1.12
+# 2. configure build, specify --prefix to locate the root dir
+./configure --prefix=/data/users/cqiao/share/samtools
+# 3. compile and install software
+make
+make install
+# 4. add software to system path so that we can easily call it
+PATH=$PATH:/data/users/cqiao/share/samtools/bin/
+
+# go back to parant folder
+cd ..
+
+```
+
+#### [Velocyto](http://velocyto.org/velocyto.py/install/index.html)
+Assume your python packages are managed by conda and pip
+
+```
+# install dependent packages, may also use pip
+conda install numpy scipy cython numba matplotlib scikit-learn h5py click
+# install velocyto
+pip install velocyto
+
+```
+
+### [Dropest](https://dropest.readthedocs.io/en/latest/setup.html)
+Install dependent libraries
+
+Install RPackages (in R)
+
+```
+install.packages(c("Rcpp","RcppEigen", "RInside", "Matrix"))
+```
+
+Setup a local lib path:
+
+```
+export LOCAL_LIBS=/data/users/cqiao/share/local
+mkdir $LOCAL_LIBS
+export PATH=$LOCAL_LIBS/bin:$LOCAL_LIBS/usr/local/bin/:$PATH
+```
+
+Install CMake
+```
+wget https://cmake.org/files/v3.12/cmake-3.12.0-rc1.tar.gz
+tar xvf cmake-3.12.0-rc1.tar.gz
+cd cmake-3.12.0-rc1
+
+./bootstrap --prefix=$LOCAL_LIBS
+make
+make install
+cd ..
+```
+
+Zlib
+```
+wget https://zlib.net/zlib-1.2.11.tar.gz
+tar xvf zlib-1.2.11.tar.gz
+cd zlib-1.2.11
+
+./configure --prefix=$LOCAL_LIBS
+make
+make install
+cd ..
+```
+
+BamTools
+```
+git clone https://github.com/pezmaster31/bamtools.git
+cd bamtools
+
+mkdir build && cd build
+cmake ../
+make
+make install DESTDIR=$LOCAL_LIBS
+cd ..
+```
+
+Bzip2
+```
+wget https://www.sourceware.org/pub/bzip2/bzip2-latest.tar.gz
+tar -xzvf bzip2-latest.tar.gz
+cd bzip2-1.0.8
+
+make -f Makefile-libbz2_so
+make install PREFIX=$LOCAL_LIBS
+cp -a libbz2.so* $LOCAL_LIBS/lib/
+ln -s $LOCAL_LIBS/lib/libbz2.so.1.0 $LOCAL_LIBS/lib/libbz2.so
+cd ..
+```
+
+Boost
+```
+wget http://sourceforge.net/projects/boost/files/boost/1.60.0/boost_1_60_0.tar.gz
+tar xzf boost_1_60_0.tar.gz
+cd boost_1_60_0
+
+./bootstrap.sh
+./b2 cxxflags="-std=c++11" include="$LOCAL_LIBS/include/" search="$LOCAL_LIBS/lib/" link=shared threading=multi install --prefix=$LOCAL_LIBS
+cd ..
+```
+
+DropEst
+```
+git clone https://github.com/hms-dbmi/dropEst.git
+mkdir dropEst/build
+cd dropEst/build
+cmake -D CMAKE_INSTALL_PREFIX="/data/users/cqiao/share/dropesttool" .. && make
+export PATH=$PATH:/data/users/cqiao/share/dropesttool/bin/
+```
+
+
+
+
+
+
+
+
+
+
+## Preprocessing pipline
+
+### 1. Download and split Pancreas E15_5 fastq data from NCBI:
+
+```
+fasterq-dump --split-files SRR9201794
+```
+
+Result would be:
+```
+SRR9201794_1.fastq SRR9201794_2.fastq
+```
+
+Rename files for cellranger:
+```
+mv SRR9201794_1.fastq SRR9201794_S1_L001_R1_001.fastq
+mv SRR9201794_2.fastq SRR9201794_S1_L001_R2_001.fastq
+```
+
+Optinally, move them to a folder `/data/users/cqiao/share/E15_5`
+
+
+### 2. Run Cellranger count, referring to the mouse refdata
+```
+cellranger count --id=pancreas_E15_5 \
+--fastqs=/data/users/cqiao/share/E15_5 \
+--transcriptome=/data/users/cqiao/share/cellranger-6.0.2/gtfs/refdata-gex-mm10-2020-A
+
+```
+
+`--id` specifies the output dir, the output root.
+
+### 3. Run Velocyto/Dropest.
+   prepare some variables to store path names, so that afterwards we do not need to use the long names.
+   
+   ```
+   # Barchodes if cellranger output files: 
+   gzip -d ./pancreas_E15_5/outs/filtered_feature_bc_matrix/barcodes.tsv.gz
+   BARCODES=./pancreas_E15_5/outs/filtered_feature_bc_matrix/barcodes.tsv
+
+   # Bam file
+   BAMFILE=./pancreas_E15_5/outs/possorted_genome_bam.bam
+
+   # transcriptome reference
+   GTF=/data/users/cqiao/share/cellranger-6.0.2/gtfs/refdata-gex-mm10-2020-A/genes/genes.gtf
+   ```
+   
+   
+   - __Velocyto__
+     ```
+     velocyto run -b $BARCODES -o ./velocyto_res $BAMFILE $GTF
+     
+     ```
+     Results are stored in `./velocyto_res/XXX.loom`
+     
+   - __Dropest__
+     
+     Requires a .xml configuration file specifying the platform settings for sequencing data. Template configure file could be downloaded [here](https://github.com/kharchenkolab/dropEst/tree/master/configs). We shall use 10x.xml for Pancreas E15_5 dataset. Replace line 64 with the path of 10x.xml:
+     ```
+     ...
+            <barcodes_file>./pancreas_E15_5/outs/filtered_feature_bc_matrix/barcodes.tsv</barcodes_file>
+     ...
+     ```
+     Then execute the following code:
+     ```
+     $bin/dropest -f -V -g $GTF -c $config_file $BAMFILE
+     ```
+     Results are stored in file `./pancreas_E15_5/dropEst/cell.counts.matrices.rds`.
+
+
+

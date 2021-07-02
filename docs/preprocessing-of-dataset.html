@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>SingleCell Workshop</title>
+  <title>Chapter 7 Preprocessing of dataset | SingleCell Workshop</title>
   <meta name="description" content="Cell differentiation trajectory; Cellular genetics." />
   <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="SingleCell Workshop" />
+  <meta property="og:title" content="Chapter 7 Preprocessing of dataset | SingleCell Workshop" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="SingleCell Workshop" />
+  <meta name="twitter:title" content="Chapter 7 Preprocessing of dataset | SingleCell Workshop" />
   
   <meta name="twitter:description" content="Cell differentiation trajectory; Cellular genetics." />
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-
-<link rel="next" href="env-pre.html"/>
+<link rel="prev" href="mtdna-variants-for-lineage-inference-from-single-cell-omics.html"/>
+<link rel="next" href="references.html"/>
 <script src="libs/header-attrs-2.8/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -217,34 +217,214 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="header">
-<h1 class="title">SingleCell Workshop</h1>
-<p class="author"><em>Yuanhua lab</em></p>
-<p class="date" style="margin-top: 1.5em;"><em>2021-07-02</em></p>
+<div id="preprocessing-of-dataset" class="section level1" number="7">
+<h1><span class="header-section-number">Chapter 7</span> Preprocessing of dataset</h1>
+<p>Author: “Chen Qiao”</p>
+<p>Date: “7/2/2021”</p>
+<p>In this tutorial, we would take the Pancreas dataset used in scVelo paper for example, show how to retrieve the fastq dataset from NCBI, process using cellranger, velocyto or dropest to obtain the spliced and unspliced count matrices for RNA velocity estimation.</p>
+<div id="list-of-packages-aligned-in-pipeline" class="section level2" number="7.1">
+<h2><span class="header-section-number">7.1</span> List of packages aligned in pipeline:</h2>
+<ol style="list-style-type: decimal">
+<li><a href="https://github.com/ncbi/sra-tools/wiki/02.-Installing-SRA-Toolkit">SRATool</a>: for downlowding datasets from NCBI, Pancreas dataset E15_5 with SRA id SRR9201794</li>
+<li><a href="https://support.10xgenomics.com/single-cell-gene-expression/software/downloads/latest">Cellranger</a>: for counting, analyzing, QA on fastqs, outputs input for velocyto/dropest</li>
+<li>Alternative tools for counting spliced and unspliced reads from Cellranger outputs/
+<ul>
+<li><a href="http://velocyto.org/velocyto.py/tutorial/cli.html#introduction">Velocyto</a>
+<ul>
+<li><a href="http://www.htslib.org/">samtools</a>: Velocyto’s dependency pakcage</li>
+</ul></li>
+<li><a href="https://dropest.readthedocs.io/en/latest/dropest.html">dropest</a></li>
+</ul></li>
+</ol>
 </div>
-<div id="introduction" class="section level1" number="1">
-<h1><span class="header-section-number">Chapter 1</span> Introduction</h1>
-<p><strong>Cell interaction and Cell differentiation trajectory</strong></p>
+<div id="installation-of-packagessoftwares" class="section level2" number="7.2">
+<h2><span class="header-section-number">7.2</span> Installation of packages/softwares</h2>
+<p>All the codes are executed on Linux commandline, lines starting with “#” are comments.
+My working path root is “/data/users/cqiao/share/”,
+you may change to any foler as you like.</p>
+<div id="sratool" class="section level3" number="7.2.1">
+<h3><span class="header-section-number">7.2.1</span> SRATool</h3>
+<p>Refer to <a href="https://akiomiyao.github.io/ped/sratoolkit/index.html">This tutorial</a> for step 3. software configuration</p>
+<pre><code># 1. download software
+wget http://ftp-trace.ncbi.nlm.nih.gov/sra/sdk/current/sratoolkit.current-ubuntu64.tar.gz
+# 2. extract package
+tar -xzf sratoolkit.tar.gz
+# 3. configuration software
+./sratoolkit.2.11.0-ubuntu64/vdb-config --interactive
+# 4. add software to system path so that we can easily call it
+export PATH=$PATH:/data/users/cqiao/share/sratoolkit.2.11.0-ubuntu64/bin/
+# 5. test installation, expected to output some sequencing results
+fastq-dump --stdout -X 2 SRR390728</code></pre>
+</div>
+<div id="cellranger" class="section level3" number="7.2.2">
+<h3><span class="header-section-number">7.2.2</span> Cellranger</h3>
+<pre><code># 1. download software
+wget -O cellranger-6.0.2.tar.gz &quot;https://cf.10xgenomics.com/releases/cell-exp/cellranger-6.0.2.tar.gz?Expires=1625079682&amp;Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly9jZi4xMHhnZW5vbWljcy5jb20vcmVsZWFzZXMvY2VsbC1leHAvY2VsbHJhbmdlci02LjAuMi50YXIuZ3oiLCJDb25kaXRpb24iOnsiRGF0ZUxlc3NUaGFuIjp7IkFXUzpFcG9jaFRpbWUiOjE2MjUwNzk2ODJ9fX1dfQ__&amp;Signature=Ez05ie1~xJTrUhsc3Q1nZ3JemF5Jc2k3zOOC2PlJiI80TI8YOxM3vVXli90ib1Kl4WgQFRl5~Wp-ce5m2gVAyywGf9juiMk3kW2WGz7xy3DN9nCG-he0rNLvbknDXgkqkj8HeirWyt-EvGgsaqBRZZx7GppGl~MGQOseLTF7DMpJaIm-qwU-72mkVzDy0vKrYVZ~Uiqnlr0M2Hhx14lPwm6QocBuSaKLkmcuZosN4TIS05Z~GPHYt9hQWkykvY4oyd5Y~tyTaMOM8ozVVdI7KgCfc2PmQvhr1bMuhUaEPa3skigzAFjIezbw-fXW3Z8jplwj4lAQ0LybI03ozZr6jg__&amp;Key-Pair-Id=APKAI7S6A5RYOXBWRPDA&quot;
+# 2. extract files
+tar -xzf cellranger-6.0.2.tar.gz
+# 3. add software to system path so that we can easily call it
+export PATH=$PATH:/data/users/cqiao/share/cellranger-6.0.2
+# 4. download gene refereces (optional saving path: ./cellranger/gtfs/)
+cd cellranger-6.0.2
+mkdir gtfs
+cd gtfs
+# human (optional for your needs)
+wget https://cf.10xgenomics.com/supp/cell-exp/refdata-gex-GRCh38-2020-A.tar.gz
+tar -xzf refdata-gex-GRCh38-2020-A.tar.gz
+# mouse (we shall use this for Pancreas dataset)
+wget https://cf.10xgenomics.com/supp/cell-exp/refdata-gex-mm10-2020-A.tar.gz
+tar -xzf refdata-gex-mm10-2020-A.tar.gz
+</code></pre>
+</div>
+<div id="velocyto-samtools" class="section level3" number="7.2.3">
+<h3><span class="header-section-number">7.2.3</span> Velocyto &amp; Samtools</h3>
+<div id="samtools" class="section level4" number="7.2.3.1">
+<h4><span class="header-section-number">7.2.3.1</span> <a href="http://www.htslib.org/download/">Samtools</a></h4>
+<pre><code># 1. download &amp; extract software
+wget https://github.com/samtools/samtools/releases/download/1.12/samtools-1.12.tar.bz2
+tar -jxvf samtools-1.12.tar.bz2
+cd samtools-1.12
+# 2. configure build, specify --prefix to locate the root dir
+./configure --prefix=/data/users/cqiao/share/samtools
+# 3. compile and install software
+make
+make install
+# 4. add software to system path so that we can easily call it
+PATH=$PATH:/data/users/cqiao/share/samtools/bin/
+
+# go back to parant folder
+cd ..
+</code></pre>
+</div>
+<div id="velocyto" class="section level4" number="7.2.3.2">
+<h4><span class="header-section-number">7.2.3.2</span> <a href="http://velocyto.org/velocyto.py/install/index.html">Velocyto</a></h4>
+<p>Assume your python packages are managed by conda and pip</p>
+<pre><code># install dependent packages, may also use pip
+conda install numpy scipy cython numba matplotlib scikit-learn h5py click
+# install velocyto
+pip install velocyto
+</code></pre>
+</div>
+</div>
+<div id="dropest" class="section level3" number="7.2.4">
+<h3><span class="header-section-number">7.2.4</span> <a href="https://dropest.readthedocs.io/en/latest/setup.html">Dropest</a></h3>
+<p>Install dependent libraries</p>
+<p>Install RPackages (in R)</p>
+<pre><code>install.packages(c(&quot;Rcpp&quot;,&quot;RcppEigen&quot;, &quot;RInside&quot;, &quot;Matrix&quot;))</code></pre>
+<p>Setup a local lib path:</p>
+<pre><code>export LOCAL_LIBS=/data/users/cqiao/share/local
+mkdir $LOCAL_LIBS
+export PATH=$LOCAL_LIBS/bin:$LOCAL_LIBS/usr/local/bin/:$PATH</code></pre>
+<p>Install CMake</p>
+<pre><code>wget https://cmake.org/files/v3.12/cmake-3.12.0-rc1.tar.gz
+tar xvf cmake-3.12.0-rc1.tar.gz
+cd cmake-3.12.0-rc1
+
+./bootstrap --prefix=$LOCAL_LIBS
+make
+make install
+cd ..</code></pre>
+<p>Zlib</p>
+<pre><code>wget https://zlib.net/zlib-1.2.11.tar.gz
+tar xvf zlib-1.2.11.tar.gz
+cd zlib-1.2.11
+
+./configure --prefix=$LOCAL_LIBS
+make
+make install
+cd ..</code></pre>
+<p>BamTools</p>
+<pre><code>git clone https://github.com/pezmaster31/bamtools.git
+cd bamtools
+
+mkdir build &amp;&amp; cd build
+cmake ../
+make
+make install DESTDIR=$LOCAL_LIBS
+cd ..</code></pre>
+<p>Bzip2</p>
+<pre><code>wget https://www.sourceware.org/pub/bzip2/bzip2-latest.tar.gz
+tar -xzvf bzip2-latest.tar.gz
+cd bzip2-1.0.8
+
+make -f Makefile-libbz2_so
+make install PREFIX=$LOCAL_LIBS
+cp -a libbz2.so* $LOCAL_LIBS/lib/
+ln -s $LOCAL_LIBS/lib/libbz2.so.1.0 $LOCAL_LIBS/lib/libbz2.so
+cd ..</code></pre>
+<p>Boost</p>
+<pre><code>wget http://sourceforge.net/projects/boost/files/boost/1.60.0/boost_1_60_0.tar.gz
+tar xzf boost_1_60_0.tar.gz
+cd boost_1_60_0
+
+./bootstrap.sh
+./b2 cxxflags=&quot;-std=c++11&quot; include=&quot;$LOCAL_LIBS/include/&quot; search=&quot;$LOCAL_LIBS/lib/&quot; link=shared threading=multi install --prefix=$LOCAL_LIBS
+cd ..</code></pre>
+<p>DropEst</p>
+<pre><code>git clone https://github.com/hms-dbmi/dropEst.git
+mkdir dropEst/build
+cd dropEst/build
+cmake -D CMAKE_INSTALL_PREFIX=&quot;/data/users/cqiao/share/dropesttool&quot; .. &amp;&amp; make
+export PATH=$PATH:/data/users/cqiao/share/dropesttool/bin/</code></pre>
+</div>
+</div>
+<div id="preprocessing-pipline" class="section level2" number="7.3">
+<h2><span class="header-section-number">7.3</span> Preprocessing pipline</h2>
+<div id="download-and-split-pancreas-e15_5-fastq-data-from-ncbi" class="section level3" number="7.3.1">
+<h3><span class="header-section-number">7.3.1</span> 1. Download and split Pancreas E15_5 fastq data from NCBI:</h3>
+<pre><code>fasterq-dump --split-files SRR9201794</code></pre>
+<p>Result would be:</p>
+<pre><code>SRR9201794_1.fastq SRR9201794_2.fastq</code></pre>
+<p>Rename files for cellranger:</p>
+<pre><code>mv SRR9201794_1.fastq SRR9201794_S1_L001_R1_001.fastq
+mv SRR9201794_2.fastq SRR9201794_S1_L001_R2_001.fastq</code></pre>
+<p>Optinally, move them to a folder <code>/data/users/cqiao/share/E15_5</code></p>
+</div>
+<div id="run-cellranger-count-referring-to-the-mouse-refdata" class="section level3" number="7.3.2">
+<h3><span class="header-section-number">7.3.2</span> 2. Run Cellranger count, referring to the mouse refdata</h3>
+<pre><code>cellranger count --id=pancreas_E15_5 \
+--fastqs=/data/users/cqiao/share/E15_5 \
+--transcriptome=/data/users/cqiao/share/cellranger-6.0.2/gtfs/refdata-gex-mm10-2020-A
+</code></pre>
+<p><code>--id</code> specifies the output dir, the output root.</p>
+</div>
+<div id="run-velocytodropest." class="section level3" number="7.3.3">
+<h3><span class="header-section-number">7.3.3</span> 3. Run Velocyto/Dropest.</h3>
+<p>prepare some variables to store path names, so that afterwards we do not need to use the long names.</p>
+<pre><code># Barchodes if cellranger output files: 
+gzip -d ./pancreas_E15_5/outs/filtered_feature_bc_matrix/barcodes.tsv.gz
+BARCODES=./pancreas_E15_5/outs/filtered_feature_bc_matrix/barcodes.tsv
+
+# Bam file
+BAMFILE=./pancreas_E15_5/outs/possorted_genome_bam.bam
+
+# transcriptome reference
+GTF=/data/users/cqiao/share/cellranger-6.0.2/gtfs/refdata-gex-mm10-2020-A/genes/genes.gtf</code></pre>
 <ul>
-<li>Cell interaction with ligand and receptors</li>
-<li>Pseudo-time and trajectory analysis</li>
-<li>RNA velocity</li>
-</ul>
-<p><strong>Cellular genetics</strong></p>
-<ul>
-<li>mtDNA variants for lineage inference from single-cell omics</li>
-<li>Copy number variation estimation from scRNA-seq</li>
-<li>Nuclear SNV analysis in single-cell omics</li>
+<li><p><strong>Velocyto</strong></p>
+<pre><code>velocyto run -b $BARCODES -o ./velocyto_res $BAMFILE $GTF
+</code></pre>
+<p>Results are stored in <code>./velocyto_res/XXX.loom</code></p></li>
+<li><p><strong>Dropest</strong></p>
+<p>Requires a .xml configuration file specifying the platform settings for sequencing data. Template configure file could be downloaded <a href="https://github.com/kharchenkolab/dropEst/tree/master/configs">here</a>. We shall use 10x.xml for Pancreas E15_5 dataset. Replace line 64 with the path of 10x.xml:</p>
+<pre><code>...
+       &lt;barcodes_file&gt;./pancreas_E15_5/outs/filtered_feature_bc_matrix/barcodes.tsv&lt;/barcodes_file&gt;
+...</code></pre>
+<p>Then execute the following code:</p>
+<pre><code>$bin/dropest -f -V -g $GTF -c $config_file $BAMFILE</code></pre>
+<p>Results are stored in file <code>./pancreas_E15_5/dropEst/cell.counts.matrices.rds</code>.</p></li>
 </ul>
 
+</div>
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-
-<a href="env-pre.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="mtdna-variants-for-lineage-inference-from-single-cell-omics.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="references.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
