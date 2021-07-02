@@ -4,27 +4,23 @@
 
 Cellsnp-lite is designed to perform efficient pileup and genotyping for both bulk and single cell sequencing data. It could be easily installed via [conda](#conda_install) with `conda install -c bioconda -c conda-forge cellsnp-lite`.  
 
-In this example, we use cellsnp-lite to pileup chrM on a SMART-seq2 dataset, whose output could be used as inputs of MQuad model for mitochondrial clone analysis.
+We use a SMART-seq2 dataset as an example, which were packed into `joxm.bam.all.77.tar.gz` (77 bam files, ~3.5G in total; [McCarthy et al, 2020](https://www.nature.com/articles/s41592-020-0766-3)). 
 
-**Note that we have uploaded the pileup results of cellsnp-lite to [sgcellworkshop](https://sourceforge.net/projects/sgcellworkshop/files/mtDNA_analysis/) repo on sourceforge. You can directly download the `joxm.hg19.cellsnp.mode2b.tar.gz` file and then run `tar zxvf joxm.hg19.cellsnp.mode2b.tar.gz` to unpack it.**  
+First, please download `joxm.bam.all.77.tar.gz`, `joxm.hg19.bam.lst` and `joxm.sample.lst` from [sgcellworkshop](https://sourceforge.net/projects/sgcellworkshop/files/mtDNA_analysis/) repo on sourceforge. Put the three files in the same directory. Then unpack the bam files with command `tar zxvf joxm.bam.all.77.tar.gz`. The bam files, together with the `.bai` files, should be in the `sort/` directory.  
 
-If you want to repeat the pileup processing, please follow the steps below.
+### Pileup without given SNPs
 
-- Step 1. Download the bam files
+In this example, we use cellsnp-lite to pileup chrM on the bam files without a given SNP list (in denovo mode), whose output could be used as inputs of MQuad model for mitochondrial clone analysis.
 
-The 77 SMART-seq2 bam files (~3.5G) were packed into one file `joxm.bam.all.77.tar.gz`. This file, together with another two files `joxm.hg19.bam.lst` and `joxm.sample.lst`, should be downloaded from [sgcellworkshop](https://sourceforge.net/projects/sgcellworkshop/files/mtDNA_analysis/) repo on sourceforge. Please put the three files in the same directory.  
+Note that the pileup results `joxm.hg19.cellsnp.mode2b.tar.gz` can be downloaded from [sgcellworkshop](https://sourceforge.net/projects/sgcellworkshop/files/mtDNA_analysis/) repo on sourceforge and then unpacked with command `tar zxvf joxm.hg19.cellsnp.mode2b.tar.gz`.
 
-- Step 2. Unpack the bam files
-
-Unpack the bam files with `tar zxvf joxm.bam.all.77.tar.gz`. The bam files, together with the `.bai` files, should be in the `sort/` directory.  
-
-- Step 3. Run cellsnp-lite
+The command line to generate the results is,
 
 ```{shell}
 cellsnp-lite      \
   -S ./joxm.hg19.bam.lst    \
   -i ./joxm.sample.lst      \
-  -O ./cellsnp              \
+  -O ./cellsnp2b            \
   --chrom MT        \
   --cellTAG None    \
   --UMItag None     \
@@ -34,6 +30,30 @@ cellsnp-lite      \
   --gzip
 ```
 
+### Pileup with given SNPs
+
+This time, we use cellsnp-lite to pileup given SNPs on the bam files. The 112 SNPs, stored in `joxm.hg19.somatic.sites.vcf`, were somatic SNPs called in ([McCarthy et al, 2020](https://www.nature.com/articles/s41592-020-0766-3)) and can be downloaded from [sgcellworkshop](https://sourceforge.net/projects/sgcellworkshop/files/mtDNA_analysis/) repo. 
+
+Note that the pileup results `joxm.hg19.somatic.cellsnp.mode1b.tar.gz` can be downloaded from [sgcellworkshop](https://sourceforge.net/projects/sgcellworkshop/files/mtDNA_analysis/) repo on sourceforge and then unpacked with command `tar zxvf joxm.hg19.somatic.cellsnp.mode1b.tar.gz`.
+
+The command line to generate the results is,
+
+```{shell}
+cellsnp-lite      \
+  -S ./joxm.hg19.bam.lst    \
+  -i ./joxm.sample.lst      \
+  -O ./cellsnp1b            \
+  -R ./joxm.hg19.somatic.sites.vcf \
+  --cellTAG None    \
+  --UMItag None     \
+  --minCOUNT 0     \
+  --minMAF 0        \
+  -p 4              \
+  --genotype        \
+  --gzip
+```
+
 ## Clonal analysis with MQuad
 
 We have finished a nice book.
+
