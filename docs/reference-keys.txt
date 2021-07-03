@@ -1,5 +1,5 @@
 introduction
-contents-of-module-4
+contents-of-this-part
 other-modules-of-this-workshop
 env-pre
 quick-summary

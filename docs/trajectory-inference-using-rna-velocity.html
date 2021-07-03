@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 4 Trajectory Inference using RNA Velocity | HKU Single-cell Workshop (Module 4)</title>
+  <title>Chapter 4 Trajectory Inference using RNA Velocity | HKU Single-cell Workshop (Modules 4.2 &amp; 5)</title>
   <meta name="description" content="Cell trajectory inference; Cellular genetic analysis" />
   <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 4 Trajectory Inference using RNA Velocity | HKU Single-cell Workshop (Module 4)" />
+  <meta property="og:title" content="Chapter 4 Trajectory Inference using RNA Velocity | HKU Single-cell Workshop (Modules 4.2 &amp; 5)" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 4 Trajectory Inference using RNA Velocity | HKU Single-cell Workshop (Module 4)" />
+  <meta name="twitter:title" content="Chapter 4 Trajectory Inference using RNA Velocity | HKU Single-cell Workshop (Modules 4.2 &amp; 5)" />
   
   <meta name="twitter:description" content="Cell trajectory inference; Cellular genetic analysis" />
   
@@ -33,7 +33,7 @@
   
 <link rel="prev" href="pseudo-time-and-trajectory-analysis.html"/>
 <link rel="next" href="copy-number-variation-estimation-from-scrna-seq.html"/>
-<script src="libs/header-attrs-2.8/header-attrs.js"></script>
+<script src="libs/header-attrs-2.9/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -139,7 +139,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="divider"></li>
 <li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a>
 <ul>
-<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#contents-of-module-4"><i class="fa fa-check"></i><b>1.1</b> Contents of Module 4</a></li>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#contents-of-this-part"><i class="fa fa-check"></i><b>1.1</b> Contents of this part</a></li>
 <li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#other-modules-of-this-workshop"><i class="fa fa-check"></i><b>1.2</b> Other modules of this workshop</a></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="env-pre.html"><a href="env-pre.html"><i class="fa fa-check"></i><b>2</b> Prerequisites</a>
@@ -231,7 +231,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">HKU Single-cell Workshop (Module 4)</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">HKU Single-cell Workshop (Modules 4.2 &amp; 5)</a>
           </h1>
         </div>
 
@@ -405,7 +405,7 @@ pip install numba==0.51</code></pre>
 <h2><span class="header-section-number">4.9</span> Velocity in cycling progenitors</h2>
 <p>The cell cycle detected by RNA velocity, is biologically affirmed by cell cycle scores (standardized scores of mean expression levels of phase marker genes).</p>
 <div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="trajectory-inference-using-rna-velocity.html#cb42-1" aria-hidden="true" tabindex="-1"></a>scv<span class="sc">$</span>tl<span class="sc">$</span><span class="fu">score_genes_cell_cycle</span>(adata)</span>
-<span id="cb42-2"><a href="trajectory-inference-using-rna-velocity.html#cb42-2" aria-hidden="true" tabindex="-1"></a>scv<span class="sc">$</span>pl<span class="sc">$</span><span class="fu">scatter</span>(adata, <span class="at">color_gradients =</span> <span class="fu">c</span>(<span class="st">&quot;S_score&quot;</span>, <span class="st">&quot;G2M_score&quot;</span>), <span class="at">smooth =</span> <span class="cn">TRUE</span>, <span class="at">perc =</span> <span class="fu">c</span>(<span class="dv">5</span>, <span class="dv">95</span>), <span class="at">show=</span><span class="cn">FALSE</span>)</span></code></pre></div>
+<span id="cb42-2"><a href="trajectory-inference-using-rna-velocity.html#cb42-2" aria-hidden="true" tabindex="-1"></a>scv<span class="sc">$</span>pl<span class="sc">$</span><span class="fu">scatter</span>(adata, <span class="at">color_gradients =</span> <span class="fu">c</span>(<span class="st">&quot;S_score&quot;</span>, <span class="st">&quot;G2M_score&quot;</span>), <span class="at">smooth =</span> <span class="cn">TRUE</span>, <span class="at">perc =</span> <span class="fu">c</span>(<span class="dv">5</span>, <span class="dv">95</span>), <span class="at">legend_loc=</span><span class="st">&quot;upper center&quot;</span>,  <span class="at">show=</span><span class="cn">FALSE</span>)</span></code></pre></div>
 <pre><code>## AxesSubplot(0.18,0.15;0.78x0.76)</code></pre>
 <div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="trajectory-inference-using-rna-velocity.html#cb44-1" aria-hidden="true" tabindex="-1"></a>plt<span class="sc">$</span><span class="fu">savefig</span>(<span class="st">&#39;images/RNA-velo-fig9.png&#39;</span>)</span></code></pre></div>
 <div class="figure">
@@ -442,11 +442,11 @@ scv$pl$heatmap(adata, var_names = names(topgenes_vals), tkey = &#39;latent_time&
 <h2><span class="header-section-number">4.11</span> Session Info</h2>
 <div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="trajectory-inference-using-rna-velocity.html#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sessionInfo</span>()</span></code></pre></div>
 <pre><code>## R version 4.1.0 (2021-05-18)
-## Platform: x86_64-apple-darwin13.4.0 (64-bit)
+## Platform: x86_64-apple-darwin17.0 (64-bit)
 ## Running under: macOS Big Sur 11.4
 ## 
 ## Matrix products: default
-## LAPACK: /Users/yuanhua/anaconda3/envs/r_env41/lib/libopenblasp-r0.3.15.dylib
+## LAPACK: /Library/Frameworks/R.framework/Versions/4.1/Resources/lib/libRlapack.dylib
 ## 
 ## locale:
 ## [1] en_US.UTF-8/en_US.UTF-8/en_US.UTF-8/C/en_US.UTF-8/en_US.UTF-8
@@ -459,15 +459,13 @@ scv$pl$heatmap(adata, var_names = names(topgenes_vals), tkey = &#39;latent_time&
 ## [1] reticulate_1.20
 ## 
 ## loaded via a namespace (and not attached):
-##  [1] Rcpp_1.0.6        rstudioapi_0.13   knitr_1.33       
-##  [4] magrittr_2.0.1    lattice_0.20-44   R6_2.5.0         
-##  [7] rlang_0.4.11      stringr_1.4.0     highr_0.9        
-## [10] tools_4.1.0       grid_4.1.0        xfun_0.23        
-## [13] png_0.1-7         jquerylib_0.1.4   htmltools_0.5.1.1
-## [16] yaml_2.2.1        digest_0.6.27     bookdown_0.22    
-## [19] Matrix_1.3-4      sass_0.4.0        evaluate_0.14    
-## [22] rmarkdown_2.8     stringi_1.6.2     compiler_4.1.0   
-## [25] bslib_0.2.5.1     jsonlite_1.7.2</code></pre>
+##  [1] Rcpp_1.0.6        bookdown_0.22     lattice_0.20-44  
+##  [4] png_0.1-7         digest_0.6.27     grid_4.1.0       
+##  [7] jsonlite_1.7.2    magrittr_2.0.1    evaluate_0.14    
+## [10] highr_0.9         rlang_0.4.11      stringi_1.6.2    
+## [13] Matrix_1.3-3      rmarkdown_2.9     tools_4.1.0      
+## [16] stringr_1.4.0     xfun_0.24         yaml_2.2.1       
+## [19] compiler_4.1.0    htmltools_0.5.1.1 knitr_1.33</code></pre>
 
 </div>
 </div>

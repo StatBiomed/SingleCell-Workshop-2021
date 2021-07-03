@@ -1,5 +1,5 @@
 --- 
-title: "HKU Single-cell Workshop (Module 4)"
+title: "HKU Single-cell Workshop (Modules 4.2 & 5)"
 author: "Yuanhua Lab: Mingze Gao, Rongting Huang, Xianjie Huang, Aaron Kwok, Zhuoxuan Li, Chen Qiao, Yuanhua Huang"
 date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
@@ -12,23 +12,22 @@ description: "Cell trajectory inference; Cellular genetic analysis"
 
 # Introduction
 
-This sub-tutorial book is for the Module 4 of [Single-cell Workshop at HKU](https://statbiomed.github.io/HKU-single-cell-workshop/).
+This sub-tutorial book is for the Modules 4.2 and 5 of [Single-cell Workshop at HKU](https://statbiomed.github.io/HKU-single-cell-workshop/).
 
-You can fork or download this tutorial book (and re-run it) from this GitHub repo: https://github.com/Rongtingting/SingleCell-Workshop-2021
+You can fork or download this tutorial book (and re-run it) from this GitHub repo: https://github.com/StatBiomed/SingleCell-Workshop-2021
 
 
-## Contents of Module 4
-**Cell trajectory inference**
+## Contents of this part
 
-- Overview of trajectory inference
-- RNA velocity
-- Diffusion pseudotime
+- **Module 4.2: Cell trajectory inference**
+  - Overview of trajectory inference
+  - RNA velocity
+  - Diffusion pseudotime
 
-**Cellular genetic analysis**
-
-- SNV analysis in single-cell omics
-- mtDNA variants for lineage tracing
-- Copy number variation analysis from scRNA-seq
+- **Module 5: Cellular genetic analysis**
+  - SNV analysis in single-cell omics
+  - mtDNA variants for lineage tracing
+  - Copy number variation analysis from scRNA-seq
 
 
 ## Other modules of this workshop
@@ -40,9 +39,14 @@ You can fork or download this tutorial book (and re-run it) from this GitHub rep
 
   Materials will come soon...
   
-- Module 3: Cell clustering, annotation and interaction (by Dr Asif Javed)
+- Module 3: Cell clustering and annotation (by Dr Asif Javed)
 
   Materials will come soon...
+
+- Module 4.1: Cell interaction (by Dr Asif Javed)
+
+  Materials will come soon...
+
 
 
 **Note**: to build this book, use the following script in R:
