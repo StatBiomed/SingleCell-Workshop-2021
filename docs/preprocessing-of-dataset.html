@@ -4,27 +4,27 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 7 Preprocessing of dataset | SingleCell Workshop</title>
-  <meta name="description" content="Cell differentiation trajectory; Cellular genetics." />
+  <title>Chapter 7 Preprocessing of dataset | HKU Single-cell Workshop (Module 4)</title>
+  <meta name="description" content="Cell trajectory inference; Cellular genetic analysis" />
   <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 7 Preprocessing of dataset | SingleCell Workshop" />
+  <meta property="og:title" content="Chapter 7 Preprocessing of dataset | HKU Single-cell Workshop (Module 4)" />
   <meta property="og:type" content="book" />
   
   
-  <meta property="og:description" content="Cell differentiation trajectory; Cellular genetics." />
+  <meta property="og:description" content="Cell trajectory inference; Cellular genetic analysis" />
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 7 Preprocessing of dataset | SingleCell Workshop" />
+  <meta name="twitter:title" content="Chapter 7 Preprocessing of dataset | HKU Single-cell Workshop (Module 4)" />
   
-  <meta name="twitter:description" content="Cell differentiation trajectory; Cellular genetics." />
+  <meta name="twitter:description" content="Cell trajectory inference; Cellular genetic analysis" />
   
 
-<meta name="author" content="Yuanhua lab" />
+<meta name="author" content="Yuanhua Lab: Mingze Gao, Rongting Huang, Xianjie Huang, Aaron Kwok, Zhuoxuan Li, Chen Qiao, Yuanhua Huang" />
 
 
-<meta name="date" content="2021-07-02" />
+<meta name="date" content="2021-07-03" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -59,6 +59,7 @@
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
 pre.sourceCode { margin: 0; }
 @media screen {
@@ -136,28 +137,46 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><a href="./">SingleCell Workshop 2021</a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#contents-of-module-4"><i class="fa fa-check"></i><b>1.1</b> Contents of Module 4</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#other-modules-of-this-workshop"><i class="fa fa-check"></i><b>1.2</b> Other modules of this workshop</a></li>
+</ul></li>
 <li class="chapter" data-level="2" data-path="env-pre.html"><a href="env-pre.html"><i class="fa fa-check"></i><b>2</b> Prerequisites</a>
 <ul>
-<li class="chapter" data-level="2.1" data-path="env-pre.html"><a href="env-pre.html#wsl_install"><i class="fa fa-check"></i><b>2.1</b> (Optional) Install Windows Subsystem for Linux</a>
+<li class="chapter" data-level="2.1" data-path="env-pre.html"><a href="env-pre.html#quick-summary"><i class="fa fa-check"></i><b>2.1</b> Quick summary</a></li>
+<li class="chapter" data-level="2.2" data-path="env-pre.html"><a href="env-pre.html#wsl_install"><i class="fa fa-check"></i><b>2.2</b> (Optional) Install Windows Subsystem for Linux</a>
 <ul>
-<li class="chapter" data-level="2.1.1" data-path="env-pre.html"><a href="env-pre.html#what-is-the-windows-subsystem-for-linux-wsl"><i class="fa fa-check"></i><b>2.1.1</b> What is the Windows Subsystem for Linux (WSL)?</a></li>
-<li class="chapter" data-level="2.1.2" data-path="env-pre.html"><a href="env-pre.html#manual-installation-steps"><i class="fa fa-check"></i><b>2.1.2</b> Manual Installation Steps</a></li>
+<li class="chapter" data-level="2.2.1" data-path="env-pre.html"><a href="env-pre.html#what-is-the-windows-subsystem-for-linux-wsl"><i class="fa fa-check"></i><b>2.2.1</b> What is the Windows Subsystem for Linux (WSL)?</a></li>
+<li class="chapter" data-level="2.2.2" data-path="env-pre.html"><a href="env-pre.html#manual-installation-steps"><i class="fa fa-check"></i><b>2.2.2</b> Manual Installation Steps</a></li>
 </ul></li>
-<li class="chapter" data-level="2.2" data-path="env-pre.html"><a href="env-pre.html#conda_install"><i class="fa fa-check"></i><b>2.2</b> Install Conda Environment</a>
+<li class="chapter" data-level="2.3" data-path="env-pre.html"><a href="env-pre.html#conda_install"><i class="fa fa-check"></i><b>2.3</b> Install Conda Environment</a>
 <ul>
-<li class="chapter" data-level="2.2.1" data-path="env-pre.html"><a href="env-pre.html#what-is-conda"><i class="fa fa-check"></i><b>2.2.1</b> What is conda?</a></li>
-<li class="chapter" data-level="2.2.2" data-path="env-pre.html"><a href="env-pre.html#conda_install_windows"><i class="fa fa-check"></i><b>2.2.2</b> Installation on Windows</a></li>
-<li class="chapter" data-level="2.2.3" data-path="env-pre.html"><a href="env-pre.html#conda_install_linux"><i class="fa fa-check"></i><b>2.2.3</b> Installation on Linux</a></li>
-<li class="chapter" data-level="2.2.4" data-path="env-pre.html"><a href="env-pre.html#conda_install_mac"><i class="fa fa-check"></i><b>2.2.4</b> Installation on macOS</a></li>
+<li class="chapter" data-level="2.3.1" data-path="env-pre.html"><a href="env-pre.html#what-is-conda"><i class="fa fa-check"></i><b>2.3.1</b> What is conda?</a></li>
+<li class="chapter" data-level="2.3.2" data-path="env-pre.html"><a href="env-pre.html#conda_install_windows"><i class="fa fa-check"></i><b>2.3.2</b> Installation on Windows</a></li>
+<li class="chapter" data-level="2.3.3" data-path="env-pre.html"><a href="env-pre.html#conda_install_linux"><i class="fa fa-check"></i><b>2.3.3</b> Installation on Linux</a></li>
+<li class="chapter" data-level="2.3.4" data-path="env-pre.html"><a href="env-pre.html#conda_install_mac"><i class="fa fa-check"></i><b>2.3.4</b> Installation on macOS</a></li>
 </ul></li>
-<li class="chapter" data-level="2.3" data-path="env-pre.html"><a href="env-pre.html#other-preparation"><i class="fa fa-check"></i><b>2.3</b> Other Preparation</a>
+<li class="chapter" data-level="2.4" data-path="env-pre.html"><a href="env-pre.html#other-preparation"><i class="fa fa-check"></i><b>2.4</b> Other Preparation</a>
 <ul>
-<li class="chapter" data-level="2.3.1" data-path="env-pre.html"><a href="env-pre.html#conda-configuration"><i class="fa fa-check"></i><b>2.3.1</b> Conda Configuration</a></li>
+<li class="chapter" data-level="2.4.1" data-path="env-pre.html"><a href="env-pre.html#conda-configuration"><i class="fa fa-check"></i><b>2.4.1</b> Conda Configuration</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="pseudo-time-and-trajectory-analysis.html"><a href="pseudo-time-and-trajectory-analysis.html"><i class="fa fa-check"></i><b>3</b> Pseudo-time and trajectory analysis</a></li>
-<li class="chapter" data-level="4" data-path="rna-velocity.html"><a href="rna-velocity.html"><i class="fa fa-check"></i><b>4</b> RNA velocity</a></li>
+<li class="chapter" data-level="4" data-path="trajectory-inference-using-rna-velocity.html"><a href="trajectory-inference-using-rna-velocity.html"><i class="fa fa-check"></i><b>4</b> Trajectory Inference using RNA Velocity</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="trajectory-inference-using-rna-velocity.html"><a href="trajectory-inference-using-rna-velocity.html#use-scvelo-package-within-r"><i class="fa fa-check"></i><b>4.1</b> Use scVelo package within R</a></li>
+<li class="chapter" data-level="4.2" data-path="trajectory-inference-using-rna-velocity.html"><a href="trajectory-inference-using-rna-velocity.html#endocrine-pancreas"><i class="fa fa-check"></i><b>4.2</b> Endocrine Pancreas</a></li>
+<li class="chapter" data-level="4.3" data-path="trajectory-inference-using-rna-velocity.html"><a href="trajectory-inference-using-rna-velocity.html#data-preprocessing"><i class="fa fa-check"></i><b>4.3</b> Data Preprocessing</a></li>
+<li class="chapter" data-level="4.4" data-path="trajectory-inference-using-rna-velocity.html"><a href="trajectory-inference-using-rna-velocity.html#pseudotime-based-on-diffusion-map"><i class="fa fa-check"></i><b>4.4</b> Pseudotime based on Diffusion Map</a></li>
+<li class="chapter" data-level="4.5" data-path="trajectory-inference-using-rna-velocity.html"><a href="trajectory-inference-using-rna-velocity.html#compute-velocity-and-velocity-graph"><i class="fa fa-check"></i><b>4.5</b> Compute velocity and velocity graph</a></li>
+<li class="chapter" data-level="4.6" data-path="trajectory-inference-using-rna-velocity.html"><a href="trajectory-inference-using-rna-velocity.html#diffusion-map-pseudotime-with-velocity"><i class="fa fa-check"></i><b>4.6</b> Diffusion-map Pseudotime with velocity</a></li>
+<li class="chapter" data-level="4.7" data-path="trajectory-inference-using-rna-velocity.html"><a href="trajectory-inference-using-rna-velocity.html#plot-results"><i class="fa fa-check"></i><b>4.7</b> Plot Results</a></li>
+<li class="chapter" data-level="4.8" data-path="trajectory-inference-using-rna-velocity.html"><a href="trajectory-inference-using-rna-velocity.html#interprete-velocity"><i class="fa fa-check"></i><b>4.8</b> Interprete Velocity</a></li>
+<li class="chapter" data-level="4.9" data-path="trajectory-inference-using-rna-velocity.html"><a href="trajectory-inference-using-rna-velocity.html#velocity-in-cycling-progenitors"><i class="fa fa-check"></i><b>4.9</b> Velocity in cycling progenitors</a></li>
+<li class="chapter" data-level="4.10" data-path="trajectory-inference-using-rna-velocity.html"><a href="trajectory-inference-using-rna-velocity.html#dynamical-mode-and-related-analysis"><i class="fa fa-check"></i><b>4.10</b> Dynamical Mode and related analysis</a></li>
+<li class="chapter" data-level="4.11" data-path="trajectory-inference-using-rna-velocity.html"><a href="trajectory-inference-using-rna-velocity.html#session-info"><i class="fa fa-check"></i><b>4.11</b> Session Info</a></li>
+</ul></li>
 <li class="chapter" data-level="5" data-path="copy-number-variation-estimation-from-scrna-seq.html"><a href="copy-number-variation-estimation-from-scrna-seq.html"><i class="fa fa-check"></i><b>5</b> Copy number variation estimation from scRNA-seq</a>
 <ul>
 <li class="chapter" data-level="5.1" data-path="copy-number-variation-estimation-from-scrna-seq.html"><a href="copy-number-variation-estimation-from-scrna-seq.html#method-infercnv"><i class="fa fa-check"></i><b>5.1</b> Method: inferCNV</a>
@@ -212,7 +231,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">SingleCell Workshop</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">HKU Single-cell Workshop (Module 4)</a>
           </h1>
         </div>
 
@@ -243,7 +262,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="installation-of-packagessoftwares" class="section level2" number="7.2">
 <h2><span class="header-section-number">7.2</span> Installation of packages/softwares</h2>
 <p>All the codes are executed on Linux commandline, lines starting with “#” are comments.
-My working path root is “/data/users/cqiao/share/”,
+My working path root is “/data/users/cqiao/share/,”
 you may change to any foler as you like.</p>
 <div id="sratool" class="section level3" number="7.2.1">
 <h3><span class="header-section-number">7.2.1</span> SRATool</h3>
@@ -478,6 +497,20 @@ gitbook.start({
 });
 </script>
 
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
 </body>
 
 </html>
