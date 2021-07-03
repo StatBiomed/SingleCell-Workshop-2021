@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 4 Trajectory Inference using RNA Velocity | HKU Single-cell Workshop (Module 4)</title>
+  <meta name="description" content="Cell trajectory inference; Cellular genetic analysis" />
+  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 4 Trajectory Inference using RNA Velocity | HKU Single-cell Workshop (Module 4)" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="Cell trajectory inference; Cellular genetic analysis" />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 4 Trajectory Inference using RNA Velocity | HKU Single-cell Workshop (Module 4)" />
+  
+  <meta name="twitter:description" content="Cell trajectory inference; Cellular genetic analysis" />
+  
+
+<meta name="author" content="Yuanhua Lab: Mingze Gao, Rongting Huang, Xianjie Huang, Aaron Kwok, Zhuoxuan Li, Chen Qiao, Yuanhua Huang" />
+
+
+<meta name="date" content="2021-07-03" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="pseudo-time-and-trajectory-analysis.html"/>
+<link rel="next" href="copy-number-variation-estimation-from-scrna-seq.html"/>
+<script src="libs/header-attrs-2.8/header-attrs.js"></script>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">SingleCell Workshop 2021</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#contents-of-module-4"><i class="fa fa-check"></i><b>1.1</b> Contents of Module 4</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#other-modules-of-this-workshop"><i class="fa fa-check"></i><b>1.2</b> Other modules of this workshop</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="env-pre.html"><a href="env-pre.html"><i class="fa fa-check"></i><b>2</b> Prerequisites</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="env-pre.html"><a href="env-pre.html#quick-summary"><i class="fa fa-check"></i><b>2.1</b> Quick summary</a></li>
+<li class="chapter" data-level="2.2" data-path="env-pre.html"><a href="env-pre.html#wsl_install"><i class="fa fa-check"></i><b>2.2</b> (Optional) Install Windows Subsystem for Linux</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="env-pre.html"><a href="env-pre.html#what-is-the-windows-subsystem-for-linux-wsl"><i class="fa fa-check"></i><b>2.2.1</b> What is the Windows Subsystem for Linux (WSL)?</a></li>
+<li class="chapter" data-level="2.2.2" data-path="env-pre.html"><a href="env-pre.html#manual-installation-steps"><i class="fa fa-check"></i><b>2.2.2</b> Manual Installation Steps</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="env-pre.html"><a href="env-pre.html#conda_install"><i class="fa fa-check"></i><b>2.3</b> Install Conda Environment</a>
+<ul>
+<li class="chapter" data-level="2.3.1" data-path="env-pre.html"><a href="env-pre.html#what-is-conda"><i class="fa fa-check"></i><b>2.3.1</b> What is conda?</a></li>
+<li class="chapter" data-level="2.3.2" data-path="env-pre.html"><a href="env-pre.html#conda_install_windows"><i class="fa fa-check"></i><b>2.3.2</b> Installation on Windows</a></li>
+<li class="chapter" data-level="2.3.3" data-path="env-pre.html"><a href="env-pre.html#conda_install_linux"><i class="fa fa-check"></i><b>2.3.3</b> Installation on Linux</a></li>
+<li class="chapter" data-level="2.3.4" data-path="env-pre.html"><a href="env-pre.html#conda_install_mac"><i class="fa fa-check"></i><b>2.3.4</b> Installation on macOS</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="env-pre.html"><a href="env-pre.html#other-preparation"><i class="fa fa-check"></i><b>2.4</b> Other Preparation</a>
+<ul>
+<li class="chapter" data-level="2.4.1" data-path="env-pre.html"><a href="env-pre.html#conda-configuration"><i class="fa fa-check"></i><b>2.4.1</b> Conda Configuration</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="pseudo-time-and-trajectory-analysis.html"><a href="pseudo-time-and-trajectory-analysis.html"><i class="fa fa-check"></i><b>3</b> Pseudo-time and trajectory analysis</a></li>
+<li class="chapter" data-level="4" data-path="trajectory-inference-using-rna-velocity.html"><a href="trajectory-inference-using-rna-velocity.html"><i class="fa fa-check"></i><b>4</b> Trajectory Inference using RNA Velocity</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="trajectory-inference-using-rna-velocity.html"><a href="trajectory-inference-using-rna-velocity.html#use-scvelo-package-within-r"><i class="fa fa-check"></i><b>4.1</b> Use scVelo package within R</a></li>
+<li class="chapter" data-level="4.2" data-path="trajectory-inference-using-rna-velocity.html"><a href="trajectory-inference-using-rna-velocity.html#endocrine-pancreas"><i class="fa fa-check"></i><b>4.2</b> Endocrine Pancreas</a></li>
+<li class="chapter" data-level="4.3" data-path="trajectory-inference-using-rna-velocity.html"><a href="trajectory-inference-using-rna-velocity.html#data-preprocessing"><i class="fa fa-check"></i><b>4.3</b> Data Preprocessing</a></li>
+<li class="chapter" data-level="4.4" data-path="trajectory-inference-using-rna-velocity.html"><a href="trajectory-inference-using-rna-velocity.html#pseudotime-based-on-diffusion-map"><i class="fa fa-check"></i><b>4.4</b> Pseudotime based on Diffusion Map</a></li>
+<li class="chapter" data-level="4.5" data-path="trajectory-inference-using-rna-velocity.html"><a href="trajectory-inference-using-rna-velocity.html#compute-velocity-and-velocity-graph"><i class="fa fa-check"></i><b>4.5</b> Compute velocity and velocity graph</a></li>
+<li class="chapter" data-level="4.6" data-path="trajectory-inference-using-rna-velocity.html"><a href="trajectory-inference-using-rna-velocity.html#diffusion-map-pseudotime-with-velocity"><i class="fa fa-check"></i><b>4.6</b> Diffusion-map Pseudotime with velocity</a></li>
+<li class="chapter" data-level="4.7" data-path="trajectory-inference-using-rna-velocity.html"><a href="trajectory-inference-using-rna-velocity.html#plot-results"><i class="fa fa-check"></i><b>4.7</b> Plot Results</a></li>
+<li class="chapter" data-level="4.8" data-path="trajectory-inference-using-rna-velocity.html"><a href="trajectory-inference-using-rna-velocity.html#interprete-velocity"><i class="fa fa-check"></i><b>4.8</b> Interprete Velocity</a></li>
+<li class="chapter" data-level="4.9" data-path="trajectory-inference-using-rna-velocity.html"><a href="trajectory-inference-using-rna-velocity.html#velocity-in-cycling-progenitors"><i class="fa fa-check"></i><b>4.9</b> Velocity in cycling progenitors</a></li>
+<li class="chapter" data-level="4.10" data-path="trajectory-inference-using-rna-velocity.html"><a href="trajectory-inference-using-rna-velocity.html#dynamical-mode-and-related-analysis"><i class="fa fa-check"></i><b>4.10</b> Dynamical Mode and related analysis</a></li>
+<li class="chapter" data-level="4.11" data-path="trajectory-inference-using-rna-velocity.html"><a href="trajectory-inference-using-rna-velocity.html#session-info"><i class="fa fa-check"></i><b>4.11</b> Session Info</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="copy-number-variation-estimation-from-scrna-seq.html"><a href="copy-number-variation-estimation-from-scrna-seq.html"><i class="fa fa-check"></i><b>5</b> Copy number variation estimation from scRNA-seq</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="copy-number-variation-estimation-from-scrna-seq.html"><a href="copy-number-variation-estimation-from-scrna-seq.html#method-infercnv"><i class="fa fa-check"></i><b>5.1</b> Method: inferCNV</a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="copy-number-variation-estimation-from-scrna-seq.html"><a href="copy-number-variation-estimation-from-scrna-seq.html#install-infercnv"><i class="fa fa-check"></i><b>5.1.1</b> install inferCNV</a></li>
+<li class="chapter" data-level="5.1.2" data-path="copy-number-variation-estimation-from-scrna-seq.html"><a href="copy-number-variation-estimation-from-scrna-seq.html#getting-started"><i class="fa fa-check"></i><b>5.1.2</b> getting started</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="copy-number-variation-estimation-from-scrna-seq.html"><a href="copy-number-variation-estimation-from-scrna-seq.html#application-on-tnbc1"><i class="fa fa-check"></i><b>5.2</b> Application on TNBC1</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="copy-number-variation-estimation-from-scrna-seq.html"><a href="copy-number-variation-estimation-from-scrna-seq.html#data-description"><i class="fa fa-check"></i><b>5.2.1</b> data description</a></li>
+<li class="chapter" data-level="5.2.2" data-path="copy-number-variation-estimation-from-scrna-seq.html"><a href="copy-number-variation-estimation-from-scrna-seq.html#run-infercnv"><i class="fa fa-check"></i><b>5.2.2</b> run inferCNV</a></li>
+<li class="chapter" data-level="5.2.3" data-path="copy-number-variation-estimation-from-scrna-seq.html"><a href="copy-number-variation-estimation-from-scrna-seq.html#infercnv-result"><i class="fa fa-check"></i><b>5.2.3</b> inferCNV result</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="copy-number-variation-estimation-from-scrna-seq.html"><a href="copy-number-variation-estimation-from-scrna-seq.html#ref"><i class="fa fa-check"></i><b>5.3</b> ref</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="mtdna-variants-for-lineage-inference-from-single-cell-omics.html"><a href="mtdna-variants-for-lineage-inference-from-single-cell-omics.html"><i class="fa fa-check"></i><b>6</b> mtDNA variants for lineage inference from single-cell omics</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="mtdna-variants-for-lineage-inference-from-single-cell-omics.html"><a href="mtdna-variants-for-lineage-inference-from-single-cell-omics.html#pileup-with-cellsnp-lite"><i class="fa fa-check"></i><b>6.1</b> Pileup with cellsnp-lite</a>
+<ul>
+<li class="chapter" data-level="6.1.1" data-path="mtdna-variants-for-lineage-inference-from-single-cell-omics.html"><a href="mtdna-variants-for-lineage-inference-from-single-cell-omics.html#pileup-without-given-snps"><i class="fa fa-check"></i><b>6.1.1</b> Pileup without given SNPs</a></li>
+<li class="chapter" data-level="6.1.2" data-path="mtdna-variants-for-lineage-inference-from-single-cell-omics.html"><a href="mtdna-variants-for-lineage-inference-from-single-cell-omics.html#pileup-with-given-snps"><i class="fa fa-check"></i><b>6.1.2</b> Pileup with given SNPs</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="mtdna-variants-for-lineage-inference-from-single-cell-omics.html"><a href="mtdna-variants-for-lineage-inference-from-single-cell-omics.html#clonal-analysis-with-mquad"><i class="fa fa-check"></i><b>6.2</b> Clonal analysis with MQuad</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="preprocessing-of-dataset.html"><a href="preprocessing-of-dataset.html"><i class="fa fa-check"></i><b>7</b> Preprocessing of dataset</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="preprocessing-of-dataset.html"><a href="preprocessing-of-dataset.html#list-of-packages-aligned-in-pipeline"><i class="fa fa-check"></i><b>7.1</b> List of packages aligned in pipeline:</a></li>
+<li class="chapter" data-level="7.2" data-path="preprocessing-of-dataset.html"><a href="preprocessing-of-dataset.html#installation-of-packagessoftwares"><i class="fa fa-check"></i><b>7.2</b> Installation of packages/softwares</a>
+<ul>
+<li class="chapter" data-level="7.2.1" data-path="preprocessing-of-dataset.html"><a href="preprocessing-of-dataset.html#sratool"><i class="fa fa-check"></i><b>7.2.1</b> SRATool</a></li>
+<li class="chapter" data-level="7.2.2" data-path="preprocessing-of-dataset.html"><a href="preprocessing-of-dataset.html#cellranger"><i class="fa fa-check"></i><b>7.2.2</b> Cellranger</a></li>
+<li class="chapter" data-level="7.2.3" data-path="preprocessing-of-dataset.html"><a href="preprocessing-of-dataset.html#velocyto-samtools"><i class="fa fa-check"></i><b>7.2.3</b> Velocyto &amp; Samtools</a></li>
+<li class="chapter" data-level="7.2.4" data-path="preprocessing-of-dataset.html"><a href="preprocessing-of-dataset.html#dropest"><i class="fa fa-check"></i><b>7.2.4</b> <span>Dropest</span></a></li>
+</ul></li>
+<li class="chapter" data-level="7.3" data-path="preprocessing-of-dataset.html"><a href="preprocessing-of-dataset.html#preprocessing-pipline"><i class="fa fa-check"></i><b>7.3</b> Preprocessing pipline</a>
+<ul>
+<li class="chapter" data-level="7.3.1" data-path="preprocessing-of-dataset.html"><a href="preprocessing-of-dataset.html#download-and-split-pancreas-e15_5-fastq-data-from-ncbi"><i class="fa fa-check"></i><b>7.3.1</b> 1. Download and split Pancreas E15_5 fastq data from NCBI:</a></li>
+<li class="chapter" data-level="7.3.2" data-path="preprocessing-of-dataset.html"><a href="preprocessing-of-dataset.html#run-cellranger-count-referring-to-the-mouse-refdata"><i class="fa fa-check"></i><b>7.3.2</b> 2. Run Cellranger count, referring to the mouse refdata</a></li>
+<li class="chapter" data-level="7.3.3" data-path="preprocessing-of-dataset.html"><a href="preprocessing-of-dataset.html#run-velocytodropest."><i class="fa fa-check"></i><b>7.3.3</b> 3. Run Velocyto/Dropest.</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">HKU Single-cell Workshop (Module 4)</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="trajectory-inference-using-rna-velocity" class="section level1" number="4">
+<h1><span class="header-section-number">Chapter 4</span> Trajectory Inference using RNA Velocity</h1>
+<div id="use-scvelo-package-within-r" class="section level2" number="4.1">
+<h2><span class="header-section-number">4.1</span> Use scVelo package within R</h2>
+<p>First, we need to create a Conda environment and install scVelo afterwards, since scVelo is a Python package,</p>
+<pre><code>conda create -n workshop python=3.7
+conda activate workshop
+pip install -U scvelo==0.2.2
+pip install numba==0.51</code></pre>
+<p>To use Python packages within R environment, we will need the help of R <code>colorize("reticulate", "#316A9E")</code> library,</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="trajectory-inference-using-rna-velocity.html#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages(&quot;reticulate&quot;)</span></span>
+<span id="cb9-2"><a href="trajectory-inference-using-rna-velocity.html#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(reticulate)</span></code></pre></div>
+<p>Now we can load the appropriate Conda environments that with scVelo contained,</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="trajectory-inference-using-rna-velocity.html#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">conda_list</span>()</span></code></pre></div>
+<pre><code>##      name                                           python
+## 1     Py2     /Users/yuanhua/anaconda3/envs/Py2/bin/python
+## 2 r_env41 /Users/yuanhua/anaconda3/envs/r_env41/bin/python
+## 3  sgcell  /Users/yuanhua/anaconda3/envs/sgcell/bin/python</code></pre>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="trajectory-inference-using-rna-velocity.html#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">use_condaenv</span>(<span class="st">&quot;sgcell&quot;</span>)</span>
+<span id="cb12-2"><a href="trajectory-inference-using-rna-velocity.html#cb12-2" aria-hidden="true" tabindex="-1"></a>plt <span class="ot">&lt;-</span> <span class="fu">import</span>(<span class="st">&quot;matplotlib.pyplot&quot;</span>, <span class="at">as =</span> <span class="st">&quot;plt&quot;</span>)</span>
+<span id="cb12-3"><a href="trajectory-inference-using-rna-velocity.html#cb12-3" aria-hidden="true" tabindex="-1"></a>scv <span class="ot">&lt;-</span> <span class="fu">import</span> (<span class="st">&quot;scvelo&quot;</span>)</span>
+<span id="cb12-4"><a href="trajectory-inference-using-rna-velocity.html#cb12-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-5"><a href="trajectory-inference-using-rna-velocity.html#cb12-5" aria-hidden="true" tabindex="-1"></a>scv<span class="sc">$</span>logging<span class="sc">$</span><span class="fu">print_version</span>()</span>
+<span id="cb12-6"><a href="trajectory-inference-using-rna-velocity.html#cb12-6" aria-hidden="true" tabindex="-1"></a>scv<span class="sc">$</span>settings<span class="sc">$</span>presenter_view <span class="ot">=</span> <span class="cn">TRUE</span></span>
+<span id="cb12-7"><a href="trajectory-inference-using-rna-velocity.html#cb12-7" aria-hidden="true" tabindex="-1"></a>scv<span class="sc">$</span>settings<span class="sc">$</span>verbosity <span class="ot">=</span> <span class="dv">3</span></span>
+<span id="cb12-8"><a href="trajectory-inference-using-rna-velocity.html#cb12-8" aria-hidden="true" tabindex="-1"></a>scv<span class="sc">$</span>settings<span class="sc">$</span><span class="fu">set_figure_params</span>(<span class="st">&quot;scvelo&quot;</span>) </span></code></pre></div>
+</div>
+<div id="endocrine-pancreas" class="section level2" number="4.2">
+<h2><span class="header-section-number">4.2</span> Endocrine Pancreas</h2>
+<p>We will download and use the built-in pancreas dataset to demonstrate the useage of RNA velocity analysis.</p>
+<p>Endocrine development in pancreas lineage has four major fates: <span class="math inline">\(\alpha\)</span>, <span class="math inline">\(\beta\)</span>, <span class="math inline">\(\delta\)</span>, <span class="math inline">\(\epsilon\)</span>. Dataset from <a href="https://journals.biologists.com/dev/article/146/12/dev173849/19483/Comprehensive-single-cell-mRNA-profiling-reveals-a">Bastidas-Ponce et al. (2018)</a></p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="trajectory-inference-using-rna-velocity.html#cb13-1" aria-hidden="true" tabindex="-1"></a>adata <span class="ot">&lt;-</span> scv<span class="sc">$</span>datasets<span class="sc">$</span><span class="fu">pancreas</span>()</span>
+<span id="cb13-2"><a href="trajectory-inference-using-rna-velocity.html#cb13-2" aria-hidden="true" tabindex="-1"></a>adata</span></code></pre></div>
+<pre><code>## AnnData object with n_obs × n_vars = 3696 × 27998
+##     obs: &#39;clusters_coarse&#39;, &#39;clusters&#39;, &#39;S_score&#39;, &#39;G2M_score&#39;
+##     var: &#39;highly_variable_genes&#39;
+##     uns: &#39;clusters_coarse_colors&#39;, &#39;clusters_colors&#39;, &#39;day_colors&#39;, &#39;neighbors&#39;, &#39;pca&#39;
+##     obsm: &#39;X_pca&#39;, &#39;X_umap&#39;
+##     layers: &#39;spliced&#39;, &#39;unspliced&#39;
+##     obsp: &#39;distances&#39;, &#39;connectivities&#39;</code></pre>
+<p>To run velocity analysis on your own data, read your file with <code>colorize("adata = scv$read(file_path)", "#316A9E")</code>.</p>
+<p>If you want to save model and parameters after processing, run the following command, <code>colorize("adata$write(file_path, compression = 'gzip')", "#316A9E")</code>.</p>
+<p>Proportions of unspliced/spliced mRNA reads, UMAP embedding and cluster annotations can be printed and visualized using built-in functions.</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="trajectory-inference-using-rna-velocity.html#cb15-1" aria-hidden="true" tabindex="-1"></a>scv<span class="sc">$</span>utils<span class="sc">$</span><span class="fu">show_proportions</span>(adata)</span>
+<span id="cb15-2"><a href="trajectory-inference-using-rna-velocity.html#cb15-2" aria-hidden="true" tabindex="-1"></a>scv<span class="sc">$</span>pl<span class="sc">$</span><span class="fu">proportions</span>(adata, <span class="at">figsize=</span><span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">3</span>), <span class="at">show=</span><span class="cn">FALSE</span>)</span></code></pre></div>
+<pre><code>## [[1]]
+## AxesSubplot(0.18,0.15;0.354545x0.76)
+## 
+## [[2]]
+## AxesSubplot(0.605455,0.15;0.354545x0.76)</code></pre>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="trajectory-inference-using-rna-velocity.html#cb17-1" aria-hidden="true" tabindex="-1"></a>plt<span class="sc">$</span><span class="fu">savefig</span>(<span class="st">&#39;images/RNA-velo-fig1.png&#39;</span>)</span></code></pre></div>
+<div class="figure">
+<img src="images/RNA-velo-fig1.png" alt="" />
+<p class="caption">RNA-velo-fig2</p>
+</div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="trajectory-inference-using-rna-velocity.html#cb18-1" aria-hidden="true" tabindex="-1"></a>scv<span class="sc">$</span>pl<span class="sc">$</span><span class="fu">scatter</span>(adata, <span class="at">legend_loc =</span> <span class="st">&quot;best&quot;</span>, <span class="at">size =</span> <span class="dv">50</span>, <span class="at">title =</span> <span class="st">&quot;Pancreas Celltype&quot;</span>, <span class="at">show=</span><span class="cn">FALSE</span>)</span></code></pre></div>
+<pre><code>## AxesSubplot(0.18,0.15;0.78x0.76)</code></pre>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="trajectory-inference-using-rna-velocity.html#cb20-1" aria-hidden="true" tabindex="-1"></a>plt<span class="sc">$</span><span class="fu">savefig</span>(<span class="st">&#39;images/RNA-velo-fig2.png&#39;</span>)</span></code></pre></div>
+<div class="figure">
+<img src="images/RNA-velo-fig2.png" alt="" />
+<p class="caption">RNA-velo-fig2</p>
+</div>
+</div>
+<div id="data-preprocessing" class="section level2" number="4.3">
+<h2><span class="header-section-number">4.3</span> Data Preprocessing</h2>
+<p>Preprocessing contains:<br />
+- gene selection by detection (detected with a minimum number of counts)<br />
+- high variability (dispersion)<br />
+- normalizing every cell by its initial size and logarithmizing X</p>
+<p>First and second order moments are also computed (mean, uncentered variance for deterministic, stochastic mode respectively) among nearest neighbors in PCA space.</p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="trajectory-inference-using-rna-velocity.html#cb21-1" aria-hidden="true" tabindex="-1"></a>scv<span class="sc">$</span>pp<span class="sc">$</span><span class="fu">filter_and_normalize</span>(adata, <span class="at">min_shared_counts =</span> <span class="fu">as.integer</span>(<span class="dv">20</span>), <span class="at">n_top_genes =</span> <span class="fu">as.integer</span>(<span class="dv">2000</span>))</span>
+<span id="cb21-2"><a href="trajectory-inference-using-rna-velocity.html#cb21-2" aria-hidden="true" tabindex="-1"></a>scv<span class="sc">$</span>pp<span class="sc">$</span><span class="fu">moments</span>(adata, <span class="at">n_pcs =</span> <span class="fu">as.integer</span>(<span class="dv">30</span>), <span class="at">n_neighbors =</span> <span class="fu">as.integer</span>(<span class="dv">30</span>))</span></code></pre></div>
+</div>
+<div id="pseudotime-based-on-diffusion-map" class="section level2" number="4.4">
+<h2><span class="header-section-number">4.4</span> Pseudotime based on Diffusion Map</h2>
+<p>Pseudotime, a part of standardized scRNA-seq analysis pipeline, is also implemented in this package, and can be compared with the <code>colorize("latent time", "#316A9E")</code> introduced in dynamical mode.</p>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="trajectory-inference-using-rna-velocity.html#cb22-1" aria-hidden="true" tabindex="-1"></a>adata<span class="sc">$</span>uns<span class="sc">$</span>data<span class="sc">$</span>iroot <span class="ot">&lt;-</span> <span class="fu">which.min</span>(adata<span class="sc">$</span>obsm[<span class="st">&#39;X_umap&#39;</span>][, <span class="dv">1</span>])</span>
+<span id="cb22-2"><a href="trajectory-inference-using-rna-velocity.html#cb22-2" aria-hidden="true" tabindex="-1"></a>scv<span class="sc">$</span>tl<span class="sc">$</span><span class="fu">diffmap</span>(adata)</span>
+<span id="cb22-3"><a href="trajectory-inference-using-rna-velocity.html#cb22-3" aria-hidden="true" tabindex="-1"></a>scv<span class="sc">$</span>tl<span class="sc">$</span><span class="fu">dpt</span>(adata)</span>
+<span id="cb22-4"><a href="trajectory-inference-using-rna-velocity.html#cb22-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-5"><a href="trajectory-inference-using-rna-velocity.html#cb22-5" aria-hidden="true" tabindex="-1"></a>scv<span class="sc">$</span>pl<span class="sc">$</span><span class="fu">scatter</span>(adata, <span class="at">color =</span> <span class="st">&#39;dpt_pseudotime&#39;</span>, <span class="at">title =</span> <span class="st">&#39;pseudotime&#39;</span>, <span class="at">color_map =</span> <span class="st">&#39;gnuplot&#39;</span>, <span class="at">colorbar =</span> <span class="cn">TRUE</span>, <span class="at">rescale_color =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1</span>), <span class="at">perc=</span><span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">98</span>), <span class="at">show=</span><span class="cn">FALSE</span>)</span></code></pre></div>
+<pre><code>## AxesSubplot(0.18,0.15;0.78x0.76)</code></pre>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="trajectory-inference-using-rna-velocity.html#cb24-1" aria-hidden="true" tabindex="-1"></a>plt<span class="sc">$</span><span class="fu">savefig</span>(<span class="st">&#39;images/RNA-velo-fig3.png&#39;</span>)</span></code></pre></div>
+<div class="figure">
+<img src="images/RNA-velo-fig3.png" alt="" />
+<p class="caption">RNA-velo-fig3</p>
+</div>
+</div>
+<div id="compute-velocity-and-velocity-graph" class="section level2" number="4.5">
+<h2><span class="header-section-number">4.5</span> Compute velocity and velocity graph</h2>
+<p>scVelo has incorporated 3 modes for velocity estimation:<br />
+- Deterministic<br />
+- Stochastic<br />
+- Dynamical</p>
+<p>For deterministic and stochastic mode, the gene-specific velocities are obtained by fitting linear regression ratio (constant transcriptional state) between unspliced/spliced mRNA abundances.</p>
+<p>Under linear assumptions, how the <code>colorize("observed abundances deviate from the steady state", "#b22e5b")</code> regression line is velocity.</p>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="trajectory-inference-using-rna-velocity.html#cb25-1" aria-hidden="true" tabindex="-1"></a>scv<span class="sc">$</span>tl<span class="sc">$</span><span class="fu">velocity</span>(adata, <span class="at">mode =</span> <span class="st">&quot;stochastic&quot;</span>)</span></code></pre></div>
+<p>To calculate velocity graph, we need to run <code>colorize("velocity_graph()", "#316A9E")</code>. Velocity graph is the cosine correlation of potential cell transitions with velocity vector in high dimensional space. It summarizes the possible cell transition states and has dimension of <span class="math inline">\({n}_{obs} * {n}_{obs}\)</span>.</p>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="trajectory-inference-using-rna-velocity.html#cb26-1" aria-hidden="true" tabindex="-1"></a>scv<span class="sc">$</span>tl<span class="sc">$</span><span class="fu">velocity_graph</span>(adata, <span class="at">sqrt_transform =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+</div>
+<div id="diffusion-map-pseudotime-with-velocity" class="section level2" number="4.6">
+<h2><span class="header-section-number">4.6</span> Diffusion-map Pseudotime with velocity</h2>
+<p>Pseudotime, a part of standardized scRNA-seq analysis pipeline, is also implemented in this package, and can be compared with the <code>colorize("latent time", "#316A9E")</code> introduced in dynamical mode.</p>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="trajectory-inference-using-rna-velocity.html#cb27-1" aria-hidden="true" tabindex="-1"></a>scv<span class="sc">$</span>tl<span class="sc">$</span><span class="fu">velocity_pseudotime</span>(adata)</span>
+<span id="cb27-2"><a href="trajectory-inference-using-rna-velocity.html#cb27-2" aria-hidden="true" tabindex="-1"></a>scv<span class="sc">$</span>pl<span class="sc">$</span><span class="fu">scatter</span>(adata, <span class="at">color =</span> <span class="st">&#39;velocity_pseudotime&#39;</span>, <span class="at">cmap =</span> <span class="st">&#39;gnuplot&#39;</span>, <span class="at">show=</span><span class="cn">FALSE</span>)</span></code></pre></div>
+<pre><code>## AxesSubplot(0.18,0.15;0.78x0.76)</code></pre>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="trajectory-inference-using-rna-velocity.html#cb29-1" aria-hidden="true" tabindex="-1"></a>plt<span class="sc">$</span><span class="fu">savefig</span>(<span class="st">&#39;images/RNA-velo-fig4.png&#39;</span>)</span></code></pre></div>
+<div class="figure">
+<img src="images/RNA-velo-fig4.png" alt="" />
+<p class="caption">RNA-velo-fig4</p>
+</div>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="trajectory-inference-using-rna-velocity.html#cb30-1" aria-hidden="true" tabindex="-1"></a>scv<span class="sc">$</span>pl<span class="sc">$</span><span class="fu">scatter</span>(adata, <span class="at">x =</span> <span class="st">&quot;velocity_pseudotime&quot;</span>, <span class="at">y =</span> <span class="fu">c</span>(<span class="st">&#39;Actn4&#39;</span>, <span class="st">&#39;Ppp3ca&#39;</span>, <span class="st">&#39;Cpe&#39;</span>, <span class="st">&#39;Nnat&#39;</span>), <span class="at">fontsize =</span> <span class="dv">10</span>, <span class="at">size =</span> <span class="dv">10</span>, <span class="at">legend_loc =</span> <span class="st">&#39;best&#39;</span>, <span class="at">color =</span> <span class="st">&#39;clusters&#39;</span>, <span class="at">figsize=</span><span class="fu">c</span>(<span class="dv">12</span>, <span class="dv">10</span>), <span class="at">show=</span><span class="cn">FALSE</span>)</span></code></pre></div>
+<pre><code>## [[1]]
+## AxesSubplot(0.18,0.15;0.169565x0.76)
+## 
+## [[2]]
+## AxesSubplot(0.383478,0.15;0.169565x0.76)
+## 
+## [[3]]
+## AxesSubplot(0.586957,0.15;0.169565x0.76)
+## 
+## [[4]]
+## AxesSubplot(0.790435,0.15;0.169565x0.76)</code></pre>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="trajectory-inference-using-rna-velocity.html#cb32-1" aria-hidden="true" tabindex="-1"></a>plt<span class="sc">$</span><span class="fu">savefig</span>(<span class="st">&#39;images/RNA-velo-fig5.png&#39;</span>)</span></code></pre></div>
+<div class="figure">
+<img src="images/RNA-velo-fig5.png" alt="" />
+<p class="caption">RNA-velo-fig5</p>
+</div>
+</div>
+<div id="plot-results" class="section level2" number="4.7">
+<h2><span class="header-section-number">4.7</span> Plot Results</h2>
+<p>Velocities are projected onto the specified embedding <code>colorize("basis", "#316A9E")</code> and can be visualized in one of the three ways:<br />
+- On single cell level<br />
+- On grid level<br />
+- Streamlines, which is most commonly used</p>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="trajectory-inference-using-rna-velocity.html#cb33-1" aria-hidden="true" tabindex="-1"></a>scv<span class="sc">$</span>pl<span class="sc">$</span><span class="fu">velocity_embedding_stream</span>(adata, <span class="at">basis =</span> <span class="st">&quot;umap&quot;</span>, <span class="at">color =</span> <span class="st">&quot;clusters&quot;</span>, <span class="at">legend_loc =</span> <span class="st">&quot;best&quot;</span>, <span class="at">dpi =</span> <span class="dv">150</span>, <span class="at">show=</span><span class="cn">FALSE</span>)</span></code></pre></div>
+<pre><code>## AxesSubplot(0.18,0.15;0.78x0.76)</code></pre>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="trajectory-inference-using-rna-velocity.html#cb35-1" aria-hidden="true" tabindex="-1"></a>plt<span class="sc">$</span><span class="fu">savefig</span>(<span class="st">&#39;images/RNA-velo-fig6.png&#39;</span>)</span></code></pre></div>
+<div class="figure">
+<img src="images/RNA-velo-fig6.png" alt="" />
+<p class="caption">RNA-velo-fig5</p>
+</div>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="trajectory-inference-using-rna-velocity.html#cb36-1" aria-hidden="true" tabindex="-1"></a>scv<span class="sc">$</span>pl<span class="sc">$</span><span class="fu">velocity_embedding</span>(adata, <span class="at">basis =</span> <span class="st">&quot;umap&quot;</span>, <span class="at">arrow_length =</span> <span class="dv">3</span>, <span class="at">arrow_size =</span> <span class="dv">2</span>, <span class="at">dpi =</span> <span class="dv">150</span>, <span class="at">show=</span><span class="cn">FALSE</span>)</span></code></pre></div>
+<pre><code>## AxesSubplot(0.18,0.15;0.78x0.76)</code></pre>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="trajectory-inference-using-rna-velocity.html#cb38-1" aria-hidden="true" tabindex="-1"></a>plt<span class="sc">$</span><span class="fu">savefig</span>(<span class="st">&#39;images/RNA-velo-fig7.png&#39;</span>)</span></code></pre></div>
+<div class="figure">
+<img src="images/RNA-velo-fig7.png" alt="" />
+<p class="caption">RNA-velo-fig7</p>
+</div>
+</div>
+<div id="interprete-velocity" class="section level2" number="4.8">
+<h2><span class="header-section-number">4.8</span> Interprete Velocity</h2>
+<p>We could also examine the phase portraits of interested genes to understand how inferred directions are supported by particular genes.</p>
+<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="trajectory-inference-using-rna-velocity.html#cb39-1" aria-hidden="true" tabindex="-1"></a>scv<span class="sc">$</span>pl<span class="sc">$</span><span class="fu">velocity</span>(adata, <span class="fu">c</span>(<span class="st">&quot;Cpe&quot;</span>, <span class="st">&quot;Gnao1&quot;</span>, <span class="st">&quot;Ins2&quot;</span>, <span class="st">&quot;Adk&quot;</span>), <span class="at">ncols =</span> <span class="dv">2</span>, <span class="at">show=</span><span class="cn">FALSE</span>)</span></code></pre></div>
+<pre><code>## AxesSubplot(0.868235,0.15;0.0917647x0.271429)</code></pre>
+<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="trajectory-inference-using-rna-velocity.html#cb41-1" aria-hidden="true" tabindex="-1"></a>plt<span class="sc">$</span><span class="fu">savefig</span>(<span class="st">&#39;images/RNA-velo-fig8.png&#39;</span>)</span></code></pre></div>
+<div class="figure">
+<img src="images/RNA-velo-fig8.png" alt="" />
+<p class="caption">RNA-velo-fig8</p>
+</div>
+<p>Positive velocity indicates that a gene is up-regulated, which occurs for cells that show higher abundance of unspliced mRNA for that gene than expected in steady state. Conversely, negative velocity indicates that a gene is down-regulated.</p>
+</div>
+<div id="velocity-in-cycling-progenitors" class="section level2" number="4.9">
+<h2><span class="header-section-number">4.9</span> Velocity in cycling progenitors</h2>
+<p>The cell cycle detected by RNA velocity, is biologically affirmed by cell cycle scores (standardized scores of mean expression levels of phase marker genes).</p>
+<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="trajectory-inference-using-rna-velocity.html#cb42-1" aria-hidden="true" tabindex="-1"></a>scv<span class="sc">$</span>tl<span class="sc">$</span><span class="fu">score_genes_cell_cycle</span>(adata)</span>
+<span id="cb42-2"><a href="trajectory-inference-using-rna-velocity.html#cb42-2" aria-hidden="true" tabindex="-1"></a>scv<span class="sc">$</span>pl<span class="sc">$</span><span class="fu">scatter</span>(adata, <span class="at">color_gradients =</span> <span class="fu">c</span>(<span class="st">&quot;S_score&quot;</span>, <span class="st">&quot;G2M_score&quot;</span>), <span class="at">smooth =</span> <span class="cn">TRUE</span>, <span class="at">perc =</span> <span class="fu">c</span>(<span class="dv">5</span>, <span class="dv">95</span>), <span class="at">show=</span><span class="cn">FALSE</span>)</span></code></pre></div>
+<pre><code>## AxesSubplot(0.18,0.15;0.78x0.76)</code></pre>
+<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="trajectory-inference-using-rna-velocity.html#cb44-1" aria-hidden="true" tabindex="-1"></a>plt<span class="sc">$</span><span class="fu">savefig</span>(<span class="st">&#39;images/RNA-velo-fig9.png&#39;</span>)</span></code></pre></div>
+<div class="figure">
+<img src="images/RNA-velo-fig9.png" alt="" />
+<p class="caption">RNA-velo-fig9</p>
+</div>
+</div>
+<div id="dynamical-mode-and-related-analysis" class="section level2" number="4.10">
+<h2><span class="header-section-number">4.10</span> Dynamical Mode and related analysis</h2>
+<p>Dynamical mode does not necessarily rely on linear assumptions, instead it consider gene-specific rates of transcription, splicing and degradation rates as well as transient cell-states.</p>
+<p>To use dynamical mode, we just need to call <code>colorize("revocer_dynamics()", "#316A9E")</code> before computing velocity.</p>
+<pre><code>scv$tl$recover_dynamics(adata)
+
+scv$tl$velocity(adata, mode = &quot;dynamical&quot;)
+scv$tl$velocity_graph(adata)</code></pre>
+<p>Latent time of the underlying cellular processes can be recovered via dynamical mode. Based on cells’ transcriptional dynamics, latent time approximates the real time experienced by cells as they differentiate.</p>
+<p>Latent time could distinguish temporal position more compared with pseudotime.</p>
+<pre><code>scv$tl$latent_time(adata)
+
+scv$pl$scatter(adata, color = &quot;latent_time&quot;, color_map = &quot;gnuplot&quot;, size = 80, basis = &quot;umap&quot;)
+scv$pl$scatter(adata, x = &quot;latent_time&quot;, y = c(&#39;Actn4&#39;, &#39;Ppp3ca&#39;, &#39;Cpe&#39;, &#39;Nnat&#39;), fontsize = 10, size = 10, legend_loc = &#39;best&#39;, color = &#39;clusters&#39;)</code></pre>
+<p>We could also pull out the top genes driving the dynamic RNA velocities.</p>
+<pre><code>topgenes &lt;- adata$var[&quot;fit_likelihood&quot;]
+topgenes_vals &lt;- topgenes[, 1]
+names(topgenes_vals) &lt;- rownames(topgenes)
+topgenes_vals &lt;- sort(topgenes_vals, decreasing = TRUE)
+head(topgenes_vals)
+
+scv$pl$scatter(adata, basis = names(topgenes_vals)[1:5], ncols = 5, frameon = FALSE)
+
+scv$pl$heatmap(adata, var_names = names(topgenes_vals), tkey = &#39;latent_time&#39;, n_convolve = as.integer(100), col_color = &#39;clusters&#39;)</code></pre>
+</div>
+<div id="session-info" class="section level2" number="4.11">
+<h2><span class="header-section-number">4.11</span> Session Info</h2>
+<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="trajectory-inference-using-rna-velocity.html#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sessionInfo</span>()</span></code></pre></div>
+<pre><code>## R version 4.1.0 (2021-05-18)
+## Platform: x86_64-apple-darwin13.4.0 (64-bit)
+## Running under: macOS Big Sur 11.4
+## 
+## Matrix products: default
+## LAPACK: /Users/yuanhua/anaconda3/envs/r_env41/lib/libopenblasp-r0.3.15.dylib
+## 
+## locale:
+## [1] en_US.UTF-8/en_US.UTF-8/en_US.UTF-8/C/en_US.UTF-8/en_US.UTF-8
+## 
+## attached base packages:
+## [1] stats     graphics  grDevices utils     datasets  methods  
+## [7] base     
+## 
+## other attached packages:
+## [1] reticulate_1.20
+## 
+## loaded via a namespace (and not attached):
+##  [1] Rcpp_1.0.6        rstudioapi_0.13   knitr_1.33       
+##  [4] magrittr_2.0.1    lattice_0.20-44   R6_2.5.0         
+##  [7] rlang_0.4.11      stringr_1.4.0     highr_0.9        
+## [10] tools_4.1.0       grid_4.1.0        xfun_0.23        
+## [13] png_0.1-7         jquerylib_0.1.4   htmltools_0.5.1.1
+## [16] yaml_2.2.1        digest_0.6.27     bookdown_0.22    
+## [19] Matrix_1.3-4      sass_0.4.0        evaluate_0.14    
+## [22] rmarkdown_2.8     stringi_1.6.2     compiler_4.1.0   
+## [25] bslib_0.2.5.1     jsonlite_1.7.2</code></pre>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="pseudo-time-and-trajectory-analysis.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="copy-number-variation-estimation-from-scrna-seq.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["SingleCell Workshop.pdf", "SingleCell Workshop.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

@@ -4,27 +4,27 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 2 Prerequisites | SingleCell Workshop</title>
-  <meta name="description" content="Cell differentiation trajectory; Cellular genetics." />
+  <title>Chapter 2 Prerequisites | HKU Single-cell Workshop (Module 4)</title>
+  <meta name="description" content="Cell trajectory inference; Cellular genetic analysis" />
   <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 2 Prerequisites | SingleCell Workshop" />
+  <meta property="og:title" content="Chapter 2 Prerequisites | HKU Single-cell Workshop (Module 4)" />
   <meta property="og:type" content="book" />
   
   
-  <meta property="og:description" content="Cell differentiation trajectory; Cellular genetics." />
+  <meta property="og:description" content="Cell trajectory inference; Cellular genetic analysis" />
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 2 Prerequisites | SingleCell Workshop" />
+  <meta name="twitter:title" content="Chapter 2 Prerequisites | HKU Single-cell Workshop (Module 4)" />
   
-  <meta name="twitter:description" content="Cell differentiation trajectory; Cellular genetics." />
+  <meta name="twitter:description" content="Cell trajectory inference; Cellular genetic analysis" />
   
 
-<meta name="author" content="Yuanhua lab" />
+<meta name="author" content="Yuanhua Lab: Mingze Gao, Rongting Huang, Xianjie Huang, Aaron Kwok, Zhuoxuan Li, Chen Qiao, Yuanhua Huang" />
 
 
-<meta name="date" content="2021-07-02" />
+<meta name="date" content="2021-07-03" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -59,6 +59,7 @@
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
 pre.sourceCode { margin: 0; }
 @media screen {
@@ -136,28 +137,46 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><a href="./">SingleCell Workshop 2021</a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#contents-of-module-4"><i class="fa fa-check"></i><b>1.1</b> Contents of Module 4</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#other-modules-of-this-workshop"><i class="fa fa-check"></i><b>1.2</b> Other modules of this workshop</a></li>
+</ul></li>
 <li class="chapter" data-level="2" data-path="env-pre.html"><a href="env-pre.html"><i class="fa fa-check"></i><b>2</b> Prerequisites</a>
 <ul>
-<li class="chapter" data-level="2.1" data-path="env-pre.html"><a href="env-pre.html#wsl_install"><i class="fa fa-check"></i><b>2.1</b> (Optional) Install Windows Subsystem for Linux</a>
+<li class="chapter" data-level="2.1" data-path="env-pre.html"><a href="env-pre.html#quick-summary"><i class="fa fa-check"></i><b>2.1</b> Quick summary</a></li>
+<li class="chapter" data-level="2.2" data-path="env-pre.html"><a href="env-pre.html#wsl_install"><i class="fa fa-check"></i><b>2.2</b> (Optional) Install Windows Subsystem for Linux</a>
 <ul>
-<li class="chapter" data-level="2.1.1" data-path="env-pre.html"><a href="env-pre.html#what-is-the-windows-subsystem-for-linux-wsl"><i class="fa fa-check"></i><b>2.1.1</b> What is the Windows Subsystem for Linux (WSL)?</a></li>
-<li class="chapter" data-level="2.1.2" data-path="env-pre.html"><a href="env-pre.html#manual-installation-steps"><i class="fa fa-check"></i><b>2.1.2</b> Manual Installation Steps</a></li>
+<li class="chapter" data-level="2.2.1" data-path="env-pre.html"><a href="env-pre.html#what-is-the-windows-subsystem-for-linux-wsl"><i class="fa fa-check"></i><b>2.2.1</b> What is the Windows Subsystem for Linux (WSL)?</a></li>
+<li class="chapter" data-level="2.2.2" data-path="env-pre.html"><a href="env-pre.html#manual-installation-steps"><i class="fa fa-check"></i><b>2.2.2</b> Manual Installation Steps</a></li>
 </ul></li>
-<li class="chapter" data-level="2.2" data-path="env-pre.html"><a href="env-pre.html#conda_install"><i class="fa fa-check"></i><b>2.2</b> Install Conda Environment</a>
+<li class="chapter" data-level="2.3" data-path="env-pre.html"><a href="env-pre.html#conda_install"><i class="fa fa-check"></i><b>2.3</b> Install Conda Environment</a>
 <ul>
-<li class="chapter" data-level="2.2.1" data-path="env-pre.html"><a href="env-pre.html#what-is-conda"><i class="fa fa-check"></i><b>2.2.1</b> What is conda?</a></li>
-<li class="chapter" data-level="2.2.2" data-path="env-pre.html"><a href="env-pre.html#conda_install_windows"><i class="fa fa-check"></i><b>2.2.2</b> Installation on Windows</a></li>
-<li class="chapter" data-level="2.2.3" data-path="env-pre.html"><a href="env-pre.html#conda_install_linux"><i class="fa fa-check"></i><b>2.2.3</b> Installation on Linux</a></li>
-<li class="chapter" data-level="2.2.4" data-path="env-pre.html"><a href="env-pre.html#conda_install_mac"><i class="fa fa-check"></i><b>2.2.4</b> Installation on macOS</a></li>
+<li class="chapter" data-level="2.3.1" data-path="env-pre.html"><a href="env-pre.html#what-is-conda"><i class="fa fa-check"></i><b>2.3.1</b> What is conda?</a></li>
+<li class="chapter" data-level="2.3.2" data-path="env-pre.html"><a href="env-pre.html#conda_install_windows"><i class="fa fa-check"></i><b>2.3.2</b> Installation on Windows</a></li>
+<li class="chapter" data-level="2.3.3" data-path="env-pre.html"><a href="env-pre.html#conda_install_linux"><i class="fa fa-check"></i><b>2.3.3</b> Installation on Linux</a></li>
+<li class="chapter" data-level="2.3.4" data-path="env-pre.html"><a href="env-pre.html#conda_install_mac"><i class="fa fa-check"></i><b>2.3.4</b> Installation on macOS</a></li>
 </ul></li>
-<li class="chapter" data-level="2.3" data-path="env-pre.html"><a href="env-pre.html#other-preparation"><i class="fa fa-check"></i><b>2.3</b> Other Preparation</a>
+<li class="chapter" data-level="2.4" data-path="env-pre.html"><a href="env-pre.html#other-preparation"><i class="fa fa-check"></i><b>2.4</b> Other Preparation</a>
 <ul>
-<li class="chapter" data-level="2.3.1" data-path="env-pre.html"><a href="env-pre.html#conda-configuration"><i class="fa fa-check"></i><b>2.3.1</b> Conda Configuration</a></li>
+<li class="chapter" data-level="2.4.1" data-path="env-pre.html"><a href="env-pre.html#conda-configuration"><i class="fa fa-check"></i><b>2.4.1</b> Conda Configuration</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="pseudo-time-and-trajectory-analysis.html"><a href="pseudo-time-and-trajectory-analysis.html"><i class="fa fa-check"></i><b>3</b> Pseudo-time and trajectory analysis</a></li>
-<li class="chapter" data-level="4" data-path="rna-velocity.html"><a href="rna-velocity.html"><i class="fa fa-check"></i><b>4</b> RNA velocity</a></li>
+<li class="chapter" data-level="4" data-path="trajectory-inference-using-rna-velocity.html"><a href="trajectory-inference-using-rna-velocity.html"><i class="fa fa-check"></i><b>4</b> Trajectory Inference using RNA Velocity</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="trajectory-inference-using-rna-velocity.html"><a href="trajectory-inference-using-rna-velocity.html#use-scvelo-package-within-r"><i class="fa fa-check"></i><b>4.1</b> Use scVelo package within R</a></li>
+<li class="chapter" data-level="4.2" data-path="trajectory-inference-using-rna-velocity.html"><a href="trajectory-inference-using-rna-velocity.html#endocrine-pancreas"><i class="fa fa-check"></i><b>4.2</b> Endocrine Pancreas</a></li>
+<li class="chapter" data-level="4.3" data-path="trajectory-inference-using-rna-velocity.html"><a href="trajectory-inference-using-rna-velocity.html#data-preprocessing"><i class="fa fa-check"></i><b>4.3</b> Data Preprocessing</a></li>
+<li class="chapter" data-level="4.4" data-path="trajectory-inference-using-rna-velocity.html"><a href="trajectory-inference-using-rna-velocity.html#pseudotime-based-on-diffusion-map"><i class="fa fa-check"></i><b>4.4</b> Pseudotime based on Diffusion Map</a></li>
+<li class="chapter" data-level="4.5" data-path="trajectory-inference-using-rna-velocity.html"><a href="trajectory-inference-using-rna-velocity.html#compute-velocity-and-velocity-graph"><i class="fa fa-check"></i><b>4.5</b> Compute velocity and velocity graph</a></li>
+<li class="chapter" data-level="4.6" data-path="trajectory-inference-using-rna-velocity.html"><a href="trajectory-inference-using-rna-velocity.html#diffusion-map-pseudotime-with-velocity"><i class="fa fa-check"></i><b>4.6</b> Diffusion-map Pseudotime with velocity</a></li>
+<li class="chapter" data-level="4.7" data-path="trajectory-inference-using-rna-velocity.html"><a href="trajectory-inference-using-rna-velocity.html#plot-results"><i class="fa fa-check"></i><b>4.7</b> Plot Results</a></li>
+<li class="chapter" data-level="4.8" data-path="trajectory-inference-using-rna-velocity.html"><a href="trajectory-inference-using-rna-velocity.html#interprete-velocity"><i class="fa fa-check"></i><b>4.8</b> Interprete Velocity</a></li>
+<li class="chapter" data-level="4.9" data-path="trajectory-inference-using-rna-velocity.html"><a href="trajectory-inference-using-rna-velocity.html#velocity-in-cycling-progenitors"><i class="fa fa-check"></i><b>4.9</b> Velocity in cycling progenitors</a></li>
+<li class="chapter" data-level="4.10" data-path="trajectory-inference-using-rna-velocity.html"><a href="trajectory-inference-using-rna-velocity.html#dynamical-mode-and-related-analysis"><i class="fa fa-check"></i><b>4.10</b> Dynamical Mode and related analysis</a></li>
+<li class="chapter" data-level="4.11" data-path="trajectory-inference-using-rna-velocity.html"><a href="trajectory-inference-using-rna-velocity.html#session-info"><i class="fa fa-check"></i><b>4.11</b> Session Info</a></li>
+</ul></li>
 <li class="chapter" data-level="5" data-path="copy-number-variation-estimation-from-scrna-seq.html"><a href="copy-number-variation-estimation-from-scrna-seq.html"><i class="fa fa-check"></i><b>5</b> Copy number variation estimation from scRNA-seq</a>
 <ul>
 <li class="chapter" data-level="5.1" data-path="copy-number-variation-estimation-from-scrna-seq.html"><a href="copy-number-variation-estimation-from-scrna-seq.html#method-infercnv"><i class="fa fa-check"></i><b>5.1</b> Method: inferCNV</a>
@@ -212,7 +231,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">SingleCell Workshop</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">HKU Single-cell Workshop (Module 4)</a>
           </h1>
         </div>
 
@@ -222,20 +241,28 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="env-pre" class="section level1" number="2">
 <h1><span class="header-section-number">Chapter 2</span> Prerequisites</h1>
-<div id="wsl_install" class="section level2" number="2.1">
-<h2><span class="header-section-number">2.1</span> (Optional) Install Windows Subsystem for Linux</h2>
+<div id="quick-summary" class="section level2" number="2.1">
+<h2><span class="header-section-number">2.1</span> Quick summary</h2>
+<p>For this module, a few tools in Python or command line are needed. If you are already familiar with Unix-based command-line interface, you can prepare your environment with this quick summary, otherwise please see detailed instructions below.</p>
+<p>For easier installation and cleaner environment, we recommend using <a href="https://docs.conda.io/en/latest/miniconda.html">conda</a> (a popular environment management tool) with Python 3.9 here.
+After having conda installed, you can create an environment with our pre-defined config file <a href="http://ufpr.dl.sourceforge.net/project/sgcellworkshop/sgcell.yml">sgcell.yml</a> (click &amp; download it, and move it to the working directory). Then all you need is this command line:</p>
+<pre class="shell"><code>conda env create -f sgcell.yml</code></pre>
+<p>Now, you can type <code>conda env list</code>. If the environment named <code>sgcell</code> is listed, it means you configured the environment successfully (now, enjoy this Module).</p>
+</div>
+<div id="wsl_install" class="section level2" number="2.2">
+<h2><span class="header-section-number">2.2</span> (Optional) Install Windows Subsystem for Linux</h2>
 <p><strong>Note, this is for Windows users only.</strong> While some required softwares only support Linux or macOS, you could install WSL to use Linux inside Windows.</p>
 <p>If you already have Linux or macOS, you can skip this section and jump directly to the section of <code>conda installation</code> <a href="env-pre.html#conda_install_linux">for Linux</a> or <a href="env-pre.html#conda_install_mac">for macOS</a>.</p>
 <p>The whole process of installing WSL requires at least 2G disk space. Note that this process was tested on Windows 10 (Version 2004, build 19041.1052).</p>
-<div id="what-is-the-windows-subsystem-for-linux-wsl" class="section level3" number="2.1.1">
-<h3><span class="header-section-number">2.1.1</span> What is the Windows Subsystem for Linux (WSL)?</h3>
+<div id="what-is-the-windows-subsystem-for-linux-wsl" class="section level3" number="2.2.1">
+<h3><span class="header-section-number">2.2.1</span> What is the Windows Subsystem for Linux (WSL)?</h3>
 <p>According to the <a href="https://docs.microsoft.com/en-us/windows/wsl/about">Microsoft Docs</a>,</p>
 <blockquote>
 <p><em>“The Windows Subsystem for Linux lets developers run a GNU/Linux environment – including most command-line tools, utilities, and applications – directly on Windows, unmodified, without the overhead of a traditional virtual machine or dualboot setup.”</em></p>
 </blockquote>
 </div>
-<div id="manual-installation-steps" class="section level3" number="2.1.2">
-<h3><span class="header-section-number">2.1.2</span> Manual Installation Steps</h3>
+<div id="manual-installation-steps" class="section level3" number="2.2.2">
+<h3><span class="header-section-number">2.2.2</span> Manual Installation Steps</h3>
 <p><strong>Step 1. Enable required feature in Windows PowerShell</strong></p>
 <p>It is necessary to enable the required feature for WSL before installing it.</p>
 <ul>
@@ -272,11 +299,11 @@ Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Windows-Subsystem-L
 <p>More information about the usage of WSL can be found at <a href="https://docs.microsoft.com/en-us/windows/wsl">Microsoft Docs</a>.</p>
 </div>
 </div>
-<div id="conda_install" class="section level2" number="2.2">
-<h2><span class="header-section-number">2.2</span> Install Conda Environment</h2>
+<div id="conda_install" class="section level2" number="2.3">
+<h2><span class="header-section-number">2.3</span> Install Conda Environment</h2>
 <p>The whole process of installing conda environment requires at least 1G disk space.</p>
-<div id="what-is-conda" class="section level3" number="2.2.1">
-<h3><span class="header-section-number">2.2.1</span> What is conda?</h3>
+<div id="what-is-conda" class="section level3" number="2.3.1">
+<h3><span class="header-section-number">2.3.1</span> What is conda?</h3>
 <p>Conda is part of the Anaconda platform. According to the <a href="https://docs.anaconda.com/#anaconda-individual-edition">Anaconda docs</a>,</p>
 <blockquote>
 <p><em>“Anaconda Individual Edition is a free, easy-to-install package manager, environment manager, and Python distribution with a collection of 1,500+ open source packages with free community support. Anaconda is platform-agnostic, so you can use it whether you are on Windows, macOS, or Linux.”</em></p>
@@ -286,14 +313,14 @@ Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Windows-Subsystem-L
 <p><em>“Miniconda is a free minimal installer for conda. It is a small, bootstrap version of Anaconda that includes only conda, Python, the packages they depend on, and a small number of other useful packages, including pip, zlib and a few others.”</em></p>
 </blockquote>
 </div>
-<div id="conda_install_windows" class="section level3" number="2.2.2">
-<h3><span class="header-section-number">2.2.2</span> Installation on Windows</h3>
+<div id="conda_install_windows" class="section level3" number="2.3.2">
+<h3><span class="header-section-number">2.3.2</span> Installation on Windows</h3>
 <p>Although it is easy to install Miniconda itself on Windows, there are several conda softwares (e.g., bcftools, cellsnp-lite) required for this workshop that are well-supported only on Unix-Like systems. Linux or macOS is essential to use those softwares.</p>
 <p>Good news is that Microsoft has provided the Windows Subsystem for Linux (WSL), which enables you to use several Linux distributions on Windows 10. The installation of WSL is easy and details can be found <a href="env-pre.html#wsl_install">here</a>.</p>
 <p>After installing WSL, you could follow Section <a href="env-pre.html#conda_install_linux">Installation on Linux</a> to install Miniconda on WSL.</p>
 </div>
-<div id="conda_install_linux" class="section level3" number="2.2.3">
-<h3><span class="header-section-number">2.2.3</span> Installation on Linux</h3>
+<div id="conda_install_linux" class="section level3" number="2.3.3">
+<h3><span class="header-section-number">2.3.3</span> Installation on Linux</h3>
 <p>This section is adapted based on Miniconda installation <a href="https://conda.io/projects/conda/en/latest/user-guide/install/linux.html">guides for Linux</a>. In this section, we select the Miniconda with Python 3.9 as an example.</p>
 <p><strong>Step 1. Open Shell</strong></p>
 <ul>
@@ -322,7 +349,7 @@ Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Windows-Subsystem-L
 <ul>
 <li>Follow the prompts on the installer screens.</li>
 </ul>
-<p>When you are asked <code>Do you wish the installer to initialize Miniconda3 by running conda init</code>, we recommend “yes”. When the initialization is done, it looks like,</p>
+<p>When you are asked <code>Do you wish the installer to initialize Miniconda3 by running conda init</code>, we recommend “yes.” When the initialization is done, it looks like,</p>
 <p><img src="images/conda_init_conda2.PNG" width="45%" style="display: block; margin: auto;" /></p>
 <p><strong>Step 5. Close and re-open Shell</strong></p>
 <ul>
@@ -338,8 +365,8 @@ Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Windows-Subsystem-L
 <p>A list of installed packages appears if it has been installed correctly.</p>
 <p><img src="images/conda_test_conda.PNG" width="50%" style="display: block; margin: auto;" /></p>
 </div>
-<div id="conda_install_mac" class="section level3" number="2.2.4">
-<h3><span class="header-section-number">2.2.4</span> Installation on macOS</h3>
+<div id="conda_install_mac" class="section level3" number="2.3.4">
+<h3><span class="header-section-number">2.3.4</span> Installation on macOS</h3>
 <p>You could refer to the Section <a href="env-pre.html#conda_install_linux">Installation on Linux</a> as the processes of installing Miniconda on macOS and Linux are quite similar. We briefly list the steps here for your quick reference.</p>
 <p><strong>Step 1. Open macOS Terminal</strong></p>
 <p><strong>Step 2. Download Miniconda installer</strong></p>
@@ -355,7 +382,7 @@ Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Windows-Subsystem-L
 <li><p>Type in Terminal <code>bash Miniconda3-py39_4.9.2-MacOSX-x86_64.sh</code>.</p></li>
 <li><p>Follow the prompts on the installer screens.</p></li>
 </ul>
-<p>When you are asked <code>Do you wish the installer to initialize Miniconda3 by running conda init</code>, we recommend “yes”.</p>
+<p>When you are asked <code>Do you wish the installer to initialize Miniconda3 by running conda init</code>, we recommend “yes.”</p>
 <p><strong>Step 5. Close and re-open Terminal</strong></p>
 <p><strong>Step 6. Test your installation</strong></p>
 <ul>
@@ -364,10 +391,10 @@ Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Windows-Subsystem-L
 <p>A list of installed packages appears if it has been installed correctly.</p>
 </div>
 </div>
-<div id="other-preparation" class="section level2" number="2.3">
-<h2><span class="header-section-number">2.3</span> Other Preparation</h2>
-<div id="conda-configuration" class="section level3" number="2.3.1">
-<h3><span class="header-section-number">2.3.1</span> Conda Configuration</h3>
+<div id="other-preparation" class="section level2" number="2.4">
+<h2><span class="header-section-number">2.4</span> Other Preparation</h2>
+<div id="conda-configuration" class="section level3" number="2.4.1">
+<h3><span class="header-section-number">2.4.1</span> Conda Configuration</h3>
 <p>To simplify the configuration of conda environment, we have pre-compiled a conda environment, named <code>sgcell</code>, containing some required softwares for this workshop. The corresponding metafile <code>sgcell.yml</code> of this environment was exported, based on which we can easily re-build the pre-compiled environment. The <code>sgcell.yml</code> can be
 downloaded from <a href="https://sourceforge.net/projects/sgcellworkshop/files/">sgcellworkshop</a> repo on sourceforge.</p>
 <p>Assuming you have installed conda and activated any environment in the Shell / Terminal (if not, please install conda based on Section <a href="env-pre.html#conda_install">Install Conda Environment</a> first). Then,</p>
@@ -451,6 +478,20 @@ gitbook.start({
 });
 </script>
 
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
 </body>
 
 </html>
