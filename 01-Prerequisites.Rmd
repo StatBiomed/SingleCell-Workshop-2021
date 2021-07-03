@@ -4,7 +4,7 @@
 
 For this module, a few tools in Python or command line are needed. If you are already familiar with Unix-based command-line interface, you can prepare your environment with this quick summary, otherwise please see detailed instructions below.
 
-For easier installation and cleaner environment, we recommend using  [conda](https://docs.conda.io/en/latest/miniconda.html) (a popular environment management tool) with Python 3.9 here.
+For easier installation and cleaner environment, we recommend using  [conda](https://docs.conda.io/en/latest/miniconda.html) (a popular environment management tool) with Python 3.7 here.
 After having conda installed, you can create an environment with our pre-defined config file [sgcell.yml](http://ufpr.dl.sourceforge.net/project/sgcellworkshop/sgcell.yml) (click & download it, and move it to the working directory). Then all you need is this command line:
 ```{shell}
 conda env create -f sgcell.yml

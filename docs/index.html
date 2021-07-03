@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>HKU Single-cell Workshop (Module 4)</title>
+  <title>HKU Single-cell Workshop (Modules 4.2 &amp; 5)</title>
   <meta name="description" content="Cell trajectory inference; Cellular genetic analysis" />
   <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="HKU Single-cell Workshop (Module 4)" />
+  <meta property="og:title" content="HKU Single-cell Workshop (Modules 4.2 &amp; 5)" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="HKU Single-cell Workshop (Module 4)" />
+  <meta name="twitter:title" content="HKU Single-cell Workshop (Modules 4.2 &amp; 5)" />
   
   <meta name="twitter:description" content="Cell trajectory inference; Cellular genetic analysis" />
   
@@ -33,7 +33,7 @@
   
 
 <link rel="next" href="env-pre.html"/>
-<script src="libs/header-attrs-2.8/header-attrs.js"></script>
+<script src="libs/header-attrs-2.9/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -139,7 +139,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="divider"></li>
 <li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a>
 <ul>
-<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#contents-of-module-4"><i class="fa fa-check"></i><b>1.1</b> Contents of Module 4</a></li>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#contents-of-this-part"><i class="fa fa-check"></i><b>1.1</b> Contents of this part</a></li>
 <li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#other-modules-of-this-workshop"><i class="fa fa-check"></i><b>1.2</b> Other modules of this workshop</a></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="env-pre.html"><a href="env-pre.html"><i class="fa fa-check"></i><b>2</b> Prerequisites</a>
@@ -231,7 +231,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">HKU Single-cell Workshop (Module 4)</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">HKU Single-cell Workshop (Modules 4.2 &amp; 5)</a>
           </h1>
         </div>
 
@@ -240,27 +240,29 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
             <section class="normal" id="section-">
 <div id="header">
-<h1 class="title">HKU Single-cell Workshop (Module 4)</h1>
+<h1 class="title">HKU Single-cell Workshop (Modules 4.2 &amp; 5)</h1>
 <p class="author"><em>Yuanhua Lab: Mingze Gao, Rongting Huang, Xianjie Huang, Aaron Kwok, Zhuoxuan Li, Chen Qiao, Yuanhua Huang</em></p>
 <p class="date" style="margin-top: 1.5em;"><em>2021-07-03</em></p>
 </div>
 <div id="introduction" class="section level1" number="1">
 <h1><span class="header-section-number">Chapter 1</span> Introduction</h1>
-<p>This sub-tutorial book is for the Module 4 of <a href="https://statbiomed.github.io/HKU-single-cell-workshop/">Single-cell Workshop at HKU</a>.</p>
-<p>You can fork or download this tutorial book (and re-run it) from this GitHub repo: <a href="https://github.com/Rongtingting/SingleCell-Workshop-2021" class="uri">https://github.com/Rongtingting/SingleCell-Workshop-2021</a></p>
-<div id="contents-of-module-4" class="section level2" number="1.1">
-<h2><span class="header-section-number">1.1</span> Contents of Module 4</h2>
-<p><strong>Cell trajectory inference</strong></p>
+<p>This sub-tutorial book is for the Modules 4.2 and 5 of <a href="https://statbiomed.github.io/HKU-single-cell-workshop/">Single-cell Workshop at HKU</a>.</p>
+<p>You can fork or download this tutorial book (and re-run it) from this GitHub repo: <a href="https://github.com/StatBiomed/SingleCell-Workshop-2021" class="uri">https://github.com/StatBiomed/SingleCell-Workshop-2021</a></p>
+<div id="contents-of-this-part" class="section level2" number="1.1">
+<h2><span class="header-section-number">1.1</span> Contents of this part</h2>
+<ul>
+<li><strong>Module 4.2: Cell trajectory inference</strong>
 <ul>
 <li>Overview of trajectory inference</li>
 <li>RNA velocity</li>
 <li>Diffusion pseudotime</li>
-</ul>
-<p><strong>Cellular genetic analysis</strong></p>
+</ul></li>
+<li><strong>Module 5: Cellular genetic analysis</strong>
 <ul>
 <li>SNV analysis in single-cell omics</li>
 <li>mtDNA variants for lineage tracing</li>
 <li>Copy number variation analysis from scRNA-seq</li>
+</ul></li>
 </ul>
 </div>
 <div id="other-modules-of-this-workshop" class="section level2" number="1.2">
@@ -270,7 +272,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Please find the learning materials here: <a href="https://holab-hku.github.io/R-workshop/" class="uri">https://holab-hku.github.io/R-workshop/</a></p></li>
 <li><p>Module 2: Fundamentals of scRNA-seq analysis (by Dr Joshua Ho)</p>
 <p>Materials will come soon…</p></li>
-<li><p>Module 3: Cell clustering, annotation and interaction (by Dr Asif Javed)</p>
+<li><p>Module 3: Cell clustering and annotation (by Dr Asif Javed)</p>
+<p>Materials will come soon…</p></li>
+<li><p>Module 4.1: Cell interaction (by Dr Asif Javed)</p>
 <p>Materials will come soon…</p></li>
 </ul>
 <p><strong>Note</strong>: to build this book, use the following script in R:</p>

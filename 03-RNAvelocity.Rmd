@@ -181,7 +181,7 @@ The cell cycle detected by RNA velocity, is biologically affirmed by cell cycle 
 
 ```{r}
 scv$tl$score_genes_cell_cycle(adata)
-scv$pl$scatter(adata, color_gradients = c("S_score", "G2M_score"), smooth = TRUE, perc = c(5, 95), show=FALSE)
+scv$pl$scatter(adata, color_gradients = c("S_score", "G2M_score"), smooth = TRUE, perc = c(5, 95), legend_loc="upper center",  show=FALSE)
 plt$savefig('images/RNA-velo-fig9.png')
 ```
 
