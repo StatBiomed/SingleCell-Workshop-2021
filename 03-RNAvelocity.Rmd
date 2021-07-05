@@ -13,22 +13,8 @@ pip install -U scvelo==0.2.2
 pip install numba==0.51
 ```
 
-To use Python packages within R environment, we will need the help of R `colorize("reticulate", "#316A9E")` library,
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+To use Python packages within R environment, we will need the help of R reticulate library,
 
-colorize <- function(x, color) {
-  if (knitr::is_latex_output()) {
-    sprintf("\\textcolor{%s}{%s}", 
-            color, x)
-  } 
-  else if (knitr::is_html_output()) {
-    sprintf("<span style='color: %s;'>%s</span>", 
-            color, x)
-  } 
-  else x
-}
-```
 ```{r}
 # install.packages("reticulate")
 library(reticulate)
@@ -62,9 +48,9 @@ adata <- scv$datasets$pancreas()
 adata
 ```
 
-To run velocity analysis on your own data, read your file with `colorize("adata = scv$read(file_path)", "#316A9E")`.  
+To run velocity analysis on your own data, read your file with 'adata = scv$read(file_path)'.  
   
-If you want to save model and parameters after processing, run the following command, `colorize("adata$write(file_path, compression = 'gzip')", "#316A9E")`.  
+If you want to save model and parameters after processing, run the following command, 'adata$write(file_path, compression = 'gzip').  
   
 Proportions of unspliced/spliced mRNA reads, UMAP embedding and cluster annotations can be printed and visualized using built-in functions.  
 ```{r}
@@ -97,7 +83,7 @@ scv$pp$moments(adata, n_pcs = as.integer(30), n_neighbors = as.integer(30))
 
 ## Pseudotime based on Diffusion Map
 
-Pseudotime, a part of standardized scRNA-seq analysis pipeline, is also implemented in this package, and can be compared with the `colorize("latent time", "#316A9E")` introduced in dynamical mode.  
+Pseudotime, a part of standardized scRNA-seq analysis pipeline, is also implemented in this package, and can be compared with the latent time introduced in dynamical mode.  
 
 ```{r}
 adata$uns$data$iroot <- which.min(adata$obsm['X_umap'][, 1])
@@ -120,13 +106,13 @@ scVelo has incorporated 3 modes for velocity estimation:
   
 For deterministic and stochastic mode, the gene-specific velocities are obtained by fitting linear regression ratio (constant transcriptional state) between unspliced/spliced mRNA abundances.  
   
-Under linear assumptions, how the `colorize("observed abundances deviate from the steady state", "#b22e5b")` regression line is velocity.  
+Under linear assumptions, how the observed abundances deviate from the steady state regression line is velocity.  
 
 ```{r}
 scv$tl$velocity(adata, mode = "stochastic")
 ```
 
-To calculate velocity graph, we need to run `colorize("velocity_graph()", "#316A9E")`. Velocity graph is the cosine correlation of potential cell transitions with velocity vector in high dimensional space. It summarizes the possible cell transition states and has dimension of ${n}_{obs} * {n}_{obs}$.  
+To calculate velocity graph, we need to run velocity_graph(). Velocity graph is the cosine correlation of potential cell transitions with velocity vector in high dimensional space. It summarizes the possible cell transition states and has dimension of ${n}_{obs} * {n}_{obs}$.  
 
 ```{r}
 scv$tl$velocity_graph(adata, sqrt_transform = TRUE)
@@ -134,7 +120,7 @@ scv$tl$velocity_graph(adata, sqrt_transform = TRUE)
 
 ## Diffusion-map Pseudotime with velocity
 
-Pseudotime, a part of standardized scRNA-seq analysis pipeline, is also implemented in this package, and can be compared with the `colorize("latent time", "#316A9E")` introduced in dynamical mode.  
+Pseudotime, a part of standardized scRNA-seq analysis pipeline, is also implemented in this package, and can be compared with the latent time introduced in dynamical mode.  
 
 ```{r}
 scv$tl$velocity_pseudotime(adata)
@@ -155,7 +141,7 @@ plt$savefig('images/RNA-velo-fig5.png')
 
 ## Plot Results
 
-Velocities are projected onto the specified embedding `colorize("basis", "#316A9E")` and can be visualized in one of the three ways:  
+Velocities are projected onto the specified embedding basis and can be visualized in one of the three ways:  
 - On single cell level  
 - On grid level  
 - Streamlines, which is most commonly used  
@@ -206,7 +192,7 @@ plt$savefig('images/RNA-velo-fig9.png')
 
 Dynamical mode does not necessarily rely on linear assumptions, instead it consider gene-specific rates of transcription, splicing and degradation rates as well as transient cell-states.  
   
-To use dynamical mode, we just need to call `colorize("revocer_dynamics()", "#316A9E")` before computing velocity.  
+To use dynamical mode, we just need to call revocer_dynamics() before computing velocity.  
 
 ```{}
 scv$tl$recover_dynamics(adata)
