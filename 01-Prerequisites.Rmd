@@ -2,7 +2,45 @@
 
 ## Quick summary
 
-For this module, a few tools in Python or command line are needed. If you are already familiar with Unix-based command-line interface, you can prepare your environment with this quick summary, otherwise please see detailed instructions below.
+For going the modules in this part, we requires both R packages and non-R 
+packages (Python and command line). Don't worry, we prepared to make it minimal
+for you.
+
+### R packages
+In modules in this part, we require a few R packages, which you could install as
+follows,
+```
+# install reticulate for module 4.2
+install.packages("reticulate")
+```
+
+```
+# install devtools for module 5.1
+install.packages('devtools')
+```
+
+```
+# install cardelino for module 5.1
+devtools::install_github("single-cell-genetics/cardelino", build_vignettes = FALSE)
+```
+
+And install JAGS manually for Windows or Mac from here (before installing rjags
+R package): https://sourceforge.net/projects/mcmc-jags/files/JAGS/4.x/
+
+```
+# install rjags for module 5.2
+install.packages('rjags')
+```
+
+```
+# install inferCNV for module 5.2
+if (!requireNamespace("BiocManager", quietly = TRUE))
+     install.packages("BiocManager")
+BiocManager::install("infercnv")
+```
+
+### Conda environment
+Additionally, a few tools in Python or command line are needed. If you are already familiar with Unix-based command-line interface, you can prepare your environment with this quick summary, otherwise please see detailed instructions below.
 
 For easier installation and cleaner environment, we recommend using  [conda](https://docs.conda.io/en/latest/miniconda.html) (a popular environment management tool) with Python 3.7 here.
 After having conda installed, you can create an environment with our pre-defined config file [sgcell.yml](http://ufpr.dl.sourceforge.net/project/sgcellworkshop/sgcell.yml) (click & download it, and move it to the working directory). Then all you need is this command line:
