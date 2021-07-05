@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 4 Somatic mutation analysis in single cells | HKU Single-cell Workshop (Modules 4.2 &amp; 5)</title>
+  <meta name="description" content="Cell trajectory inference; Cellular genetic analysis" />
+  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 4 Somatic mutation analysis in single cells | HKU Single-cell Workshop (Modules 4.2 &amp; 5)" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="Cell trajectory inference; Cellular genetic analysis" />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 4 Somatic mutation analysis in single cells | HKU Single-cell Workshop (Modules 4.2 &amp; 5)" />
+  
+  <meta name="twitter:description" content="Cell trajectory inference; Cellular genetic analysis" />
+  
+
+<meta name="author" content="Yuanhua Lab: Mingze Gao, Rongting Huang, Xianjie Huang, Aaron Kwok, Zhuoxuan Li, Chen Qiao, Yuanhua Huang" />
+
+
+<meta name="date" content="2021-07-05" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="trajectory-inference-using-rna-velocity.html"/>
+<link rel="next" href="copy-number-variation-estimation-from-scrna-seq.html"/>
+<script src="libs/header-attrs-2.9/header-attrs.js"></script>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+
+
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">SingleCell Workshop 2021</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#contents-of-this-part"><i class="fa fa-check"></i><b>1.1</b> Contents of this part</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#other-modules-of-this-workshop"><i class="fa fa-check"></i><b>1.2</b> Other modules of this workshop</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="env-pre.html"><a href="env-pre.html"><i class="fa fa-check"></i><b>2</b> Prerequisites</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="env-pre.html"><a href="env-pre.html#quick-summary"><i class="fa fa-check"></i><b>2.1</b> Quick summary</a></li>
+<li class="chapter" data-level="2.2" data-path="env-pre.html"><a href="env-pre.html#wsl_install"><i class="fa fa-check"></i><b>2.2</b> (Optional) Install Windows Subsystem for Linux</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="env-pre.html"><a href="env-pre.html#what-is-the-windows-subsystem-for-linux-wsl"><i class="fa fa-check"></i><b>2.2.1</b> What is the Windows Subsystem for Linux (WSL)?</a></li>
+<li class="chapter" data-level="2.2.2" data-path="env-pre.html"><a href="env-pre.html#manual-installation-steps"><i class="fa fa-check"></i><b>2.2.2</b> Manual Installation Steps</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="env-pre.html"><a href="env-pre.html#conda_install"><i class="fa fa-check"></i><b>2.3</b> Install Conda Environment</a>
+<ul>
+<li class="chapter" data-level="2.3.1" data-path="env-pre.html"><a href="env-pre.html#what-is-conda"><i class="fa fa-check"></i><b>2.3.1</b> What is conda?</a></li>
+<li class="chapter" data-level="2.3.2" data-path="env-pre.html"><a href="env-pre.html#conda_install_windows"><i class="fa fa-check"></i><b>2.3.2</b> Installation on Windows</a></li>
+<li class="chapter" data-level="2.3.3" data-path="env-pre.html"><a href="env-pre.html#conda_install_linux"><i class="fa fa-check"></i><b>2.3.3</b> Installation on Linux</a></li>
+<li class="chapter" data-level="2.3.4" data-path="env-pre.html"><a href="env-pre.html#conda_install_mac"><i class="fa fa-check"></i><b>2.3.4</b> Installation on macOS</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="env-pre.html"><a href="env-pre.html#other-preparation"><i class="fa fa-check"></i><b>2.4</b> Other Preparation</a>
+<ul>
+<li class="chapter" data-level="2.4.1" data-path="env-pre.html"><a href="env-pre.html#conda-configuration"><i class="fa fa-check"></i><b>2.4.1</b> Conda Configuration</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="trajectory-inference-using-rna-velocity.html"><a href="trajectory-inference-using-rna-velocity.html"><i class="fa fa-check"></i><b>3</b> Trajectory Inference using RNA Velocity</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="trajectory-inference-using-rna-velocity.html"><a href="trajectory-inference-using-rna-velocity.html#use-scvelo-package-within-r"><i class="fa fa-check"></i><b>3.1</b> Use scVelo package within R</a></li>
+<li class="chapter" data-level="3.2" data-path="trajectory-inference-using-rna-velocity.html"><a href="trajectory-inference-using-rna-velocity.html#endocrine-pancreas"><i class="fa fa-check"></i><b>3.2</b> Endocrine Pancreas</a></li>
+<li class="chapter" data-level="3.3" data-path="trajectory-inference-using-rna-velocity.html"><a href="trajectory-inference-using-rna-velocity.html#data-preprocessing"><i class="fa fa-check"></i><b>3.3</b> Data Preprocessing</a></li>
+<li class="chapter" data-level="3.4" data-path="trajectory-inference-using-rna-velocity.html"><a href="trajectory-inference-using-rna-velocity.html#pseudotime-based-on-diffusion-map"><i class="fa fa-check"></i><b>3.4</b> Pseudotime based on Diffusion Map</a></li>
+<li class="chapter" data-level="3.5" data-path="trajectory-inference-using-rna-velocity.html"><a href="trajectory-inference-using-rna-velocity.html#compute-velocity-and-velocity-graph"><i class="fa fa-check"></i><b>3.5</b> Compute velocity and velocity graph</a></li>
+<li class="chapter" data-level="3.6" data-path="trajectory-inference-using-rna-velocity.html"><a href="trajectory-inference-using-rna-velocity.html#diffusion-map-pseudotime-with-velocity"><i class="fa fa-check"></i><b>3.6</b> Diffusion-map Pseudotime with velocity</a></li>
+<li class="chapter" data-level="3.7" data-path="trajectory-inference-using-rna-velocity.html"><a href="trajectory-inference-using-rna-velocity.html#plot-results"><i class="fa fa-check"></i><b>3.7</b> Plot Results</a></li>
+<li class="chapter" data-level="3.8" data-path="trajectory-inference-using-rna-velocity.html"><a href="trajectory-inference-using-rna-velocity.html#interprete-velocity"><i class="fa fa-check"></i><b>3.8</b> Interprete Velocity</a></li>
+<li class="chapter" data-level="3.9" data-path="trajectory-inference-using-rna-velocity.html"><a href="trajectory-inference-using-rna-velocity.html#velocity-in-cycling-progenitors"><i class="fa fa-check"></i><b>3.9</b> Velocity in cycling progenitors</a></li>
+<li class="chapter" data-level="3.10" data-path="trajectory-inference-using-rna-velocity.html"><a href="trajectory-inference-using-rna-velocity.html#dynamical-mode-and-related-analysis"><i class="fa fa-check"></i><b>3.10</b> Dynamical Mode and related analysis</a></li>
+<li class="chapter" data-level="3.11" data-path="trajectory-inference-using-rna-velocity.html"><a href="trajectory-inference-using-rna-velocity.html#session-info"><i class="fa fa-check"></i><b>3.11</b> Session Info</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="somatic-mutation-analysis-in-single-cells.html"><a href="somatic-mutation-analysis-in-single-cells.html"><i class="fa fa-check"></i><b>4</b> Somatic mutation analysis in single cells</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="somatic-mutation-analysis-in-single-cells.html"><a href="somatic-mutation-analysis-in-single-cells.html#introduction-1"><i class="fa fa-check"></i><b>4.1</b> Introduction</a>
+<ul>
+<li class="chapter" data-level="4.1.1" data-path="somatic-mutation-analysis-in-single-cells.html"><a href="somatic-mutation-analysis-in-single-cells.html#choice-of-protocols"><i class="fa fa-check"></i><b>4.1.1</b> Choice of protocols</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="somatic-mutation-analysis-in-single-cells.html"><a href="somatic-mutation-analysis-in-single-cells.html#snv-analysis"><i class="fa fa-check"></i><b>4.2</b> SNV analysis</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="somatic-mutation-analysis-in-single-cells.html"><a href="somatic-mutation-analysis-in-single-cells.html#call-somatic-variants-and-genotype-single-cells"><i class="fa fa-check"></i><b>4.2.1</b> Call somatic variants and genotype single cells</a></li>
+<li class="chapter" data-level="4.2.2" data-path="somatic-mutation-analysis-in-single-cells.html"><a href="somatic-mutation-analysis-in-single-cells.html#visualize-variat-allele-fequency"><i class="fa fa-check"></i><b>4.2.2</b> Visualize variat allele fequency</a></li>
+<li class="chapter" data-level="4.2.3" data-path="somatic-mutation-analysis-in-single-cells.html"><a href="somatic-mutation-analysis-in-single-cells.html#use-extra-information-on-clonal-tree"><i class="fa fa-check"></i><b>4.2.3</b> Use extra information on clonal tree</a></li>
+<li class="chapter" data-level="4.2.4" data-path="somatic-mutation-analysis-in-single-cells.html"><a href="somatic-mutation-analysis-in-single-cells.html#run-cardelino-for-inferring-clonal-structure"><i class="fa fa-check"></i><b>4.2.4</b> Run cardelino for inferring clonal structure</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="somatic-mutation-analysis-in-single-cells.html"><a href="somatic-mutation-analysis-in-single-cells.html#mtsnv-analysis"><i class="fa fa-check"></i><b>4.3</b> mtSNV analysis</a>
+<ul>
+<li class="chapter" data-level="4.3.1" data-path="somatic-mutation-analysis-in-single-cells.html"><a href="somatic-mutation-analysis-in-single-cells.html#visualise-allele-frequency"><i class="fa fa-check"></i><b>4.3.1</b> Visualise allele frequency</a></li>
+<li class="chapter" data-level="4.3.2" data-path="somatic-mutation-analysis-in-single-cells.html"><a href="somatic-mutation-analysis-in-single-cells.html#infer-clonal-structure-with-mtdna-variants"><i class="fa fa-check"></i><b>4.3.2</b> Infer clonal structure with mtDNA variants</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="copy-number-variation-estimation-from-scrna-seq.html"><a href="copy-number-variation-estimation-from-scrna-seq.html"><i class="fa fa-check"></i><b>5</b> Copy number variation estimation from scRNA-seq</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="copy-number-variation-estimation-from-scrna-seq.html"><a href="copy-number-variation-estimation-from-scrna-seq.html#method-infercnv"><i class="fa fa-check"></i><b>5.1</b> Method: inferCNV</a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="copy-number-variation-estimation-from-scrna-seq.html"><a href="copy-number-variation-estimation-from-scrna-seq.html#install-infercnv"><i class="fa fa-check"></i><b>5.1.1</b> install inferCNV</a></li>
+<li class="chapter" data-level="5.1.2" data-path="copy-number-variation-estimation-from-scrna-seq.html"><a href="copy-number-variation-estimation-from-scrna-seq.html#getting-started"><i class="fa fa-check"></i><b>5.1.2</b> getting started</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="copy-number-variation-estimation-from-scrna-seq.html"><a href="copy-number-variation-estimation-from-scrna-seq.html#application-on-tnbc1"><i class="fa fa-check"></i><b>5.2</b> Application on TNBC1</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="copy-number-variation-estimation-from-scrna-seq.html"><a href="copy-number-variation-estimation-from-scrna-seq.html#data-description"><i class="fa fa-check"></i><b>5.2.1</b> data description</a></li>
+<li class="chapter" data-level="5.2.2" data-path="copy-number-variation-estimation-from-scrna-seq.html"><a href="copy-number-variation-estimation-from-scrna-seq.html#run-infercnv"><i class="fa fa-check"></i><b>5.2.2</b> run inferCNV</a></li>
+<li class="chapter" data-level="5.2.3" data-path="copy-number-variation-estimation-from-scrna-seq.html"><a href="copy-number-variation-estimation-from-scrna-seq.html#infercnv-result"><i class="fa fa-check"></i><b>5.2.3</b> inferCNV result</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="copy-number-variation-estimation-from-scrna-seq.html"><a href="copy-number-variation-estimation-from-scrna-seq.html#ref"><i class="fa fa-check"></i><b>5.3</b> ref</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="mtdna-variants-for-lineage-inference-from-single-cell-omics.html"><a href="mtdna-variants-for-lineage-inference-from-single-cell-omics.html"><i class="fa fa-check"></i><b>6</b> mtDNA variants for lineage inference from single-cell omics</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="mtdna-variants-for-lineage-inference-from-single-cell-omics.html"><a href="mtdna-variants-for-lineage-inference-from-single-cell-omics.html#pileup-with-cellsnp-lite"><i class="fa fa-check"></i><b>6.1</b> Pileup with cellsnp-lite</a>
+<ul>
+<li class="chapter" data-level="6.1.1" data-path="mtdna-variants-for-lineage-inference-from-single-cell-omics.html"><a href="mtdna-variants-for-lineage-inference-from-single-cell-omics.html#pileup-without-given-snps"><i class="fa fa-check"></i><b>6.1.1</b> Pileup without given SNPs</a></li>
+<li class="chapter" data-level="6.1.2" data-path="mtdna-variants-for-lineage-inference-from-single-cell-omics.html"><a href="mtdna-variants-for-lineage-inference-from-single-cell-omics.html#pileup-with-given-snps"><i class="fa fa-check"></i><b>6.1.2</b> Pileup with given SNPs</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="mtdna-variants-for-lineage-inference-from-single-cell-omics.html"><a href="mtdna-variants-for-lineage-inference-from-single-cell-omics.html#clonal-analysis-with-mquad"><i class="fa fa-check"></i><b>6.2</b> Clonal analysis with MQuad</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="preprocessing-of-dataset.html"><a href="preprocessing-of-dataset.html"><i class="fa fa-check"></i><b>7</b> Preprocessing of dataset</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="preprocessing-of-dataset.html"><a href="preprocessing-of-dataset.html#list-of-packages-aligned-in-pipeline"><i class="fa fa-check"></i><b>7.1</b> List of packages aligned in pipeline:</a></li>
+<li class="chapter" data-level="7.2" data-path="preprocessing-of-dataset.html"><a href="preprocessing-of-dataset.html#installation-of-packagessoftwares"><i class="fa fa-check"></i><b>7.2</b> Installation of packages/softwares</a>
+<ul>
+<li class="chapter" data-level="7.2.1" data-path="preprocessing-of-dataset.html"><a href="preprocessing-of-dataset.html#sratool"><i class="fa fa-check"></i><b>7.2.1</b> SRATool</a></li>
+<li class="chapter" data-level="7.2.2" data-path="preprocessing-of-dataset.html"><a href="preprocessing-of-dataset.html#cellranger"><i class="fa fa-check"></i><b>7.2.2</b> Cellranger</a></li>
+<li class="chapter" data-level="7.2.3" data-path="preprocessing-of-dataset.html"><a href="preprocessing-of-dataset.html#velocyto-samtools"><i class="fa fa-check"></i><b>7.2.3</b> Velocyto &amp; Samtools</a></li>
+<li class="chapter" data-level="7.2.4" data-path="preprocessing-of-dataset.html"><a href="preprocessing-of-dataset.html#dropest"><i class="fa fa-check"></i><b>7.2.4</b> <span>Dropest</span></a></li>
+</ul></li>
+<li class="chapter" data-level="7.3" data-path="preprocessing-of-dataset.html"><a href="preprocessing-of-dataset.html#preprocessing-pipline"><i class="fa fa-check"></i><b>7.3</b> Preprocessing pipline</a>
+<ul>
+<li class="chapter" data-level="7.3.1" data-path="preprocessing-of-dataset.html"><a href="preprocessing-of-dataset.html#download-and-split-pancreas-e15_5-fastq-data-from-ncbi"><i class="fa fa-check"></i><b>7.3.1</b> 1. Download and split Pancreas E15_5 fastq data from NCBI:</a></li>
+<li class="chapter" data-level="7.3.2" data-path="preprocessing-of-dataset.html"><a href="preprocessing-of-dataset.html#run-cellranger-count-referring-to-the-mouse-refdata"><i class="fa fa-check"></i><b>7.3.2</b> 2. Run Cellranger count, referring to the mouse refdata</a></li>
+<li class="chapter" data-level="7.3.3" data-path="preprocessing-of-dataset.html"><a href="preprocessing-of-dataset.html#run-velocytodropest."><i class="fa fa-check"></i><b>7.3.3</b> 3. Run Velocyto/Dropest.</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">HKU Single-cell Workshop (Modules 4.2 &amp; 5)</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="somatic-mutation-analysis-in-single-cells" class="section level1" number="4">
+<h1><span class="header-section-number">Chapter 4</span> Somatic mutation analysis in single cells</h1>
+<div id="introduction-1" class="section level2" number="4.1">
+<h2><span class="header-section-number">4.1</span> Introduction</h2>
+<p>Whole genome (or exome) sequencing at bulk tissues have been widely used in
+studying somatic mutation in cancer samples and healthy tissues recently. It
+allows to identify somatic mutations and accurately estimate of the frequency of
+each mutation (see Fig. 4.1, adapted from
+<a href="https://doi.org/10.1016/j.bbcan.2017.02.001">Kuipers et al, 2017</a>).</p>
+<p>However, there are a few major challenges in somatic mutations with bulk
+sequencing.</p>
+<ul>
+<li>First, the allele frequency cannot give accurate clonal structure,
+as it is difficult to distinct mutations from different clones that have
+similar population percents.</li>
+<li>Second, the evolutionary lineage is much difficult to infer from bulk
+sequencing data without single cell resolution</li>
+<li>Third, the bulk DNA-seq cannot dissect the phenotypic impact of somatic
+mutations, which however is crucial to understand intra-tumor heterogeneity,
+both at genetic and transcriptomic levels.</li>
+</ul>
+<div class="figure">
+<img src="images/cellGen-fig1.png" alt="" />
+<p class="caption">Figure 4.1. Somatic mutations and evolution. Fig adapted from Kuipers et al, 2017</p>
+</div>
+<div id="choice-of-protocols" class="section level3" number="4.1.1">
+<h3><span class="header-section-number">4.1.1</span> Choice of protocols</h3>
+<p>Let us first review the different protocols for single-cell sequencing, as
+genetic analysis often higher requirement of sequencing coverage.</p>
+<p>In next Figure from
+<a href="https://www.nature.com/articles/s41587-020-0465-8">Ding et al, 2020</a>, there are
+major two different types of protocols. One is well based, including SMART-seq,
+returning moderate coverage but low number of cells. The other is droplet-based,
+including 10x Genomics, returning extremely low coverage but high number of
+cells.</p>
+<div class="figure">
+<img src="images/cellGen-fig2.png" alt="" />
+<p class="caption">Figure 4.2. Common protocols of scRNA-seq. Fig adapted from Ding et al, 2020</p>
+</div>
+<p>Though scRNA-seq contains the information of somatic mutations in the expressed
+RNA molecules. However, it only covers the highly expressed genes (or its 3’ /
+5’ if UMI-based protocols). Generally, scDNA-seq offers more even coverage
+across the genome, despite its much higher cost. None the less, given the low
+capture efficiency, all protocols suffer from allele drop-out, namely false
+negatives in observing the existing mutation allele.</p>
+<p>Below, we summarise different sequenciing strategies and their potentials for
+analysing different types of somatic mutations, including copy number
+variations (CNV), single-nucleotide variation (SNV) and mitochondrial SNV
+(mtSNV).</p>
+<div class="figure">
+<img src="images/cellGen-fig3.png" alt="" />
+<p class="caption">Table 4.1. Protocols for cellular genetic analysis</p>
+</div>
+<p>In the following sections, we will show two example data sets to illustrating:</p>
+<ul>
+<li>SMART-seq2 for SNV and mtSNV analysis</li>
+<li>10x Genomic for CNV analysis (and possibly mtSNV analysis if lucky)</li>
+</ul>
+</div>
+</div>
+<div id="snv-analysis" class="section level2" number="4.2">
+<h2><span class="header-section-number">4.2</span> SNV analysis</h2>
+<p>Here, we will use a SMART-seq2 dataset, the joxm dataset (77 QC cells) generated
+from <a href="https://www.nature.com/articles/s41592-020-0766-3">McCarthy et al, 2020</a>),
+as an example of SNV analsyis in single cells (Fig. 4.3 below for this donor).
+The processed data sets are directly available from its according
+<a href="https://github.com/single-cell-genetics/cardelino">cardelino</a> R package. We
+also prepared the raw data (in <code>.bam</code> format) and scripts to generate them in
+the <a href="">Appendix Chapter 7.1</a> for you to practice the preprocessing steps with
+tools <a href="https://cellsnp-lite.readthedocs.io">cellsnp-lit</a> and
+<a href="https://github.com/single-cell-genetics/MQuad">MQuad</a>.</p>
+<div class="figure">
+<img src="images/cellGen-fig4.png" alt="" />
+<p class="caption">Figure 4.3. SNVs analysis with Joxm dataset. Fig adapted from McCarthy et al, 2020</p>
+</div>
+<div id="call-somatic-variants-and-genotype-single-cells" class="section level3" number="4.2.1">
+<h3><span class="header-section-number">4.2.1</span> Call somatic variants and genotype single cells</h3>
+<p>Nuclear genome is large and scRNA-seq is generally noisy, hence making it
+extremely difficult to call somatic SNVs from scRNA-seq data directly. In this
+dataset, probably in a general situation, we could detect somatic SNVs using
+bulk whole genome sequencing with tumor and matched normal samples first, e.g.,
+with the commonly used
+<a href="https://software.broadinstitute.org/cancer/cga/mutect">MuTect</a>.</p>
+<p>In this joxm dataset, we have called ~650 SNVs from bulk whole exome-seq. Given
+this list of called somatic variants, we can genotype each cell with genotyping
+tool. Here, we used our <a href="https://cellsnp-lite.readthedocs.io">cellsnp-lit</a> (with
+high recommendation).</p>
+<p>Finally, we obtained 112 SNVs are expressed in at least one of the 77 cells. The
+output file in VCF is available in the cardelino package
+<a href="https://github.com/single-cell-genetics/cardelino/blob/lite-depends/inst/extdata/cellSNP.cells.vcf.gz">cellSNP.cells.vcf.gz</a> (12KB).</p>
+</div>
+<div id="visualize-variat-allele-fequency" class="section level3" number="4.2.2">
+<h3><span class="header-section-number">4.2.2</span> Visualize variat allele fequency</h3>
+<p>Now, let’s load the data and visualise the allele frequency here:</p>
+<pre class="{load-pkg}"><code>library(ggplot2)
+library(cardelino)</code></pre>
+<pre class="{read-vcf-data}"><code>vcf_file &lt;- system.file(&quot;extdata&quot;, &quot;cellSNP.cells.vcf.gz&quot;, package = &quot;cardelino&quot;)
+input_data &lt;- load_cellSNP_vcf(vcf_file)</code></pre>
+<pre class="{allele-frequency}"><code>AF &lt;- as.matrix(input_data$A / input_data$D)
+
+p = pheatmap::pheatmap(AF, cluster_rows=FALSE, cluster_cols=FALSE,
+                   show_rownames = TRUE, show_colnames = TRUE,
+                   labels_row=&#39;77 cells&#39;, labels_col=&#39;112 SNVs&#39;,
+                   angle_col=0, angle_row=0)</code></pre>
+<div class="figure">
+<img src="images/cellGen-fig5.png" style="width:75.0%" alt="" />
+<p class="caption">Figure 4.4. Allele frequency of somatic SNVs in Joxm dataset</p>
+</div>
+<p>As expected, the
+majority of entries are missing (in grey) due to the high sparsity in scRNA-seq
+data. For the same reason, even for the non-missing entries, the estimate of
+allele frequency is of high uncertainty. Therefore, it is crucial to
+probabilistic clustering with accounting the uncertainty, ideally with guide
+clonal tree structure from external data.</p>
+</div>
+<div id="use-extra-information-on-clonal-tree" class="section level3" number="4.2.3">
+<h3><span class="header-section-number">4.2.3</span> Use extra information on clonal tree</h3>
+<p>As mentioned, the variant calling is based on bulk WES, which can also be used
+to infer a clonal tree, even though it is of high uncertainty by only using bulk
+data. Here, we obtain a maximum-a-posteriori (MAP) tree from
+<a href="https://github.com/yuchaojiang/Canopy">Canopy</a>.
+The clonal tree inferred by Canopy for this donor consists of three clones,
+including a “base” clone (“clone1”) that has no sublconal somatic mutations
+present.</p>
+<pre class="{read-canopy-data}"><code>canopy_res &lt;- readRDS(system.file(&quot;extdata&quot;, &quot;canopy_results.coveraged.rds&quot;, 
+                                  package = &quot;cardelino&quot;))
+plot_tree(canopy_res$tree, orient = &quot;v&quot;)</code></pre>
+<div class="figure">
+<img src="images/cellGen-fig6.png" style="width:40.0%" alt="" />
+<p class="caption">Figure 4.5. Clonal tree inferred from bulk WES data</p>
+</div>
+</div>
+<div id="run-cardelino-for-inferring-clonal-structure" class="section level3" number="4.2.4">
+<h3><span class="header-section-number">4.2.4</span> Run cardelino for inferring clonal structure</h3>
+<p>Now, we can leverage the inferred clonal tree as an guidence to cluster cells
+based on their mutation profiles.</p>
+<p>Before starting, be careful to ensure that the same variant IDs are used in both
+data sources.</p>
+<pre class="{correct-variant-ids}"><code>Config &lt;- canopy_res$tree$Z
+rownames(Config) &lt;- gsub(&quot;:&quot;, &quot;_&quot;, rownames(Config))</code></pre>
+<p>The run <code>clone_id</code> the main function in <code>cardelino</code> package:</p>
+<pre class="{cell-assign}"><code>set.seed(7)
+assignments &lt;- clone_id(input_data$A, input_data$D, Config = Config,
+                        min_iter = 800, max_iter = 1200)
+names(assignments)</code></pre>
+<p>We can visualise the cell-clone assignment probabilities as a heatmap.</p>
+<pre class="{prob-heatmap}"><code>prob_heatmap(assignments$prob)</code></pre>
+<div class="figure">
+<img src="images/cellGen-fig7.png" style="width:40.0%" alt="" />
+<p class="caption">Figure 4.6. Assignment probability of cells to clones</p>
+</div>
+<p>We recommend assigning a cell to the highest-probability clone if the highest
+posterior probability is greater than 0.5 and leaving cells “unassigned” if they
+do not reach this threshold. The <code>assign_cells_to_clones</code> function conveniently
+assigns cells to clones based on a threshold and returns a data.frame with the
+cell-clone assignments.</p>
+<pre class="{assign-cell-clone-easy}"><code>df &lt;- assign_cells_to_clones(assignments$prob)
+head(df)
+table(df$clone)</code></pre>
+<p>Also, Cardelino will update the guide clonal tree Config matrix (as a prior)
+and return a posterior estimate. In the figure below, negative value means the
+probability of a certain variant presents in a certain clone is reduced in
+posterior compared to prior (i.e., the input Config). Vice verse for the
+positive values.</p>
+<pre class="{config-update}"><code>heat_matrix(t(assignments$Config_prob - Config)) + 
+  scale_fill_gradient2() +
+  ggtitle(&#39;Changes of clonal Config&#39;) + 
+  labs(x=&#39;Clones&#39;, y=&#39;112 SNVs&#39;) +
+  theme(axis.text.y = element_blank(), legend.position = &quot;right&quot;)</code></pre>
+<div class="figure">
+<img src="images/cellGen-fig8.png" style="width:40.0%" alt="" />
+<p class="caption">Figure 4.7. Difference between updated and input clonal configuration</p>
+</div>
+<p>Finally, we can visualize the results cell assignment and updated mutations
+clonal configuration at the raw allele frequency matrix:</p>
+<pre class="{results-plot}"><code>AF &lt;- as.matrix(input_data$A / input_data$D)
+cardelino::vc_heatmap(AF, assignments$prob, Config, show_legend=TRUE)</code></pre>
+<div class="figure">
+<img src="images/cellGen-fig9.png" style="width:75.0%" alt="" />
+<p class="caption">Figure 4.8. Allele frequency of clustered cells and variants</p>
+</div>
+</div>
+</div>
+<div id="mtsnv-analysis" class="section level2" number="4.3">
+<h2><span class="header-section-number">4.3</span> mtSNV analysis</h2>
+<p>Recently, mitochondrial variants have also been shown powerful makeups for
+lineage tracing <a href="https://doi.org/10.1016/j.cell.2019.01.022">Ludwig et al, 2019</a>.
+The much higher copies of mtDNA not only give much higher sequencing coverage,
+but generally highly mutation rate (probably also some other biological reasons).</p>
+<div class="figure">
+<img src="images/cellGen-fig10.png" alt="" />
+<p class="caption">Figure 4.9. Mitochondrial variants for lineage tracing. Fig. adapted from Ludwig et al, 2019</p>
+</div>
+<div id="visualise-allele-frequency" class="section level3" number="4.3.1">
+<h3><span class="header-section-number">4.3.1</span> Visualise allele frequency</h3>
+<p>Here, we illustrate the mtDNA on the joxm dataset again. During the preprocssing,
+we first genotyping the whole mito genome directly with <code>cellsnp-lit</code> and then
+call the clonal informed variants by <code>MQuad</code>.</p>
+<p>Let’s first load the processed dataset from <code>cardelino</code> package and visualise
+the allele frequency.</p>
+<pre class="{read-mtx-files}"><code>AD_file &lt;- system.file(&quot;extdata&quot;, &quot;passed_ad.mtx&quot;, package = &quot;cardelino&quot;)
+DP_file &lt;- system.file(&quot;extdata&quot;, &quot;passed_dp.mtx&quot;, package = &quot;cardelino&quot;)
+id_file &lt;- system.file(&quot;extdata&quot;, &quot;passed_variant_names.txt&quot;, package = &quot;cardelino&quot;)
+
+AD &lt;- Matrix::readMM(AD_file)
+DP &lt;- Matrix::readMM(DP_file)
+var_ids &lt;- read.table(id_file, )
+rownames(AD) &lt;- rownames(DP) &lt;- var_ids[, 1]
+colnames(AD) &lt;- colnames(DP) &lt;- paste0(&#39;Cell&#39;, seq(ncol(DP)))</code></pre>
+<pre class="{show-pheatmap}"><code>AF_mt &lt;- as.matrix(AD / DP)
+pheatmap::pheatmap(AF_mt)</code></pre>
+<div class="figure">
+<img src="images/cellGen-fig11.png" style="width:75.0%" alt="" />
+<p class="caption">Figure 4.10. Allele frequency of mtDNA variants</p>
+</div>
+<p>As expected, the coverage of mtDNA is a lot higher than the nuclear genome above
+(much fewer missing values).</p>
+</div>
+<div id="infer-clonal-structure-with-mtdna-variants" class="section level3" number="4.3.2">
+<h3><span class="header-section-number">4.3.2</span> Infer clonal structure with mtDNA variants</h3>
+<p>Now, we can run cardelino on the mitochondrial variations. Note, as there is
+no prior clonal tree, the model is easier to return a local optima. Generally,
+we recommend running it multiple time (with different random seed or
+initializations) and pick the one with highest DIC.</p>
+<pre class="{denovo-mtdna}"><code>set.seed(7)
+assign_mtClones &lt;- clone_id(AD, DP, Config=NULL, n_clone = 3, keep_base_clone=FALSE)</code></pre>
+<p>Then visualise allele frequency along with the clustering of cells and variants:</p>
+<pre class="{vc_heatmap-mtdna}"><code>Config_mt &lt;- assign_mtClones$Config_prob
+Config_mt[Config_mt &gt;= 0.5] = 1
+Config_mt[Config_mt &lt;  0.5] = 0
+cardelino::vc_heatmap(AF_mt, assign_mtClones$prob, Config_mt, show_legend=TRUE)</code></pre>
+<div class="figure">
+<img src="images/cellGen-fig12.png" style="width:75.0%" alt="" />
+<p class="caption">Figure 4.11. Allele frequency of mtSNVs with clustered cells</p>
+</div>
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="trajectory-inference-using-rna-velocity.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="copy-number-variation-estimation-from-scrna-seq.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["SingleCell Workshop.pdf", "SingleCell Workshop.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>
