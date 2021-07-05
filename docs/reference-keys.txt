@@ -3,6 +3,8 @@ contents-of-this-part
 other-modules-of-this-workshop
 env-pre
 quick-summary
+r-packages
+conda-environment
 wsl_install
 what-is-the-windows-subsystem-for-linux-wsl
 manual-installation-steps
@@ -13,9 +15,16 @@ conda_install_linux
 conda_install_mac
 other-preparation
 conda-configuration
-trajectory-inference-using-rna-velocity
+trajectory-inference-and-rna-velocity
+introduction-of-trajectory-inference
+diffusion-map
+monocle
+rna-velocity
+rna-kinetics
+unspliced-rna-indicates-transcriptional-speed
 use-scvelo-package-within-r
-endocrine-pancreas
+environment-and-preprocessing
+getting-started
 data-preprocessing
 pseudotime-based-on-diffusion-map
 compute-velocity-and-velocity-graph
@@ -24,7 +33,6 @@ plot-results
 interprete-velocity
 velocity-in-cycling-progenitors
 dynamical-mode-and-related-analysis
-session-info
 somatic-mutation-analysis-in-single-cells
 introduction-1
 choice-of-protocols
@@ -39,7 +47,7 @@ infer-clonal-structure-with-mtdna-variants
 copy-number-variation-estimation-from-scrna-seq
 method-infercnv
 install-infercnv
-getting-started
+getting-started-1
 application-on-tnbc1
 data-description
 run-infercnv
