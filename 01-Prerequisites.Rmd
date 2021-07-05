@@ -1,46 +1,54 @@
 # Prerequisites {#env-pre}
 
-
-For going the modules in this part, we requires both R packages and non-R 
-packages (Python and command line). Don't worry, we prepared to make it minimal
-for you.
+For reproducing the tutorials in the modules 4.2 and 5, we need a few R 
+packages and a Python package. Detailed instructions are below.
 
 ## R packages
-In modules in this part, we require a few R packages, which you could install as
-follows,
-```
-# install reticulate for module 4.2
-install.packages("reticulate")
-```
 
-```
-# install devtools for module 5.1
-install.packages('devtools')
-```
+1. For module 4.2, we need `reticulate` to import the Python package (see 
+[next section](#python_packages). You can install it within R:
 
-```
-# install cardelino for module 5.1
-devtools::install_github("single-cell-genetics/cardelino", build_vignettes = FALSE)
-```
+    ```
+    # install reticulate for module 4.2
+    install.packages("reticulate")
+    ```
 
-And install JAGS manually for Windows or Mac from here (before installing rjags
-R package): https://sourceforge.net/projects/mcmc-jags/files/JAGS/4.x/
+2. For module 5.1, we need `cardelino`, which is only available at 
+[GitHub](https://github.com/single-cell-genetics/cardelino), so we need to use
+`devtools`:
+  
+    ```
+    # install devtools for module 5.1
+    install.packages('devtools')
+    ```
+    
+    ```
+    # install cardelino for module 5.1
+    devtools::install_github("single-cell-genetics/cardelino", build_vignettes = FALSE)
+    ```
 
-```
-# install rjags for module 5.2
-install.packages('rjags')
-```
+3. For module 5.2, we need `infercnv`, which requires a standalone
+software JAGS. **Please install JAGS manually** for Windows or Mac from this 
+link **before** install `rjags` R package: 
+https://sourceforge.net/projects/mcmc-jags/files/JAGS/4.x/
+<br/>
+Continue and install `rjags` and `infercnv`:
+    ```
+    # install rjags for module 5.2
+    install.packages('rjags')
+    ```
+    
+    ```
+    # install inferCNV for module 5.2
+    if (!requireNamespace("BiocManager", quietly = TRUE))
+         install.packages("BiocManager")
+    BiocManager::install("infercnv")
+    ```
 
-```
-# install inferCNV for module 5.2
-if (!requireNamespace("BiocManager", quietly = TRUE))
-     install.packages("BiocManager")
-BiocManager::install("infercnv")
-```
-
-## Python package scvelo with Anaconda
-Additionally, one Python package `scvelo` is needed for the module 4.2. 
-For easier installation and cleaner environment, we recommend using [Anaconda](https://docs.anaconda.com/anaconda/) (a popular environment management tool) with Python 3.8 here.
+## Python packages {#python_packages}
+For module 4.2, we need one Python package [scvelo](https://scvelo.readthedocs.io/).
+If you haven't used Python before, we recommend installing it by using [Anaconda](https://docs.anaconda.com/anaconda/), which contains Python 3.8 and 
+various useful tools.
 
 ### Installation on Windows {#conda_install_windows}
 
@@ -52,7 +60,11 @@ knitr::include_graphics("./images/conda_download_installer1.png")
 
 2. Double click the downloaded file and install Anaconda following the instructions. (Note, this requires about 3G disk space)
 
-3. Open `Anaconda Powershell Prompt` and then install `scVelo` by typing `pip install scvelo==0.2.2` in the shell.
+3. Open `Anaconda Powershell Prompt` and then install `scVelo` by typing this 
+command in the shell:
+   ```
+   pip install scvelo==0.2.2
+   ```
 
 ```{r conda_fig2, echo=FALSE, message=FALSE, warning=FALSE, fig.align="center", out.width='65%'}
 knitr::include_graphics("./images/conda_scvelo.png")
@@ -67,20 +79,25 @@ You have successfully set up the base environment of conda and installed the `sc
 2. Download Anaconda installer with `wget https://repo.anaconda.com/archive/Anaconda3-2021.05-Linux-x86_64.sh`
 
 3. Install Anaconda with `bash Anaconda3-2021.05-Linux-x86_64.sh`; follow the prompts on the installer screens.  
-
+<br/>
 When you are asked `Do you wish the installer to initialize Anaconda3 by running conda init`, we recommend "yes".
 
 4. Close and then re-open your Shell, to make the changes take effect.
 
-5. Type `conda list` in Shell. 
+5. Install `scVelo` by typing this command in the shell:
+   ```
+   pip install scvelo==0.2.2
+   ```
 
+6. Type `conda list` in Shell. 
+<br/>
 A list of installed packages appears if it has been installed correctly.  
 
 ### Installation on macOS {#conda_install_mac}
 
 In macOS, you could install Anaconda either in graphical mode or command line mode.
 
-**Installation in Graphical Mode**
+**Option 1: installation in Graphical Mode (recommended)**
 
 This mode is very similar to [Installation on Windows](#conda_install_windows).
 
@@ -93,9 +110,13 @@ knitr::include_graphics("./images/conda_download_installer2.png")
 
 2. Install Anaconda following the instructions.
 
-3. Open `Anaconda Powershell Prompt` and then install `scVelo` by typing `pip install scvelo==0.2.2` in the shell.
+3. Open `Terminal` (you can type in `Spotlight Search`) and then install 
+`scVelo` by typing this command in the shell:
+   ```
+   pip install scvelo==0.2.2
+   ```
 
-**Installation in Command Line Mode**
+**Option 2: installation in Command Line Mode**
 
 This mode is very similar to [Installation on Linux](#conda_install_linux).
 
@@ -104,12 +125,17 @@ This mode is very similar to [Installation on Linux](#conda_install_linux).
 2. Download Anaconda installer with `wget https://repo.anaconda.com/archive/Anaconda3-2021.05-MacOSX-x86_64.sh`
 
 3. Install Anaconda with `bash Anaconda3-2021.05-MacOSX-x86_64.sh`; follow the prompts on the installer screens.  
-
+<br/>
 When you are asked `Do you wish the installer to initialize Anaconda3 by running conda init`, we recommend "yes".
 
 4. Close and then re-open your Shell, to make the changes take effect.
 
-5. Type `conda list` in Shell. 
+5. Install `scVelo` by typing this command in the shell:
+   ```
+   pip install scvelo==0.2.2
+   ```
 
+6. Type `conda list` in Shell. 
+<br/>
 A list of installed packages appears if it has been installed correctly.  
 

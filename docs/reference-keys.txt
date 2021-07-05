@@ -3,11 +3,11 @@ contents-of-this-part
 other-modules-of-this-workshop
 env-pre
 r-packages
-python-package-scvelo-with-anaconda
+python_packages
 conda_install_windows
 conda_install_linux
 conda_install_mac
-trajectory-inference-and-rna-velocity
+RNA_velocity
 introduction-of-trajectory-inference
 diffusion-map
 monocle
@@ -25,7 +25,7 @@ plot-results
 interprete-velocity
 velocity-in-cycling-progenitors
 dynamical-mode-and-related-analysis
-somatic-mutation-analysis-in-single-cells
+SNV_analysis
 introduction-1
 choice-of-protocols
 snv-analysis
@@ -36,7 +36,7 @@ run-cardelino-for-inferring-clonal-structure
 mtsnv-analysis
 visualise-allele-frequency
 infer-clonal-structure-with-mtdna-variants
-copy-number-variation-estimation-from-scrna-seq
+CNV_analysis
 method-infercnv
 install-infercnv
 getting-started-1
@@ -45,7 +45,7 @@ data-description
 run-infercnv
 infercnv-result
 ref
-preprocessing-of-dataset
+preprocess
 preprocessing-for-rna-velocity
 list-of-packages-aligned-in-pipeline
 installation-of-packagessoftwares
