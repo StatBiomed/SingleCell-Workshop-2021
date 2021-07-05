@@ -321,8 +321,8 @@ features is that Monocle3 offers is the branching in the trajectory. On the othe
 hand, it generally requires users to specify the start (or end) point in the
 trajectory.</p>
 <div class="figure">
-<img src="images/trajectory-fig3.png" style="width:60.0%" alt="" />
-<p class="caption">Figure 3.1. Example results for Monocle3. Fig. adapted from its tutorial</p>
+<img src="images/trajectory-fig3.png" style="width:100.0%" alt="" />
+<p class="caption">Figure 3.1. Results for Monocle3 for tutorial data below. Panels are based on different start nodes</p>
 </div>
 </div>
 </div>
@@ -417,7 +417,10 @@ If you want to save model and parameters after processing, run the following com
 <p>Now, let’s have a look of the proportions of unspliced/spliced mRNA reads,
 UMAP embedding and cluster annotations can be printed and visualized using
 built-in functions.</p>
-<pre><code>scv$utils$show_proportions(adata)
+<pre><code># create a folder named &quot;images&quot;
+dir.create(&#39;images&#39;)
+
+scv$utils$show_proportions(adata)
 scv$pl$proportions(adata, figsize=c(10, 3), show=FALSE)
 plt$savefig(&#39;images/RNA-velo-fig1.png&#39;)</code></pre>
 <div class="figure">
