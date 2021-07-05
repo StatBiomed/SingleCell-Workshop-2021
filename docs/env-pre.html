@@ -24,7 +24,7 @@
 <meta name="author" content="Yuanhua Lab: Mingze Gao, Rongting Huang, Xianjie Huang, Aaron Kwok, Zhuoxuan Li, Chen Qiao, Yuanhua Huang" />
 
 
-<meta name="date" content="2021-07-03" />
+<meta name="date" content="2021-07-05" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -32,7 +32,7 @@
   
   
 <link rel="prev" href="index.html"/>
-<link rel="next" href="pseudo-time-and-trajectory-analysis.html"/>
+<link rel="next" href="trajectory-inference-using-rna-velocity.html"/>
 <script src="libs/header-attrs-2.9/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -162,20 +162,38 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.4.1" data-path="env-pre.html"><a href="env-pre.html#conda-configuration"><i class="fa fa-check"></i><b>2.4.1</b> Conda Configuration</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="pseudo-time-and-trajectory-analysis.html"><a href="pseudo-time-and-trajectory-analysis.html"><i class="fa fa-check"></i><b>3</b> Pseudo-time and trajectory analysis</a></li>
-<li class="chapter" data-level="4" data-path="trajectory-inference-using-rna-velocity.html"><a href="trajectory-inference-using-rna-velocity.html"><i class="fa fa-check"></i><b>4</b> Trajectory Inference using RNA Velocity</a>
+<li class="chapter" data-level="3" data-path="trajectory-inference-using-rna-velocity.html"><a href="trajectory-inference-using-rna-velocity.html"><i class="fa fa-check"></i><b>3</b> Trajectory Inference using RNA Velocity</a>
 <ul>
-<li class="chapter" data-level="4.1" data-path="trajectory-inference-using-rna-velocity.html"><a href="trajectory-inference-using-rna-velocity.html#use-scvelo-package-within-r"><i class="fa fa-check"></i><b>4.1</b> Use scVelo package within R</a></li>
-<li class="chapter" data-level="4.2" data-path="trajectory-inference-using-rna-velocity.html"><a href="trajectory-inference-using-rna-velocity.html#endocrine-pancreas"><i class="fa fa-check"></i><b>4.2</b> Endocrine Pancreas</a></li>
-<li class="chapter" data-level="4.3" data-path="trajectory-inference-using-rna-velocity.html"><a href="trajectory-inference-using-rna-velocity.html#data-preprocessing"><i class="fa fa-check"></i><b>4.3</b> Data Preprocessing</a></li>
-<li class="chapter" data-level="4.4" data-path="trajectory-inference-using-rna-velocity.html"><a href="trajectory-inference-using-rna-velocity.html#pseudotime-based-on-diffusion-map"><i class="fa fa-check"></i><b>4.4</b> Pseudotime based on Diffusion Map</a></li>
-<li class="chapter" data-level="4.5" data-path="trajectory-inference-using-rna-velocity.html"><a href="trajectory-inference-using-rna-velocity.html#compute-velocity-and-velocity-graph"><i class="fa fa-check"></i><b>4.5</b> Compute velocity and velocity graph</a></li>
-<li class="chapter" data-level="4.6" data-path="trajectory-inference-using-rna-velocity.html"><a href="trajectory-inference-using-rna-velocity.html#diffusion-map-pseudotime-with-velocity"><i class="fa fa-check"></i><b>4.6</b> Diffusion-map Pseudotime with velocity</a></li>
-<li class="chapter" data-level="4.7" data-path="trajectory-inference-using-rna-velocity.html"><a href="trajectory-inference-using-rna-velocity.html#plot-results"><i class="fa fa-check"></i><b>4.7</b> Plot Results</a></li>
-<li class="chapter" data-level="4.8" data-path="trajectory-inference-using-rna-velocity.html"><a href="trajectory-inference-using-rna-velocity.html#interprete-velocity"><i class="fa fa-check"></i><b>4.8</b> Interprete Velocity</a></li>
-<li class="chapter" data-level="4.9" data-path="trajectory-inference-using-rna-velocity.html"><a href="trajectory-inference-using-rna-velocity.html#velocity-in-cycling-progenitors"><i class="fa fa-check"></i><b>4.9</b> Velocity in cycling progenitors</a></li>
-<li class="chapter" data-level="4.10" data-path="trajectory-inference-using-rna-velocity.html"><a href="trajectory-inference-using-rna-velocity.html#dynamical-mode-and-related-analysis"><i class="fa fa-check"></i><b>4.10</b> Dynamical Mode and related analysis</a></li>
-<li class="chapter" data-level="4.11" data-path="trajectory-inference-using-rna-velocity.html"><a href="trajectory-inference-using-rna-velocity.html#session-info"><i class="fa fa-check"></i><b>4.11</b> Session Info</a></li>
+<li class="chapter" data-level="3.1" data-path="trajectory-inference-using-rna-velocity.html"><a href="trajectory-inference-using-rna-velocity.html#use-scvelo-package-within-r"><i class="fa fa-check"></i><b>3.1</b> Use scVelo package within R</a></li>
+<li class="chapter" data-level="3.2" data-path="trajectory-inference-using-rna-velocity.html"><a href="trajectory-inference-using-rna-velocity.html#endocrine-pancreas"><i class="fa fa-check"></i><b>3.2</b> Endocrine Pancreas</a></li>
+<li class="chapter" data-level="3.3" data-path="trajectory-inference-using-rna-velocity.html"><a href="trajectory-inference-using-rna-velocity.html#data-preprocessing"><i class="fa fa-check"></i><b>3.3</b> Data Preprocessing</a></li>
+<li class="chapter" data-level="3.4" data-path="trajectory-inference-using-rna-velocity.html"><a href="trajectory-inference-using-rna-velocity.html#pseudotime-based-on-diffusion-map"><i class="fa fa-check"></i><b>3.4</b> Pseudotime based on Diffusion Map</a></li>
+<li class="chapter" data-level="3.5" data-path="trajectory-inference-using-rna-velocity.html"><a href="trajectory-inference-using-rna-velocity.html#compute-velocity-and-velocity-graph"><i class="fa fa-check"></i><b>3.5</b> Compute velocity and velocity graph</a></li>
+<li class="chapter" data-level="3.6" data-path="trajectory-inference-using-rna-velocity.html"><a href="trajectory-inference-using-rna-velocity.html#diffusion-map-pseudotime-with-velocity"><i class="fa fa-check"></i><b>3.6</b> Diffusion-map Pseudotime with velocity</a></li>
+<li class="chapter" data-level="3.7" data-path="trajectory-inference-using-rna-velocity.html"><a href="trajectory-inference-using-rna-velocity.html#plot-results"><i class="fa fa-check"></i><b>3.7</b> Plot Results</a></li>
+<li class="chapter" data-level="3.8" data-path="trajectory-inference-using-rna-velocity.html"><a href="trajectory-inference-using-rna-velocity.html#interprete-velocity"><i class="fa fa-check"></i><b>3.8</b> Interprete Velocity</a></li>
+<li class="chapter" data-level="3.9" data-path="trajectory-inference-using-rna-velocity.html"><a href="trajectory-inference-using-rna-velocity.html#velocity-in-cycling-progenitors"><i class="fa fa-check"></i><b>3.9</b> Velocity in cycling progenitors</a></li>
+<li class="chapter" data-level="3.10" data-path="trajectory-inference-using-rna-velocity.html"><a href="trajectory-inference-using-rna-velocity.html#dynamical-mode-and-related-analysis"><i class="fa fa-check"></i><b>3.10</b> Dynamical Mode and related analysis</a></li>
+<li class="chapter" data-level="3.11" data-path="trajectory-inference-using-rna-velocity.html"><a href="trajectory-inference-using-rna-velocity.html#session-info"><i class="fa fa-check"></i><b>3.11</b> Session Info</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="somatic-mutation-analysis-in-single-cells.html"><a href="somatic-mutation-analysis-in-single-cells.html"><i class="fa fa-check"></i><b>4</b> Somatic mutation analysis in single cells</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="somatic-mutation-analysis-in-single-cells.html"><a href="somatic-mutation-analysis-in-single-cells.html#introduction-1"><i class="fa fa-check"></i><b>4.1</b> Introduction</a>
+<ul>
+<li class="chapter" data-level="4.1.1" data-path="somatic-mutation-analysis-in-single-cells.html"><a href="somatic-mutation-analysis-in-single-cells.html#choice-of-protocols"><i class="fa fa-check"></i><b>4.1.1</b> Choice of protocols</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="somatic-mutation-analysis-in-single-cells.html"><a href="somatic-mutation-analysis-in-single-cells.html#snv-analysis"><i class="fa fa-check"></i><b>4.2</b> SNV analysis</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="somatic-mutation-analysis-in-single-cells.html"><a href="somatic-mutation-analysis-in-single-cells.html#call-somatic-variants-and-genotype-single-cells"><i class="fa fa-check"></i><b>4.2.1</b> Call somatic variants and genotype single cells</a></li>
+<li class="chapter" data-level="4.2.2" data-path="somatic-mutation-analysis-in-single-cells.html"><a href="somatic-mutation-analysis-in-single-cells.html#visualize-variat-allele-fequency"><i class="fa fa-check"></i><b>4.2.2</b> Visualize variat allele fequency</a></li>
+<li class="chapter" data-level="4.2.3" data-path="somatic-mutation-analysis-in-single-cells.html"><a href="somatic-mutation-analysis-in-single-cells.html#use-extra-information-on-clonal-tree"><i class="fa fa-check"></i><b>4.2.3</b> Use extra information on clonal tree</a></li>
+<li class="chapter" data-level="4.2.4" data-path="somatic-mutation-analysis-in-single-cells.html"><a href="somatic-mutation-analysis-in-single-cells.html#run-cardelino-for-inferring-clonal-structure"><i class="fa fa-check"></i><b>4.2.4</b> Run cardelino for inferring clonal structure</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="somatic-mutation-analysis-in-single-cells.html"><a href="somatic-mutation-analysis-in-single-cells.html#mtsnv-analysis"><i class="fa fa-check"></i><b>4.3</b> mtSNV analysis</a>
+<ul>
+<li class="chapter" data-level="4.3.1" data-path="somatic-mutation-analysis-in-single-cells.html"><a href="somatic-mutation-analysis-in-single-cells.html#visualise-allele-frequency"><i class="fa fa-check"></i><b>4.3.1</b> Visualise allele frequency</a></li>
+<li class="chapter" data-level="4.3.2" data-path="somatic-mutation-analysis-in-single-cells.html"><a href="somatic-mutation-analysis-in-single-cells.html#infer-clonal-structure-with-mtdna-variants"><i class="fa fa-check"></i><b>4.3.2</b> Infer clonal structure with mtDNA variants</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="copy-number-variation-estimation-from-scrna-seq.html"><a href="copy-number-variation-estimation-from-scrna-seq.html"><i class="fa fa-check"></i><b>5</b> Copy number variation estimation from scRNA-seq</a>
 <ul>
@@ -427,7 +445,7 @@ conda config --add channels conda-forge</code></pre>
         </div>
       </div>
 <a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="pseudo-time-and-trajectory-analysis.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="trajectory-inference-using-rna-velocity.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
