@@ -110,8 +110,20 @@ knitr::include_graphics("./images/conda_download_installer2.png")
 
 2. Install Anaconda following the instructions.
 
-3. Open `Terminal` (you can type in `Spotlight Search`) and then install 
-`scVelo` by typing this command in the shell:
+3. Open `Terminal` (you can type in `Spotlight Search`) and then create an new
+conda environment with name `sgcell` by typing
+
+    ```
+    conda create -n sgcell python=3.8
+    ```
+    
+4. Still in the terminal, and activate the environment by typing
+
+    ```
+    conda activate sgcell
+    ```
+
+5. Install `scVelo` in this conda environment by typing this command in the shell:
    ```
    pip install scvelo==0.2.2
    ```
@@ -130,12 +142,19 @@ When you are asked `Do you wish the installer to initialize Anaconda3 by running
 
 4. Close and then re-open your Shell, to make the changes take effect.
 
-5. Install `scVelo` by typing this command in the shell:
+5. Create an new conda environment with name `sgcell` by typing
+
+    ```
+    conda create -n sgcell python=3.8
+    ```
+    
+6. Still in the terminal, and activate the environment by typing
+
+    ```
+    conda activate sgcell
+    ```
+
+7. Install `scVelo` in this conda environment by typing this command in the shell:
    ```
    pip install scvelo==0.2.2
    ```
-
-6. Type `conda list` in Shell. 
-<br/>
-A list of installed packages appears if it has been installed correctly.  
-
