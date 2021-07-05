@@ -331,8 +331,12 @@ select the <code>64-Bit Graphical Installer</code> for MacOS.</li>
 <p><img src="images/conda_download_installer2.png" width="65%" style="display: block; margin: auto;" /></p>
 <ol start="2" style="list-style-type: decimal">
 <li><p>Install Anaconda following the instructions.</p></li>
-<li><p>Open <code>Terminal</code> (you can type in <code>Spotlight Search</code>) and then install
-<code>scVelo</code> by typing this command in the shell:</p>
+<li><p>Open <code>Terminal</code> (you can type in <code>Spotlight Search</code>) and then create an new
+conda environment with name <code>sgcell</code> by typing</p>
+<pre><code>conda create -n sgcell python=3.8</code></pre></li>
+<li><p>Still in the terminal, and activate the environment by typing</p>
+<pre><code>conda activate sgcell</code></pre></li>
+<li><p>Install <code>scVelo</code> in this conda environment by typing this command in the shell:</p>
 <pre><code>pip install scvelo==0.2.2</code></pre></li>
 </ol>
 <p><strong>Option 2: installation in Command Line Mode</strong></p>
@@ -344,11 +348,12 @@ select the <code>64-Bit Graphical Installer</code> for MacOS.</li>
 <br/>
 When you are asked <code>Do you wish the installer to initialize Anaconda3 by running conda init</code>, we recommend “yes.”</p></li>
 <li><p>Close and then re-open your Shell, to make the changes take effect.</p></li>
-<li><p>Install <code>scVelo</code> by typing this command in the shell:</p>
+<li><p>Create an new conda environment with name <code>sgcell</code> by typing</p>
+<pre><code>conda create -n sgcell python=3.8</code></pre></li>
+<li><p>Still in the terminal, and activate the environment by typing</p>
+<pre><code>conda activate sgcell</code></pre></li>
+<li><p>Install <code>scVelo</code> in this conda environment by typing this command in the shell:</p>
 <pre><code>pip install scvelo==0.2.2</code></pre></li>
-<li><p>Type <code>conda list</code> in Shell.
-<br/>
-A list of installed packages appears if it has been installed correctly.</p></li>
 </ol>
 
 </div>
