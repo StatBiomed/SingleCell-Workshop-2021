@@ -54,7 +54,7 @@ knitr::include_graphics("./images/conda_download_installer1.png")
 
 3. Open `Anaconda Powershell Prompt` and then install `scVelo` by typing `pip install scvelo==0.2.2` in the shell.
 
-```{r conda_fig1, echo=FALSE, message=FALSE, warning=FALSE, fig.align="center", out.width='65%'}
+```{r conda_fig2, echo=FALSE, message=FALSE, warning=FALSE, fig.align="center", out.width='65%'}
 knitr::include_graphics("./images/conda_scvelo.png")
 ```
 
@@ -87,7 +87,7 @@ This mode is very similar to [Installation on Windows](#conda_install_windows).
 1. Go to [Anaconda](https://www.anaconda.com/products/individual) webpage; click 'Get Additional Installers' button and then
    select the `64-Bit Graphical Installer` for MacOS.
 
-```{r conda_fig1, echo=FALSE, message=FALSE, warning=FALSE, fig.align="center", out.width='65%'}
+```{r conda_fig3, echo=FALSE, message=FALSE, warning=FALSE, fig.align="center", out.width='65%'}
 knitr::include_graphics("./images/conda_download_installer2.png")
 ```
 

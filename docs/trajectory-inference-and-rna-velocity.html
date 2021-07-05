@@ -33,7 +33,7 @@
   
 <link rel="prev" href="env-pre.html"/>
 <link rel="next" href="somatic-mutation-analysis-in-single-cells.html"/>
-<script src="libs/header-attrs-2.9/header-attrs.js"></script>
+<script src="libs/header-attrs-2.8/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -59,7 +59,6 @@
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
 pre.sourceCode { margin: 0; }
 @media screen {
@@ -149,22 +148,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.1.1" data-path="env-pre.html"><a href="env-pre.html#r-packages"><i class="fa fa-check"></i><b>2.1.1</b> R packages</a></li>
 <li class="chapter" data-level="2.1.2" data-path="env-pre.html"><a href="env-pre.html#conda-environment"><i class="fa fa-check"></i><b>2.1.2</b> Conda environment</a></li>
 </ul></li>
-<li class="chapter" data-level="2.2" data-path="env-pre.html"><a href="env-pre.html#wsl_install"><i class="fa fa-check"></i><b>2.2</b> (Optional) Install Windows Subsystem for Linux</a>
-<ul>
-<li class="chapter" data-level="2.2.1" data-path="env-pre.html"><a href="env-pre.html#what-is-the-windows-subsystem-for-linux-wsl"><i class="fa fa-check"></i><b>2.2.1</b> What is the Windows Subsystem for Linux (WSL)?</a></li>
-<li class="chapter" data-level="2.2.2" data-path="env-pre.html"><a href="env-pre.html#manual-installation-steps"><i class="fa fa-check"></i><b>2.2.2</b> Manual Installation Steps</a></li>
-</ul></li>
-<li class="chapter" data-level="2.3" data-path="env-pre.html"><a href="env-pre.html#conda_install"><i class="fa fa-check"></i><b>2.3</b> Install Conda Environment</a>
-<ul>
-<li class="chapter" data-level="2.3.1" data-path="env-pre.html"><a href="env-pre.html#what-is-conda"><i class="fa fa-check"></i><b>2.3.1</b> What is conda?</a></li>
-<li class="chapter" data-level="2.3.2" data-path="env-pre.html"><a href="env-pre.html#conda_install_windows"><i class="fa fa-check"></i><b>2.3.2</b> Installation on Windows</a></li>
-<li class="chapter" data-level="2.3.3" data-path="env-pre.html"><a href="env-pre.html#conda_install_linux"><i class="fa fa-check"></i><b>2.3.3</b> Installation on Linux</a></li>
-<li class="chapter" data-level="2.3.4" data-path="env-pre.html"><a href="env-pre.html#conda_install_mac"><i class="fa fa-check"></i><b>2.3.4</b> Installation on macOS</a></li>
-</ul></li>
-<li class="chapter" data-level="2.4" data-path="env-pre.html"><a href="env-pre.html#other-preparation"><i class="fa fa-check"></i><b>2.4</b> Other Preparation</a>
-<ul>
-<li class="chapter" data-level="2.4.1" data-path="env-pre.html"><a href="env-pre.html#conda-configuration"><i class="fa fa-check"></i><b>2.4.1</b> Conda Configuration</a></li>
-</ul></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="trajectory-inference-and-rna-velocity.html"><a href="trajectory-inference-and-rna-velocity.html"><i class="fa fa-check"></i><b>3</b> Trajectory inference and RNA velocity</a>
 <ul>
@@ -226,30 +209,23 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="5.3" data-path="copy-number-variation-estimation-from-scrna-seq.html"><a href="copy-number-variation-estimation-from-scrna-seq.html#ref"><i class="fa fa-check"></i><b>5.3</b> ref</a></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="mtdna-variants-for-lineage-inference-from-single-cell-omics.html"><a href="mtdna-variants-for-lineage-inference-from-single-cell-omics.html"><i class="fa fa-check"></i><b>6</b> mtDNA variants for lineage inference from single-cell omics</a>
+<li class="chapter" data-level="6" data-path="preprocessing-of-dataset.html"><a href="preprocessing-of-dataset.html"><i class="fa fa-check"></i><b>6</b> Preprocessing of dataset</a>
 <ul>
-<li class="chapter" data-level="6.1" data-path="mtdna-variants-for-lineage-inference-from-single-cell-omics.html"><a href="mtdna-variants-for-lineage-inference-from-single-cell-omics.html#pileup-with-cellsnp-lite"><i class="fa fa-check"></i><b>6.1</b> Pileup with cellsnp-lite</a>
+<li class="chapter" data-level="6.1" data-path="preprocessing-of-dataset.html"><a href="preprocessing-of-dataset.html#preprocessing-for-rna-velocity"><i class="fa fa-check"></i><b>6.1</b> Preprocessing for RNA Velocity</a>
 <ul>
-<li class="chapter" data-level="6.1.1" data-path="mtdna-variants-for-lineage-inference-from-single-cell-omics.html"><a href="mtdna-variants-for-lineage-inference-from-single-cell-omics.html#pileup-without-given-snps"><i class="fa fa-check"></i><b>6.1.1</b> Pileup without given SNPs</a></li>
-<li class="chapter" data-level="6.1.2" data-path="mtdna-variants-for-lineage-inference-from-single-cell-omics.html"><a href="mtdna-variants-for-lineage-inference-from-single-cell-omics.html#pileup-with-given-snps"><i class="fa fa-check"></i><b>6.1.2</b> Pileup with given SNPs</a></li>
+<li class="chapter" data-level="6.1.1" data-path="preprocessing-of-dataset.html"><a href="preprocessing-of-dataset.html#list-of-packages-aligned-in-pipeline"><i class="fa fa-check"></i><b>6.1.1</b> List of packages aligned in pipeline:</a></li>
+<li class="chapter" data-level="6.1.2" data-path="preprocessing-of-dataset.html"><a href="preprocessing-of-dataset.html#installation-of-packagessoftwares"><i class="fa fa-check"></i><b>6.1.2</b> Installation of packages/softwares</a></li>
+<li class="chapter" data-level="6.1.3" data-path="preprocessing-of-dataset.html"><a href="preprocessing-of-dataset.html#preprocessing-pipline"><i class="fa fa-check"></i><b>6.1.3</b> Preprocessing pipline</a></li>
 </ul></li>
-<li class="chapter" data-level="6.2" data-path="mtdna-variants-for-lineage-inference-from-single-cell-omics.html"><a href="mtdna-variants-for-lineage-inference-from-single-cell-omics.html#clonal-analysis-with-mquad"><i class="fa fa-check"></i><b>6.2</b> Clonal analysis with MQuad</a></li>
+<li class="chapter" data-level="6.2" data-path="preprocessing-of-dataset.html"><a href="preprocessing-of-dataset.html#preprocessing-for-somatic-mutation-analysis"><i class="fa fa-check"></i><b>6.2</b> Preprocessing for somatic mutation analysis</a>
+<ul>
+<li class="chapter" data-level="6.2.1" data-path="preprocessing-of-dataset.html"><a href="preprocessing-of-dataset.html#pileup-with-cellsnp-lite"><i class="fa fa-check"></i><b>6.2.1</b> Pileup with cellsnp-lite</a></li>
+<li class="chapter" data-level="6.2.2" data-path="preprocessing-of-dataset.html"><a href="preprocessing-of-dataset.html#clonal-analysis-with-mquad"><i class="fa fa-check"></i><b>6.2.2</b> Clonal analysis with MQuad</a></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="preprocessing-of-dataset.html"><a href="preprocessing-of-dataset.html"><i class="fa fa-check"></i><b>7</b> Preprocessing of dataset</a>
+<li class="chapter" data-level="6.3" data-path="preprocessing-of-dataset.html"><a href="preprocessing-of-dataset.html#wsl_install"><i class="fa fa-check"></i><b>6.3</b> (Optional) Install Windows Subsystem for Linux</a>
 <ul>
-<li class="chapter" data-level="7.1" data-path="preprocessing-of-dataset.html"><a href="preprocessing-of-dataset.html#list-of-packages-aligned-in-pipeline"><i class="fa fa-check"></i><b>7.1</b> List of packages aligned in pipeline:</a></li>
-<li class="chapter" data-level="7.2" data-path="preprocessing-of-dataset.html"><a href="preprocessing-of-dataset.html#installation-of-packagessoftwares"><i class="fa fa-check"></i><b>7.2</b> Installation of packages/softwares</a>
-<ul>
-<li class="chapter" data-level="7.2.1" data-path="preprocessing-of-dataset.html"><a href="preprocessing-of-dataset.html#sratool"><i class="fa fa-check"></i><b>7.2.1</b> SRATool</a></li>
-<li class="chapter" data-level="7.2.2" data-path="preprocessing-of-dataset.html"><a href="preprocessing-of-dataset.html#cellranger"><i class="fa fa-check"></i><b>7.2.2</b> Cellranger</a></li>
-<li class="chapter" data-level="7.2.3" data-path="preprocessing-of-dataset.html"><a href="preprocessing-of-dataset.html#velocyto-samtools"><i class="fa fa-check"></i><b>7.2.3</b> Velocyto &amp; Samtools</a></li>
-<li class="chapter" data-level="7.2.4" data-path="preprocessing-of-dataset.html"><a href="preprocessing-of-dataset.html#dropest"><i class="fa fa-check"></i><b>7.2.4</b> <span>Dropest</span></a></li>
-</ul></li>
-<li class="chapter" data-level="7.3" data-path="preprocessing-of-dataset.html"><a href="preprocessing-of-dataset.html#preprocessing-pipline"><i class="fa fa-check"></i><b>7.3</b> Preprocessing pipline</a>
-<ul>
-<li class="chapter" data-level="7.3.1" data-path="preprocessing-of-dataset.html"><a href="preprocessing-of-dataset.html#download-and-split-pancreas-e15_5-fastq-data-from-ncbi"><i class="fa fa-check"></i><b>7.3.1</b> 1. Download and split Pancreas E15_5 fastq data from NCBI:</a></li>
-<li class="chapter" data-level="7.3.2" data-path="preprocessing-of-dataset.html"><a href="preprocessing-of-dataset.html#run-cellranger-count-referring-to-the-mouse-refdata"><i class="fa fa-check"></i><b>7.3.2</b> 2. Run Cellranger count, referring to the mouse refdata</a></li>
-<li class="chapter" data-level="7.3.3" data-path="preprocessing-of-dataset.html"><a href="preprocessing-of-dataset.html#run-velocytodropest."><i class="fa fa-check"></i><b>7.3.3</b> 3. Run Velocyto/Dropest.</a></li>
+<li class="chapter" data-level="6.3.1" data-path="preprocessing-of-dataset.html"><a href="preprocessing-of-dataset.html#what-is-the-windows-subsystem-for-linux-wsl"><i class="fa fa-check"></i><b>6.3.1</b> What is the Windows Subsystem for Linux (WSL)?</a></li>
+<li class="chapter" data-level="6.3.2" data-path="preprocessing-of-dataset.html"><a href="preprocessing-of-dataset.html#manual-installation-steps"><i class="fa fa-check"></i><b>6.3.2</b> Manual Installation Steps</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
@@ -425,8 +401,9 @@ alignment and counting of unspliced RNA (<strong>Recommended option</strong>)</l
 <div id="getting-started" class="section level3" number="3.4.2">
 <h3><span class="header-section-number">3.4.2</span> Getting started</h3>
 <p>First, let’s use load <code>reticulate</code>:</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="trajectory-inference-and-rna-velocity.html#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages(&quot;reticulate&quot;)</span></span>
-<span id="cb13-2"><a href="trajectory-inference-and-rna-velocity.html#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(reticulate)</span></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="trajectory-inference-and-rna-velocity.html#cb7-1" aria-hidden="true"></a><span class="co"># install.packages(&quot;reticulate&quot;)</span></span>
+<span id="cb7-2"><a href="trajectory-inference-and-rna-velocity.html#cb7-2" aria-hidden="true"></a><span class="kw">library</span>(reticulate)</span></code></pre></div>
+<pre><code>## Warning: package &#39;reticulate&#39; was built under R version 4.0.5</code></pre>
 <p>Then use reticulate to import Python packages <code>scvelo</code> and <code>matplotlib</code>:</p>
 <pre echo="TRUE," message="TRUE"><code>use_condaenv(&quot;sgcell&quot;)
 plt &lt;- import(&quot;matplotlib.pyplot&quot;, as = &quot;plt&quot;)

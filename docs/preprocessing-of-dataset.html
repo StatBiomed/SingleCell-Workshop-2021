@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 7 Preprocessing of dataset | HKU Single-cell Workshop (Modules 4.2 &amp; 5)</title>
+  <title>Chapter 6 Preprocessing of dataset | HKU Single-cell Workshop (Modules 4.2 &amp; 5)</title>
   <meta name="description" content="Cell trajectory inference; Cellular genetic analysis" />
   <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 7 Preprocessing of dataset | HKU Single-cell Workshop (Modules 4.2 &amp; 5)" />
+  <meta property="og:title" content="Chapter 6 Preprocessing of dataset | HKU Single-cell Workshop (Modules 4.2 &amp; 5)" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 7 Preprocessing of dataset | HKU Single-cell Workshop (Modules 4.2 &amp; 5)" />
+  <meta name="twitter:title" content="Chapter 6 Preprocessing of dataset | HKU Single-cell Workshop (Modules 4.2 &amp; 5)" />
   
   <meta name="twitter:description" content="Cell trajectory inference; Cellular genetic analysis" />
   
@@ -31,9 +31,9 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="mtdna-variants-for-lineage-inference-from-single-cell-omics.html"/>
+<link rel="prev" href="copy-number-variation-estimation-from-scrna-seq.html"/>
 <link rel="next" href="references.html"/>
-<script src="libs/header-attrs-2.9/header-attrs.js"></script>
+<script src="libs/header-attrs-2.8/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -59,7 +59,6 @@
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
 pre.sourceCode { margin: 0; }
 @media screen {
@@ -149,22 +148,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.1.1" data-path="env-pre.html"><a href="env-pre.html#r-packages"><i class="fa fa-check"></i><b>2.1.1</b> R packages</a></li>
 <li class="chapter" data-level="2.1.2" data-path="env-pre.html"><a href="env-pre.html#conda-environment"><i class="fa fa-check"></i><b>2.1.2</b> Conda environment</a></li>
 </ul></li>
-<li class="chapter" data-level="2.2" data-path="env-pre.html"><a href="env-pre.html#wsl_install"><i class="fa fa-check"></i><b>2.2</b> (Optional) Install Windows Subsystem for Linux</a>
-<ul>
-<li class="chapter" data-level="2.2.1" data-path="env-pre.html"><a href="env-pre.html#what-is-the-windows-subsystem-for-linux-wsl"><i class="fa fa-check"></i><b>2.2.1</b> What is the Windows Subsystem for Linux (WSL)?</a></li>
-<li class="chapter" data-level="2.2.2" data-path="env-pre.html"><a href="env-pre.html#manual-installation-steps"><i class="fa fa-check"></i><b>2.2.2</b> Manual Installation Steps</a></li>
-</ul></li>
-<li class="chapter" data-level="2.3" data-path="env-pre.html"><a href="env-pre.html#conda_install"><i class="fa fa-check"></i><b>2.3</b> Install Conda Environment</a>
-<ul>
-<li class="chapter" data-level="2.3.1" data-path="env-pre.html"><a href="env-pre.html#what-is-conda"><i class="fa fa-check"></i><b>2.3.1</b> What is conda?</a></li>
-<li class="chapter" data-level="2.3.2" data-path="env-pre.html"><a href="env-pre.html#conda_install_windows"><i class="fa fa-check"></i><b>2.3.2</b> Installation on Windows</a></li>
-<li class="chapter" data-level="2.3.3" data-path="env-pre.html"><a href="env-pre.html#conda_install_linux"><i class="fa fa-check"></i><b>2.3.3</b> Installation on Linux</a></li>
-<li class="chapter" data-level="2.3.4" data-path="env-pre.html"><a href="env-pre.html#conda_install_mac"><i class="fa fa-check"></i><b>2.3.4</b> Installation on macOS</a></li>
-</ul></li>
-<li class="chapter" data-level="2.4" data-path="env-pre.html"><a href="env-pre.html#other-preparation"><i class="fa fa-check"></i><b>2.4</b> Other Preparation</a>
-<ul>
-<li class="chapter" data-level="2.4.1" data-path="env-pre.html"><a href="env-pre.html#conda-configuration"><i class="fa fa-check"></i><b>2.4.1</b> Conda Configuration</a></li>
-</ul></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="trajectory-inference-and-rna-velocity.html"><a href="trajectory-inference-and-rna-velocity.html"><i class="fa fa-check"></i><b>3</b> Trajectory inference and RNA velocity</a>
 <ul>
@@ -226,30 +209,23 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="5.3" data-path="copy-number-variation-estimation-from-scrna-seq.html"><a href="copy-number-variation-estimation-from-scrna-seq.html#ref"><i class="fa fa-check"></i><b>5.3</b> ref</a></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="mtdna-variants-for-lineage-inference-from-single-cell-omics.html"><a href="mtdna-variants-for-lineage-inference-from-single-cell-omics.html"><i class="fa fa-check"></i><b>6</b> mtDNA variants for lineage inference from single-cell omics</a>
+<li class="chapter" data-level="6" data-path="preprocessing-of-dataset.html"><a href="preprocessing-of-dataset.html"><i class="fa fa-check"></i><b>6</b> Preprocessing of dataset</a>
 <ul>
-<li class="chapter" data-level="6.1" data-path="mtdna-variants-for-lineage-inference-from-single-cell-omics.html"><a href="mtdna-variants-for-lineage-inference-from-single-cell-omics.html#pileup-with-cellsnp-lite"><i class="fa fa-check"></i><b>6.1</b> Pileup with cellsnp-lite</a>
+<li class="chapter" data-level="6.1" data-path="preprocessing-of-dataset.html"><a href="preprocessing-of-dataset.html#preprocessing-for-rna-velocity"><i class="fa fa-check"></i><b>6.1</b> Preprocessing for RNA Velocity</a>
 <ul>
-<li class="chapter" data-level="6.1.1" data-path="mtdna-variants-for-lineage-inference-from-single-cell-omics.html"><a href="mtdna-variants-for-lineage-inference-from-single-cell-omics.html#pileup-without-given-snps"><i class="fa fa-check"></i><b>6.1.1</b> Pileup without given SNPs</a></li>
-<li class="chapter" data-level="6.1.2" data-path="mtdna-variants-for-lineage-inference-from-single-cell-omics.html"><a href="mtdna-variants-for-lineage-inference-from-single-cell-omics.html#pileup-with-given-snps"><i class="fa fa-check"></i><b>6.1.2</b> Pileup with given SNPs</a></li>
+<li class="chapter" data-level="6.1.1" data-path="preprocessing-of-dataset.html"><a href="preprocessing-of-dataset.html#list-of-packages-aligned-in-pipeline"><i class="fa fa-check"></i><b>6.1.1</b> List of packages aligned in pipeline:</a></li>
+<li class="chapter" data-level="6.1.2" data-path="preprocessing-of-dataset.html"><a href="preprocessing-of-dataset.html#installation-of-packagessoftwares"><i class="fa fa-check"></i><b>6.1.2</b> Installation of packages/softwares</a></li>
+<li class="chapter" data-level="6.1.3" data-path="preprocessing-of-dataset.html"><a href="preprocessing-of-dataset.html#preprocessing-pipline"><i class="fa fa-check"></i><b>6.1.3</b> Preprocessing pipline</a></li>
 </ul></li>
-<li class="chapter" data-level="6.2" data-path="mtdna-variants-for-lineage-inference-from-single-cell-omics.html"><a href="mtdna-variants-for-lineage-inference-from-single-cell-omics.html#clonal-analysis-with-mquad"><i class="fa fa-check"></i><b>6.2</b> Clonal analysis with MQuad</a></li>
+<li class="chapter" data-level="6.2" data-path="preprocessing-of-dataset.html"><a href="preprocessing-of-dataset.html#preprocessing-for-somatic-mutation-analysis"><i class="fa fa-check"></i><b>6.2</b> Preprocessing for somatic mutation analysis</a>
+<ul>
+<li class="chapter" data-level="6.2.1" data-path="preprocessing-of-dataset.html"><a href="preprocessing-of-dataset.html#pileup-with-cellsnp-lite"><i class="fa fa-check"></i><b>6.2.1</b> Pileup with cellsnp-lite</a></li>
+<li class="chapter" data-level="6.2.2" data-path="preprocessing-of-dataset.html"><a href="preprocessing-of-dataset.html#clonal-analysis-with-mquad"><i class="fa fa-check"></i><b>6.2.2</b> Clonal analysis with MQuad</a></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="preprocessing-of-dataset.html"><a href="preprocessing-of-dataset.html"><i class="fa fa-check"></i><b>7</b> Preprocessing of dataset</a>
+<li class="chapter" data-level="6.3" data-path="preprocessing-of-dataset.html"><a href="preprocessing-of-dataset.html#wsl_install"><i class="fa fa-check"></i><b>6.3</b> (Optional) Install Windows Subsystem for Linux</a>
 <ul>
-<li class="chapter" data-level="7.1" data-path="preprocessing-of-dataset.html"><a href="preprocessing-of-dataset.html#list-of-packages-aligned-in-pipeline"><i class="fa fa-check"></i><b>7.1</b> List of packages aligned in pipeline:</a></li>
-<li class="chapter" data-level="7.2" data-path="preprocessing-of-dataset.html"><a href="preprocessing-of-dataset.html#installation-of-packagessoftwares"><i class="fa fa-check"></i><b>7.2</b> Installation of packages/softwares</a>
-<ul>
-<li class="chapter" data-level="7.2.1" data-path="preprocessing-of-dataset.html"><a href="preprocessing-of-dataset.html#sratool"><i class="fa fa-check"></i><b>7.2.1</b> SRATool</a></li>
-<li class="chapter" data-level="7.2.2" data-path="preprocessing-of-dataset.html"><a href="preprocessing-of-dataset.html#cellranger"><i class="fa fa-check"></i><b>7.2.2</b> Cellranger</a></li>
-<li class="chapter" data-level="7.2.3" data-path="preprocessing-of-dataset.html"><a href="preprocessing-of-dataset.html#velocyto-samtools"><i class="fa fa-check"></i><b>7.2.3</b> Velocyto &amp; Samtools</a></li>
-<li class="chapter" data-level="7.2.4" data-path="preprocessing-of-dataset.html"><a href="preprocessing-of-dataset.html#dropest"><i class="fa fa-check"></i><b>7.2.4</b> <span>Dropest</span></a></li>
-</ul></li>
-<li class="chapter" data-level="7.3" data-path="preprocessing-of-dataset.html"><a href="preprocessing-of-dataset.html#preprocessing-pipline"><i class="fa fa-check"></i><b>7.3</b> Preprocessing pipline</a>
-<ul>
-<li class="chapter" data-level="7.3.1" data-path="preprocessing-of-dataset.html"><a href="preprocessing-of-dataset.html#download-and-split-pancreas-e15_5-fastq-data-from-ncbi"><i class="fa fa-check"></i><b>7.3.1</b> 1. Download and split Pancreas E15_5 fastq data from NCBI:</a></li>
-<li class="chapter" data-level="7.3.2" data-path="preprocessing-of-dataset.html"><a href="preprocessing-of-dataset.html#run-cellranger-count-referring-to-the-mouse-refdata"><i class="fa fa-check"></i><b>7.3.2</b> 2. Run Cellranger count, referring to the mouse refdata</a></li>
-<li class="chapter" data-level="7.3.3" data-path="preprocessing-of-dataset.html"><a href="preprocessing-of-dataset.html#run-velocytodropest."><i class="fa fa-check"></i><b>7.3.3</b> 3. Run Velocyto/Dropest.</a></li>
+<li class="chapter" data-level="6.3.1" data-path="preprocessing-of-dataset.html"><a href="preprocessing-of-dataset.html#what-is-the-windows-subsystem-for-linux-wsl"><i class="fa fa-check"></i><b>6.3.1</b> What is the Windows Subsystem for Linux (WSL)?</a></li>
+<li class="chapter" data-level="6.3.2" data-path="preprocessing-of-dataset.html"><a href="preprocessing-of-dataset.html#manual-installation-steps"><i class="fa fa-check"></i><b>6.3.2</b> Manual Installation Steps</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
@@ -273,13 +249,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="preprocessing-of-dataset" class="section level1" number="7">
-<h1><span class="header-section-number">Chapter 7</span> Preprocessing of dataset</h1>
+<div id="preprocessing-of-dataset" class="section level1" number="6">
+<h1><span class="header-section-number">Chapter 6</span> Preprocessing of dataset</h1>
+<div id="preprocessing-for-rna-velocity" class="section level2" number="6.1">
+<h2><span class="header-section-number">6.1</span> Preprocessing for RNA Velocity</h2>
 <p>Author: “Chen Qiao”</p>
 <p>Date: “7/2/2021”</p>
 <p>In this tutorial, we would take the Pancreas dataset used in scVelo paper for example, show how to retrieve the fastq dataset from NCBI, process using cellranger, velocyto or dropest to obtain the spliced and unspliced count matrices for RNA velocity estimation.</p>
-<div id="list-of-packages-aligned-in-pipeline" class="section level2" number="7.1">
-<h2><span class="header-section-number">7.1</span> List of packages aligned in pipeline:</h2>
+<div id="list-of-packages-aligned-in-pipeline" class="section level3" number="6.1.1">
+<h3><span class="header-section-number">6.1.1</span> List of packages aligned in pipeline:</h3>
 <ol style="list-style-type: decimal">
 <li><a href="https://github.com/ncbi/sra-tools/wiki/02.-Installing-SRA-Toolkit">SRATool</a>: for downlowding datasets from NCBI, Pancreas dataset E15_5 with SRA id SRR9201794</li>
 <li><a href="https://support.10xgenomics.com/single-cell-gene-expression/software/downloads/latest">Cellranger</a>: for counting, analyzing, QA on fastqs, outputs input for velocyto/dropest</li>
@@ -293,13 +271,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 </ol>
 </div>
-<div id="installation-of-packagessoftwares" class="section level2" number="7.2">
-<h2><span class="header-section-number">7.2</span> Installation of packages/softwares</h2>
+<div id="installation-of-packagessoftwares" class="section level3" number="6.1.2">
+<h3><span class="header-section-number">6.1.2</span> Installation of packages/softwares</h3>
 <p>All the codes are executed on Linux commandline, lines starting with “#” are comments.
-My working path root is “/data/users/cqiao/share/,”
+My working path root is “/data/users/cqiao/share/”,
 you may change to any foler as you like.</p>
-<div id="sratool" class="section level3" number="7.2.1">
-<h3><span class="header-section-number">7.2.1</span> SRATool</h3>
+<div id="sratool" class="section level4" number="6.1.2.1">
+<h4><span class="header-section-number">6.1.2.1</span> SRATool</h4>
 <p>Refer to <a href="https://akiomiyao.github.io/ped/sratoolkit/index.html">This tutorial</a> for step 3. software configuration</p>
 <pre><code># 1. download software
 wget http://ftp-trace.ncbi.nlm.nih.gov/sra/sdk/current/sratoolkit.current-ubuntu64.tar.gz
@@ -312,8 +290,8 @@ export PATH=$PATH:/data/users/cqiao/share/sratoolkit.2.11.0-ubuntu64/bin/
 # 5. test installation, expected to output some sequencing results
 fastq-dump --stdout -X 2 SRR390728</code></pre>
 </div>
-<div id="cellranger" class="section level3" number="7.2.2">
-<h3><span class="header-section-number">7.2.2</span> Cellranger</h3>
+<div id="cellranger" class="section level4" number="6.1.2.2">
+<h4><span class="header-section-number">6.1.2.2</span> Cellranger</h4>
 <pre><code># 1. download software
 wget -O cellranger-6.0.2.tar.gz &quot;https://cf.10xgenomics.com/releases/cell-exp/cellranger-6.0.2.tar.gz?Expires=1625079682&amp;Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly9jZi4xMHhnZW5vbWljcy5jb20vcmVsZWFzZXMvY2VsbC1leHAvY2VsbHJhbmdlci02LjAuMi50YXIuZ3oiLCJDb25kaXRpb24iOnsiRGF0ZUxlc3NUaGFuIjp7IkFXUzpFcG9jaFRpbWUiOjE2MjUwNzk2ODJ9fX1dfQ__&amp;Signature=Ez05ie1~xJTrUhsc3Q1nZ3JemF5Jc2k3zOOC2PlJiI80TI8YOxM3vVXli90ib1Kl4WgQFRl5~Wp-ce5m2gVAyywGf9juiMk3kW2WGz7xy3DN9nCG-he0rNLvbknDXgkqkj8HeirWyt-EvGgsaqBRZZx7GppGl~MGQOseLTF7DMpJaIm-qwU-72mkVzDy0vKrYVZ~Uiqnlr0M2Hhx14lPwm6QocBuSaKLkmcuZosN4TIS05Z~GPHYt9hQWkykvY4oyd5Y~tyTaMOM8ozVVdI7KgCfc2PmQvhr1bMuhUaEPa3skigzAFjIezbw-fXW3Z8jplwj4lAQ0LybI03ozZr6jg__&amp;Key-Pair-Id=APKAI7S6A5RYOXBWRPDA&quot;
 # 2. extract files
@@ -332,10 +310,10 @@ wget https://cf.10xgenomics.com/supp/cell-exp/refdata-gex-mm10-2020-A.tar.gz
 tar -xzf refdata-gex-mm10-2020-A.tar.gz
 </code></pre>
 </div>
-<div id="velocyto-samtools" class="section level3" number="7.2.3">
-<h3><span class="header-section-number">7.2.3</span> Velocyto &amp; Samtools</h3>
-<div id="samtools" class="section level4" number="7.2.3.1">
-<h4><span class="header-section-number">7.2.3.1</span> <a href="http://www.htslib.org/download/">Samtools</a></h4>
+<div id="velocyto-samtools" class="section level4" number="6.1.2.3">
+<h4><span class="header-section-number">6.1.2.3</span> Velocyto &amp; Samtools</h4>
+<div id="samtools" class="section level5" number="6.1.2.3.1">
+<h5><span class="header-section-number">6.1.2.3.1</span> <a href="http://www.htslib.org/download/">Samtools</a></h5>
 <pre><code># 1. download &amp; extract software
 wget https://github.com/samtools/samtools/releases/download/1.12/samtools-1.12.tar.bz2
 tar -jxvf samtools-1.12.tar.bz2
@@ -352,8 +330,8 @@ PATH=$PATH:/data/users/cqiao/share/samtools/bin/
 cd ..
 </code></pre>
 </div>
-<div id="velocyto" class="section level4" number="7.2.3.2">
-<h4><span class="header-section-number">7.2.3.2</span> <a href="http://velocyto.org/velocyto.py/install/index.html">Velocyto</a></h4>
+<div id="velocyto" class="section level5" number="6.1.2.3.2">
+<h5><span class="header-section-number">6.1.2.3.2</span> <a href="http://velocyto.org/velocyto.py/install/index.html">Velocyto</a></h5>
 <p>Assume your python packages are managed by conda and pip</p>
 <pre><code># install dependent packages, may also use pip
 conda install numpy scipy cython numba matplotlib scikit-learn h5py click
@@ -362,8 +340,8 @@ pip install velocyto
 </code></pre>
 </div>
 </div>
-<div id="dropest" class="section level3" number="7.2.4">
-<h3><span class="header-section-number">7.2.4</span> <a href="https://dropest.readthedocs.io/en/latest/setup.html">Dropest</a></h3>
+<div id="dropest" class="section level4" number="6.1.2.4">
+<h4><span class="header-section-number">6.1.2.4</span> <a href="https://dropest.readthedocs.io/en/latest/setup.html">Dropest</a></h4>
 <p>Install dependent libraries</p>
 <p>Install RPackages (in R)</p>
 <pre><code>install.packages(c(&quot;Rcpp&quot;,&quot;RcppEigen&quot;, &quot;RInside&quot;, &quot;Matrix&quot;))</code></pre>
@@ -424,10 +402,10 @@ cmake -D CMAKE_INSTALL_PREFIX=&quot;/data/users/cqiao/share/dropesttool&quot; ..
 export PATH=$PATH:/data/users/cqiao/share/dropesttool/bin/</code></pre>
 </div>
 </div>
-<div id="preprocessing-pipline" class="section level2" number="7.3">
-<h2><span class="header-section-number">7.3</span> Preprocessing pipline</h2>
-<div id="download-and-split-pancreas-e15_5-fastq-data-from-ncbi" class="section level3" number="7.3.1">
-<h3><span class="header-section-number">7.3.1</span> 1. Download and split Pancreas E15_5 fastq data from NCBI:</h3>
+<div id="preprocessing-pipline" class="section level3" number="6.1.3">
+<h3><span class="header-section-number">6.1.3</span> Preprocessing pipline</h3>
+<div id="download-and-split-pancreas-e15_5-fastq-data-from-ncbi" class="section level4" number="6.1.3.1">
+<h4><span class="header-section-number">6.1.3.1</span> 1. Download and split Pancreas E15_5 fastq data from NCBI:</h4>
 <pre><code>fasterq-dump --split-files SRR9201794</code></pre>
 <p>Result would be:</p>
 <pre><code>SRR9201794_1.fastq SRR9201794_2.fastq</code></pre>
@@ -436,16 +414,16 @@ export PATH=$PATH:/data/users/cqiao/share/dropesttool/bin/</code></pre>
 mv SRR9201794_2.fastq SRR9201794_S1_L001_R2_001.fastq</code></pre>
 <p>Optinally, move them to a folder <code>/data/users/cqiao/share/E15_5</code></p>
 </div>
-<div id="run-cellranger-count-referring-to-the-mouse-refdata" class="section level3" number="7.3.2">
-<h3><span class="header-section-number">7.3.2</span> 2. Run Cellranger count, referring to the mouse refdata</h3>
+<div id="run-cellranger-count-referring-to-the-mouse-refdata" class="section level4" number="6.1.3.2">
+<h4><span class="header-section-number">6.1.3.2</span> 2. Run Cellranger count, referring to the mouse refdata</h4>
 <pre><code>cellranger count --id=pancreas_E15_5 \
 --fastqs=/data/users/cqiao/share/E15_5 \
 --transcriptome=/data/users/cqiao/share/cellranger-6.0.2/gtfs/refdata-gex-mm10-2020-A
 </code></pre>
 <p><code>--id</code> specifies the output dir, the output root.</p>
 </div>
-<div id="run-velocytodropest." class="section level3" number="7.3.3">
-<h3><span class="header-section-number">7.3.3</span> 3. Run Velocyto/Dropest.</h3>
+<div id="run-velocytodropest." class="section level4" number="6.1.3.3">
+<h4><span class="header-section-number">6.1.3.3</span> 3. Run Velocyto/Dropest.</h4>
 <p>prepare some variables to store path names, so that afterwards we do not need to use the long names.</p>
 <pre><code># Barchodes if cellranger output files: 
 gzip -d ./pancreas_E15_5/outs/filtered_feature_bc_matrix/barcodes.tsv.gz
@@ -470,6 +448,103 @@ GTF=/data/users/cqiao/share/cellranger-6.0.2/gtfs/refdata-gex-mm10-2020-A/genes/
 <pre><code>$bin/dropest -f -V -g $GTF -c $config_file $BAMFILE</code></pre>
 <p>Results are stored in file <code>./pancreas_E15_5/dropEst/cell.counts.matrices.rds</code>.</p></li>
 </ul>
+</div>
+</div>
+</div>
+<div id="preprocessing-for-somatic-mutation-analysis" class="section level2" number="6.2">
+<h2><span class="header-section-number">6.2</span> Preprocessing for somatic mutation analysis</h2>
+<div id="pileup-with-cellsnp-lite" class="section level3" number="6.2.1">
+<h3><span class="header-section-number">6.2.1</span> Pileup with cellsnp-lite</h3>
+<p>Cellsnp-lite is designed to perform efficient pileup and genotyping for both bulk and single cell sequencing data. It could be easily installed via <a href="#conda_install">conda</a> with <code>conda install -c bioconda -c conda-forge cellsnp-lite</code>. Note that, cellsnp-lite does not support Windows, but you can use it with the help of the <code>Windows Subsystem for Linux (WSL)</code>. Details about WSL can be found in section below.</p>
+<p>We use a SMART-seq2 dataset as an example, which were packed into <code>joxm.bam.all.77.tar.gz</code> (77 bam files, ~3.5G in total; <a href="https://www.nature.com/articles/s41592-020-0766-3">McCarthy et al, 2020</a>).</p>
+<p>First, please download <code>joxm.bam.all.77.tar.gz</code>, <code>joxm.hg19.bam.lst</code> and <code>joxm.sample.lst</code> from <a href="https://sourceforge.net/projects/sgcellworkshop/files/mtDNA_analysis/">sgcellworkshop</a> repo on sourceforge. Put the three files in the same directory. Then unpack the bam files with command <code>tar zxvf joxm.bam.all.77.tar.gz</code>. The bam files, together with the <code>.bai</code> files, should be in the <code>sort/</code> directory.</p>
+<div id="pileup-without-given-snps" class="section level4" number="6.2.1.1">
+<h4><span class="header-section-number">6.2.1.1</span> Pileup without given SNPs</h4>
+<p>In this example, we use cellsnp-lite to pileup chrM on the bam files without a given SNP list (in denovo mode), whose output could be used as inputs of MQuad model for mitochondrial clone analysis.</p>
+<p>Note that the pileup results <code>joxm.hg19.cellsnp.mode2b.tar.gz</code> can be downloaded from <a href="https://sourceforge.net/projects/sgcellworkshop/files/mtDNA_analysis/">sgcellworkshop</a> repo on sourceforge and then unpacked with command <code>tar zxvf joxm.hg19.cellsnp.mode2b.tar.gz</code>.</p>
+<p>The command line to generate the results is,</p>
+<pre class="shell"><code>cellsnp-lite      \
+  -S ./joxm.hg19.bam.lst    \
+  -i ./joxm.sample.lst      \
+  -O ./cellsnp2b            \
+  --chrom MT        \
+  --cellTAG None    \
+  --UMItag None     \
+  --minCOUNT 20     \
+  --minMAF 0        \
+  --genotype        \
+  --gzip</code></pre>
+</div>
+<div id="pileup-with-given-snps" class="section level4" number="6.2.1.2">
+<h4><span class="header-section-number">6.2.1.2</span> Pileup with given SNPs</h4>
+<p>This time, we use cellsnp-lite to pileup given SNPs on the bam files. The 112 SNPs, stored in <code>joxm.hg19.somatic.sites.vcf</code>, were somatic SNPs called in (<a href="https://www.nature.com/articles/s41592-020-0766-3">McCarthy et al, 2020</a>) and can be downloaded from <a href="https://sourceforge.net/projects/sgcellworkshop/files/mtDNA_analysis/">sgcellworkshop</a> repo.</p>
+<p>Note that the pileup results <code>joxm.hg19.somatic.cellsnp.mode1b.tar.gz</code> can be downloaded from <a href="https://sourceforge.net/projects/sgcellworkshop/files/mtDNA_analysis/">sgcellworkshop</a> repo on sourceforge and then unpacked with command <code>tar zxvf joxm.hg19.somatic.cellsnp.mode1b.tar.gz</code>.</p>
+<p>The command line to generate the results is,</p>
+<pre class="shell"><code>cellsnp-lite      \
+  -S ./joxm.hg19.bam.lst    \
+  -i ./joxm.sample.lst      \
+  -O ./cellsnp1b            \
+  -R ./joxm.hg19.somatic.sites.vcf \
+  --cellTAG None    \
+  --UMItag None     \
+  --minCOUNT 0     \
+  --minMAF 0        \
+  -p 4              \
+  --genotype        \
+  --gzip</code></pre>
+</div>
+</div>
+<div id="clonal-analysis-with-mquad" class="section level3" number="6.2.2">
+<h3><span class="header-section-number">6.2.2</span> Clonal analysis with MQuad</h3>
+</div>
+</div>
+<div id="wsl_install" class="section level2" number="6.3">
+<h2><span class="header-section-number">6.3</span> (Optional) Install Windows Subsystem for Linux</h2>
+<p><strong>Note, this is for Windows users only.</strong> While some required softwares only support Linux or macOS, you could install WSL to use Linux inside Windows.</p>
+<p>The whole process of installing WSL requires at least 2G disk space. Note that this process was tested on Windows 10 (Version 2004, build 19041.1052).</p>
+<div id="what-is-the-windows-subsystem-for-linux-wsl" class="section level3" number="6.3.1">
+<h3><span class="header-section-number">6.3.1</span> What is the Windows Subsystem for Linux (WSL)?</h3>
+<p>According to the <a href="https://docs.microsoft.com/en-us/windows/wsl/about">Microsoft Docs</a>,</p>
+<blockquote>
+<p><em>“The Windows Subsystem for Linux lets developers run a GNU/Linux environment – including most command-line tools, utilities, and applications – directly on Windows, unmodified, without the overhead of a traditional virtual machine or dualboot setup.”</em></p>
+</blockquote>
+</div>
+<div id="manual-installation-steps" class="section level3" number="6.3.2">
+<h3><span class="header-section-number">6.3.2</span> Manual Installation Steps</h3>
+<p><strong>Step 1. Enable required feature in Windows PowerShell</strong></p>
+<p>It is necessary to enable the required feature for WSL before installing it.</p>
+<ul>
+<li>Type <code>powershell</code> in the search box of the Windows taskbar.</li>
+<li>Right click <code>Windows PowerShell</code> and select <code>Run as administrator</code>.</li>
+</ul>
+<p><img src="images/wsl_open_powershell.png" width="45%" style="display: block; margin: auto;" /></p>
+<ul>
+<li>Type the command below in PowerShell.</li>
+</ul>
+<pre class="shell"><code>dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux /all /norestart
+
+Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Windows-Subsystem-Linux</code></pre>
+<p><img src="images/wsl_enable_feature.png" width="60%" style="display: block; margin: auto;" /></p>
+<p><strong>Step 2. Download and install WSL</strong></p>
+<p>Microsoft now supports several Linux distributions as WSL, such as Ubuntu, openSUSE, Fedora, etc (<a href="https://docs.microsoft.com/en-us/windows/wsl/install-win10#step-6---install-your-linux-distribution-of-choice">a full list here</a>), among which we choose Ubuntu as an example.</p>
+<p>Ubuntu WSL could be freely downloaded and installed through <a href="https://www.microsoft.com/en-us/p/ubuntu-2004-lts/9n6svws3rx71?rtc=1&amp;activetab=pivot:overviewtab">Microsoft Store</a>.</p>
+<ul>
+<li>Go to the webpage for <a href="https://www.microsoft.com/en-us/p/ubuntu-2004-lts/9n6svws3rx71?rtc=1&amp;activetab=pivot:overviewtab">Ubuntu</a> in Microsoft Store.</li>
+<li>Click on the <code>Get</code> button.</li>
+<li>Wait for completion of downloading and installation.</li>
+<li>Click on the <code>Launch</code> button.</li>
+</ul>
+<p><img src="images/wsl_download_install.png" width="60%" style="display: block; margin: auto;" /></p>
+<p><strong>Step 3. Create a new account for Ubuntu</strong></p>
+<p>After successfully installing Ubuntu, a new user account should be created.</p>
+<ul>
+<li>Type user name and password following the prompts on the screen. Note, it is normal that the password is invisible when you are typing.</li>
+</ul>
+<p><img src="images/wsl_create_account.png" width="40%" style="display: block; margin: auto;" /></p>
+<p><strong>Now Congratulations! You have successfully installed and set up Ubuntu in your Windows System!</strong></p>
+<p>Next time you can re-open Ubuntu through the search box of the Windows taskbar.</p>
+<p><img src="images/wsl_open_ubuntu.png" width="35%" style="display: block; margin: auto;" /></p>
+<p>More information about the usage of WSL can be found at <a href="https://docs.microsoft.com/en-us/windows/wsl">Microsoft Docs</a>.</p>
 
 </div>
 </div>
@@ -479,7 +554,7 @@ GTF=/data/users/cqiao/share/cellranger-6.0.2/gtfs/refdata-gex-mm10-2020-A/genes/
           </div>
         </div>
       </div>
-<a href="mtdna-variants-for-lineage-inference-from-single-cell-omics.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="copy-number-variation-estimation-from-scrna-seq.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 <a href="references.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
