@@ -1,11 +1,30 @@
 
 # Copy number variation estimation from scRNA-seq { #CNV_analysis }
 
-Rongting Huang
+## Introduction
+Copy number variation is a major mutations in many tumors. Recently, 
+[Minussi et al, 2021](https://www.nature.com/articles/s41586-021-03357-x) 
+suggested novel evolutionary patterns through analyzing CNV in breast tumors.
 
-2021-06-29
+There are three types of CNVs:
 
-## Method: inferCNV
+- Copy gain
+- Copy loss
+- Loss of heterozygosity
+
+They some may not affect the total copies, e.g., Loss of heterozygosity, while 
+some may not affect the balance of two allele, e.g., copy gain (2 vs 2). 
+
+There are four major methods for CNV analyis in scRNA-seq:
+- [inferCNV](https://github.com/broadinstitute/infercnv)
+- [CopyKat](https://github.com/navinlabcode/copykat) by [Gao et al 2020](https://www.nature.com/articles/s41587-020-00795-2)
+- [CaSpER](https://github.com/akdess/CaSpER) by [Harmanci et al, 2020](https://www.nature.com/articles/s41467-019-13779-x)
+- [HoneyBadger](https://jef.works/HoneyBADGER/) by [Fan et al](https://genome.cshlp.org/content/early/2018/06/13/gr.228080.117)
+
+Here, we will illustration how to use the method `inferCNV` for analysing CNV in
+single-cell RNA-seq data. We will discuss other methods in the end.
+
+## inferCNV and example
 
 [InferCNV: Inferring copy number alterations from tumor single cell RNA-Seq data](https://github.com/broadinstitute/inferCNV/wiki)
 
@@ -73,7 +92,7 @@ If you can run the getting started part with demo data provided by inferCNV, the
 
 **Demo Example Figure**
 
-![Demo Example Figure](CNV_analysis_file/figs/demo-infercnv.png)
+![Demo Example Figure](CNV_analysis_file/figs/demo-infercnv.png){width=85%}
 
 ## Application on TNBC1
 
@@ -102,23 +121,23 @@ Table:  Subclusters of TNBC1 dataset (from gene expression analysis-Seurat).
 Notes: 488,307, 247, 55
 
 
-![umap](CNV_analysis_file/figs/tnbc1-exp/tnbc1-umap-3clusters.jpeg)
+![umap](CNV_analysis_file/figs/tnbc1-exp/tnbc1-umap-3clusters.jpeg){width=50%}
 
 
 - B Allele Frenquency (BAF)
 
-![baf1](./CNV_analysis_file/figs/tnbc1-baf/0sub_chr.pdf){width=120%}
+![baf1](CNV_analysis_file/figs/tnbc1-baf/0sub_chr.pdf){width=120%}
 
-![baf2](./CNV_analysis_file/figs/tnbc1-baf/1sub_chr.pdf){width=120%}
+![baf2](CNV_analysis_file/figs/tnbc1-baf/1sub_chr.pdf){width=120%}
 
-![baf3](./CNV_analysis_file/figs/tnbc1-baf/2sub_chr.pdf){width=120%}
+![baf3](CNV_analysis_file/figs/tnbc1-baf/2sub_chr.pdf){width=120%}
 
 
 
 
 - BAF V.S. Expression
 
-![confusion heatmap](CNV_analysis_file/figs/BAFvsExpression.png)
+![confusion heatmap](CNV_analysis_file/figs/BAFvsExpression.png){width=50%}
 
 
 ### run inferCNV
@@ -236,19 +255,35 @@ for (i in celltype){
 
 - demo1
 
-![infercnv1](./CNV_analysis_file/figs/tnbc1_demo1/infercnv.png)
+![infercnv1](./CNV_analysis_file/figs/tnbc1_demo1/infercnv.png){width=85%}
 
-![infercnv2](./CNV_analysis_file/figs/tnbc1_demo1/infercnv.18_HMM_pred.Bayes_Net.Pnorm_0.5.png)
+![infercnv2](./CNV_analysis_file/figs/tnbc1_demo1/infercnv.18_HMM_pred.Bayes_Net.Pnorm_0.5.png){width=85%}
 
 
 - demo2
 
-![infercnv3](./CNV_analysis_file/figs/tnbc1_demo2/infercnv.png)
+![infercnv3](./CNV_analysis_file/figs/tnbc1_demo2/infercnv.png){width=85%}
 
-![infercnv4](./CNV_analysis_file/figs/tnbc1_demo2/infercnv.18_HMM_pred.Bayes_Net.Pnorm_0.5.png)
+![infercnv4](./CNV_analysis_file/figs/tnbc1_demo2/infercnv.18_HMM_pred.Bayes_Net.Pnorm_0.5.png){width=85%}
 
 
-## ref
+## Last notes
+There are four major methods for CNV analyis in scRNA-seq:
+- [inferCNV](https://github.com/broadinstitute/infercnv)
+- [CopyKat](https://github.com/navinlabcode/copykat) by [Gao et al 2020](https://www.nature.com/articles/s41587-020-00795-2)
+- [CaSpER](https://github.com/akdess/CaSpER) by [Harmanci et al, 2020](https://www.nature.com/articles/s41467-019-13779-x)
+- [HoneyBadger](https://jef.works/HoneyBADGER/) by [Fan et al](https://genome.cshlp.org/content/early/2018/06/13/gr.228080.117)
+
+However, the two BAF-supporting methods HoneyBadger and Casper works less 
+accurately from our experience. The expression-only method InferCNV and CopyKat
+generally works fine, though it has no capability to detect loss of 
+heterozygosity. In general, we suggest perform a pseudo-bulk BAF on the 
+identified clones or cell clusters with copy number variations.
+
+Feel free to get in touch (yuanhua@hku.hk) if you need advice on CNV analysis 
+on your own data / project.
+
+**ref**
 
 
 https://www.r-bloggers.com/2012/04/getting-started-with-jags-rjags-and-bayesian-modelling/

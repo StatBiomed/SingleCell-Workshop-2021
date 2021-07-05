@@ -22,7 +22,7 @@ sequencing.
 ![Figure 4.1. Somatic mutations and evolution. Fig adapted from Kuipers et al, 2017](images/cellGen-fig1.png)
 
 ### Choice of protocols
-Let us first review the different protocols for single-cell sequencing, as 
+Let's first review the different protocols for single-cell sequencing, as 
 genetic analysis often higher requirement of sequencing coverage.
 
 In next Figure from 
@@ -37,12 +37,12 @@ cells.
 Though scRNA-seq contains the information of somatic mutations in the expressed
 RNA molecules. However, it only covers the highly expressed genes (or its 3' / 
 5' if UMI-based protocols). Generally, scDNA-seq offers more even coverage 
-across the genome, despite its much higher cost. None the less, given the low
+across the genome, despite its much higher cost. Nonetheless, given the low
 capture efficiency, all protocols suffer from allele drop-out, namely false 
 negatives in observing the existing mutation allele.
 
-Below, we summarise different sequenciing strategies and their potentials for 
-analysing different types of somatic mutations, including copy number 
+Below, we summarize different sequencing strategies and their potentials for 
+analyzing different types of somatic mutations, including copy number 
 variations (CNV), single-nucleotide variation (SNV) and mitochondrial SNV 
 (mtSNV).
 
@@ -61,7 +61,7 @@ as an example of SNV analsyis in single cells (Fig. 4.3 below for this donor).
 The processed data sets are directly available from its according
 [cardelino](https://github.com/single-cell-genetics/cardelino) R package. We 
 also prepared the raw data (in `.bam` format) and scripts to generate them in 
-the [Appendix Chapter 7.1]() for you to practice the preprocessing steps with 
+[Chapter 6.2](https://statbiomed.github.io/SingleCell-Workshop-2021/preprocess.html#preprocess_mutations) for you to practice the preprocessing steps with 
 tools [cellsnp-lit](https://cellsnp-lite.readthedocs.io) and 
 [MQuad](https://github.com/single-cell-genetics/MQuad).
 
@@ -121,7 +121,7 @@ to infer a clonal tree, even though it is of high uncertainty by only using bulk
 data. Here, we obtain a maximum-a-posteriori (MAP) tree from 
 [Canopy](https://github.com/yuchaojiang/Canopy).
 The clonal tree inferred by Canopy for this donor consists of three clones, 
-including a "base" clone ("clone1") that has no sublconal somatic mutations 
+including a "base" clone ("clone1") that has no clonal somatic mutations 
 present.
 
 ```{read-canopy-data}
@@ -132,7 +132,7 @@ plot_tree(canopy_res$tree, orient = "v")
 ![Figure 4.5. Clonal tree inferred from bulk WES data](images/cellGen-fig6.png){ width=40% }
 
 ### Run cardelino for inferring clonal structure
-Now, we can leverage the inferred clonal tree as an guidence to cluster cells
+Now, we can leverage the inferred clonal tree as an guidance to cluster cells
 based on their mutation profiles.
 
 Before starting, be careful to ensure that the same variant IDs are used in both 
@@ -152,7 +152,7 @@ assignments <- clone_id(input_data$A, input_data$D, Config = Config,
 names(assignments)
 ```
 
-We can visualise the cell-clone assignment probabilities as a heatmap.
+We can visualize the cell-clone assignment probabilities as a heatmap.
 
 ```{prob-heatmap}
 prob_heatmap(assignments$prob)
@@ -204,11 +204,13 @@ but generally highly mutation rate (probably also some other biological reasons)
 ![Figure 4.9. Mitochondrial variants for lineage tracing. Fig. adapted from Ludwig et al, 2019](images/cellGen-fig10.png)
 
 ### Visualise allele frequency
-Here, we illustrate the mtDNA on the joxm dataset again. During the preprocssing,
-we first genotyping the whole mito genome directly with `cellsnp-lit` and then
+Here, we illustrate the mtDNA on the joxm dataset again. During the 
+preprocssing 
+(see [Chapter 7.2](https://statbiomed.github.io/SingleCell-Workshop-2021/preprocess.html#preprocess_mutations)),
+we first genotype the whole mito genome directly with `cellsnp-lit` and then
 call the clonal informed variants by `MQuad`.
 
-Let's first load the processed dataset from `cardelino` package and visualise 
+Let's first load the processed dataset from `cardelino` package and visualize 
 the allele frequency.
 
 ```{read-mtx-files}
@@ -237,14 +239,14 @@ As expected, the coverage of mtDNA is a lot higher than the nuclear genome above
 Now, we can run cardelino on the mitochondrial variations. Note, as there is 
 no prior clonal tree, the model is easier to return a local optima. Generally,
 we recommend running it multiple time (with different random seed or 
-initializations) and pick the one with highest DIC.
+initialization) and pick the one with highest DIC.
 
 ```{denovo-mtDNA}
 set.seed(7)
 assign_mtClones <- clone_id(AD, DP, Config=NULL, n_clone = 3, keep_base_clone=FALSE)
 ```
 
-Then visualise allele frequency along with the clustering of cells and variants:
+Then visualize allele frequency along with the clustering of cells and variants:
 ```{vc_heatmap-mtDNA}
 Config_mt <- assign_mtClones$Config_prob
 Config_mt[Config_mt >= 0.5] = 1
@@ -253,3 +255,25 @@ cardelino::vc_heatmap(AF_mt, assign_mtClones$prob, Config_mt, show_legend=TRUE)
 ```
 
 ![Figure 4.11. Allele frequency of mtSNVs with clustered cells](images/cellGen-fig12.png){ width=75% }
+
+## Last notes
+As shown, `cardelino` allows us to cluster cells based on somatic mutations with
+accounting for the high uncertainty caused by technical variability. Last, we'd
+like to highlight a few potential drawbacks of `cardelino`:
+
+1. It is computationally expensive due to the nature of Gibbs sampling that 
+scarifies speed for accuracy. For large data sets, e.g., >1000 cells, cardelino
+may be too slow to handle. If speed is a major concertain, please consider our
+more efficient tool 
+[Vireo](https://vireosnp.readthedocs.io/en/latest/vireoSNP_clones.html) as a 
+sister tool.
+
+2. It may not always return a converged results. You could consider running it 
+longer or with more chains or initialization.
+
+3. It is generally difficult to select the best number of clone. You may get 
+some clue by trial and error or visualise it from hierarchical clustering first.
+
+Feel free to get in touch (yuanhua@hku.hk) if you need advice on somatic 
+mutation analysis on your own data / project.
+
