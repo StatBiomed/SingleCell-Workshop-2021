@@ -31,22 +31,17 @@ You can fork or download this tutorial book (and re-run it) from this GitHub rep
 
 
 ## Other modules of this workshop
-- Module 1: Introduction to R (by Dr Joshua Ho & lab)
+- Module 1: Introduction to R by Dr Joshua Ho & lab ([Online tutorials](https://holab-hku.github.io/Fundamental-scRNA/))
 
-  Please find the learning materials here: https://holab-hku.github.io/R-workshop/
-
-- Module 2: Fundamentals of scRNA-seq analysis (by Dr Joshua Ho)
+- Module 2: Fundamentals of scRNA-seq analysis by Dr Joshua Ho (([Online tutorials](https://holab-hku.github.io/Fundamental-scRNA/)))
 
   Materials will come soon...
   
-- Module 3: Cell clustering and annotation (by Dr Asif Javed)
+- Module 3: Cell clustering and annotation by Dr Asif Javed ([Online tutorials](https://github.com/pkuerten/single_cell_clustering_annotation.github.io/blob/main/index.md))
 
   Materials will come soon...
 
-- Module 4.1: Cell interaction (by Dr Asif Javed)
-
-  Materials will come soon...
-
+- Module 4.1: Cell interaction by Dr Asif Javed ([Online tutorials](https://github.com/pkuerten/single_cell_clustering_annotation.github.io/blob/main/index.md))
 
 
 **Note**: to build this book, use the following script in R:

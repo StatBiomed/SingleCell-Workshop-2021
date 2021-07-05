@@ -33,7 +33,7 @@
   
 <link rel="prev" href="copy-number-variation-estimation-from-scrna-seq.html"/>
 <link rel="next" href="references.html"/>
-<script src="libs/header-attrs-2.8/header-attrs.js"></script>
+<script src="libs/header-attrs-2.9/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -59,6 +59,7 @@
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
 pre.sourceCode { margin: 0; }
 @media screen {
@@ -143,10 +144,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="2" data-path="env-pre.html"><a href="env-pre.html"><i class="fa fa-check"></i><b>2</b> Prerequisites</a>
 <ul>
-<li class="chapter" data-level="2.1" data-path="env-pre.html"><a href="env-pre.html#quick-summary"><i class="fa fa-check"></i><b>2.1</b> Quick summary</a>
+<li class="chapter" data-level="2.1" data-path="env-pre.html"><a href="env-pre.html#r-packages"><i class="fa fa-check"></i><b>2.1</b> R packages</a></li>
+<li class="chapter" data-level="2.2" data-path="env-pre.html"><a href="env-pre.html#python-package-scvelo-with-anaconda"><i class="fa fa-check"></i><b>2.2</b> Python package scvelo with Anaconda</a>
 <ul>
-<li class="chapter" data-level="2.1.1" data-path="env-pre.html"><a href="env-pre.html#r-packages"><i class="fa fa-check"></i><b>2.1.1</b> R packages</a></li>
-<li class="chapter" data-level="2.1.2" data-path="env-pre.html"><a href="env-pre.html#conda-environment"><i class="fa fa-check"></i><b>2.1.2</b> Conda environment</a></li>
+<li class="chapter" data-level="2.2.1" data-path="env-pre.html"><a href="env-pre.html#conda_install_windows"><i class="fa fa-check"></i><b>2.2.1</b> Installation on Windows</a></li>
+<li class="chapter" data-level="2.2.2" data-path="env-pre.html"><a href="env-pre.html#conda_install_linux"><i class="fa fa-check"></i><b>2.2.2</b> Installation on Linux</a></li>
+<li class="chapter" data-level="2.2.3" data-path="env-pre.html"><a href="env-pre.html#conda_install_mac"><i class="fa fa-check"></i><b>2.2.3</b> Installation on macOS</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="trajectory-inference-and-rna-velocity.html"><a href="trajectory-inference-and-rna-velocity.html"><i class="fa fa-check"></i><b>3</b> Trajectory inference and RNA velocity</a>
@@ -274,7 +277,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="installation-of-packagessoftwares" class="section level3" number="6.1.2">
 <h3><span class="header-section-number">6.1.2</span> Installation of packages/softwares</h3>
 <p>All the codes are executed on Linux commandline, lines starting with “#” are comments.
-My working path root is “/data/users/cqiao/share/”,
+My working path root is “/data/users/cqiao/share/,”
 you may change to any foler as you like.</p>
 <div id="sratool" class="section level4" number="6.1.2.1">
 <h4><span class="header-section-number">6.1.2.1</span> SRATool</h4>

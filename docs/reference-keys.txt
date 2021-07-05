@@ -2,9 +2,8 @@ introduction
 contents-of-this-part
 other-modules-of-this-workshop
 env-pre
-quick-summary
 r-packages
-conda-environment
+python-package-scvelo-with-anaconda
 conda_install_windows
 conda_install_linux
 conda_install_mac
