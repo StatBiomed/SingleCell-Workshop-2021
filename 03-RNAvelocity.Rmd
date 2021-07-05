@@ -14,7 +14,21 @@ pip install numba==0.51
 ```
 
 To use Python packages within R environment, we will need the help of R `colorize("reticulate", "#316A9E")` library,
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
 
+colorize <- function(x, color) {
+  if (knitr::is_latex_output()) {
+    sprintf("\\textcolor{%s}{%s}", 
+            color, x)
+  } 
+  else if (knitr::is_html_output()) {
+    sprintf("<span style='color: %s;'>%s</span>", 
+            color, x)
+  } 
+  else x
+}
+```
 ```{r}
 # install.packages("reticulate")
 library(reticulate)
