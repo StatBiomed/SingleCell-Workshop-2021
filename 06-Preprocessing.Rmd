@@ -2,10 +2,20 @@
 
 ## Preprocessing for RNA Velocity
 
-Author: "Chen Qiao"
+There are three options we have tried (more exist, e.g., kallisto bustools):
 
-Date: "7/2/2021"
+- [velocyto.py](http://velocyto.org): the earliest software for this purpose. 
+  Generally not computationally efficient, possible due to written in Python. 
+  For unknown reason, the proportion of unspliced RNA is unrealisticly high for
+  5' 10x Genomics data.
+- [dropEst](https://dropest.readthedocs.io): as implemented in C/C++, it is much
+  more efficient. It also returns more reasonable proportion of unspliced RNAs 
+  for 5' 10x Genomics data
+- [STAR-solo](https://github.com/alexdobin/STAR/blob/master/docs/STARsolo.md):
+  new extension for the popular STAR. Benefits: efficient and one step for reads
+  alignment and counting of unspliced RNA (**Recommended option**)
 
+**Please always read the manual of a specific software you are using.**
 
 In this tutorial, we would take the Pancreas dataset used in scVelo paper for example, show how to retrieve the fastq dataset from NCBI, process using cellranger, velocyto or dropest to obtain the spliced and unspliced count matrices for RNA velocity estimation.
 
@@ -259,7 +269,7 @@ cellranger count --id=pancreas_E15_5 \
      ```
      Results are stored in file `./pancreas_E15_5/dropEst/cell.counts.matrices.rds`.
 
-## Preprocessing for somatic mutation analysis
+## Preprocessing for somatic mutation analysis { #preprocess_mutations }
 
 ### Pileup with cellsnp-lite
 
@@ -316,6 +326,11 @@ cellsnp-lite      \
 
 ### Clonal analysis with MQuad
 
+The command line below is used to generate the MQuad results:
+
+```{shell}
+mquad -c ./cellsnp2b -o ./mquad_dat -p 4
+```
 
 ## (Optional) Install Windows Subsystem for Linux {#wsl_install}
 

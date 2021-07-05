@@ -1,14 +1,14 @@
 
 # Trajectory inference and RNA velocity { #RNA_velocity }
 
-## Introduction of trajectory inference
-Generally, an ideal dynamical analysis of a biological process is performing 
-time-series experiment. However, the bottleneck may exist in the time resolution
-of the experiment, for example it is difficult to have a resolution shorter than
+## Trajectory inference
+Generally, dynamical analysis of a biological process is done by performing 
+time-series experiments. However, one of bottlenecks is the time resolution
+of the experiment, for example it is difficult to have a time gap shorter than
 a minute for RNA metabolic experiments. On the other hand, a snapshot of a 
 population of cells (namely only single time point) can still capture different
 states of a biological process given cells have different speed in the process
-or even different fates. Usually, a snapshot representing a relatively transient
+or even different fates. Usually, a snapshot represents a relatively transient
 dynamical process.
 
 Trajectory inference is type of computational methods to infer the latent time 
@@ -27,30 +27,30 @@ of more than 70 tools have been evaluated.
 
 The topology of the trajectory can be linear, multifurcation, cycle or even 
 more complex. The performance of each method on different tasks or data sets
-varies a lot. We leave the readers to the original benchmark paper metioned 
+varies a lot. We leave the readers to the original benchmark paper mentioned 
 above.
 
 ![Figure 3.1. Different trajectory topologies and its comparison. Fig. adapted from Saelens et al, 2019](images/trajectory-fig1.png)
 
-Here, we only introduce two commonly used methods. Note, all above trajecotry 
+Here, we only introduce two commonly used methods. Note, all above trajectory 
 inference methods are based on the current state of transcription and the 
 distance between cell are symmetric, namely distance from cell A to cell B is
 the same as from cell B to cell A. Therefore, the direction of the inferred 
-trajectory is either lack (namely require users to specify) or less reliable if
-using default setting.
+trajectory is either missing (namely require users to specify) or lack of 
+high reliability if using default setting.
 
 ### Diffusion map
 [Diffusion map](https://en.wikipedia.org/wiki/Diffusion_map) is a type of 
 non-linear dimension reduction methods, and is recently applied to estimate the
-pseudotime in single-cell transcriptomic data ([Haghverdi et al 2016](https://www.nature.com/articles/nmeth.3971)).
+pseudo-time in single-cell transcriptomic data ([Haghverdi et al 2016](https://www.nature.com/articles/nmeth.3971)).
 
 As shown in Fig. 3.1 (adapted from Haghverdi et al 2016), this algorithm works 
 with three steps:
 
 1. computing the overlap of local kernels at the expression levels of cells x 
-   and y. 
+   and y;
 2. Diffusion pseudotime dpt(x,y) approximates the geodesic distance 
-   between x and y on the mapped manifold,
+   between x and y on the mapped manifold;
 3. Branching points are identified as points where anticorrelated distances from
    branch ends become correlated.
 
@@ -59,86 +59,81 @@ with three steps:
 ### Monocle
 Another widely used tool is 
 [Monocle (now v3)](https://cole-trapnell-lab.github.io/monocle3/). One of cool
-features that Monocle3 offers is the branching in the trajectory. On the other 
+features is that Monocle3 offers is the branching in the trajectory. On the other 
 hand, it generally requires users to specify the start (or end) point in the
 trajectory.
 
 ![Figure 3.1. Example results for Monocle3. Fig. adapted from its tutorial](images/trajectory-fig3.png){ width=60% }
 
 ## RNA velocity
-## RNA kinetics
-As briefly mentioned that the trajectory inferred from the transcriptome ofter 
-suffer from lack of automatically detected directionality of the trajectory. 
-Very recently, the RNA velocity is a newly introduced concept to use the 
+### RNA kinetics
+As briefly mentioned that the trajectory inferred from the transcriptome often 
+suffers from lack of automatically detected direction. 
+Very recently, the RNA velocity is introduced to use the 
 unspliced RNAs to indicate the transcriptional kinetic activity 
 ([La Manno et al, 2018](https://www.nature.com/articles/s41586-018-0414-6)), and
-a recent extension to full dynamical model
+recently scVelo is further extends it to full dynamical model
 ([Bergen et al, 2020](https://www.nature.com/articles/s41587-020-0591-3)).
 
 Let us first review the RNA metabolic process and its intrinsic dynamics:
 - RNA is synthesized at a rate of alpha
-- RNA is spliced to remove introns and reformed into mature mRNA; 
-  splicing rate beta
+- RNA is spliced to remove introns and form mature mRNA at rate of beta
 - Mature mRNA is degraded after functioning at a rate of gamma
 
 In steady state, the unspliced and spliced is at an equilibrium, namely the 
-newly synthesized is exactly equal to the spliced and also the degradated. 
+newly synthesized RNAs are exactly equal to the spliced RNAs, and similarly also 
+the degradated RNAs.
 Therefore, the break of the equilibrium state between unspliced and spliced RNAs
-is highly informative to indicate whether a gene is in the induction or 
+is highly informative and can indicate whether a gene is in the induction or 
 suppression state.
 
 ![Figure 3.4. RNA kinetics and RNA velocity.Fig. adapted from Haghverdi et al 2016](images/trajectory-fig4.png)
 
-### Unspliced RNA indicates transcriptional speed
-Usually, the proportion of unspliced RNA is very low in RNA-seq, particularly
-because most protocols is based on Poly-A enriched RNAs. Namely, in principle, 
+### Unspliced RNA indicates transcriptional speed { #unspliced_RNA }
+Usually, the proportion of unspliced RNAs is very low in RNA-seq, especially for
+protocols with Poly-A enrichment, which is very common. Namely, in principle, 
 only RNAs reaching 3' of the gene body can be captured. However, the unspliced
 RNAs still can be observed at a substantial proportion, usually covering 15-25%.
+The reason is still highly mysterious, partly biological for co-transcriptional
+splicing and partly technical for low efficiency on poly-A capturing.
 
-Recently, there are also a few technologies have been introduced to enrich the 
+Recently, there are also a few technologies have also been introduced to enrich the 
 nascent RNAs in single-cell protocols, e.g.,
 [scSLAM-seq](https://www.nature.com/articles/s41586-019-1369-y) and
 [scNT-seq](https://www.nature.com/articles/s41592-020-0935-4).
 
 Though some researchers remain skeptical on the use of RNA velocity, possibly 
-because the high noise-by-signal ratio, the unprecedent capability to 
-automatically detect the trajectory direction attracts much attention. On the
-other hands, more accurate and robust methods are under rapid development, to
-make this analysis tool more widely applicable.
+because the high noise-by-signal ratio, the unprecedented capability to 
+automatically detect the trajectory direction attracts much attention. At the 
+same time, we anticipate more accurate and robust methods are coming soon
+thanks to the great community-wide efforts.
 
 
-## Use scVelo package within R
-There are two major tools for analysing RNA velocity: 
+## scVelo in R
+There are two major tools for estimating RNA velocity: 
 
-- [velocyto](http://velocyto.org) is based on a steady-state model for 
-  estimating RNA velocity. It supports both Python and R.
-- [scVelo](https://scvelo.readthedocs.io) introced an extended dynamical model
-  for estimating RNA velocity, and various of utility functions. However, it 
-  only supports Python.
+- [velocyto](http://velocyto.org) is based on a steady-state model. It supports both Python and R.
+- [scVelo](https://scvelo.readthedocs.io) supports a full dynamical model and 
+various of utility functions. It only supports Python.
   
-Here, we will introduce `reticulate` to use Python package in R (sounds cool, 
-right, and you will find it handy!)
+Here, we will introduce `reticulate` to use the `scvelo` Python package in R 
+(sounds cool, right? Hope you will find it handy!)
 
-### Environment and preprocessing
-In order or use `scVelo`, we need to install it. Please follow Chapter 2.1.2 to
-install Python and `scVelo==0.2.2`. As mentioned there, we recommend using 
-[Anaconda](https://www.anaconda.com/products/individual) to create Python and 
-conda environment.
+In order or use `scVelo`, we first need to install it. Please follow 
+[Chapter 2.2](env-pre.html) to install Python and `scVelo==0.2.2`.
 
-Additionally, the extration of unspliced RNA is a bit tricky, and not widely 
-supported. There are three options we have tried (there maybe more, e.g., 
-kallisto bustools):
+Generally, the extraction of unspliced RNAs from raw reads is a bit tricky, and 
+not widely supported. Please see [Chapter 7.1](preprocess.html) for three tested 
+options for mroe details.
 
-- [velocyto.py](http://velocyto.org): the earliest software for this purpose. 
-  Generally not computationally efficient, possible due to written in Python. 
-  For unknown reason, the proportion of unspliced RNA is unrealisticly high for
-  5' 10x Genomics data.
-- [dropEst](https://dropest.readthedocs.io): as implemented in C/C++, it is much
-  more efficient. It also returns more reasonable proportion of unspliced RNAs 
-  for 5' 10x Genomics data
-- [STAR-solo](https://github.com/alexdobin/STAR/blob/master/docs/STARsolo.md):
-  new extension for the popular STAR. Benefits: efficient and one step for reads
-  alignment and counting of unspliced RNA (**Recommended option**)
+In this tutorial, we will download and use the built-in pancreas dataset from 
+`scvelo` that has already been preprocssed to count the unspliced RNAs to 
+demonstrate the useage of RNA velocity analysis. The dataset will be 
+automatically downloaded to `./data/Pancreas/endocrinogenesis_day15.h5ad` 
+(52.5MB).
+
+**Note**, this tutorial is translated from its Python version of scvelo at https://scvelo.readthedocs.io/Pancreas/
+
 
 ### Getting started
 
@@ -161,15 +156,10 @@ scv$settings$presenter_view = TRUE
 scv$settings$verbosity = 3
 scv$settings$set_figure_params("scvelo") 
 ```
-
-In this tutorial, we will download and use the built-in pancreas dataset to 
-demonstrate the useage of RNA velocity analysis. The dataset will be 
-automatically downloaded to `./data/Pancreas/endocrinogenesis_day15.h5ad` 
-(52.5MB).
   
 Endocrine development in pancreas lineage has four major fates: $\alpha$, $\beta$, $\delta$, $\epsilon$. Dataset is obtained and subseted from 
 [Bastidas-Ponce et al. (2018)](https://journals.biologists.com/dev/article/146/12/dev173849/19483/Comprehensive-single-cell-mRNA-profiling-reveals-a)
-by the scVelo team. In this 
+by the scVelo team.
 
 ```{}
 adata <- scv$datasets$pancreas()
@@ -188,14 +178,14 @@ scv$utils$show_proportions(adata)
 scv$pl$proportions(adata, figsize=c(10, 3), show=FALSE)
 plt$savefig('images/RNA-velo-fig1.png')
 ```
-![RNA-velo-fig2](images/RNA-velo-fig1.png){ width=80% }
+![Figure 3.5. Proportion of unspliced RNAs](images/RNA-velo-fig1.png){ width=80% }
 
 ```{}
 scv$pl$scatter(adata, legend_loc = "best", size = 50, title = "Pancreas Celltype", show=FALSE)
 plt$savefig('images/RNA-velo-fig2.png')
 ```
 
-![RNA-velo-fig2](images/RNA-velo-fig2.png){ width=75% }
+![Figure 3.6 UMAP of Pancreas data with cell types](images/RNA-velo-fig2.png){ width=75% }
 
 ### Data Preprocessing
 
@@ -211,9 +201,9 @@ scv$pp$filter_and_normalize(adata, min_shared_counts = as.integer(20), n_top_gen
 scv$pp$moments(adata, n_pcs = as.integer(30), n_neighbors = as.integer(30))
 ```
 
-### Pseudotime based on Diffusion Map
+### Diffusion pseudotime
 
-Pseudotime, a part of standardized scRNA-seq analysis pipeline, is also implemented in this package, and can be compared with the `colorize("latent time", "#316A9E")` introduced in dynamical mode.  
+Pseudotime, a part of standardized scRNA-seq analysis pipeline, is also implemented in this package, and can be compared with the `latent time` introduced in dynamical mode.  
 
 ```{}
 adata$uns$data$iroot <- which.min(adata$obsm['X_umap'][, 1])
@@ -224,7 +214,7 @@ scv$pl$scatter(adata, color = 'dpt_pseudotime', title = 'pseudotime', color_map 
 plt$savefig('images/RNA-velo-fig3.png')
 ```
 
-![RNA-velo-fig3](images/RNA-velo-fig3.png){ width=75% }
+![Figure 3.7. Diffusion pseudo-time](images/RNA-velo-fig3.png){ width=75% }
 
 
 ### Compute velocity and velocity graph
@@ -236,21 +226,28 @@ scVelo has incorporated 3 modes for velocity estimation:
   
 For deterministic and stochastic mode, the gene-specific velocities are obtained by fitting linear regression ratio (constant transcriptional state) between unspliced/spliced mRNA abundances.  
   
-Under linear assumptions, how the `colorize("observed abundances deviate from the steady state", "#b22e5b")` regression line is velocity.  
+Under linear assumptions, how the `observed abundances deviate from the steady state` regression line is velocity.  
 
 ```{}
 scv$tl$velocity(adata, mode = "stochastic")
 ```
 
-To calculate velocity graph, we need to run `colorize("velocity_graph()", "#316A9E")`. Velocity graph is the cosine correlation of potential cell transitions with velocity vector in high dimensional space. It summarizes the possible cell transition states and has dimension of ${n}_{obs} * {n}_{obs}$.  
+To calculate velocity graph, we need to run `velocity_graph()`. Velocity graph is 
+the cosine correlation of potential cell transitions with velocity vector in high
+dimensional space. It summarizes the possible cell transition states and has 
+dimension of ${n}_{obs} * {n}_{obs}$.  
 
 ```{}
 scv$tl$velocity_graph(adata, sqrt_transform = TRUE)
 ```
 
-### Diffusion-map Pseudotime with velocity
+### Diffusion pseudotime with velocity
 
-Pseudotime, a part of standardized scRNA-seq analysis pipeline, is also implemented in this package, and can be compared with the `colorize("latent time", "#316A9E")` introduced in dynamical mode.  
+As mentioned above, the scvelo package support computing Diffusion Pseudotime.
+Before, we used cell transition matrix from spliced RNAs only. Now, let's change
+the transition matrix to our computed velocity and calculate the diffusion 
+pseudotime again. As you will see that the pseudotime is reversed. This is 
+thanks to the use of velocity which is based on the intrinsic dynamics.
 
 ```{}
 scv$tl$velocity_pseudotime(adata)
@@ -258,7 +255,7 @@ scv$pl$scatter(adata, color = 'velocity_pseudotime', cmap = 'gnuplot', show=FALS
 plt$savefig('images/RNA-velo-fig4.png')
 ```
 
-![RNA-velo-fig4](images/RNA-velo-fig4.png){ width=75% }
+![Figure 3.8. Diffusion pseudo-time with velocity](images/RNA-velo-fig4.png){ width=75% }
 
 
 ```{}
@@ -266,31 +263,31 @@ scv$pl$scatter(adata, x = "velocity_pseudotime", y = c('Actn4', 'Ppp3ca', 'Cpe',
 plt$savefig('images/RNA-velo-fig5.png')
 ```
 
-![RNA-velo-fig5](images/RNA-velo-fig5.png)
+Also, a few example genes along the pseduo-time.
+
+![Figure 3.9. Expression along diffusion pseudo-time](images/RNA-velo-fig5.png)
 
 
-### Plot Results
+### Visualise velocity-based trajectory
 
-Velocities are projected onto the specified embedding `colorize("basis", "#316A9E")` and can be visualized in one of the three ways:  
+Velocities are projected onto the specified embedding `basis` and can be visualized in one of the three ways:  
 - On single cell level  
 - On grid level  
 - Streamlines, which is most commonly used  
-
 
 ```{}
 scv$pl$velocity_embedding_stream(adata, basis = "umap", color = "clusters", legend_loc = "best", dpi = 150, show=FALSE)
 plt$savefig('images/RNA-velo-fig6.png')
 ```
 
-![RNA-velo-fig5](images/RNA-velo-fig6.png){ width=75% }
+![Figure 3.10. Visualisation of velocity-based trajectory](images/RNA-velo-fig6.png){ width=75% }
 
 
 ```{}
 scv$pl$velocity_embedding(adata, basis = "umap", arrow_length = 3, arrow_size = 2, dpi = 150, show=FALSE)
 plt$savefig('images/RNA-velo-fig7.png')
 ```
-
-![RNA-velo-fig7](images/RNA-velo-fig7.png){ width=75% }
+<!-- ![RNA-velo-fig7](images/RNA-velo-fig7.png){ width=75% } -->
 
 ### Interprete Velocity
 
@@ -301,7 +298,7 @@ scv$pl$velocity(adata, c("Cpe", "Gnao1", "Ins2", "Adk"), ncols = 2, show=FALSE)
 plt$savefig('images/RNA-velo-fig8.png')
 ```
 
-![RNA-velo-fig8](images/RNA-velo-fig8.png)
+![Figure 3.11. Visualisation of example genes](images/RNA-velo-fig8.png)
 
 Positive velocity indicates that a gene is up-regulated, which occurs for cells that show higher abundance of unspliced mRNA for that gene than expected in steady state. Conversely, negative velocity indicates that a gene is down-regulated.  
 
@@ -315,7 +312,7 @@ scv$pl$scatter(adata, color_gradients = c("S_score", "G2M_score"), smooth = TRUE
 plt$savefig('images/RNA-velo-fig9.png')
 ```
 
-![RNA-velo-fig9](images/RNA-velo-fig9.png)
+![Figure 3.12. Visualisation of cell cycle](images/RNA-velo-fig9.png)
 
 
 ### Dynamical Mode and related analysis
@@ -357,4 +354,27 @@ scv$pl$scatter(adata, basis = names(topgenes_vals)[1:5], ncols = 5, frameon = FA
 
 scv$pl$heatmap(adata, var_names = names(topgenes_vals), tkey = 'latent_time', n_convolve = as.integer(100), col_color = 'clusters')
 ```
+
+## Last notes
+Through this tutorial, the RNA velocity method has demostrated its unique power
+to reveal very detailed cell transitions, impressively the cell cycle trajecotry.
+
+However, when you try it on your own data, sometimes, you may experience 
+difficulty to inteprete the results. These difficulties are shared among groups
+on campus and across international community. At the moment, we are actively 
+work on computational methods, including a few angles:
+
+1. selection of genes with heterogenous transcriptional kinetics (differential
+momuntume genes) with our
+[BRIE2](https://www.biorxiv.org/content/10.1101/2020.11.04.368019v2) model
+
+2. projection of the high dimentional RNA velocity into a low dimentional space
+for denoise and more robust analysis with our 
+[veloAE](https://www.biorxiv.org/content/10.1101/2021.03.19.436127v1) model
+
+3. redesign of the scvelo dynamical model to a more generic mathathic function
+and biological informed regularisation (method is coming soon).
+
+Feel free to get in touch (yuanhua@hku.hk) if you need advice on RNA velocity 
+analysis on your own data / project.
 
