@@ -21,7 +21,7 @@
   <meta name="twitter:description" content="Cell trajectory inference; Cellular genetic analysis" />
   
 
-<meta name="author" content="Yuanhua Lab: Mingze Gao, Rongting Huang, Xianjie Huang, Aaron Kwok, Zhuoxuan Li, Chen Qiao, Yuanhua Huang" />
+<meta name="author" content="Yuanhua Lab: Mingze Gao, Rongting Huang, Xianjie Huang, Aaron Kwok, Zhuoxuan Li, Chen Qiao, Yuanhua Huang contact: yuanhua@hku.hk" />
 
 
 <meta name="date" content="2021-07-05" />
@@ -31,7 +31,7 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="preprocessing-of-dataset.html"/>
+<link rel="prev" href="preprocess.html"/>
 
 <script src="libs/header-attrs-2.9/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
@@ -145,90 +145,90 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2" data-path="env-pre.html"><a href="env-pre.html"><i class="fa fa-check"></i><b>2</b> Prerequisites</a>
 <ul>
 <li class="chapter" data-level="2.1" data-path="env-pre.html"><a href="env-pre.html#r-packages"><i class="fa fa-check"></i><b>2.1</b> R packages</a></li>
-<li class="chapter" data-level="2.2" data-path="env-pre.html"><a href="env-pre.html#python-package-scvelo-with-anaconda"><i class="fa fa-check"></i><b>2.2</b> Python package scvelo with Anaconda</a>
+<li class="chapter" data-level="2.2" data-path="env-pre.html"><a href="env-pre.html#python_packages"><i class="fa fa-check"></i><b>2.2</b> Python packages</a>
 <ul>
 <li class="chapter" data-level="2.2.1" data-path="env-pre.html"><a href="env-pre.html#conda_install_windows"><i class="fa fa-check"></i><b>2.2.1</b> Installation on Windows</a></li>
 <li class="chapter" data-level="2.2.2" data-path="env-pre.html"><a href="env-pre.html#conda_install_linux"><i class="fa fa-check"></i><b>2.2.2</b> Installation on Linux</a></li>
 <li class="chapter" data-level="2.2.3" data-path="env-pre.html"><a href="env-pre.html#conda_install_mac"><i class="fa fa-check"></i><b>2.2.3</b> Installation on macOS</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="trajectory-inference-and-rna-velocity.html"><a href="trajectory-inference-and-rna-velocity.html"><i class="fa fa-check"></i><b>3</b> Trajectory inference and RNA velocity</a>
+<li class="chapter" data-level="3" data-path="RNA-velocity.html"><a href="RNA-velocity.html"><i class="fa fa-check"></i><b>3</b> Trajectory inference and RNA velocity</a>
 <ul>
-<li class="chapter" data-level="3.1" data-path="trajectory-inference-and-rna-velocity.html"><a href="trajectory-inference-and-rna-velocity.html#introduction-of-trajectory-inference"><i class="fa fa-check"></i><b>3.1</b> Introduction of trajectory inference</a>
+<li class="chapter" data-level="3.1" data-path="RNA-velocity.html"><a href="RNA-velocity.html#introduction-of-trajectory-inference"><i class="fa fa-check"></i><b>3.1</b> Introduction of trajectory inference</a>
 <ul>
-<li class="chapter" data-level="3.1.1" data-path="trajectory-inference-and-rna-velocity.html"><a href="trajectory-inference-and-rna-velocity.html#diffusion-map"><i class="fa fa-check"></i><b>3.1.1</b> Diffusion map</a></li>
-<li class="chapter" data-level="3.1.2" data-path="trajectory-inference-and-rna-velocity.html"><a href="trajectory-inference-and-rna-velocity.html#monocle"><i class="fa fa-check"></i><b>3.1.2</b> Monocle</a></li>
+<li class="chapter" data-level="3.1.1" data-path="RNA-velocity.html"><a href="RNA-velocity.html#diffusion-map"><i class="fa fa-check"></i><b>3.1.1</b> Diffusion map</a></li>
+<li class="chapter" data-level="3.1.2" data-path="RNA-velocity.html"><a href="RNA-velocity.html#monocle"><i class="fa fa-check"></i><b>3.1.2</b> Monocle</a></li>
 </ul></li>
-<li class="chapter" data-level="3.2" data-path="trajectory-inference-and-rna-velocity.html"><a href="trajectory-inference-and-rna-velocity.html#rna-velocity"><i class="fa fa-check"></i><b>3.2</b> RNA velocity</a></li>
-<li class="chapter" data-level="3.3" data-path="trajectory-inference-and-rna-velocity.html"><a href="trajectory-inference-and-rna-velocity.html#rna-kinetics"><i class="fa fa-check"></i><b>3.3</b> RNA kinetics</a>
+<li class="chapter" data-level="3.2" data-path="RNA-velocity.html"><a href="RNA-velocity.html#rna-velocity"><i class="fa fa-check"></i><b>3.2</b> RNA velocity</a></li>
+<li class="chapter" data-level="3.3" data-path="RNA-velocity.html"><a href="RNA-velocity.html#rna-kinetics"><i class="fa fa-check"></i><b>3.3</b> RNA kinetics</a>
 <ul>
-<li class="chapter" data-level="3.3.1" data-path="trajectory-inference-and-rna-velocity.html"><a href="trajectory-inference-and-rna-velocity.html#unspliced-rna-indicates-transcriptional-speed"><i class="fa fa-check"></i><b>3.3.1</b> Unspliced RNA indicates transcriptional speed</a></li>
+<li class="chapter" data-level="3.3.1" data-path="RNA-velocity.html"><a href="RNA-velocity.html#unspliced-rna-indicates-transcriptional-speed"><i class="fa fa-check"></i><b>3.3.1</b> Unspliced RNA indicates transcriptional speed</a></li>
 </ul></li>
-<li class="chapter" data-level="3.4" data-path="trajectory-inference-and-rna-velocity.html"><a href="trajectory-inference-and-rna-velocity.html#use-scvelo-package-within-r"><i class="fa fa-check"></i><b>3.4</b> Use scVelo package within R</a>
+<li class="chapter" data-level="3.4" data-path="RNA-velocity.html"><a href="RNA-velocity.html#use-scvelo-package-within-r"><i class="fa fa-check"></i><b>3.4</b> Use scVelo package within R</a>
 <ul>
-<li class="chapter" data-level="3.4.1" data-path="trajectory-inference-and-rna-velocity.html"><a href="trajectory-inference-and-rna-velocity.html#environment-and-preprocessing"><i class="fa fa-check"></i><b>3.4.1</b> Environment and preprocessing</a></li>
-<li class="chapter" data-level="3.4.2" data-path="trajectory-inference-and-rna-velocity.html"><a href="trajectory-inference-and-rna-velocity.html#getting-started"><i class="fa fa-check"></i><b>3.4.2</b> Getting started</a></li>
-<li class="chapter" data-level="3.4.3" data-path="trajectory-inference-and-rna-velocity.html"><a href="trajectory-inference-and-rna-velocity.html#data-preprocessing"><i class="fa fa-check"></i><b>3.4.3</b> Data Preprocessing</a></li>
-<li class="chapter" data-level="3.4.4" data-path="trajectory-inference-and-rna-velocity.html"><a href="trajectory-inference-and-rna-velocity.html#pseudotime-based-on-diffusion-map"><i class="fa fa-check"></i><b>3.4.4</b> Pseudotime based on Diffusion Map</a></li>
-<li class="chapter" data-level="3.4.5" data-path="trajectory-inference-and-rna-velocity.html"><a href="trajectory-inference-and-rna-velocity.html#compute-velocity-and-velocity-graph"><i class="fa fa-check"></i><b>3.4.5</b> Compute velocity and velocity graph</a></li>
-<li class="chapter" data-level="3.4.6" data-path="trajectory-inference-and-rna-velocity.html"><a href="trajectory-inference-and-rna-velocity.html#diffusion-map-pseudotime-with-velocity"><i class="fa fa-check"></i><b>3.4.6</b> Diffusion-map Pseudotime with velocity</a></li>
-<li class="chapter" data-level="3.4.7" data-path="trajectory-inference-and-rna-velocity.html"><a href="trajectory-inference-and-rna-velocity.html#plot-results"><i class="fa fa-check"></i><b>3.4.7</b> Plot Results</a></li>
-<li class="chapter" data-level="3.4.8" data-path="trajectory-inference-and-rna-velocity.html"><a href="trajectory-inference-and-rna-velocity.html#interprete-velocity"><i class="fa fa-check"></i><b>3.4.8</b> Interprete Velocity</a></li>
-<li class="chapter" data-level="3.4.9" data-path="trajectory-inference-and-rna-velocity.html"><a href="trajectory-inference-and-rna-velocity.html#velocity-in-cycling-progenitors"><i class="fa fa-check"></i><b>3.4.9</b> Velocity in cycling progenitors</a></li>
-<li class="chapter" data-level="3.4.10" data-path="trajectory-inference-and-rna-velocity.html"><a href="trajectory-inference-and-rna-velocity.html#dynamical-mode-and-related-analysis"><i class="fa fa-check"></i><b>3.4.10</b> Dynamical Mode and related analysis</a></li>
-</ul></li>
-</ul></li>
-<li class="chapter" data-level="4" data-path="somatic-mutation-analysis-in-single-cells.html"><a href="somatic-mutation-analysis-in-single-cells.html"><i class="fa fa-check"></i><b>4</b> Somatic mutation analysis in single cells</a>
-<ul>
-<li class="chapter" data-level="4.1" data-path="somatic-mutation-analysis-in-single-cells.html"><a href="somatic-mutation-analysis-in-single-cells.html#introduction-1"><i class="fa fa-check"></i><b>4.1</b> Introduction</a>
-<ul>
-<li class="chapter" data-level="4.1.1" data-path="somatic-mutation-analysis-in-single-cells.html"><a href="somatic-mutation-analysis-in-single-cells.html#choice-of-protocols"><i class="fa fa-check"></i><b>4.1.1</b> Choice of protocols</a></li>
-</ul></li>
-<li class="chapter" data-level="4.2" data-path="somatic-mutation-analysis-in-single-cells.html"><a href="somatic-mutation-analysis-in-single-cells.html#snv-analysis"><i class="fa fa-check"></i><b>4.2</b> SNV analysis</a>
-<ul>
-<li class="chapter" data-level="4.2.1" data-path="somatic-mutation-analysis-in-single-cells.html"><a href="somatic-mutation-analysis-in-single-cells.html#call-somatic-variants-and-genotype-single-cells"><i class="fa fa-check"></i><b>4.2.1</b> Call somatic variants and genotype single cells</a></li>
-<li class="chapter" data-level="4.2.2" data-path="somatic-mutation-analysis-in-single-cells.html"><a href="somatic-mutation-analysis-in-single-cells.html#visualize-variat-allele-fequency"><i class="fa fa-check"></i><b>4.2.2</b> Visualize variat allele fequency</a></li>
-<li class="chapter" data-level="4.2.3" data-path="somatic-mutation-analysis-in-single-cells.html"><a href="somatic-mutation-analysis-in-single-cells.html#use-extra-information-on-clonal-tree"><i class="fa fa-check"></i><b>4.2.3</b> Use extra information on clonal tree</a></li>
-<li class="chapter" data-level="4.2.4" data-path="somatic-mutation-analysis-in-single-cells.html"><a href="somatic-mutation-analysis-in-single-cells.html#run-cardelino-for-inferring-clonal-structure"><i class="fa fa-check"></i><b>4.2.4</b> Run cardelino for inferring clonal structure</a></li>
-</ul></li>
-<li class="chapter" data-level="4.3" data-path="somatic-mutation-analysis-in-single-cells.html"><a href="somatic-mutation-analysis-in-single-cells.html#mtsnv-analysis"><i class="fa fa-check"></i><b>4.3</b> mtSNV analysis</a>
-<ul>
-<li class="chapter" data-level="4.3.1" data-path="somatic-mutation-analysis-in-single-cells.html"><a href="somatic-mutation-analysis-in-single-cells.html#visualise-allele-frequency"><i class="fa fa-check"></i><b>4.3.1</b> Visualise allele frequency</a></li>
-<li class="chapter" data-level="4.3.2" data-path="somatic-mutation-analysis-in-single-cells.html"><a href="somatic-mutation-analysis-in-single-cells.html#infer-clonal-structure-with-mtdna-variants"><i class="fa fa-check"></i><b>4.3.2</b> Infer clonal structure with mtDNA variants</a></li>
+<li class="chapter" data-level="3.4.1" data-path="RNA-velocity.html"><a href="RNA-velocity.html#environment-and-preprocessing"><i class="fa fa-check"></i><b>3.4.1</b> Environment and preprocessing</a></li>
+<li class="chapter" data-level="3.4.2" data-path="RNA-velocity.html"><a href="RNA-velocity.html#getting-started"><i class="fa fa-check"></i><b>3.4.2</b> Getting started</a></li>
+<li class="chapter" data-level="3.4.3" data-path="RNA-velocity.html"><a href="RNA-velocity.html#data-preprocessing"><i class="fa fa-check"></i><b>3.4.3</b> Data Preprocessing</a></li>
+<li class="chapter" data-level="3.4.4" data-path="RNA-velocity.html"><a href="RNA-velocity.html#pseudotime-based-on-diffusion-map"><i class="fa fa-check"></i><b>3.4.4</b> Pseudotime based on Diffusion Map</a></li>
+<li class="chapter" data-level="3.4.5" data-path="RNA-velocity.html"><a href="RNA-velocity.html#compute-velocity-and-velocity-graph"><i class="fa fa-check"></i><b>3.4.5</b> Compute velocity and velocity graph</a></li>
+<li class="chapter" data-level="3.4.6" data-path="RNA-velocity.html"><a href="RNA-velocity.html#diffusion-map-pseudotime-with-velocity"><i class="fa fa-check"></i><b>3.4.6</b> Diffusion-map Pseudotime with velocity</a></li>
+<li class="chapter" data-level="3.4.7" data-path="RNA-velocity.html"><a href="RNA-velocity.html#plot-results"><i class="fa fa-check"></i><b>3.4.7</b> Plot Results</a></li>
+<li class="chapter" data-level="3.4.8" data-path="RNA-velocity.html"><a href="RNA-velocity.html#interprete-velocity"><i class="fa fa-check"></i><b>3.4.8</b> Interprete Velocity</a></li>
+<li class="chapter" data-level="3.4.9" data-path="RNA-velocity.html"><a href="RNA-velocity.html#velocity-in-cycling-progenitors"><i class="fa fa-check"></i><b>3.4.9</b> Velocity in cycling progenitors</a></li>
+<li class="chapter" data-level="3.4.10" data-path="RNA-velocity.html"><a href="RNA-velocity.html#dynamical-mode-and-related-analysis"><i class="fa fa-check"></i><b>3.4.10</b> Dynamical Mode and related analysis</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="copy-number-variation-estimation-from-scrna-seq.html"><a href="copy-number-variation-estimation-from-scrna-seq.html"><i class="fa fa-check"></i><b>5</b> Copy number variation estimation from scRNA-seq</a>
+<li class="chapter" data-level="4" data-path="SNV-analysis.html"><a href="SNV-analysis.html"><i class="fa fa-check"></i><b>4</b> Somatic mutation analysis in single cells</a>
 <ul>
-<li class="chapter" data-level="5.1" data-path="copy-number-variation-estimation-from-scrna-seq.html"><a href="copy-number-variation-estimation-from-scrna-seq.html#method-infercnv"><i class="fa fa-check"></i><b>5.1</b> Method: inferCNV</a>
+<li class="chapter" data-level="4.1" data-path="SNV-analysis.html"><a href="SNV-analysis.html#introduction-1"><i class="fa fa-check"></i><b>4.1</b> Introduction</a>
 <ul>
-<li class="chapter" data-level="5.1.1" data-path="copy-number-variation-estimation-from-scrna-seq.html"><a href="copy-number-variation-estimation-from-scrna-seq.html#install-infercnv"><i class="fa fa-check"></i><b>5.1.1</b> install inferCNV</a></li>
-<li class="chapter" data-level="5.1.2" data-path="copy-number-variation-estimation-from-scrna-seq.html"><a href="copy-number-variation-estimation-from-scrna-seq.html#getting-started-1"><i class="fa fa-check"></i><b>5.1.2</b> getting started</a></li>
+<li class="chapter" data-level="4.1.1" data-path="SNV-analysis.html"><a href="SNV-analysis.html#choice-of-protocols"><i class="fa fa-check"></i><b>4.1.1</b> Choice of protocols</a></li>
 </ul></li>
-<li class="chapter" data-level="5.2" data-path="copy-number-variation-estimation-from-scrna-seq.html"><a href="copy-number-variation-estimation-from-scrna-seq.html#application-on-tnbc1"><i class="fa fa-check"></i><b>5.2</b> Application on TNBC1</a>
+<li class="chapter" data-level="4.2" data-path="SNV-analysis.html"><a href="SNV-analysis.html#snv-analysis"><i class="fa fa-check"></i><b>4.2</b> SNV analysis</a>
 <ul>
-<li class="chapter" data-level="5.2.1" data-path="copy-number-variation-estimation-from-scrna-seq.html"><a href="copy-number-variation-estimation-from-scrna-seq.html#data-description"><i class="fa fa-check"></i><b>5.2.1</b> data description</a></li>
-<li class="chapter" data-level="5.2.2" data-path="copy-number-variation-estimation-from-scrna-seq.html"><a href="copy-number-variation-estimation-from-scrna-seq.html#run-infercnv"><i class="fa fa-check"></i><b>5.2.2</b> run inferCNV</a></li>
-<li class="chapter" data-level="5.2.3" data-path="copy-number-variation-estimation-from-scrna-seq.html"><a href="copy-number-variation-estimation-from-scrna-seq.html#infercnv-result"><i class="fa fa-check"></i><b>5.2.3</b> inferCNV result</a></li>
+<li class="chapter" data-level="4.2.1" data-path="SNV-analysis.html"><a href="SNV-analysis.html#call-somatic-variants-and-genotype-single-cells"><i class="fa fa-check"></i><b>4.2.1</b> Call somatic variants and genotype single cells</a></li>
+<li class="chapter" data-level="4.2.2" data-path="SNV-analysis.html"><a href="SNV-analysis.html#visualize-variat-allele-fequency"><i class="fa fa-check"></i><b>4.2.2</b> Visualize variat allele fequency</a></li>
+<li class="chapter" data-level="4.2.3" data-path="SNV-analysis.html"><a href="SNV-analysis.html#use-extra-information-on-clonal-tree"><i class="fa fa-check"></i><b>4.2.3</b> Use extra information on clonal tree</a></li>
+<li class="chapter" data-level="4.2.4" data-path="SNV-analysis.html"><a href="SNV-analysis.html#run-cardelino-for-inferring-clonal-structure"><i class="fa fa-check"></i><b>4.2.4</b> Run cardelino for inferring clonal structure</a></li>
 </ul></li>
-<li class="chapter" data-level="5.3" data-path="copy-number-variation-estimation-from-scrna-seq.html"><a href="copy-number-variation-estimation-from-scrna-seq.html#ref"><i class="fa fa-check"></i><b>5.3</b> ref</a></li>
+<li class="chapter" data-level="4.3" data-path="SNV-analysis.html"><a href="SNV-analysis.html#mtsnv-analysis"><i class="fa fa-check"></i><b>4.3</b> mtSNV analysis</a>
+<ul>
+<li class="chapter" data-level="4.3.1" data-path="SNV-analysis.html"><a href="SNV-analysis.html#visualise-allele-frequency"><i class="fa fa-check"></i><b>4.3.1</b> Visualise allele frequency</a></li>
+<li class="chapter" data-level="4.3.2" data-path="SNV-analysis.html"><a href="SNV-analysis.html#infer-clonal-structure-with-mtdna-variants"><i class="fa fa-check"></i><b>4.3.2</b> Infer clonal structure with mtDNA variants</a></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="preprocessing-of-dataset.html"><a href="preprocessing-of-dataset.html"><i class="fa fa-check"></i><b>6</b> Preprocessing of dataset</a>
-<ul>
-<li class="chapter" data-level="6.1" data-path="preprocessing-of-dataset.html"><a href="preprocessing-of-dataset.html#preprocessing-for-rna-velocity"><i class="fa fa-check"></i><b>6.1</b> Preprocessing for RNA Velocity</a>
-<ul>
-<li class="chapter" data-level="6.1.1" data-path="preprocessing-of-dataset.html"><a href="preprocessing-of-dataset.html#list-of-packages-aligned-in-pipeline"><i class="fa fa-check"></i><b>6.1.1</b> List of packages aligned in pipeline:</a></li>
-<li class="chapter" data-level="6.1.2" data-path="preprocessing-of-dataset.html"><a href="preprocessing-of-dataset.html#installation-of-packagessoftwares"><i class="fa fa-check"></i><b>6.1.2</b> Installation of packages/softwares</a></li>
-<li class="chapter" data-level="6.1.3" data-path="preprocessing-of-dataset.html"><a href="preprocessing-of-dataset.html#preprocessing-pipline"><i class="fa fa-check"></i><b>6.1.3</b> Preprocessing pipline</a></li>
 </ul></li>
-<li class="chapter" data-level="6.2" data-path="preprocessing-of-dataset.html"><a href="preprocessing-of-dataset.html#preprocessing-for-somatic-mutation-analysis"><i class="fa fa-check"></i><b>6.2</b> Preprocessing for somatic mutation analysis</a>
+<li class="chapter" data-level="5" data-path="CNV-analysis.html"><a href="CNV-analysis.html"><i class="fa fa-check"></i><b>5</b> Copy number variation estimation from scRNA-seq</a>
 <ul>
-<li class="chapter" data-level="6.2.1" data-path="preprocessing-of-dataset.html"><a href="preprocessing-of-dataset.html#pileup-with-cellsnp-lite"><i class="fa fa-check"></i><b>6.2.1</b> Pileup with cellsnp-lite</a></li>
-<li class="chapter" data-level="6.2.2" data-path="preprocessing-of-dataset.html"><a href="preprocessing-of-dataset.html#clonal-analysis-with-mquad"><i class="fa fa-check"></i><b>6.2.2</b> Clonal analysis with MQuad</a></li>
+<li class="chapter" data-level="5.1" data-path="CNV-analysis.html"><a href="CNV-analysis.html#method-infercnv"><i class="fa fa-check"></i><b>5.1</b> Method: inferCNV</a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="CNV-analysis.html"><a href="CNV-analysis.html#install-infercnv"><i class="fa fa-check"></i><b>5.1.1</b> install inferCNV</a></li>
+<li class="chapter" data-level="5.1.2" data-path="CNV-analysis.html"><a href="CNV-analysis.html#getting-started-1"><i class="fa fa-check"></i><b>5.1.2</b> getting started</a></li>
 </ul></li>
-<li class="chapter" data-level="6.3" data-path="preprocessing-of-dataset.html"><a href="preprocessing-of-dataset.html#wsl_install"><i class="fa fa-check"></i><b>6.3</b> (Optional) Install Windows Subsystem for Linux</a>
+<li class="chapter" data-level="5.2" data-path="CNV-analysis.html"><a href="CNV-analysis.html#application-on-tnbc1"><i class="fa fa-check"></i><b>5.2</b> Application on TNBC1</a>
 <ul>
-<li class="chapter" data-level="6.3.1" data-path="preprocessing-of-dataset.html"><a href="preprocessing-of-dataset.html#what-is-the-windows-subsystem-for-linux-wsl"><i class="fa fa-check"></i><b>6.3.1</b> What is the Windows Subsystem for Linux (WSL)?</a></li>
-<li class="chapter" data-level="6.3.2" data-path="preprocessing-of-dataset.html"><a href="preprocessing-of-dataset.html#manual-installation-steps"><i class="fa fa-check"></i><b>6.3.2</b> Manual Installation Steps</a></li>
+<li class="chapter" data-level="5.2.1" data-path="CNV-analysis.html"><a href="CNV-analysis.html#data-description"><i class="fa fa-check"></i><b>5.2.1</b> data description</a></li>
+<li class="chapter" data-level="5.2.2" data-path="CNV-analysis.html"><a href="CNV-analysis.html#run-infercnv"><i class="fa fa-check"></i><b>5.2.2</b> run inferCNV</a></li>
+<li class="chapter" data-level="5.2.3" data-path="CNV-analysis.html"><a href="CNV-analysis.html#infercnv-result"><i class="fa fa-check"></i><b>5.2.3</b> inferCNV result</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="CNV-analysis.html"><a href="CNV-analysis.html#ref"><i class="fa fa-check"></i><b>5.3</b> ref</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="preprocess.html"><a href="preprocess.html"><i class="fa fa-check"></i><b>6</b> Preprocessing of dataset</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="preprocess.html"><a href="preprocess.html#preprocessing-for-rna-velocity"><i class="fa fa-check"></i><b>6.1</b> Preprocessing for RNA Velocity</a>
+<ul>
+<li class="chapter" data-level="6.1.1" data-path="preprocess.html"><a href="preprocess.html#list-of-packages-aligned-in-pipeline"><i class="fa fa-check"></i><b>6.1.1</b> List of packages aligned in pipeline:</a></li>
+<li class="chapter" data-level="6.1.2" data-path="preprocess.html"><a href="preprocess.html#installation-of-packagessoftwares"><i class="fa fa-check"></i><b>6.1.2</b> Installation of packages/softwares</a></li>
+<li class="chapter" data-level="6.1.3" data-path="preprocess.html"><a href="preprocess.html#preprocessing-pipline"><i class="fa fa-check"></i><b>6.1.3</b> Preprocessing pipline</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="preprocess.html"><a href="preprocess.html#preprocessing-for-somatic-mutation-analysis"><i class="fa fa-check"></i><b>6.2</b> Preprocessing for somatic mutation analysis</a>
+<ul>
+<li class="chapter" data-level="6.2.1" data-path="preprocess.html"><a href="preprocess.html#pileup-with-cellsnp-lite"><i class="fa fa-check"></i><b>6.2.1</b> Pileup with cellsnp-lite</a></li>
+<li class="chapter" data-level="6.2.2" data-path="preprocess.html"><a href="preprocess.html#clonal-analysis-with-mquad"><i class="fa fa-check"></i><b>6.2.2</b> Clonal analysis with MQuad</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="preprocess.html"><a href="preprocess.html#wsl_install"><i class="fa fa-check"></i><b>6.3</b> (Optional) Install Windows Subsystem for Linux</a>
+<ul>
+<li class="chapter" data-level="6.3.1" data-path="preprocess.html"><a href="preprocess.html#what-is-the-windows-subsystem-for-linux-wsl"><i class="fa fa-check"></i><b>6.3.1</b> What is the Windows Subsystem for Linux (WSL)?</a></li>
+<li class="chapter" data-level="6.3.2" data-path="preprocess.html"><a href="preprocess.html#manual-installation-steps"><i class="fa fa-check"></i><b>6.3.2</b> Manual Installation Steps</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
@@ -261,7 +261,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           </div>
         </div>
       </div>
-<a href="preprocessing-of-dataset.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="preprocess.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 
     </div>
   </div>

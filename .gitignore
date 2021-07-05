@@ -2,5 +2,7 @@
 .Rhistory
 .RData
 .Ruserdata
+.Rproj.user/shared/notebooks/paths
 .DS_Store
+data/joxm
 data/Pancreas
