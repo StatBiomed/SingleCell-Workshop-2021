@@ -13,7 +13,6 @@ conda_install_linux
 conda_install_mac
 other-preparation
 conda-configuration
-pseudo-time-and-trajectory-analysis
 trajectory-inference-using-rna-velocity
 use-scvelo-package-within-r
 endocrine-pancreas
@@ -26,6 +25,17 @@ interprete-velocity
 velocity-in-cycling-progenitors
 dynamical-mode-and-related-analysis
 session-info
+somatic-mutation-analysis-in-single-cells
+introduction-1
+choice-of-protocols
+snv-analysis
+call-somatic-variants-and-genotype-single-cells
+visualize-variat-allele-fequency
+use-extra-information-on-clonal-tree
+run-cardelino-for-inferring-clonal-structure
+mtsnv-analysis
+visualise-allele-frequency
+infer-clonal-structure-with-mtdna-variants
 copy-number-variation-estimation-from-scrna-seq
 method-infercnv
 install-infercnv

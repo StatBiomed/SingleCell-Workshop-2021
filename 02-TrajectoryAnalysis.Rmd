@@ -1,3 +1,0 @@
-# Pseudo-time and trajectory analysis
-
-Here is a review of existing methods.
