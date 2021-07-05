@@ -144,7 +144,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="2" data-path="env-pre.html"><a href="env-pre.html"><i class="fa fa-check"></i><b>2</b> Prerequisites</a>
 <ul>
-<li class="chapter" data-level="2.1" data-path="env-pre.html"><a href="env-pre.html#quick-summary"><i class="fa fa-check"></i><b>2.1</b> Quick summary</a></li>
+<li class="chapter" data-level="2.1" data-path="env-pre.html"><a href="env-pre.html#quick-summary"><i class="fa fa-check"></i><b>2.1</b> Quick summary</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="env-pre.html"><a href="env-pre.html#r-packages"><i class="fa fa-check"></i><b>2.1.1</b> R packages</a></li>
+<li class="chapter" data-level="2.1.2" data-path="env-pre.html"><a href="env-pre.html#conda-environment"><i class="fa fa-check"></i><b>2.1.2</b> Conda environment</a></li>
+</ul></li>
 <li class="chapter" data-level="2.2" data-path="env-pre.html"><a href="env-pre.html#wsl_install"><i class="fa fa-check"></i><b>2.2</b> (Optional) Install Windows Subsystem for Linux</a>
 <ul>
 <li class="chapter" data-level="2.2.1" data-path="env-pre.html"><a href="env-pre.html#what-is-the-windows-subsystem-for-linux-wsl"><i class="fa fa-check"></i><b>2.2.1</b> What is the Windows Subsystem for Linux (WSL)?</a></li>
@@ -261,11 +265,36 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h1><span class="header-section-number">Chapter 2</span> Prerequisites</h1>
 <div id="quick-summary" class="section level2" number="2.1">
 <h2><span class="header-section-number">2.1</span> Quick summary</h2>
-<p>For this module, a few tools in Python or command line are needed. If you are already familiar with Unix-based command-line interface, you can prepare your environment with this quick summary, otherwise please see detailed instructions below.</p>
+<p>For going the modules in this part, we requires both R packages and non-R
+packages (Python and command line). Don’t worry, we prepared to make it minimal
+for you.</p>
+<div id="r-packages" class="section level3" number="2.1.1">
+<h3><span class="header-section-number">2.1.1</span> R packages</h3>
+<p>In modules in this part, we require a few R packages, which you could install as
+follows,</p>
+<pre><code># install reticulate for module 4.2
+install.packages(&quot;reticulate&quot;)</code></pre>
+<pre><code># install devtools for module 5.1
+install.packages(&#39;devtools&#39;)</code></pre>
+<pre><code># install cardelino for module 5.1
+devtools::install_github(&quot;single-cell-genetics/cardelino&quot;, build_vignettes = FALSE)</code></pre>
+<p>And install JAGS manually for Windows or Mac from here (before installing rjags
+R package): <a href="https://sourceforge.net/projects/mcmc-jags/files/JAGS/4.x/" class="uri">https://sourceforge.net/projects/mcmc-jags/files/JAGS/4.x/</a></p>
+<pre><code># install rjags for module 5.2
+install.packages(&#39;rjags&#39;)</code></pre>
+<pre><code># install inferCNV for module 5.2
+if (!requireNamespace(&quot;BiocManager&quot;, quietly = TRUE))
+     install.packages(&quot;BiocManager&quot;)
+BiocManager::install(&quot;infercnv&quot;)</code></pre>
+</div>
+<div id="conda-environment" class="section level3" number="2.1.2">
+<h3><span class="header-section-number">2.1.2</span> Conda environment</h3>
+<p>Additionally, a few tools in Python or command line are needed. If you are already familiar with Unix-based command-line interface, you can prepare your environment with this quick summary, otherwise please see detailed instructions below.</p>
 <p>For easier installation and cleaner environment, we recommend using <a href="https://docs.conda.io/en/latest/miniconda.html">conda</a> (a popular environment management tool) with Python 3.7 here.
 After having conda installed, you can create an environment with our pre-defined config file <a href="http://ufpr.dl.sourceforge.net/project/sgcellworkshop/sgcell.yml">sgcell.yml</a> (click &amp; download it, and move it to the working directory). Then all you need is this command line:</p>
 <pre class="shell"><code>conda env create -f sgcell.yml</code></pre>
 <p>Now, you can type <code>conda env list</code>. If the environment named <code>sgcell</code> is listed, it means you configured the environment successfully (now, enjoy this Module).</p>
+</div>
 </div>
 <div id="wsl_install" class="section level2" number="2.2">
 <h2><span class="header-section-number">2.2</span> (Optional) Install Windows Subsystem for Linux</h2>
