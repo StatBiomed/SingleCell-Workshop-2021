@@ -1,12 +1,11 @@
 # Prerequisites {#env-pre}
 
-## Quick summary
 
 For going the modules in this part, we requires both R packages and non-R 
 packages (Python and command line). Don't worry, we prepared to make it minimal
 for you.
 
-### R packages
+## R packages
 In modules in this part, we require a few R packages, which you could install as
 follows,
 ```
@@ -39,10 +38,11 @@ if (!requireNamespace("BiocManager", quietly = TRUE))
 BiocManager::install("infercnv")
 ```
 
-### Conda environment
-Additionally, a few tools in Python or command line are needed. For easier installation and cleaner environment, we recommend using [conda](https://docs.anaconda.com/anaconda/) (a popular environment management tool) with Python 3.8 here.
+## Python package scvelo with Anaconda
+Additionally, one Python package `scvelo` is needed for the module 4.2. 
+For easier installation and cleaner environment, we recommend using [Anaconda](https://docs.anaconda.com/anaconda/) (a popular environment management tool) with Python 3.8 here.
 
-#### Installation on Windows {#conda_install_windows}
+### Installation on Windows {#conda_install_windows}
 
 1. Go to [Anaconda](https://www.anaconda.com/products/individual) webpage; click 'Download' button to download Anaconda for Windows (with Python3.8).
 
@@ -60,7 +60,7 @@ knitr::include_graphics("./images/conda_scvelo.png")
 
 You have successfully set up the base environment of conda and installed the `scVelo` tool in this environment.
 
-#### Installation on Linux {#conda_install_linux}
+### Installation on Linux {#conda_install_linux}
 
 1. Open Linux Shell.
 
@@ -76,7 +76,7 @@ When you are asked `Do you wish the installer to initialize Anaconda3 by running
 
 A list of installed packages appears if it has been installed correctly.  
 
-#### Installation on macOS {#conda_install_mac}
+### Installation on macOS {#conda_install_mac}
 
 In macOS, you could install Anaconda either in graphical mode or command line mode.
 

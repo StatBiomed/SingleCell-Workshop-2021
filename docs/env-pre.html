@@ -33,7 +33,7 @@
   
 <link rel="prev" href="index.html"/>
 <link rel="next" href="trajectory-inference-and-rna-velocity.html"/>
-<script src="libs/header-attrs-2.8/header-attrs.js"></script>
+<script src="libs/header-attrs-2.9/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -59,6 +59,7 @@
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
 pre.sourceCode { margin: 0; }
 @media screen {
@@ -143,10 +144,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="2" data-path="env-pre.html"><a href="env-pre.html"><i class="fa fa-check"></i><b>2</b> Prerequisites</a>
 <ul>
-<li class="chapter" data-level="2.1" data-path="env-pre.html"><a href="env-pre.html#quick-summary"><i class="fa fa-check"></i><b>2.1</b> Quick summary</a>
+<li class="chapter" data-level="2.1" data-path="env-pre.html"><a href="env-pre.html#r-packages"><i class="fa fa-check"></i><b>2.1</b> R packages</a></li>
+<li class="chapter" data-level="2.2" data-path="env-pre.html"><a href="env-pre.html#python-package-scvelo-with-anaconda"><i class="fa fa-check"></i><b>2.2</b> Python package scvelo with Anaconda</a>
 <ul>
-<li class="chapter" data-level="2.1.1" data-path="env-pre.html"><a href="env-pre.html#r-packages"><i class="fa fa-check"></i><b>2.1.1</b> R packages</a></li>
-<li class="chapter" data-level="2.1.2" data-path="env-pre.html"><a href="env-pre.html#conda-environment"><i class="fa fa-check"></i><b>2.1.2</b> Conda environment</a></li>
+<li class="chapter" data-level="2.2.1" data-path="env-pre.html"><a href="env-pre.html#conda_install_windows"><i class="fa fa-check"></i><b>2.2.1</b> Installation on Windows</a></li>
+<li class="chapter" data-level="2.2.2" data-path="env-pre.html"><a href="env-pre.html#conda_install_linux"><i class="fa fa-check"></i><b>2.2.2</b> Installation on Linux</a></li>
+<li class="chapter" data-level="2.2.3" data-path="env-pre.html"><a href="env-pre.html#conda_install_mac"><i class="fa fa-check"></i><b>2.2.3</b> Installation on macOS</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="trajectory-inference-and-rna-velocity.html"><a href="trajectory-inference-and-rna-velocity.html"><i class="fa fa-check"></i><b>3</b> Trajectory inference and RNA velocity</a>
@@ -251,13 +254,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="env-pre" class="section level1" number="2">
 <h1><span class="header-section-number">Chapter 2</span> Prerequisites</h1>
-<div id="quick-summary" class="section level2" number="2.1">
-<h2><span class="header-section-number">2.1</span> Quick summary</h2>
 <p>For going the modules in this part, we requires both R packages and non-R
 packages (Python and command line). Don’t worry, we prepared to make it minimal
 for you.</p>
-<div id="r-packages" class="section level3" number="2.1.1">
-<h3><span class="header-section-number">2.1.1</span> R packages</h3>
+<div id="r-packages" class="section level2" number="2.1">
+<h2><span class="header-section-number">2.1</span> R packages</h2>
 <p>In modules in this part, we require a few R packages, which you could install as
 follows,</p>
 <pre><code># install reticulate for module 4.2
@@ -275,11 +276,12 @@ if (!requireNamespace(&quot;BiocManager&quot;, quietly = TRUE))
      install.packages(&quot;BiocManager&quot;)
 BiocManager::install(&quot;infercnv&quot;)</code></pre>
 </div>
-<div id="conda-environment" class="section level3" number="2.1.2">
-<h3><span class="header-section-number">2.1.2</span> Conda environment</h3>
-<p>Additionally, a few tools in Python or command line are needed. For easier installation and cleaner environment, we recommend using <a href="https://docs.anaconda.com/anaconda/">conda</a> (a popular environment management tool) with Python 3.8 here.</p>
-<div id="conda_install_windows" class="section level4" number="2.1.2.1">
-<h4><span class="header-section-number">2.1.2.1</span> Installation on Windows</h4>
+<div id="python-package-scvelo-with-anaconda" class="section level2" number="2.2">
+<h2><span class="header-section-number">2.2</span> Python package scvelo with Anaconda</h2>
+<p>Additionally, one Python package <code>scvelo</code> is needed for the module 4.2.
+For easier installation and cleaner environment, we recommend using <a href="https://docs.anaconda.com/anaconda/">Anaconda</a> (a popular environment management tool) with Python 3.8 here.</p>
+<div id="conda_install_windows" class="section level3" number="2.2.1">
+<h3><span class="header-section-number">2.2.1</span> Installation on Windows</h3>
 <ol style="list-style-type: decimal">
 <li>Go to <a href="https://www.anaconda.com/products/individual">Anaconda</a> webpage; click ‘Download’ button to download Anaconda for Windows (with Python3.8).</li>
 </ol>
@@ -291,22 +293,22 @@ BiocManager::install(&quot;infercnv&quot;)</code></pre>
 <p><img src="images/conda_scvelo.png" width="65%" style="display: block; margin: auto;" /></p>
 <p>You have successfully set up the base environment of conda and installed the <code>scVelo</code> tool in this environment.</p>
 </div>
-<div id="conda_install_linux" class="section level4" number="2.1.2.2">
-<h4><span class="header-section-number">2.1.2.2</span> Installation on Linux</h4>
+<div id="conda_install_linux" class="section level3" number="2.2.2">
+<h3><span class="header-section-number">2.2.2</span> Installation on Linux</h3>
 <ol style="list-style-type: decimal">
 <li><p>Open Linux Shell.</p></li>
 <li><p>Download Anaconda installer with <code>wget https://repo.anaconda.com/archive/Anaconda3-2021.05-Linux-x86_64.sh</code></p></li>
 <li><p>Install Anaconda with <code>bash Anaconda3-2021.05-Linux-x86_64.sh</code>; follow the prompts on the installer screens.</p></li>
 </ol>
-<p>When you are asked <code>Do you wish the installer to initialize Anaconda3 by running conda init</code>, we recommend “yes”.</p>
+<p>When you are asked <code>Do you wish the installer to initialize Anaconda3 by running conda init</code>, we recommend “yes.”</p>
 <ol start="4" style="list-style-type: decimal">
 <li><p>Close and then re-open your Shell, to make the changes take effect.</p></li>
 <li><p>Type <code>conda list</code> in Shell.</p></li>
 </ol>
 <p>A list of installed packages appears if it has been installed correctly.</p>
 </div>
-<div id="conda_install_mac" class="section level4" number="2.1.2.3">
-<h4><span class="header-section-number">2.1.2.3</span> Installation on macOS</h4>
+<div id="conda_install_mac" class="section level3" number="2.2.3">
+<h3><span class="header-section-number">2.2.3</span> Installation on macOS</h3>
 <p>In macOS, you could install Anaconda either in graphical mode or command line mode.</p>
 <p><strong>Installation in Graphical Mode</strong></p>
 <p>This mode is very similar to <a href="env-pre.html#conda_install_windows">Installation on Windows</a>.</p>
@@ -326,14 +328,13 @@ select the <code>64-Bit Graphical Installer</code> for MacOS.</li>
 <li><p>Download Anaconda installer with <code>wget https://repo.anaconda.com/archive/Anaconda3-2021.05-MacOSX-x86_64.sh</code></p></li>
 <li><p>Install Anaconda with <code>bash Anaconda3-2021.05-MacOSX-x86_64.sh</code>; follow the prompts on the installer screens.</p></li>
 </ol>
-<p>When you are asked <code>Do you wish the installer to initialize Anaconda3 by running conda init</code>, we recommend “yes”.</p>
+<p>When you are asked <code>Do you wish the installer to initialize Anaconda3 by running conda init</code>, we recommend “yes.”</p>
 <ol start="4" style="list-style-type: decimal">
 <li><p>Close and then re-open your Shell, to make the changes take effect.</p></li>
 <li><p>Type <code>conda list</code> in Shell.</p></li>
 </ol>
 <p>A list of installed packages appears if it has been installed correctly.</p>
 
-</div>
 </div>
 </div>
 </div>
