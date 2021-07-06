@@ -399,6 +399,15 @@ automatically downloaded to <code>./data/Pancreas/endocrinogenesis_day15.h5ad</c
 <p>First, let’s use load <code>reticulate</code>:</p>
 <div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="RNA-velocity.html#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages(&quot;reticulate&quot;)</span></span>
 <span id="cb19-2"><a href="RNA-velocity.html#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(reticulate)</span></code></pre></div>
+<p>And check <code>conda</code> environment available, for example the <code>sgcell</code> environment is
+available to use:</p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="RNA-velocity.html#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">conda_list</span>()</span></code></pre></div>
+<pre><code>##     name
+## 1   csnp
+## 2 sgcell
+##                                                python
+## 1   /Users/yuanhua/opt/anaconda3/envs/csnp/bin/python
+## 2 /Users/yuanhua/opt/anaconda3/envs/sgcell/bin/python</code></pre>
 <p>Then use reticulate to import Python packages <code>scvelo</code> and <code>matplotlib</code>:</p>
 <pre echo="TRUE," message="TRUE"><code>use_condaenv(&quot;sgcell&quot;)
 plt &lt;- import(&quot;matplotlib.pyplot&quot;, as = &quot;plt&quot;)

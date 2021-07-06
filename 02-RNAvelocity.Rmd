@@ -147,6 +147,12 @@ First, let's use load `reticulate`:
 library(reticulate)
 ```
 
+And check `conda` environment available, for example the `sgcell` environment is 
+available to use:
+```{r}
+conda_list()
+```
+
 Then use reticulate to import Python packages `scvelo` and `matplotlib`:
 
 ```{echo=TRUE, message=TRUE}

@@ -16,6 +16,7 @@ They some may not affect the total copies, e.g., Loss of heterozygosity, while
 some may not affect the balance of two allele, e.g., copy gain (2 vs 2). 
 
 There are four major methods for CNV analyis in scRNA-seq:
+
 - [inferCNV](https://github.com/broadinstitute/infercnv)
 - [CopyKat](https://github.com/navinlabcode/copykat) by [Gao et al 2020](https://www.nature.com/articles/s41587-020-00795-2)
 - [CaSpER](https://github.com/akdess/CaSpER) by [Harmanci et al, 2020](https://www.nature.com/articles/s41467-019-13779-x)
@@ -269,10 +270,10 @@ for (i in celltype){
 
 ## Last notes
 There are four major methods for CNV analyis in scRNA-seq:
-- [inferCNV](https://github.com/broadinstitute/infercnv)
-- [CopyKat](https://github.com/navinlabcode/copykat) by [Gao et al 2020](https://www.nature.com/articles/s41587-020-00795-2)
-- [CaSpER](https://github.com/akdess/CaSpER) by [Harmanci et al, 2020](https://www.nature.com/articles/s41467-019-13779-x)
-- [HoneyBadger](https://jef.works/HoneyBADGER/) by [Fan et al](https://genome.cshlp.org/content/early/2018/06/13/gr.228080.117)
+[inferCNV](https://github.com/broadinstitute/infercnv),
+[CopyKat](https://github.com/navinlabcode/copykat), 
+[CaSpER](https://github.com/akdess/CaSpER), and
+[HoneyBadger](https://jef.works/HoneyBADGER/) 
 
 However, the two BAF-supporting methods HoneyBadger and Casper works less 
 accurately from our experience. The expression-only method InferCNV and CopyKat
