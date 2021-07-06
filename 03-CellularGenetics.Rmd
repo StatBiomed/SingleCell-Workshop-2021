@@ -1,7 +1,7 @@
 # Somatic mutation analysis in single cells { #SNV_analysis }
 
 Here is the runnable notebook 
-[03-CellularGenetics-ntb.Rmd](https://github.com/StatBiomed/SingleCell-Workshop-2021/blob/master/notebook/03-CellularGenetics-ntb.Rmd) (download by right click and "Save Link As")
+[03-CellularGenetics-ntb.Rmd](https://raw.githubusercontent.com/StatBiomed/SingleCell-Workshop-2021/master/notebooks/03-CellularGenetics-ntb.Rmd) (download by right click and "Save Link As")
 
 ## Introduction
 Whole genome (or exome) sequencing at bulk tissues have been widely used in 

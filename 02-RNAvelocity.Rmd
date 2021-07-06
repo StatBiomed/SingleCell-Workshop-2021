@@ -2,7 +2,7 @@
 # Trajectory inference and RNA velocity { #RNA_velocity }
 
 Here is the runnable notebook 
-[02-RNAvelocity-ntb.Rmd](https://github.com/StatBiomed/SingleCell-Workshop-2021/blob/master/notebook/02-RNAvelocity-ntb.Rmd) (download by right click and "Save Link As")
+[02-RNAvelocity-ntb.Rmd](https://raw.githubusercontent.com/StatBiomed/SingleCell-Workshop-2021/master/notebooks/02-RNAvelocity-ntb.Rmd) (download by right click and "Save Link As")
 
 ## Trajectory inference
 Generally, dynamical analysis of a biological process is done by performing 
