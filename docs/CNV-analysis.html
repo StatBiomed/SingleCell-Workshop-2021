@@ -148,8 +148,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.2" data-path="env-pre.html"><a href="env-pre.html#python_packages"><i class="fa fa-check"></i><b>2.2</b> Python packages</a>
 <ul>
 <li class="chapter" data-level="2.2.1" data-path="env-pre.html"><a href="env-pre.html#conda_install_windows"><i class="fa fa-check"></i><b>2.2.1</b> Installation on Windows</a></li>
-<li class="chapter" data-level="2.2.2" data-path="env-pre.html"><a href="env-pre.html#conda_install_linux"><i class="fa fa-check"></i><b>2.2.2</b> Installation on Linux</a></li>
-<li class="chapter" data-level="2.2.3" data-path="env-pre.html"><a href="env-pre.html#conda_install_mac"><i class="fa fa-check"></i><b>2.2.3</b> Installation on macOS</a></li>
+<li class="chapter" data-level="2.2.2" data-path="env-pre.html"><a href="env-pre.html#conda_install_mac"><i class="fa fa-check"></i><b>2.2.2</b> Installation on macOS</a></li>
+<li class="chapter" data-level="2.2.3" data-path="env-pre.html"><a href="env-pre.html#conda_install_linux"><i class="fa fa-check"></i><b>2.2.3</b> Installation on Linux</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="RNA-velocity.html"><a href="RNA-velocity.html"><i class="fa fa-check"></i><b>3</b> Trajectory inference and RNA velocity</a>
@@ -418,58 +418,58 @@ infercnv_obj = infercnv::run(infercnv_obj,
 <p><a href="https://github.com/Rongtingting/SingleCell-Workshop-2021/blob/master/CNV_analysis_file/demo1_inferCNV_TNBC1.log">demo1_log_file</a></p>
 <p><a href="https://github.com/Rongtingting/SingleCell-Workshop-2021/blob/master/CNV_analysis_file/demo2_inferCNV_TNBC1.log">demo2_log_file</a></p>
 <p><a href="https://github.com/Rongtingting/SingleCell-Workshop-2021/blob/master/CNV_analysis_file/demo2_outputfiles.lst">output_files</a></p>
-<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="CNV-analysis.html#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="co"># library(infercnv)</span></span>
-<span id="cb51-2"><a href="CNV-analysis.html#cb51-2" aria-hidden="true" tabindex="-1"></a><span class="co"># library(utils)</span></span>
-<span id="cb51-3"><a href="CNV-analysis.html#cb51-3" aria-hidden="true" tabindex="-1"></a><span class="co"># library (BiocGenerics)</span></span>
-<span id="cb51-4"><a href="CNV-analysis.html#cb51-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb51-5"><a href="CNV-analysis.html#cb51-5" aria-hidden="true" tabindex="-1"></a><span class="do">## DEMO1</span></span>
-<span id="cb51-6"><a href="CNV-analysis.html#cb51-6" aria-hidden="true" tabindex="-1"></a><span class="co"># </span></span>
-<span id="cb51-7"><a href="CNV-analysis.html#cb51-7" aria-hidden="true" tabindex="-1"></a><span class="co"># tnbc &lt;- read.delim(&quot;C://Users/Rongting/Documents/GitHub_repos/combinedTNBC1.txt&quot;)</span></span>
-<span id="cb51-8"><a href="CNV-analysis.html#cb51-8" aria-hidden="true" tabindex="-1"></a><span class="co"># anno &lt;- tnbc[2,]</span></span>
-<span id="cb51-9"><a href="CNV-analysis.html#cb51-9" aria-hidden="true" tabindex="-1"></a><span class="co"># anno &lt;- t(anno)</span></span>
-<span id="cb51-10"><a href="CNV-analysis.html#cb51-10" aria-hidden="true" tabindex="-1"></a><span class="co"># anno &lt;- as.data.frame(anno)</span></span>
-<span id="cb51-11"><a href="CNV-analysis.html#cb51-11" aria-hidden="true" tabindex="-1"></a><span class="co"># </span></span>
-<span id="cb51-12"><a href="CNV-analysis.html#cb51-12" aria-hidden="true" tabindex="-1"></a><span class="co"># gex &lt;- tnbc[-c(1:2),]</span></span>
-<span id="cb51-13"><a href="CNV-analysis.html#cb51-13" aria-hidden="true" tabindex="-1"></a><span class="co"># gex &lt;- type.convert(gex)</span></span>
-<span id="cb51-14"><a href="CNV-analysis.html#cb51-14" aria-hidden="true" tabindex="-1"></a><span class="co"># </span></span>
-<span id="cb51-15"><a href="CNV-analysis.html#cb51-15" aria-hidden="true" tabindex="-1"></a><span class="co"># gene_file &lt;- &quot;C://Users/Rongting/Documents/GitHub_repos/gene_note_noheader_unique.txt&quot;</span></span>
-<span id="cb51-16"><a href="CNV-analysis.html#cb51-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb51-17"><a href="CNV-analysis.html#cb51-17" aria-hidden="true" tabindex="-1"></a><span class="co"># </span></span>
-<span id="cb51-18"><a href="CNV-analysis.html#cb51-18" aria-hidden="true" tabindex="-1"></a><span class="co"># infercnv_obj = CreateInfercnvObject(raw_counts_matrix=gex,</span></span>
-<span id="cb51-19"><a href="CNV-analysis.html#cb51-19" aria-hidden="true" tabindex="-1"></a><span class="co">#                                     annotations_file=anno,</span></span>
-<span id="cb51-20"><a href="CNV-analysis.html#cb51-20" aria-hidden="true" tabindex="-1"></a><span class="co">#                                     delim=&#39;\t&#39;,</span></span>
-<span id="cb51-21"><a href="CNV-analysis.html#cb51-21" aria-hidden="true" tabindex="-1"></a><span class="co">#                                     gene_order_file=gene_file,</span></span>
-<span id="cb51-22"><a href="CNV-analysis.html#cb51-22" aria-hidden="true" tabindex="-1"></a><span class="co">#                                     ref_group_names= &quot;N&quot;)</span></span>
-<span id="cb51-23"><a href="CNV-analysis.html#cb51-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb51-24"><a href="CNV-analysis.html#cb51-24" aria-hidden="true" tabindex="-1"></a><span class="co"># output = &quot;C://Users/Rongting/Documents/GitHub_repos/tnbc1_demo&quot;</span></span>
-<span id="cb51-25"><a href="CNV-analysis.html#cb51-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb51-26"><a href="CNV-analysis.html#cb51-26" aria-hidden="true" tabindex="-1"></a><span class="co"># infercnv_obj = infercnv::run(infercnv_obj,</span></span>
-<span id="cb51-27"><a href="CNV-analysis.html#cb51-27" aria-hidden="true" tabindex="-1"></a><span class="co">#                              cutoff=0.1,  </span></span>
-<span id="cb51-28"><a href="CNV-analysis.html#cb51-28" aria-hidden="true" tabindex="-1"></a><span class="co">#                              out_dir= output , </span></span>
-<span id="cb51-29"><a href="CNV-analysis.html#cb51-29" aria-hidden="true" tabindex="-1"></a><span class="co">#                              cluster_by_groups=T,   </span></span>
-<span id="cb51-30"><a href="CNV-analysis.html#cb51-30" aria-hidden="true" tabindex="-1"></a><span class="co">#                              denoise=T,</span></span>
-<span id="cb51-31"><a href="CNV-analysis.html#cb51-31" aria-hidden="true" tabindex="-1"></a><span class="co">#                              HMM=T)</span></span>
-<span id="cb51-32"><a href="CNV-analysis.html#cb51-32" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb51-33"><a href="CNV-analysis.html#cb51-33" aria-hidden="true" tabindex="-1"></a><span class="do">## DEMO2</span></span>
-<span id="cb51-34"><a href="CNV-analysis.html#cb51-34" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb51-35"><a href="CNV-analysis.html#cb51-35" aria-hidden="true" tabindex="-1"></a><span class="co"># gene_file &lt;- &quot;C://Users/Rongting/Documents/GitHub_repos/gene_note_noheader_unique.txt&quot;</span></span>
-<span id="cb51-36"><a href="CNV-analysis.html#cb51-36" aria-hidden="true" tabindex="-1"></a><span class="co"># </span></span>
-<span id="cb51-37"><a href="CNV-analysis.html#cb51-37" aria-hidden="true" tabindex="-1"></a><span class="co"># anno_file &lt;- &#39;C://Users/Rongting/Documents/GitHub_repos/tnbc-3cluster-id.txt&#39;</span></span>
-<span id="cb51-38"><a href="CNV-analysis.html#cb51-38" aria-hidden="true" tabindex="-1"></a><span class="co"># </span></span>
-<span id="cb51-39"><a href="CNV-analysis.html#cb51-39" aria-hidden="true" tabindex="-1"></a><span class="co"># infercnv_obj2 = CreateInfercnvObject(raw_counts_matrix=gex,</span></span>
-<span id="cb51-40"><a href="CNV-analysis.html#cb51-40" aria-hidden="true" tabindex="-1"></a><span class="co">#                                     annotations_file=anno_file,</span></span>
-<span id="cb51-41"><a href="CNV-analysis.html#cb51-41" aria-hidden="true" tabindex="-1"></a><span class="co">#                                     delim=&#39;\t&#39;,</span></span>
-<span id="cb51-42"><a href="CNV-analysis.html#cb51-42" aria-hidden="true" tabindex="-1"></a><span class="co">#                                     gene_order_file=gene_file,</span></span>
-<span id="cb51-43"><a href="CNV-analysis.html#cb51-43" aria-hidden="true" tabindex="-1"></a><span class="co">#                                     ref_group_names= &quot;Normal&quot;)</span></span>
-<span id="cb51-44"><a href="CNV-analysis.html#cb51-44" aria-hidden="true" tabindex="-1"></a><span class="co"># </span></span>
-<span id="cb51-45"><a href="CNV-analysis.html#cb51-45" aria-hidden="true" tabindex="-1"></a><span class="co"># output = &quot;C://Users/Rongting/Documents/GitHub_repos/tnbc1_demo2&quot;</span></span>
-<span id="cb51-46"><a href="CNV-analysis.html#cb51-46" aria-hidden="true" tabindex="-1"></a><span class="co"># </span></span>
-<span id="cb51-47"><a href="CNV-analysis.html#cb51-47" aria-hidden="true" tabindex="-1"></a><span class="co"># infercnv_obj2 = infercnv::run(infercnv_obj2,</span></span>
-<span id="cb51-48"><a href="CNV-analysis.html#cb51-48" aria-hidden="true" tabindex="-1"></a><span class="co">#                              cutoff=0.1,</span></span>
-<span id="cb51-49"><a href="CNV-analysis.html#cb51-49" aria-hidden="true" tabindex="-1"></a><span class="co">#                              out_dir= output,</span></span>
-<span id="cb51-50"><a href="CNV-analysis.html#cb51-50" aria-hidden="true" tabindex="-1"></a><span class="co">#                              cluster_by_groups=T,</span></span>
-<span id="cb51-51"><a href="CNV-analysis.html#cb51-51" aria-hidden="true" tabindex="-1"></a><span class="co">#                              denoise=T,</span></span>
-<span id="cb51-52"><a href="CNV-analysis.html#cb51-52" aria-hidden="true" tabindex="-1"></a><span class="co">#                              HMM=T)</span></span></code></pre></div>
+<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="CNV-analysis.html#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="co"># library(infercnv)</span></span>
+<span id="cb56-2"><a href="CNV-analysis.html#cb56-2" aria-hidden="true" tabindex="-1"></a><span class="co"># library(utils)</span></span>
+<span id="cb56-3"><a href="CNV-analysis.html#cb56-3" aria-hidden="true" tabindex="-1"></a><span class="co"># library (BiocGenerics)</span></span>
+<span id="cb56-4"><a href="CNV-analysis.html#cb56-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb56-5"><a href="CNV-analysis.html#cb56-5" aria-hidden="true" tabindex="-1"></a><span class="do">## DEMO1</span></span>
+<span id="cb56-6"><a href="CNV-analysis.html#cb56-6" aria-hidden="true" tabindex="-1"></a><span class="co"># </span></span>
+<span id="cb56-7"><a href="CNV-analysis.html#cb56-7" aria-hidden="true" tabindex="-1"></a><span class="co"># tnbc &lt;- read.delim(&quot;C://Users/Rongting/Documents/GitHub_repos/combinedTNBC1.txt&quot;)</span></span>
+<span id="cb56-8"><a href="CNV-analysis.html#cb56-8" aria-hidden="true" tabindex="-1"></a><span class="co"># anno &lt;- tnbc[2,]</span></span>
+<span id="cb56-9"><a href="CNV-analysis.html#cb56-9" aria-hidden="true" tabindex="-1"></a><span class="co"># anno &lt;- t(anno)</span></span>
+<span id="cb56-10"><a href="CNV-analysis.html#cb56-10" aria-hidden="true" tabindex="-1"></a><span class="co"># anno &lt;- as.data.frame(anno)</span></span>
+<span id="cb56-11"><a href="CNV-analysis.html#cb56-11" aria-hidden="true" tabindex="-1"></a><span class="co"># </span></span>
+<span id="cb56-12"><a href="CNV-analysis.html#cb56-12" aria-hidden="true" tabindex="-1"></a><span class="co"># gex &lt;- tnbc[-c(1:2),]</span></span>
+<span id="cb56-13"><a href="CNV-analysis.html#cb56-13" aria-hidden="true" tabindex="-1"></a><span class="co"># gex &lt;- type.convert(gex)</span></span>
+<span id="cb56-14"><a href="CNV-analysis.html#cb56-14" aria-hidden="true" tabindex="-1"></a><span class="co"># </span></span>
+<span id="cb56-15"><a href="CNV-analysis.html#cb56-15" aria-hidden="true" tabindex="-1"></a><span class="co"># gene_file &lt;- &quot;C://Users/Rongting/Documents/GitHub_repos/gene_note_noheader_unique.txt&quot;</span></span>
+<span id="cb56-16"><a href="CNV-analysis.html#cb56-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb56-17"><a href="CNV-analysis.html#cb56-17" aria-hidden="true" tabindex="-1"></a><span class="co"># </span></span>
+<span id="cb56-18"><a href="CNV-analysis.html#cb56-18" aria-hidden="true" tabindex="-1"></a><span class="co"># infercnv_obj = CreateInfercnvObject(raw_counts_matrix=gex,</span></span>
+<span id="cb56-19"><a href="CNV-analysis.html#cb56-19" aria-hidden="true" tabindex="-1"></a><span class="co">#                                     annotations_file=anno,</span></span>
+<span id="cb56-20"><a href="CNV-analysis.html#cb56-20" aria-hidden="true" tabindex="-1"></a><span class="co">#                                     delim=&#39;\t&#39;,</span></span>
+<span id="cb56-21"><a href="CNV-analysis.html#cb56-21" aria-hidden="true" tabindex="-1"></a><span class="co">#                                     gene_order_file=gene_file,</span></span>
+<span id="cb56-22"><a href="CNV-analysis.html#cb56-22" aria-hidden="true" tabindex="-1"></a><span class="co">#                                     ref_group_names= &quot;N&quot;)</span></span>
+<span id="cb56-23"><a href="CNV-analysis.html#cb56-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb56-24"><a href="CNV-analysis.html#cb56-24" aria-hidden="true" tabindex="-1"></a><span class="co"># output = &quot;C://Users/Rongting/Documents/GitHub_repos/tnbc1_demo&quot;</span></span>
+<span id="cb56-25"><a href="CNV-analysis.html#cb56-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb56-26"><a href="CNV-analysis.html#cb56-26" aria-hidden="true" tabindex="-1"></a><span class="co"># infercnv_obj = infercnv::run(infercnv_obj,</span></span>
+<span id="cb56-27"><a href="CNV-analysis.html#cb56-27" aria-hidden="true" tabindex="-1"></a><span class="co">#                              cutoff=0.1,  </span></span>
+<span id="cb56-28"><a href="CNV-analysis.html#cb56-28" aria-hidden="true" tabindex="-1"></a><span class="co">#                              out_dir= output , </span></span>
+<span id="cb56-29"><a href="CNV-analysis.html#cb56-29" aria-hidden="true" tabindex="-1"></a><span class="co">#                              cluster_by_groups=T,   </span></span>
+<span id="cb56-30"><a href="CNV-analysis.html#cb56-30" aria-hidden="true" tabindex="-1"></a><span class="co">#                              denoise=T,</span></span>
+<span id="cb56-31"><a href="CNV-analysis.html#cb56-31" aria-hidden="true" tabindex="-1"></a><span class="co">#                              HMM=T)</span></span>
+<span id="cb56-32"><a href="CNV-analysis.html#cb56-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb56-33"><a href="CNV-analysis.html#cb56-33" aria-hidden="true" tabindex="-1"></a><span class="do">## DEMO2</span></span>
+<span id="cb56-34"><a href="CNV-analysis.html#cb56-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb56-35"><a href="CNV-analysis.html#cb56-35" aria-hidden="true" tabindex="-1"></a><span class="co"># gene_file &lt;- &quot;C://Users/Rongting/Documents/GitHub_repos/gene_note_noheader_unique.txt&quot;</span></span>
+<span id="cb56-36"><a href="CNV-analysis.html#cb56-36" aria-hidden="true" tabindex="-1"></a><span class="co"># </span></span>
+<span id="cb56-37"><a href="CNV-analysis.html#cb56-37" aria-hidden="true" tabindex="-1"></a><span class="co"># anno_file &lt;- &#39;C://Users/Rongting/Documents/GitHub_repos/tnbc-3cluster-id.txt&#39;</span></span>
+<span id="cb56-38"><a href="CNV-analysis.html#cb56-38" aria-hidden="true" tabindex="-1"></a><span class="co"># </span></span>
+<span id="cb56-39"><a href="CNV-analysis.html#cb56-39" aria-hidden="true" tabindex="-1"></a><span class="co"># infercnv_obj2 = CreateInfercnvObject(raw_counts_matrix=gex,</span></span>
+<span id="cb56-40"><a href="CNV-analysis.html#cb56-40" aria-hidden="true" tabindex="-1"></a><span class="co">#                                     annotations_file=anno_file,</span></span>
+<span id="cb56-41"><a href="CNV-analysis.html#cb56-41" aria-hidden="true" tabindex="-1"></a><span class="co">#                                     delim=&#39;\t&#39;,</span></span>
+<span id="cb56-42"><a href="CNV-analysis.html#cb56-42" aria-hidden="true" tabindex="-1"></a><span class="co">#                                     gene_order_file=gene_file,</span></span>
+<span id="cb56-43"><a href="CNV-analysis.html#cb56-43" aria-hidden="true" tabindex="-1"></a><span class="co">#                                     ref_group_names= &quot;Normal&quot;)</span></span>
+<span id="cb56-44"><a href="CNV-analysis.html#cb56-44" aria-hidden="true" tabindex="-1"></a><span class="co"># </span></span>
+<span id="cb56-45"><a href="CNV-analysis.html#cb56-45" aria-hidden="true" tabindex="-1"></a><span class="co"># output = &quot;C://Users/Rongting/Documents/GitHub_repos/tnbc1_demo2&quot;</span></span>
+<span id="cb56-46"><a href="CNV-analysis.html#cb56-46" aria-hidden="true" tabindex="-1"></a><span class="co"># </span></span>
+<span id="cb56-47"><a href="CNV-analysis.html#cb56-47" aria-hidden="true" tabindex="-1"></a><span class="co"># infercnv_obj2 = infercnv::run(infercnv_obj2,</span></span>
+<span id="cb56-48"><a href="CNV-analysis.html#cb56-48" aria-hidden="true" tabindex="-1"></a><span class="co">#                              cutoff=0.1,</span></span>
+<span id="cb56-49"><a href="CNV-analysis.html#cb56-49" aria-hidden="true" tabindex="-1"></a><span class="co">#                              out_dir= output,</span></span>
+<span id="cb56-50"><a href="CNV-analysis.html#cb56-50" aria-hidden="true" tabindex="-1"></a><span class="co">#                              cluster_by_groups=T,</span></span>
+<span id="cb56-51"><a href="CNV-analysis.html#cb56-51" aria-hidden="true" tabindex="-1"></a><span class="co">#                              denoise=T,</span></span>
+<span id="cb56-52"><a href="CNV-analysis.html#cb56-52" aria-hidden="true" tabindex="-1"></a><span class="co">#                              HMM=T)</span></span></code></pre></div>
 <pre><code>#################
 ##Notes
 #################

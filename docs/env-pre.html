@@ -148,8 +148,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.2" data-path="env-pre.html"><a href="env-pre.html#python_packages"><i class="fa fa-check"></i><b>2.2</b> Python packages</a>
 <ul>
 <li class="chapter" data-level="2.2.1" data-path="env-pre.html"><a href="env-pre.html#conda_install_windows"><i class="fa fa-check"></i><b>2.2.1</b> Installation on Windows</a></li>
-<li class="chapter" data-level="2.2.2" data-path="env-pre.html"><a href="env-pre.html#conda_install_linux"><i class="fa fa-check"></i><b>2.2.2</b> Installation on Linux</a></li>
-<li class="chapter" data-level="2.2.3" data-path="env-pre.html"><a href="env-pre.html#conda_install_mac"><i class="fa fa-check"></i><b>2.2.3</b> Installation on macOS</a></li>
+<li class="chapter" data-level="2.2.2" data-path="env-pre.html"><a href="env-pre.html#conda_install_mac"><i class="fa fa-check"></i><b>2.2.2</b> Installation on macOS</a></li>
+<li class="chapter" data-level="2.2.3" data-path="env-pre.html"><a href="env-pre.html#conda_install_linux"><i class="fa fa-check"></i><b>2.2.3</b> Installation on Linux</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="RNA-velocity.html"><a href="RNA-velocity.html"><i class="fa fa-check"></i><b>3</b> Trajectory inference and RNA velocity</a>
@@ -277,8 +277,9 @@ software JAGS. <strong>Please install JAGS manually</strong> for Windows or Mac 
 link <strong>before</strong> install <code>rjags</code> R package:
 <a href="https://sourceforge.net/projects/mcmc-jags/files/JAGS/4.x/" class="uri">https://sourceforge.net/projects/mcmc-jags/files/JAGS/4.x/</a>
 <br/>
-Continue and install <code>rjags</code> and <code>infercnv</code>:
-<code># install rjags for module 5.2     install.packages('rjags')</code></p>
+Continue and install <code>rjags</code> and <code>infercnv</code>:</p>
+<pre><code># install rjags for module 5.2
+install.packages(&#39;rjags&#39;)</code></pre>
 <pre><code># install inferCNV for module 5.2
 if (!requireNamespace(&quot;BiocManager&quot;, quietly = TRUE))
      install.packages(&quot;BiocManager&quot;)
@@ -298,31 +299,19 @@ various useful tools.</p>
 <p><img src="images/conda_download_installer1.png" width="65%" style="display: block; margin: auto;" /></p>
 <ol start="2" style="list-style-type: decimal">
 <li><p>Double click the downloaded file and install Anaconda following the instructions. (Note, this requires about 3G disk space)</p></li>
-<li><p>Open <code>Anaconda Powershell Prompt</code> and then install <code>scVelo</code> by typing this
-command in the shell:</p>
+<li><p>Open <code>Anaconda Powershell Prompt</code> and then create an new conda environment
+with name <code>sgcell</code> by typing</p>
+<pre><code>conda create -n sgcell python=3.8</code></pre></li>
+<li><p>Still in the terminal, and activate the environment by typing</p>
+<pre><code>conda activate sgcell</code></pre></li>
+<li><p>Install <code>scVelo</code> in this conda environment by typing this command in the shell:</p>
 <pre><code>pip install scvelo==0.2.2</code></pre></li>
 </ol>
 <p><img src="images/conda_scvelo.png" width="65%" style="display: block; margin: auto;" /></p>
 <p>You have successfully set up the base environment of conda and installed the <code>scVelo</code> tool in this environment.</p>
 </div>
-<div id="conda_install_linux" class="section level3" number="2.2.2">
-<h3><span class="header-section-number">2.2.2</span> Installation on Linux</h3>
-<ol style="list-style-type: decimal">
-<li><p>Open Linux Shell.</p></li>
-<li><p>Download Anaconda installer with <code>wget https://repo.anaconda.com/archive/Anaconda3-2021.05-Linux-x86_64.sh</code></p></li>
-<li><p>Install Anaconda with <code>bash Anaconda3-2021.05-Linux-x86_64.sh</code>; follow the prompts on the installer screens.<br />
-<br/>
-When you are asked <code>Do you wish the installer to initialize Anaconda3 by running conda init</code>, we recommend “yes.”</p></li>
-<li><p>Close and then re-open your Shell, to make the changes take effect.</p></li>
-<li><p>Install <code>scVelo</code> by typing this command in the shell:</p>
-<pre><code>pip install scvelo==0.2.2</code></pre></li>
-<li><p>Type <code>conda list</code> in Shell.
-<br/>
-A list of installed packages appears if it has been installed correctly.</p></li>
-</ol>
-</div>
-<div id="conda_install_mac" class="section level3" number="2.2.3">
-<h3><span class="header-section-number">2.2.3</span> Installation on macOS</h3>
+<div id="conda_install_mac" class="section level3" number="2.2.2">
+<h3><span class="header-section-number">2.2.2</span> Installation on macOS</h3>
 <p>In macOS, you could install Anaconda either in graphical mode or command line mode.</p>
 <p><strong>Option 1: installation in Graphical Mode (recommended)</strong></p>
 <p>This mode is very similar to <a href="env-pre.html#conda_install_windows">Installation on Windows</a>.</p>
@@ -356,6 +345,26 @@ When you are asked <code>Do you wish the installer to initialize Anaconda3 by ru
 <pre><code>conda activate sgcell</code></pre></li>
 <li><p>Install <code>scVelo</code> in this conda environment by typing this command in the shell:</p>
 <pre><code>pip install scvelo==0.2.2</code></pre></li>
+</ol>
+</div>
+<div id="conda_install_linux" class="section level3" number="2.2.3">
+<h3><span class="header-section-number">2.2.3</span> Installation on Linux</h3>
+<ol style="list-style-type: decimal">
+<li><p>Open Linux Shell.</p></li>
+<li><p>Download Anaconda installer with <code>wget https://repo.anaconda.com/archive/Anaconda3-2021.05-Linux-x86_64.sh</code></p></li>
+<li><p>Install Anaconda with <code>bash Anaconda3-2021.05-Linux-x86_64.sh</code>; follow the prompts on the installer screens.<br />
+<br/>
+When you are asked <code>Do you wish the installer to initialize Anaconda3 by running conda init</code>, we recommend “yes.”</p></li>
+<li><p>Close and then re-open your Shell, to make the changes take effect.</p></li>
+<li><p>Create an new conda environment with name <code>sgcell</code> by typing</p>
+<pre><code>conda create -n sgcell python=3.8</code></pre></li>
+<li><p>Still in the terminal, and activate the environment by typing</p>
+<pre><code>conda activate sgcell</code></pre></li>
+<li><p>Install <code>scVelo</code> in this conda environment by typing this command in the shell:</p>
+<pre><code>pip install scvelo==0.2.2</code></pre></li>
+<li><p>Type <code>conda list</code> in Shell.
+<br/>
+A list of installed packages appears if it has been installed correctly.</p></li>
 </ol>
 
 </div>

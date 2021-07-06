@@ -33,6 +33,7 @@ link **before** install `rjags` R package:
 https://sourceforge.net/projects/mcmc-jags/files/JAGS/4.x/
 <br/>
 Continue and install `rjags` and `infercnv`:
+
     ```
     # install rjags for module 5.2
     install.packages('rjags')
@@ -60,8 +61,20 @@ knitr::include_graphics("./images/conda_download_installer1.png")
 
 2. Double click the downloaded file and install Anaconda following the instructions. (Note, this requires about 3G disk space)
 
-3. Open `Anaconda Powershell Prompt` and then install `scVelo` by typing this 
-command in the shell:
+3. Open `Anaconda Powershell Prompt` and then create an new conda environment 
+with name `sgcell` by typing
+
+    ```
+    conda create -n sgcell python=3.8
+    ```
+    
+4. Still in the terminal, and activate the environment by typing
+
+    ```
+    conda activate sgcell
+    ```
+
+5. Install `scVelo` in this conda environment by typing this command in the shell:
    ```
    pip install scvelo==0.2.2
    ```
@@ -72,26 +85,7 @@ knitr::include_graphics("./images/conda_scvelo.png")
 
 You have successfully set up the base environment of conda and installed the `scVelo` tool in this environment.
 
-### Installation on Linux {#conda_install_linux}
 
-1. Open Linux Shell.
-
-2. Download Anaconda installer with `wget https://repo.anaconda.com/archive/Anaconda3-2021.05-Linux-x86_64.sh`
-
-3. Install Anaconda with `bash Anaconda3-2021.05-Linux-x86_64.sh`; follow the prompts on the installer screens.  
-<br/>
-When you are asked `Do you wish the installer to initialize Anaconda3 by running conda init`, we recommend "yes".
-
-4. Close and then re-open your Shell, to make the changes take effect.
-
-5. Install `scVelo` by typing this command in the shell:
-   ```
-   pip install scvelo==0.2.2
-   ```
-
-6. Type `conda list` in Shell. 
-<br/>
-A list of installed packages appears if it has been installed correctly.  
 
 ### Installation on macOS {#conda_install_mac}
 
@@ -158,3 +152,37 @@ When you are asked `Do you wish the installer to initialize Anaconda3 by running
    ```
    pip install scvelo==0.2.2
    ```
+
+
+### Installation on Linux {#conda_install_linux}
+
+1. Open Linux Shell.
+
+2. Download Anaconda installer with `wget https://repo.anaconda.com/archive/Anaconda3-2021.05-Linux-x86_64.sh`
+
+3. Install Anaconda with `bash Anaconda3-2021.05-Linux-x86_64.sh`; follow the prompts on the installer screens.  
+<br/>
+When you are asked `Do you wish the installer to initialize Anaconda3 by running conda init`, we recommend "yes".
+
+4. Close and then re-open your Shell, to make the changes take effect.
+
+5. Create an new conda environment with name `sgcell` by typing
+
+    ```
+    conda create -n sgcell python=3.8
+    ```
+    
+6. Still in the terminal, and activate the environment by typing
+
+    ```
+    conda activate sgcell
+    ```
+
+7. Install `scVelo` in this conda environment by typing this command in the shell:
+   ```
+   pip install scvelo==0.2.2
+   ```
+
+6. Type `conda list` in Shell. 
+<br/>
+A list of installed packages appears if it has been installed correctly.  

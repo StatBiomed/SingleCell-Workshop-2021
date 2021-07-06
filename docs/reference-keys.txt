@@ -5,8 +5,8 @@ env-pre
 r-packages
 python_packages
 conda_install_windows
-conda_install_linux
 conda_install_mac
+conda_install_linux
 RNA_velocity
 trajectory-inference
 diffusion-map
