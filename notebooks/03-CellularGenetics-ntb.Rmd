@@ -1,55 +1,5 @@
 # Somatic mutation analysis in single cells { #SNV_analysis }
 
-Here is the runnable notebook 
-[03-CellularGenetics-ntb.Rmd](https://github.com/StatBiomed/SingleCell-Workshop-2021/blob/master/notebook/03-CellularGenetics-ntb.Rmd) (download by right click and "Save Link As")
-
-## Introduction
-Whole genome (or exome) sequencing at bulk tissues have been widely used in 
-studying somatic mutation in cancer samples and healthy tissues recently. It 
-allows to identify somatic mutations and accurately estimate of the frequency of
-each mutation (see Fig. 4.1, adapted from 
-[Kuipers et al, 2017](https://doi.org/10.1016/j.bbcan.2017.02.001)). 
-
-However, there are a few major challenges in somatic mutations with bulk 
-sequencing. 
-
-- First, the allele frequency cannot give accurate clonal structure,
-  as it is difficult to distinct mutations from different clones that have 
-  similar population percents.
-- Second, the evolutionary lineage is much difficult to infer from bulk
-  sequencing data without single cell resolution
-- Third, the bulk DNA-seq cannot dissect the phenotypic impact of somatic 
-  mutations, which however is crucial to understand intra-tumor heterogeneity,
-  both at genetic and transcriptomic levels.
-
-![Figure 4.1. Somatic mutations and evolution. Fig adapted from Kuipers et al, 2017](images/cellGen-fig1.png)
-
-### Choice of protocols
-Let's first review the different protocols for single-cell sequencing, as 
-genetic analysis often higher requirement of sequencing coverage.
-
-In next Figure from 
-[Ding et al, 2020](https://www.nature.com/articles/s41587-020-0465-8), there are
-major two different types of protocols. One is well based, including SMART-seq, 
-returning moderate coverage but low number of cells. The other is droplet-based,
-including 10x Genomics, returning extremely low coverage but high number of 
-cells.
-
-![Figure 4.2. Common protocols of scRNA-seq. Fig adapted from Ding et al, 2020](images/cellGen-fig2.png)
-
-Though scRNA-seq contains the information of somatic mutations in the expressed
-RNA molecules. However, it only covers the highly expressed genes (or its 3' / 
-5' if UMI-based protocols). Generally, scDNA-seq offers more even coverage 
-across the genome, despite its much higher cost. Nonetheless, given the low
-capture efficiency, all protocols suffer from allele drop-out, namely false 
-negatives in observing the existing mutation allele.
-
-Below, we summarize different sequencing strategies and their potentials for 
-analyzing different types of somatic mutations, including copy number 
-variations (CNV), single-nucleotide variation (SNV) and mitochondrial SNV 
-(mtSNV).
-
-![Table 4.1. Protocols for cellular genetic analysis](images/cellGen-fig3.png)
 
 In the following sections, we will show two example data sets to illustrating:
 
@@ -69,7 +19,7 @@ tools [cellsnp-lit](https://cellsnp-lite.readthedocs.io) and
 [MQuad](https://github.com/single-cell-genetics/MQuad).
 
 
-![Figure 4.3. SNVs analysis with Joxm dataset. Fig adapted from McCarthy et al, 2020](images/cellGen-fig4.png)
+<!-- ![Figure 4.3. SNVs analysis with Joxm dataset. Fig adapted from McCarthy et al, 2020](images/cellGen-fig4.png) -->
 
 ### Call somatic variants and genotype single cells
 Nuclear genome is large and scRNA-seq is generally noisy, hence making it 
@@ -91,17 +41,17 @@ output file in VCF is available in the cardelino package
 
 ### Visualize variat allele fequency
 Now, let's load the data and visualise the allele frequency here:
-```{load-pkg}
+```{r load-pkg}
 library(ggplot2)
 library(cardelino)
 ```
 
-```{read-vcf-data}
+```{r read-vcf-data}
 vcf_file <- system.file("extdata", "cellSNP.cells.vcf.gz", package = "cardelino")
 input_data <- load_cellSNP_vcf(vcf_file)
 ```
 
-```{allele-frequency}
+```{r allele-frequency}
 AF <- as.matrix(input_data$A / input_data$D)
 
 p = pheatmap::pheatmap(AF, cluster_rows=FALSE, cluster_cols=FALSE,
@@ -109,7 +59,7 @@ p = pheatmap::pheatmap(AF, cluster_rows=FALSE, cluster_cols=FALSE,
                    labels_row='77 cells', labels_col='112 SNVs',
                    angle_col=0, angle_row=0)
 ```
-![Figure 4.4. Allele frequency of somatic SNVs in Joxm dataset](images/cellGen-fig5.png){ width=75% }
+<!-- ![Figure 4.4. Allele frequency of somatic SNVs in Joxm dataset](images/cellGen-fig5.png){ width=75% } -->
 
 As expected, the
 majority of entries are missing (in grey) due to the high sparsity in scRNA-seq 
@@ -127,12 +77,12 @@ The clonal tree inferred by Canopy for this donor consists of three clones,
 including a "base" clone ("clone1") that has no clonal somatic mutations 
 present.
 
-```{read-canopy-data}
+```{r read-canopy-data}
 canopy_res <- readRDS(system.file("extdata", "canopy_results.coveraged.rds", 
                                   package = "cardelino"))
 plot_tree(canopy_res$tree, orient = "v")
 ```
-![Figure 4.5. Clonal tree inferred from bulk WES data](images/cellGen-fig6.png){ width=40% }
+<!-- ![Figure 4.5. Clonal tree inferred from bulk WES data](images/cellGen-fig6.png){ width=40% } -->
 
 ### Run cardelino for inferring clonal structure
 Now, we can leverage the inferred clonal tree as an guidance to cluster cells
@@ -141,14 +91,14 @@ based on their mutation profiles.
 Before starting, be careful to ensure that the same variant IDs are used in both 
 data sources.
 
-```{correct-variant-ids}
+```{r correct-variant-ids}
 Config <- canopy_res$tree$Z
 rownames(Config) <- gsub(":", "_", rownames(Config))
 ```
 
 The run `clone_id` the main function in `cardelino` package:
 
-```{cell-assign}
+```{r cell-assign}
 set.seed(7)
 assignments <- clone_id(input_data$A, input_data$D, Config = Config,
                         min_iter = 800, max_iter = 1200)
@@ -157,10 +107,10 @@ names(assignments)
 
 We can visualize the cell-clone assignment probabilities as a heatmap.
 
-```{prob-heatmap}
+```{r prob-heatmap}
 prob_heatmap(assignments$prob)
 ```
-![Figure 4.6. Assignment probability of cells to clones](images/cellGen-fig7.png){ width=40% }
+<!-- ![Figure 4.6. Assignment probability of cells to clones](images/cellGen-fig7.png){ width=40% } -->
 
 We recommend assigning a cell to the highest-probability clone if the highest 
 posterior probability is greater than 0.5 and leaving cells "unassigned" if they
@@ -168,7 +118,7 @@ do not reach this threshold. The `assign_cells_to_clones` function conveniently
 assigns cells to clones based on a threshold and returns a data.frame with the
 cell-clone assignments.
 
-```{assign-cell-clone-easy}
+```{r assign-cell-clone-easy}
 df <- assign_cells_to_clones(assignments$prob)
 head(df)
 table(df$clone)
@@ -180,23 +130,23 @@ and return a posterior estimate. In the figure below, negative value means the
 probability of a certain variant presents in a certain clone is reduced in 
 posterior compared to prior (i.e., the input Config). Vice verse for the 
 positive values.
-```{Config-update}
+```{r Config-update}
 heat_matrix(t(assignments$Config_prob - Config)) + 
   scale_fill_gradient2() +
   ggtitle('Changes of clonal Config') + 
   labs(x='Clones', y='112 SNVs') +
   theme(axis.text.y = element_blank(), legend.position = "right")
 ```
-![Figure 4.7. Difference between updated and input clonal configuration](images/cellGen-fig8.png){ width=40% }
+<!-- ![Figure 4.7. Difference between updated and input clonal configuration](images/cellGen-fig8.png){ width=40% } -->
 
 Finally, we can visualize the results cell assignment and updated mutations 
 clonal configuration at the raw allele frequency matrix:
 
-```{results-plot}
+```{r results-plot}
 AF <- as.matrix(input_data$A / input_data$D)
 cardelino::vc_heatmap(AF, assignments$prob, Config, show_legend=TRUE)
 ```
-![Figure 4.8. Allele frequency of clustered cells and variants](images/cellGen-fig9.png){ width=75% }
+<!-- ![Figure 4.8. Allele frequency of clustered cells and variants](images/cellGen-fig9.png){ width=75% } -->
 
 ## mtSNV analysis
 Recently, mitochondrial variants have also been shown powerful makeups for 
@@ -204,7 +154,7 @@ lineage tracing [Ludwig et al, 2019](https://doi.org/10.1016/j.cell.2019.01.022)
 The much higher copies of mtDNA not only give much higher sequencing coverage,
 but generally highly mutation rate (probably also some other biological reasons).
 
-![Figure 4.9. Mitochondrial variants for lineage tracing. Fig. adapted from Ludwig et al, 2019](images/cellGen-fig10.png)
+<!-- ![Figure 4.9. Mitochondrial variants for lineage tracing. Fig. adapted from Ludwig et al, 2019](images/cellGen-fig10.png) -->
 
 ### Visualise allele frequency
 Here, we illustrate the mtDNA on the joxm dataset again. During the 
@@ -216,7 +166,7 @@ call the clonal informed variants by `MQuad`.
 Let's first load the processed dataset from `cardelino` package and visualize 
 the allele frequency.
 
-```{read-mtx-files}
+```{r read-mtx-files}
 AD_file <- system.file("extdata", "passed_ad.mtx", package = "cardelino")
 DP_file <- system.file("extdata", "passed_dp.mtx", package = "cardelino")
 id_file <- system.file("extdata", "passed_variant_names.txt", package = "cardelino")
@@ -228,12 +178,12 @@ rownames(AD) <- rownames(DP) <- var_ids[, 1]
 colnames(AD) <- colnames(DP) <- paste0('Cell', seq(ncol(DP)))
 ```
 
-```{show-pheatmap}
+```{r show-pheatmap}
 AF_mt <- as.matrix(AD / DP)
 pheatmap::pheatmap(AF_mt)
 ```
 
-![Figure 4.10. Allele frequency of mtDNA variants](images/cellGen-fig11.png){ width=75% }
+<!-- ![Figure 4.10. Allele frequency of mtDNA variants](images/cellGen-fig11.png){ width=75% } -->
 
 As expected, the coverage of mtDNA is a lot higher than the nuclear genome above
 (much fewer missing values).
@@ -244,20 +194,20 @@ no prior clonal tree, the model is easier to return a local optima. Generally,
 we recommend running it multiple time (with different random seed or 
 initialization) and pick the one with highest DIC.
 
-```{denovo-mtDNA}
+```{r denovo-mtDNA}
 set.seed(7)
 assign_mtClones <- clone_id(AD, DP, Config=NULL, n_clone = 3, keep_base_clone=FALSE)
 ```
 
 Then visualize allele frequency along with the clustering of cells and variants:
-```{vc_heatmap-mtDNA}
+```{r vc_heatmap-mtDNA}
 Config_mt <- assign_mtClones$Config_prob
 Config_mt[Config_mt >= 0.5] = 1
 Config_mt[Config_mt <  0.5] = 0
 cardelino::vc_heatmap(AF_mt, assign_mtClones$prob, Config_mt, show_legend=TRUE)
 ```
 
-![Figure 4.11. Allele frequency of mtSNVs with clustered cells](images/cellGen-fig12.png){ width=75% }
+<!-- ![Figure 4.11. Allele frequency of mtSNVs with clustered cells](images/cellGen-fig12.png){ width=75% } -->
 
 ## Last notes
 As shown, `cardelino` allows us to cluster cells based on somatic mutations with
@@ -276,7 +226,4 @@ longer or with more chains or initialization.
 
 3. It is generally difficult to select the best number of clone. You may get 
 some clue by trial and error or visualise it from hierarchical clustering first.
-
-Feel free to get in touch (yuanhua@hku.hk) if you need advice on somatic 
-mutation analysis on your own data / project.
 
