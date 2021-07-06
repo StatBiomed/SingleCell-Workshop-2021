@@ -70,13 +70,13 @@ built-in functions.
 dir.create('images')
 
 scv$utils$show_proportions(adata)
-scv$pl$proportions(adata, figsize=c(10, 3), show=FALSE)
+scv$pl$proportions(adata, figsize=c(10, 3), show=TRUE)
 # plt$savefig('images/RNA-velo-fig1.png')
 ```
 <!-- ![Figure 3.5. Proportion of unspliced RNAs](images/RNA-velo-fig1.png){ width=80% } -->
 
 ```{r}
-scv$pl$scatter(adata, legend_loc = "best", size = 50, title = "Pancreas Celltype", show=FALSE)
+scv$pl$scatter(adata, legend_loc = "best", size = 50, title = "Pancreas Celltype", show=TRUE)
 # plt$savefig('images/RNA-velo-fig2.png')
 ```
 
@@ -105,7 +105,7 @@ adata$uns$data$iroot <- which.min(adata$obsm['X_umap'][, 1])
 scv$tl$diffmap(adata)
 scv$tl$dpt(adata)
 
-scv$pl$scatter(adata, color = 'dpt_pseudotime', title = 'pseudotime', color_map = 'gnuplot', colorbar = TRUE, rescale_color = c(0,1), perc=c(2, 98), show=FALSE)
+scv$pl$scatter(adata, color = 'dpt_pseudotime', title = 'pseudotime', color_map = 'gnuplot', colorbar = TRUE, rescale_color = c(0,1), perc=c(2, 98), show=TRUE)
 # plt$savefig('images/RNA-velo-fig3.png')
 ```
 
@@ -146,7 +146,7 @@ thanks to the use of velocity which is based on the intrinsic dynamics.
 
 ```{r}
 scv$tl$velocity_pseudotime(adata)
-scv$pl$scatter(adata, color = 'velocity_pseudotime', cmap = 'gnuplot', show=FALSE)
+scv$pl$scatter(adata, color = 'velocity_pseudotime', cmap = 'gnuplot', show=TRUE)
 # plt$savefig('images/RNA-velo-fig4.png')
 ```
 
@@ -154,7 +154,7 @@ scv$pl$scatter(adata, color = 'velocity_pseudotime', cmap = 'gnuplot', show=FALS
 
 
 ```{r}
-scv$pl$scatter(adata, x = "velocity_pseudotime", y = c('Actn4', 'Ppp3ca', 'Cpe', 'Nnat'), fontsize = 10, size = 10, legend_loc = 'best', color = 'clusters', figsize=c(12, 10), show=FALSE)
+scv$pl$scatter(adata, x = "velocity_pseudotime", y = c('Actn4', 'Ppp3ca', 'Cpe', 'Nnat'), fontsize = 10, size = 10, legend_loc = 'best', color = 'clusters', figsize=c(12, 10), show=TRUE)
 # plt$savefig('images/RNA-velo-fig5.png')
 ```
 
@@ -171,7 +171,7 @@ Velocities are projected onto the specified embedding `basis` and can be visuali
 - Streamlines, which is most commonly used  
 
 ```{r}
-scv$pl$velocity_embedding_stream(adata, basis = "umap", color = "clusters", legend_loc = "best", dpi = 150, show=FALSE)
+scv$pl$velocity_embedding_stream(adata, basis = "umap", color = "clusters", legend_loc = "best", dpi = 150, show=TRUE)
 # plt$savefig('images/RNA-velo-fig6.png')
 ```
 
@@ -179,7 +179,7 @@ scv$pl$velocity_embedding_stream(adata, basis = "umap", color = "clusters", lege
 
 
 ```{r}
-scv$pl$velocity_embedding(adata, basis = "umap", arrow_length = 3, arrow_size = 2, dpi = 150, show=FALSE)
+scv$pl$velocity_embedding(adata, basis = "umap", arrow_length = 3, arrow_size = 2, dpi = 150, show=TRUE)
 # plt$savefig('images/RNA-velo-fig7.png')
 ```
 <!-- ![RNA-velo-fig7](images/RNA-velo-fig7.png){ width=75% } -->
@@ -189,7 +189,7 @@ scv$pl$velocity_embedding(adata, basis = "umap", arrow_length = 3, arrow_size = 
 We could also examine the phase portraits of interested genes to understand how inferred directions are supported by particular genes.  
 
 ```{r}
-scv$pl$velocity(adata, c("Cpe", "Gnao1", "Ins2", "Adk"), ncols = 2, show=FALSE)
+scv$pl$velocity(adata, c("Cpe", "Gnao1", "Ins2", "Adk"), ncols = 2, show=TRUE)
 # plt$savefig('images/RNA-velo-fig8.png')
 ```
 
@@ -203,7 +203,7 @@ The cell cycle detected by RNA velocity, is biologically affirmed by cell cycle 
 
 ```{r}
 scv$tl$score_genes_cell_cycle(adata)
-scv$pl$scatter(adata, color_gradients = c("S_score", "G2M_score"), smooth = TRUE, perc = c(5, 95), legend_loc="upper center",  show=FALSE)
+scv$pl$scatter(adata, color_gradients = c("S_score", "G2M_score"), smooth = TRUE, perc = c(5, 95), legend_loc="upper center",  show=TRUE)
 # plt$savefig('images/RNA-velo-fig9.png')
 ```
 
