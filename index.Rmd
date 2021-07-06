@@ -40,7 +40,7 @@ You can fork or download this tutorial book (and re-run it) from this GitHub rep
 ([Online tutorials](https://github.com/pkuerten/single_cell_clustering_annotation.github.io/blob/main/index.md))
 
 - Module 4.1: Cell interaction by Dr Asif Javed 
-([Online tutorials](https://github.com/pkuerten/single_cell_clustering_annotation.github.io/blob/main/index.md))
+([Online tutorials](https://github.com/pkuerten/single_cell_interaction.github.io/blob/main/index.md))
 
 
 **Note**: to build this book, use the following script in R:
